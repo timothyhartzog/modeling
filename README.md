@@ -1,0 +1,76 @@
+# Master Course of Study — Universal Modeling Mastery
+
+Parallel batch generation pipeline for 52 graduate-level textbooks (438 chapters) covering biostatistics, geospatial modeling, agent-based modeling, scientific machine learning, population dynamics, biomechanics, atmospheric science, and their common mathematical foundations.
+
+## Quick Start
+
+```bash
+# Clone
+cd ~/Documents/github
+git clone https://github.com/timothyhartzog/modeling.git
+cd modeling
+
+# Install Julia dependencies
+julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+# Set API key
+export ANTHROPIC_API_KEY="sk-ant-..."
+
+# Calibration run (3 test chapters)
+julia --project=. src/generate.jl --calibrate
+
+# Review output/markdown/CORE-001/ch01.md, SCIML-001/ch03.md, PHYS-004/ch04.md
+# Tune system_prompt.md if needed
+
+# Full batch generation (~90 min at concurrency=8)
+julia --project=. src/generate.jl --concurrency 8 --resume
+
+# Assemble into DOCX textbooks
+julia --project=. src/assemble_docx.jl
+```
+
+## Architecture
+
+| File | Purpose |
+|------|---------|
+| `src/generate.jl` | Main orchestrator — parallel async API calls with resume |
+| `src/api_client.jl` | Anthropic API wrapper with exponential backoff |
+| `src/prompt_builder.jl` | Constructs per-chapter prompts from manifest JSON |
+| `src/assemble_docx.jl` | Concatenates chapters → DOCX via pandoc |
+| `system_prompt.md` | Locked system prompt for consistent generation |
+| `manifests/part1.json` | 24 textbooks, 212 chapters |
+| `manifests/part2.json` | 28 textbooks, 226 chapters |
+| `state.json` | Resume state — tracks completed/failed chapters |
+| `CLAUDE.md` | Claude Code state continuity |
+
+## CLI Options
+
+```
+--concurrency N     Parallel API calls (default: 5, recommended: 8)
+--calibrate         Generate 3 test chapters only
+--resume            Skip already-completed chapters
+--retry-failed      Re-run only previously failed chapters
+--textbook ID       Generate one textbook (e.g., CORE-001)
+--dry-run           Show work queue without generating
+```
+
+## Curriculum Coverage
+
+- **Core Mathematics (16 textbooks)**: Real Analysis, Linear Algebra, Measure-Theoretic Probability, Scientific Computing, Functional Analysis, ODEs, PDEs, Bayesian Theory, Numerical Methods, Differential Geometry, Optimization
+- **Biostatistics (8 textbooks)**: GLMs, Survival Analysis, Longitudinal Data, Causal Inference, Clinical Trials, High-Dimensional Stats, Epidemic Models, Spatial Epidemiology
+- **Geospatial (5 textbooks)**: Geostatistics, Point Processes, Areal Data, Space-Time, Remote Sensing
+- **Agent-Based Modeling (4 textbooks)**: ABM Foundations, Network Science, Mean-Field Theory, Game Theory
+- **Scientific ML (5 textbooks)**: Deep Learning Theory, Neural DEs/UDEs/PINNs, Probabilistic ML, Automatic Differentiation, ML Inverse Problems
+- **Population Dynamics (4 textbooks)**: Deterministic, Stochastic, Systems Biology, Demography
+- **Physical Systems (4 textbooks)**: Continuum Mechanics, Fluid Dynamics, Biomechanics, Atmospheric/Climate
+- **Cross-Cutting (5 textbooks)**: UQ, Inverse Problems, Dynamical Systems, Optimal Transport, Information Geometry, Multiscale Methods
+
+## Requirements
+
+- Julia 1.10+
+- Anthropic API key (Sonnet tier)
+- pandoc (for DOCX conversion): `brew install pandoc`
+
+## Cost Estimate
+
+~438 chapters × ~8K tokens output = ~$18–26 total at Sonnet pricing.

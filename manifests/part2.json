@@ -1,0 +1,1458 @@
+{
+  "manifest_version": "1.0.0-part2",
+  "title": "Master Course of Study — Universal Modeling Mastery (Part 2: Domain Tracks)",
+  "description": "Continuation of the textbook manifest covering all remaining domain-track and cross-cutting courses not included in Part 1. Combined with Part 1, this completes the full ~57-course curriculum.",
+  "generation_instructions": {
+    "output_format": "DOCX",
+    "target_length_per_chapter": "3,000–8,000 words",
+    "target_length_per_textbook": "15,000–40,000+ words",
+    "style": "Graduate-level textbook with rigorous mathematical exposition, worked examples, proofs where appropriate, and computational implementation in Julia",
+    "programming_language": "Julia (primary and exclusive for all code examples, implementations, and computational exercises)",
+    "julia_packages_preferred": ["DifferentialEquations.jl", "Turing.jl", "Agents.jl", "Flux.jl", "Lux.jl", "GeoStats.jl", "Ferrite.jl", "Optimization.jl", "Makie.jl", "Distributions.jl", "DataFrames.jl", "StatsModels.jl", "GLM.jl", "Survival.jl", "Graphs.jl", "SparseArrays", "LinearAlgebra", "ForwardDiff.jl", "Zygote.jl", "DiffEqFlux.jl", "NeuralPDE.jl", "ModelingToolkit.jl", "Catalyst.jl", "LightGraphs.jl", "GeoJSON.jl", "Rasters.jl", "PointProcesses.jl"],
+    "citations": "Include references to primary literature (journal articles, foundational texts) with author-year format",
+    "mathematical_notation": "Use standard LaTeX-style notation descriptions; define all symbols on first use",
+    "exercises": "Include 5–10 exercises per chapter ranging from computational (Julia) to proof-based",
+    "usa_sources_only": true,
+    "exclude_authors": ["Bart D. Ehrman"]
+  },
+  "textbooks": [
+    {
+      "id": "BIO-003",
+      "title": "Longitudinal Data Analysis: Mixed Models, GEE, and Missing Data",
+      "track": "Track A — Biostatistics",
+      "credits": 3,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-008 Mathematical Statistics", "BIO-001 GLMs"],
+      "description": "Repeated measures and correlated data arise in virtually every clinical study. This textbook covers the two major frameworks — subject-specific (mixed models) and population-averaged (GEE) — along with the critical problem of missing data.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Longitudinal Study Design and Data Structures",
+          "content_outline": "Balanced and unbalanced longitudinal designs. Cohort studies, panel studies, growth studies. Sources of correlation: within-subject, clustering, serial. Exploratory analysis: spaghetti plots, mean profiles, variance functions, correlation structures. Notation and data representation in Julia DataFrames."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Linear Mixed Models: Theory",
+          "content_outline": "Two-stage formulation: within-subject and between-subject. Matrix formulation: Y = Xβ + Zb + ε with b ~ N(0,G), ε ~ N(0,R). Marginal model implied by the mixed model: Var(Y) = ZGZ' + R. REML vs ML estimation: restricted likelihood derivation, Henderson's mixed model equations. BLUPs and conditional modes. Satterthwaite and Kenward-Roger degrees of freedom. Julia MixedModels.jl implementation."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Covariance Structure Modeling",
+          "content_outline": "Unstructured, compound symmetry, AR(1), Toeplitz, spatial covariance structures. Random intercept, random slope, random intercept + slope models. Cholesky parameterization for positive definiteness. Model selection for covariance structure: likelihood ratio tests, AIC, BIC. Heterogeneous variance models. Crossed random effects. Julia specification of random effect structures."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Generalized Linear Mixed Models (GLMMs)",
+          "content_outline": "Extension to non-normal outcomes: binary, count, ordinal. Link functions with random effects. Marginal vs conditional interpretation: non-collapsibility of odds ratios. Estimation: Laplace approximation, adaptive Gauss-Hermite quadrature, penalized quasi-likelihood. MCMC for exact Bayesian GLMMs via Turing.jl. Overdispersion with observation-level random effects."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Generalized Estimating Equations (GEE)",
+          "content_outline": "Marginal (population-averaged) models. Working correlation structures: independence, exchangeable, AR(1), unstructured. Estimating equations and sandwich variance estimator. Consistency despite misspecified working correlation. Efficiency considerations. QIC for model selection. Small-sample corrections (Mancl-DeRouen, Kauermann-Carroll). Comparison with GLMMs: when to use each."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Missing Data Mechanisms and Impact",
+          "content_outline": "Rubin's taxonomy: MCAR, MAR, MNAR. Formal definitions via conditional distributions. Testing MCAR (Little's test). Why complete-case analysis fails under MAR. Last observation carried forward (LOCF): why it is biased. Sensitivity to missing data assumptions. Pattern-mixture vs selection models for MNAR. Shared parameter models."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Multiple Imputation",
+          "content_outline": "Rubin's combining rules. Imputation models: chained equations (MICE/FCS), joint modeling, predictive mean matching. Congeniality of imputation and analysis models. Number of imputations: old rule (m=5) vs modern recommendations. Diagnostics for imputation models. Imputation for longitudinal data: time-varying covariates, monotone missingness. Julia implementation strategies."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Joint Models for Longitudinal and Time-to-Event Data",
+          "content_outline": "Shared random effects joint model: linking longitudinal trajectory to hazard. Estimation via EM algorithm with Gauss-Hermite quadrature or MCMC. Dynamic predictions: updating survival probability as new longitudinal measurements arrive. Discrimination (AUC) and calibration of dynamic predictions. Multiple longitudinal outcomes. Competing risks in joint models. Julia implementation with Turing.jl."
+        }
+      ]
+    },
+    {
+      "id": "BIO-004",
+      "title": "Causal Inference: From Theory to Practice",
+      "track": "Track A — Biostatistics",
+      "credits": 4,
+      "semester": "Year 3",
+      "prerequisites": ["CORE-008 Mathematical Statistics", "BIO-001 GLMs"],
+      "description": "The rigorous mathematical framework for drawing causal — not merely associational — conclusions from data. Covers both the potential outcomes framework and structural causal models.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "The Fundamental Problem of Causal Inference",
+          "content_outline": "Association vs. causation. Counterfactuals and potential outcomes (Neyman-Rubin framework). Individual causal effects. Average treatment effect (ATE), average treatment effect on the treated (ATT). Fundamental problem: only one potential outcome observed. SUTVA: stable unit treatment value assumption. Randomization as the gold standard: why it works mathematically."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Structural Causal Models and DAGs",
+          "content_outline": "Structural causal models (Pearl). Directed acyclic graphs (DAGs). Causal Markov condition. d-separation: algorithmic determination of conditional independence. Faithfulness. Interventions: do-calculus. Truncated factorization. Rules of do-calculus. Completeness of do-calculus. Software: CausalInference.jl, Graphs.jl for DAG manipulation."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Identifiability and the Backdoor Criterion",
+          "content_outline": "Identifiability: when can a causal effect be estimated from observational data? Backdoor criterion: sufficient adjustment sets. Frontdoor criterion. Adjustment formula. Instrumental variables from a DAG perspective. Minimal sufficient adjustment sets. Disjunctive cause criterion. M-bias and butterfly bias: when adjusting introduces bias."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Propensity Score Methods",
+          "content_outline": "Propensity score: definition, balancing property, dimensionality reduction. Estimation: logistic regression, boosted models, neural networks. Propensity score matching: nearest neighbor, caliper, optimal. Propensity score weighting: inverse probability weighting (IPW), stabilized weights, trimming. Propensity score stratification. Doubly robust estimation: augmented IPW (AIPW). Targeted maximum likelihood estimation (TMLE). Diagnostics: balance tables, overlap assessment."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Instrumental Variables",
+          "content_outline": "IV assumptions: relevance, exclusion restriction, independence. Two-stage least squares (2SLS). Weak instruments and finite-sample bias. Anderson-Rubin test. LATE: local average treatment effect (complier average causal effect). Monotonicity assumption. Mendelian randomization as IV in genetics. Two-sample MR. IV estimation in Julia."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Difference-in-Differences and Synthetic Controls",
+          "content_outline": "Difference-in-differences (DiD): parallel trends assumption. Two-period two-group canonical case. Staggered adoption: problems with two-way fixed effects (Goodman-Bacon decomposition). Modern DiD: Callaway-Sant'Anna, Sun-Abraham, did_multiplegt. Event study designs. Synthetic control method: convex combination of donor units. Inference for synthetic controls: permutation, conformal inference."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Regression Discontinuity and Other Quasi-Experimental Designs",
+          "content_outline": "Sharp and fuzzy RD designs. Local polynomial estimation at the cutoff. Bandwidth selection: MSE-optimal (Imbens-Kalyanaraman, Calonico-Cattaneo-Titiunik). Manipulation testing: McCrary density test, Cattaneo-Jansson-Ma. Covariates in RD. Geographic RD. Bunching designs. Interrupted time series. Before-after designs with control groups."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Mediation Analysis and Path-Specific Effects",
+          "content_outline": "Total, direct, and indirect effects. Natural direct and indirect effects: cross-world counterfactuals. Sequential ignorability assumption. Product method vs difference method. Causal mediation analysis with interactions. Sensitivity analysis for unmeasured confounding of mediator-outcome relationship. Multiple mediators. Path-specific effects in DAGs. Interventional direct and indirect effects."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Sensitivity Analysis for Unmeasured Confounding",
+          "content_outline": "The threat: unmeasured confounders invalidating causal claims. Cornfield conditions. Rosenbaum sensitivity analysis: Γ bounds. E-value: minimum strength of unmeasured confounding to explain away an effect. Ding-VanderWeele approach. Manski partial identification bounds. Sensitivity analysis for IV and RD. Negative control outcomes and exposures as diagnostic tools."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Causal Inference with Time-Varying Treatments",
+          "content_outline": "Time-varying confounding affected by prior treatment. Why standard regression fails: collider stratification. Marginal structural models (MSMs): inverse probability of treatment weighting over time. Structural nested models: g-estimation. G-computation formula. Parametric g-formula. Target trial emulation from observational data. Dynamic treatment regimes and optimal treatment strategies."
+        }
+      ]
+    },
+    {
+      "id": "BIO-005",
+      "title": "Clinical Trial Design and Analysis",
+      "track": "Track A — Biostatistics",
+      "credits": 3,
+      "semester": "Year 3",
+      "prerequisites": ["CORE-008 Mathematical Statistics", "BIO-002 Survival Analysis"],
+      "description": "The statistical science of designing and analyzing experiments on human subjects. Covers classical, adaptive, and Bayesian trial designs with regulatory context.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Fundamentals of Clinical Trial Design",
+          "content_outline": "Phases I–IV. Randomization: simple, stratified, block, minimization. Blinding: single, double, triple. Control groups: placebo, active comparator, standard of care. Intention-to-treat vs per-protocol analysis. CONSORT reporting. Ethical considerations: equipoise, stopping rules, data safety monitoring boards."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Sample Size and Power",
+          "content_outline": "Type I and Type II error. Power functions. Sample size formulas for continuous and binary outcomes. Non-inferiority and equivalence margins. Sample size for survival outcomes (Schoenfeld, Freedman). Sample size for clustered/hierarchical designs (design effect, ICC). Simulation-based power analysis in Julia. Interim analyses and their effect on sample size."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Group Sequential Designs",
+          "content_outline": "Repeated significance testing problem: Pocock, O'Brien-Fleming, and alpha-spending function approaches. Lan-DeMets alpha spending. Information fraction. Conditional power and futility stopping. Sample size re-estimation at interim. Error spending for both efficacy and futility. Software implementation in Julia."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Adaptive Trial Designs",
+          "content_outline": "Adaptive randomization: response-adaptive, covariate-adaptive. Adaptive dose-finding: 3+3, CRM (continual reassessment method), BOIN, keyboard. Seamless Phase II/III designs. Platform trials: master protocols, adding/dropping arms. Adaptive enrichment: biomarker-driven subgroup selection. Multiplicity control in adaptive designs."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Bayesian Clinical Trial Designs",
+          "content_outline": "Bayesian monitoring: posterior probabilities, predictive probabilities. Prior elicitation for clinical trials. Bayesian adaptive designs: Thompson sampling, Bayesian response-adaptive randomization. Bayesian decision rules: posterior probability of benefit, predictive probability of success. Bayesian sample size determination. Regulatory acceptance: FDA guidance on Bayesian trials. Bayesian basket and umbrella trials."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Multiplicity and Multiple Endpoints",
+          "content_outline": "Family-wise error rate control: Bonferroni, Holm, Hochberg, fixed-sequence, fallback. Graphical approaches to multiplicity (Bretz-Maurer-Hommel). Gate-keeping strategies for primary and secondary endpoints. Co-primary endpoints. Composite endpoints. Win ratio. Multiple comparisons in dose-finding. Multiplicity in subgroup analyses."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Analysis of Specific Trial Types",
+          "content_outline": "Crossover trials: AB/BA, higher-order. Washout and carryover effects. Cluster randomized trials: design effect, ICC estimation, GEE and mixed models. Stepped-wedge designs: analysis approaches. N-of-1 trials. Non-inferiority trials: assay sensitivity, constancy assumption, switching between superiority and non-inferiority."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Estimands and the ICH E9(R1) Framework",
+          "content_outline": "Estimand framework: treatment, population, endpoint, intercurrent events, summary measure. Strategies for intercurrent events: treatment policy, composite, hypothetical, principal stratum, while-on-treatment. Alignment of estimand, estimation, and interpretation. Sensitivity analyses under different intercurrent event strategies. Implementation in trial protocols and statistical analysis plans."
+        }
+      ]
+    },
+    {
+      "id": "BIO-006",
+      "title": "High-Dimensional Statistics: Inference in the p > n Regime",
+      "track": "Track A — Biostatistics",
+      "credits": 3,
+      "semester": "Year 3",
+      "prerequisites": ["CORE-008 Mathematical Statistics", "BIO-001 GLMs"],
+      "description": "When the number of variables exceeds the number of observations — genomics, imaging, electronic health records — classical statistics breaks down. This course covers the theory and methods for valid inference in high dimensions.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "The High-Dimensional Challenge",
+          "content_outline": "Curse of dimensionality. Why OLS fails when p > n. Sparsity as structural assumption. Restricted eigenvalue conditions and compatibility conditions. Concentration inequalities in high dimensions: sub-Gaussian and sub-exponential random vectors. Random matrix theory preview: Marchenko-Pastur law."
+        },
+        {
+          "chapter_number": 2,
+          "title": "LASSO: Theory and Oracle Inequalities",
+          "content_outline": "LASSO optimization: geometric and Bayesian interpretations. Prediction error bounds under restricted eigenvalue condition. Variable selection consistency: irrepresentability condition. Oracle inequalities: LASSO achieves near-optimal rate. Adaptive LASSO for oracle properties. Coordinate descent algorithm with Julia implementation. Cross-validation and information criteria for tuning."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Beyond LASSO: Structured Sparsity",
+          "content_outline": "Group LASSO for grouped variables. Sparse group LASSO. Fused LASSO for ordered variables. Nuclear norm penalty for low-rank matrices. Elastic net: combining L1 and L2. SLOPE: sorted L1 penalization for FDR control. Dantzig selector. Square-root LASSO: pivotal estimation without variance knowledge."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Post-Selection Inference",
+          "content_outline": "The problem: standard inference invalid after variable selection. Selective inference: conditioning on the selection event. Exact selective inference for LASSO (Lee et al.). Conditional inference and polyhedral lemma. Debiased/desparsified LASSO for valid confidence intervals and p-values. Sample splitting. Data carving. Stability selection."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Multiple Testing and False Discovery Rate",
+          "content_outline": "Benjamini-Hochberg procedure: FDR control under independence and PRDS. Storey's q-values. Local false discovery rates. Knockoff filter: model-X knockoffs for exact FDR control. Fixed-X and model-X knockoff constructions. Deep knockoffs. Connection to Bayesian variable selection. Applications: genome-wide association studies, differential expression analysis."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Random Matrix Theory for Statistics",
+          "content_outline": "Marchenko-Pastur law: limiting spectral distribution of sample covariance. Spiked covariance model: BBP phase transition. Tracy-Widom distribution for largest eigenvalue. Implications for PCA in high dimensions: bias and inconsistency. Shrinkage estimators for covariance: Ledoit-Wolf, Oracle Approximating Shrinkage. Random matrix theory for signal detection."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Sparse PCA and Dimension Reduction",
+          "content_outline": "PCA in high dimensions: inconsistency of sample eigenvectors. Sparse PCA: LASSO-penalized formulation, SDP relaxation, iterative thresholding. Minimax rates for sparse PCA. Factor models: approximate factor models, number of factors estimation. Sufficient dimension reduction: SIR, SAVE, central subspaces. Applications: genomic data reduction, imaging biomarkers."
+        },
+        {
+          "chapter_number": 8,
+          "title": "High-Dimensional Bayesian Methods",
+          "content_outline": "Spike-and-slab priors: point mass mixture, continuous spike-and-slab. Horseshoe prior: global-local shrinkage, near-minimax optimality. R2-D2 prior. Dirichlet-Laplace prior. Bayesian variable selection: stochastic search variable selection (SSVS). Scalable computation: variational inference for high-dimensional Bayes. Bayesian additive regression trees (BART). Julia Turing.jl implementation."
+        }
+      ]
+    },
+    {
+      "id": "BIO-007",
+      "title": "Compartmental Epidemic Models: From SIR to Spatial Stochastic Dynamics",
+      "track": "Track A — Biostatistics / Track E Overlap",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["CORE-007 ODEs", "CORE-010 Stochastic Processes"],
+      "description": "The mathematical theory of infectious disease transmission. Covers deterministic and stochastic compartmental models, R₀ theory, spatial spread, network epidemiology, and parameter estimation from surveillance data.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "The SIR Model and Its Variants",
+          "content_outline": "SIR model derivation from mass-action kinetics. Phase plane analysis: the epidemic curve. Final size equation. SIS model: endemic equilibrium. SEIR model: exposed class and latency. SIRS: waning immunity and oscillations. SEIRS, SIR with vaccination, SIR with demographics (vital dynamics). Julia DifferentialEquations.jl implementation of compartmental models."
+        },
+        {
+          "chapter_number": 2,
+          "title": "The Basic Reproduction Number R₀",
+          "content_outline": "Biological interpretation: expected secondary infections from one index case. Mathematical derivation: next-generation matrix method (van den Driessche-Watmough). Spectral radius of the next-generation matrix. R₀ for multi-group and multi-strain models. Effective reproduction number Rt. Relationship between R₀ and herd immunity threshold. Sensitivity of R₀ to model parameters."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Endemic Equilibria and Stability",
+          "content_outline": "Disease-free and endemic equilibria. Local stability via Jacobian eigenvalues. Global stability via Lyapunov functions. Backward bifurcation: when R₀ < 1 is not sufficient for elimination. Multiple endemic equilibria. Oscillatory dynamics: Hopf bifurcation in SIRS with seasonality. Age-structured epidemic models and the next-generation operator."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Stochastic Epidemic Models",
+          "content_outline": "Continuous-time Markov chain SIR: master equation, transition rates. Stochastic extinction: probability of minor epidemic. Mean time to extinction near endemic equilibrium. Diffusion approximation: Fokker-Planck for epidemic models. Gillespie algorithm for exact stochastic simulation. Tau-leaping for approximate simulation. Branching process approximation for early epidemic. Julia implementation with Catalyst.jl."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Age-Structured and Multi-Group Models",
+          "content_outline": "Age-structured SIR: partial differential equation formulation (McKendrick-von Foerster with infection). WAIFW (who acquires infection from whom) matrix. Social contact matrices (POLYMOD data). Multi-group models: heterogeneous mixing. Targeted vaccination strategies. Pair-formation models for STIs. Julia implementation with age classes as ODE systems."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Spatial Epidemic Models",
+          "content_outline": "Reaction-diffusion SIR: traveling wave solutions, wave speed. Gravity models and radiation models for human mobility. Metapopulation models: patches connected by movement. Invasion and spatial R₀. Network epidemic models: degree-based mean-field, pair approximations, message-passing. Percolation threshold and epidemic threshold on networks."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Parameter Estimation and Model Fitting",
+          "content_outline": "Maximum likelihood for epidemic data: incidence, prevalence, seroprevalence. Bayesian inference for compartmental models: ODE-based likelihood with Turing.jl. MCMC for epidemic models: challenges (correlation, multimodality). Approximate Bayesian computation for stochastic epidemic models. Particle MCMC. Iterated filtering (IF2). Real-time estimation of Rt: EpiEstim approach, renewal equation."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Optimal Control of Epidemics",
+          "content_outline": "Optimal vaccination: minimizing total infections or cost. Optimal timing of interventions. Pontryagin's maximum principle for epidemic control. Dynamic programming for sequential decision-making. Pulse vaccination strategies. Ring vaccination. Antiviral allocation. Balancing health outcomes with economic costs. Julia Optimization.jl for epidemic control problems."
+        }
+      ]
+    },
+    {
+      "id": "BIO-008",
+      "title": "Spatial Epidemiology: Disease Mapping and Surveillance",
+      "track": "Track A — Biostatistics / Track B Overlap",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["CORE-011 Bayesian Theory", "BIO-001 GLMs"],
+      "description": "The intersection of spatial statistics and epidemiology: mapping disease risk, detecting clusters, and modeling spatio-temporal disease dynamics.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Disease Mapping Fundamentals",
+          "content_outline": "Standardized incidence/mortality ratios (SIR/SMR). Internal and external standardization. Problems with raw SMRs: instability in small areas, visual bias from area size. Empirical Bayes smoothing: Poisson-Gamma model. Hierarchical Bayes: posterior shrinkage and borrowing strength. Mapping in Julia with GeoMakie.jl."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Conditional Autoregressive (CAR) Models",
+          "content_outline": "Intrinsic CAR (ICAR): improper prior, pairwise differences. Besag-York-Mollié (BYM) model: spatial + unstructured random effects. BYM2: scaled parameterization (Riebler et al.). Leroux model. Proper CAR. Neighborhood definitions: adjacency, distance-based, k-nearest. Directed acyclic graph representation. Julia implementation via Turing.jl with sparse precision matrices."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Cluster Detection",
+          "content_outline": "Spatial scan statistics: Kulldorff's circular and elliptical scans. Flexible spatial scan. Space-time scan statistics. Multiple cluster testing and P-value adjustment. Focused tests: Stone's test around a point source. Global clustering tests: Moran's I, Tango's MEET. Bayesian cluster detection: profile-based methods, mixture models. Aberration detection for surveillance: CUSUM, Farrington algorithm."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Spatio-Temporal Disease Models",
+          "content_outline": "Knorr-Held decomposition: spatial, temporal, and interaction terms. Type I–IV space-time interactions. Dynamic linear models for surveillance. Endemic-epidemic models (hhh4 framework): autoregressive spatio-temporal Poisson. Mechanistic-statistical models: coupling ODEs with observation models. Nowcasting: accounting for reporting delays. R-INLA approximation theory and Julia alternatives."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Ecological Studies and Spatial Regression",
+          "content_outline": "Ecological study design: exposure and disease measured at area level. Ecological bias (ecological fallacy). Spatial confounding: distinguishing spatial variation in exposure from spatial variation in risk. Restricted spatial regression. Spatial+ approach. Spatial lag and spatial error models. Geographically weighted regression. Bayesian spatial regression with ICAR residuals."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Geostatistical Models for Point-Level Health Data",
+          "content_outline": "Point-referenced health data: individual-level geocoded outcomes. Model-based geostatistics (Diggle, Ribeiro): generalized linear geostatistical models. Preferential sampling: when sampling locations depend on the process being measured. Low-rank approximations for large datasets: predictive process, SPDE-INLA, nearest-neighbor GP. Applications: malaria prevalence mapping, air pollution exposure assessment."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Environmental Epidemiology and Exposure Assessment",
+          "content_outline": "Exposure assessment: measurement error, Berkson vs classical error. Spatial misalignment: exposure on different spatial support than health data. Change of support problem. Preferential sampling in exposure monitoring networks. Health impact assessment: attributable fractions. Distributed lag models for time-varying exposure. Spatio-temporal exposure modeling with satellite data."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Infectious Disease Surveillance Systems",
+          "content_outline": "Syndromic surveillance: emergency department chief complaints, pharmacy sales, school absenteeism. Prospective space-time cluster detection. Bayesian monitoring: sequential updating of outbreak probability. Participatory surveillance: citizen-reported symptoms. Wastewater surveillance: modeling viral load to case count mapping. Integration of multiple data streams. Early warning systems and alert thresholds."
+        }
+      ]
+    },
+    {
+      "id": "GEO-001",
+      "title": "Geostatistics: Random Fields, Kriging, and the SPDE Approach",
+      "track": "Track B — Geospatial",
+      "credits": 4,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-003 Probability", "CORE-011 Bayesian Theory"],
+      "description": "The theory of spatially correlated data on continuous domains. Covers random field theory, variogram estimation, kriging, model-based geostatistics, and the modern SPDE approach linking spatial statistics to PDEs and finite elements.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Random Fields: Stationarity and Covariance",
+          "content_outline": "Random fields as collections of spatially indexed random variables. First and second moments. Strict and second-order stationarity. Intrinsic stationarity. Isotropy and geometric anisotropy. Covariance functions: positive definiteness, Bochner's theorem, spectral representation. Valid covariance functions in different dimensions. Julia Distributions.jl and GeoStats.jl random field generation."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Covariance Models: The Matérn Family",
+          "content_outline": "Matérn covariance function: parameters (variance σ², range ρ, smoothness ν). Special cases: exponential (ν=1/2), Whittle (ν=1), squared exponential (ν→∞). Spectral density of the Matérn. Physical interpretation of smoothness parameter. Non-stationary covariance: deformation approach, process convolution, varying parameters. Cross-covariance models for multivariate spatial data: linear model of coregionalization."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Variogram Estimation and Model Fitting",
+          "content_outline": "Empirical variogram: Matheron estimator, Cressie-Hawkins robust estimator. Variogram cloud and directional variograms. Variogram model fitting: weighted least squares, restricted maximum likelihood. Practical range, sill, nugget effect. Model selection for variogram models. Anisotropy detection and modeling. Julia GeoStats.jl variogram estimation."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Kriging: Optimal Spatial Prediction",
+          "content_outline": "Simple kriging: known mean, kriging equations, kriging variance. Ordinary kriging: unknown constant mean. Universal kriging (kriging with external drift): incorporating covariates. Indicator kriging for probabilities. Cokriging: multivariate spatial prediction. Kriging as BLUP. Kriging as conditional expectation of a Gaussian process. Computational aspects: O(n³) for dense kriging, need for approximations."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Model-Based Geostatistics",
+          "content_outline": "Gaussian and generalized linear geostatistical models. Likelihood-based inference: REML, full ML. Bayesian geostatistics: prior specification, MCMC implementation. Transformed Gaussian processes for non-Gaussian data. Binomial, Poisson, and other generalized linear geostatistical models. Preferential sampling problem. Julia Turing.jl for Bayesian geostatistics."
+        },
+        {
+          "chapter_number": 6,
+          "title": "The SPDE Approach to Spatial Modeling",
+          "content_outline": "Whittle's SPDE: (κ² - Δ)^(α/2) τZ(s) = W(s). Matérn field as solution of the SPDE. Finite element discretization: triangulated mesh, piecewise linear basis functions. Gaussian Markov random field (GMRF) approximation: sparse precision matrix. Computational gains: O(n) vs O(n³). Connection between GMRF precision and stiffness matrix from FEM. Non-stationary extensions: spatially varying parameters. Julia implementation with sparse matrices."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Spatial Simulation",
+          "content_outline": "Unconditional simulation of Gaussian random fields: Cholesky decomposition, circulant embedding (FFT-based), turning bands, sequential simulation. Conditional simulation: conditioning on observed data. Non-Gaussian simulation: transformation, copulas. Multi-point geostatistics. Simulation for uncertainty quantification: generating ensemble realizations. Julia implementations."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Large-Scale Spatial Data: Approximations and Modern Methods",
+          "content_outline": "Challenges: n > 10⁴ observations break dense kriging. Low-rank approximations: predictive process, fixed-rank kriging, random features. Nearest-neighbor Gaussian process (NNGP). Covariance tapering and sparse matrices. Multi-resolution approximation. Vecchia approximation. Stochastic partial differential equation approach (SPDE-FEM). Divide and conquer: meta-kriging, local approximate GP. Comparison of methods on benchmark datasets."
+        }
+      ]
+    },
+    {
+      "id": "GEO-002",
+      "title": "Spatial Point Processes: Theory and Applications",
+      "track": "Track B — Geospatial",
+      "credits": 3,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-003 Probability", "CORE-010 Stochastic Processes"],
+      "description": "The mathematical theory of random collections of points in space. Point processes model event locations: disease cases, tree positions, earthquake epicenters, crime incidents, and neural spike locations.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Fundamentals of Point Processes",
+          "content_outline": "Point processes as random counting measures. Moment measures: intensity, second moment measure, pair correlation function. Stationarity and isotropy for point processes. Campbell's theorem. Void probabilities and avoidance functions. Palm distributions: conditioning on a point at a fixed location. Slivnyak-Mecke theorem for Poisson processes. Julia implementation: point pattern data structures."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Poisson Processes on General Spaces",
+          "content_outline": "Homogeneous Poisson process: complete spatial randomness. Characterization theorems. Inhomogeneous Poisson process: intensity function λ(s). Simulation: thinning method, transformation method. Maximum likelihood estimation of parametric intensity. Kernel intensity estimation: bandwidth selection. Testing for complete spatial randomness: quadrat tests, Kolmogorov-Smirnov on distance distributions."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Summary Statistics: K-Function and Beyond",
+          "content_outline": "Ripley's K-function: definition, edge correction (border, translation, isotropic). L-function (variance-stabilized K). Pair correlation function g(r). Nearest-neighbor distance distribution G(r). Empty space function F(r). J-function: J = (1-G)/(1-F). Monte Carlo envelope tests for CSR. Functional summary statistics for hypothesis testing."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Cox Processes and Log-Gaussian Cox Processes",
+          "content_outline": "Cox processes: doubly stochastic Poisson. Driven by a random intensity field Λ(s). Log-Gaussian Cox process (LGCP): log Λ(s) is a Gaussian random field. Moments and pair correlation of LGCP. Bayesian inference for LGCP: MCMC, INLA. Minimum contrast estimation. Cluster processes: Neyman-Scott, Thomas, Matérn cluster. Palm likelihood. Julia implementation of LGCP."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Gibbs and Markov Point Processes",
+          "content_outline": "Gibbs point processes: density with respect to Poisson. Papangelou conditional intensity. Markov point processes: Hammersley-Clifford for point processes. Pairwise interaction models: Strauss, soft-core. Area interaction, Geyer saturation. Simulation: spatial birth-death (Metropolis-Hastings), perfect simulation (CFTP). Maximum pseudolikelihood estimation. Applications: modeling repulsive patterns (trees, cells)."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Marked Point Processes",
+          "content_outline": "Marks: types, sizes, directions attached to points. Multitype point processes. Mark correlation functions. Cross K-function and cross pair correlation. Random labeling hypothesis. Geostatistical marking. Mark-weighted summary statistics. Applications: forest ecology (species and sizes), seismology (magnitudes), cellular biology (cell types)."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Spatio-Temporal Point Processes",
+          "content_outline": "Space-time intensity and conditional intensity. Space-time K-function. Spatio-temporal Poisson and log-Gaussian Cox processes. Self-exciting processes: Hawkes process in space-time. Epidemic-type aftershock sequence (ETAS) model for earthquakes. Conditional intensity estimation. Residual analysis for spatio-temporal models. Applications: crime analysis, social media events, earthquake forecasting."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Point Process Regression and Modern Methods",
+          "content_outline": "Point process regression: intensity as function of spatial covariates. Logistic regression for presence/absence data. Poisson point process regression: equivalence to Poisson regression on quadrature. Regularized intensity estimation: LASSO for point processes. Machine learning for intensity: random forests, neural network intensity. Deep learning for point processes: neural Hawkes. Model diagnostics: residual plots, lurking variables, superposed residuals."
+        }
+      ]
+    },
+    {
+      "id": "GEO-003",
+      "title": "Areal Data Models and Spatial Econometrics",
+      "track": "Track B — Geospatial",
+      "credits": 3,
+      "semester": "Year 3",
+      "prerequisites": ["CORE-011 Bayesian Theory", "GEO-001 Geostatistics"],
+      "description": "Statistical models for data aggregated over regions: census tracts, counties, countries. Covers spatial autoregressive models, spatial regression, and the disease mapping models that bridge to epidemiology.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Spatial Weights and Neighborhood Structures",
+          "content_outline": "Spatial weight matrices: contiguity (queen, rook), distance-based (inverse distance, k-nearest neighbor), economic (trade-based). Row standardization. Properties of weight matrices: symmetry, connectivity, eigenvalue bounds. Higher-order weights. Graph-theoretic interpretation. Julia construction with Graphs.jl and sparse matrices."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Spatial Autocorrelation Measures",
+          "content_outline": "Moran's I: definition, expected value, variance, permutation test. Geary's C. Getis-Ord G and G*: local hot spot detection. Local Moran's I (LISA): identifying spatial clusters and outliers. Moran scatterplot. Significance assessment: analytical, permutation, simulation. Multiple testing correction for local statistics."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Simultaneous Autoregressive (SAR) Models",
+          "content_outline": "Spatial lag model (SLM): y = ρWy + Xβ + ε. Spatial error model (SEM): y = Xβ + u, u = λWu + ε. Spatial Durbin model (SDM): including WX. Reduced form and implied covariance. ML estimation: concentrated log-likelihood, eigenvalue computation. Direct, indirect, and total effects (LeSage-Pace). Bayesian SAR with Turing.jl."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Conditional Autoregressive (CAR) Models",
+          "content_outline": "CAR specification: conditional distributions for each area given neighbors. Brook's lemma: joint distribution from conditionals. Intrinsic CAR: improper precision matrix, sum-to-zero constraint. Proper CAR: propriety parameter. Relationship between SAR and CAR. When to use SAR vs CAR. Sparse Cholesky factorization for efficient computation. Disease mapping with CAR: BYM, BYM2, Leroux."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Spatially Varying Coefficient Models",
+          "content_outline": "Geographically weighted regression (GWR): local regression with spatial kernels. Bandwidth selection: cross-validation, AICc. Multiscale GWR (MGWR). Bayesian spatially varying coefficients: random coefficient models with spatial priors. Spatially adaptive varying coefficient models. Testing for spatial non-stationarity. Applications: hedonic pricing, education outcomes, health disparities."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Multivariate Areal Models",
+          "content_outline": "Multivariate CAR (MCAR): modeling multiple correlated outcomes across areas. Shared component models: decomposing common and disease-specific spatial patterns. MCAR parameterizations: separable, non-separable. Order-free MCAR. Bayesian estimation and model comparison. Applications: joint mapping of multiple diseases, co-mapping of risk factors."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Change of Support and Data Fusion",
+          "content_outline": "Change of support problem: inference at one spatial resolution from data at another. Ecological inference: individual-level relationships from aggregate data. Area-to-point kriging. Point-to-area aggregation. Fusion of areal and point-level data. Bayesian melding. Downscaling climate model output. Applications: small area estimation, combining survey and administrative data."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Space-Time Areal Models",
+          "content_outline": "Spatio-temporal CAR models: Type I–IV interactions (Knorr-Held). Dynamic linear models for areal time series. Autoregressive space-time models. Separable vs non-separable space-time structures. Forecasting with spatial models. Model assessment for spatio-temporal predictions. Applications: crime forecasting, disease surveillance, election prediction."
+        }
+      ]
+    },
+    {
+      "id": "GEO-004",
+      "title": "Space-Time Modeling: Covariance, Dynamics, and Dimension Reduction",
+      "track": "Track B — Geospatial",
+      "credits": 3,
+      "semester": "Year 3",
+      "prerequisites": ["GEO-001 Geostatistics", "CORE-009 PDEs"],
+      "description": "Modeling phenomena that vary across both space and time: spatio-temporal covariance structures, dynamic models, and the computational methods required for large spatio-temporal datasets.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Spatio-Temporal Covariance Functions",
+          "content_outline": "Stationarity in space-time. Separable covariance: C(h,u) = Cs(h)·Ct(u). Testing separability. Non-separable covariance: Cressie-Huang, Gneiting classes. Fully symmetric vs non-symmetric (asymmetric) covariance. Space-time variograms. Spectral density in space-time. Julia implementation of spatio-temporal covariance models."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Dynamic Spatio-Temporal Models",
+          "content_outline": "State-space models in space-time: observation and process equations. Kalman filter for linear Gaussian space-time models. Extended and ensemble Kalman filter for nonlinear dynamics. Spatio-temporal dynamic linear models (DLMs). Integro-difference equation (IDE) models: convolution kernels for spatial dynamics. Bayesian estimation via MCMC and sequential methods."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Hierarchical Spatio-Temporal Models",
+          "content_outline": "Data model, process model, parameter model decomposition. Spatio-temporal process models: random walk, AR(1), diffusion. Spatial basis function models: fixed rank kriging, predictive process. Moran's basis vectors for dimension reduction. Process convolution models. Spectral methods for spatio-temporal processes. Non-Gaussian data: spatio-temporal GLMMs."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Dimension Reduction for Large Datasets",
+          "content_outline": "Fixed rank kriging: basis function expansion with K << n. Predictive process: subset of knot locations. SPDE approach with FEM for spatio-temporal models. Nearest-neighbor Gaussian processes in space-time. Multi-resolution approximation (M-RA). Stochastic partial differential equation with space-time extension. Comparison of computational methods: accuracy, speed, scalability."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Spatio-Temporal Point Processes (Expanded)",
+          "content_outline": "Self-exciting processes: Hawkes process, ETAS model. Inhibitory processes. Log-Gaussian Cox processes in space-time. Conditional intensity models. Triggering and background decomposition. Space-time clustering metrics. Applications: earthquake modeling, terrorism events, wildfire ignition, disease case occurrences."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Multivariate Spatio-Temporal Models",
+          "content_outline": "Cross-covariance functions in space-time. Multivariate Matérn model. Linear model of coregionalization for spatio-temporal data. Shared latent factor models. Multivariate SPDE. Applications: co-modeling of temperature and precipitation, joint modeling of multiple pollutants, multi-species ecological modeling."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Spatio-Temporal Extremes",
+          "content_outline": "Max-stable processes: Smith, Schlather, Brown-Resnick models. Peaks over threshold in space-time. Generalized Pareto process. Conditional extremes model (Heffernan-Tawn). Spatial tail dependence. Return level estimation for spatial extremes. Applications: extreme precipitation, heat waves, coastal flooding, financial risk."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Machine Learning for Spatio-Temporal Data",
+          "content_outline": "Convolutional neural networks for gridded spatio-temporal data. Graph neural networks for irregular spatial data. Spatio-temporal transformers. Deep Gaussian processes for space-time. Neural processes: conditional, attentive. Physics-informed spatio-temporal learning. Combining mechanistic and ML models. Uncertainty quantification for ML predictions. Julia Flux.jl implementations."
+        }
+      ]
+    },
+    {
+      "id": "GEO-005",
+      "title": "Remote Sensing and Geospatial Data Science",
+      "track": "Track B — Geospatial",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["GEO-001 Geostatistics"],
+      "description": "The data pipeline for geospatial modeling: satellite imagery, LiDAR, sensor networks, and the computational infrastructure for processing massive geospatial datasets.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Satellite Remote Sensing Fundamentals",
+          "content_outline": "Electromagnetic spectrum and sensor types: passive (optical, thermal, microwave), active (radar, LiDAR). Spatial, spectral, radiometric, and temporal resolution tradeoffs. Orbital mechanics: sun-synchronous, geostationary. Major missions: Landsat, Sentinel, MODIS, VIIRS. Data formats: GeoTIFF, NetCDF, HDF5. Julia Rasters.jl and ArchGDAL.jl for reading satellite data."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Image Classification and Land Cover Mapping",
+          "content_outline": "Spectral indices: NDVI, EVI, NDWI, NDBI. Supervised classification: maximum likelihood, random forests, support vector machines. Deep learning: convolutional neural networks for pixel and patch classification. Semantic segmentation: U-Net, DeepLab. Object-based image analysis (OBIA). Training data collection and validation. Accuracy assessment: confusion matrix, overall accuracy, kappa, F1."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Spectral Unmixing",
+          "content_outline": "Linear spectral unmixing: endmember extraction (NFINDR, vertex component analysis). Constrained least squares: abundance estimation with sum-to-one and non-negativity. Nonlinear unmixing. Bayesian unmixing. Hyperspectral data: dimensionality reduction with PCA, MNF transform. Spectral libraries. Sub-pixel analysis for mixed land cover."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Change Detection",
+          "content_outline": "Pre-classification comparison: image differencing, ratio, regression. Post-classification comparison: transition matrices. Time series approaches: BFAST, LandTrendr, CCDC. Continuous change monitoring. Breaks in NDVI time series. Deep learning for change detection: Siamese networks. Multi-temporal analysis: phenology extraction. Applications: deforestation, urban expansion, disaster assessment."
+        },
+        {
+          "chapter_number": 5,
+          "title": "LiDAR and 3D Point Cloud Processing",
+          "content_outline": "LiDAR principles: airborne and terrestrial. Point cloud data structures: LAS format. Ground filtering and DEM generation. Canopy height models. Individual tree detection and segmentation. Building extraction. Point cloud classification: PointNet, RandLA-Net. Voxelization. Structure from motion (SfM) photogrammetry. Julia point cloud processing."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Data Fusion and Multi-Sensor Integration",
+          "content_outline": "Pan-sharpening: intensity-hue-saturation, Brovey, wavelet. Spatial-temporal fusion: STARFM, ESTARFM. Optical-radar fusion: complementary information. Multi-resolution data fusion: downscaling and upscaling. Bayesian data fusion. Sensor web: integrating in-situ and remote observations. Decision-level fusion."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Big Geospatial Data Infrastructure",
+          "content_outline": "Cloud computing for geospatial: Google Earth Engine, AWS, Microsoft Planetary Computer. Data cube architectures: analysis-ready data (ARD). Tile-based processing and map-reduce paradigms. Spatial databases: PostGIS, SpatiaLite. Coordinate reference systems: projections, datum transformations, PROJ library. Web mapping: tile servers, vector tiles. Julia GeoInterface.jl ecosystem."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Applications: Environmental Monitoring and Urban Analytics",
+          "content_outline": "Carbon monitoring: forest biomass estimation from LiDAR and satellite. Urban heat island mapping from thermal imagery. Air quality estimation from satellite (NO₂, PM2.5). Crop yield prediction from multispectral time series. Flood mapping from SAR. Drought monitoring from soil moisture satellites (SMAP). Population estimation from nighttime lights. Health geography: exposure assessment from remote sensing."
+        }
+      ]
+    },
+    {
+      "id": "ABM-001",
+      "title": "Foundations of Agent-Based Modeling: Design, Implementation, and Validation",
+      "track": "Track C — Agent-Based Modeling",
+      "credits": 3,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-003 Probability", "CORE-007 ODEs"],
+      "description": "Agent-based models simulate complex systems from the bottom up. This textbook covers the design principles, computational frameworks, and validation methodology for building rigorous ABMs.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Philosophy of Bottom-Up Modeling",
+          "content_outline": "Top-down (equation-based) vs bottom-up (individual-based) modeling. When ABMs are appropriate: heterogeneity, spatial structure, adaptive behavior, emergent phenomena. Levels of description: micro, meso, macro. Emergence and self-organization. Complexity theory foundations. Comparison with ODE/PDE approaches: complementary perspectives."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Agent Design: State, Rules, and Behavior",
+          "content_outline": "Agent attributes: state variables, types, memory. Decision rules: deterministic, stochastic, adaptive, learning. Finite state machines for agent behavior. Behavior trees. Utility-based decision making. Bounded rationality. Social influence rules. Julia struct design for agents in Agents.jl: mutable vs immutable, parametric types."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Environment and Spatial Structure",
+          "content_outline": "Discrete spaces: regular grids (2D, 3D, hexagonal), neighborhoods (Moore, von Neumann). Continuous spaces: movement, collision detection. Network environments: agent placement on graphs. Geographic environments: GIS integration, OpenStreetMap. Boundary conditions: periodic, reflecting, absorbing. Environmental dynamics: resource growth, depletion, diffusion. Julia Agents.jl space types."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Scheduling and Time Advancement",
+          "content_outline": "Synchronous vs asynchronous updating. Random activation order. Priority-based scheduling. Event-driven simulation: next-event time advancement, event queues. Continuous-time ABMs. Hybrid scheduling: mixing discrete events with continuous dynamics. Time step selection and its impact on model behavior. Julia Agents.jl stepping functions and model advancement."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Interaction Topologies and Communication",
+          "content_outline": "Direct interaction: spatial proximity, collision. Network-mediated interaction: social networks, contact networks. Signal-based interaction: chemical gradients (chemotaxis), pheromone trails. Market mechanisms: supply/demand, auction. Cooperative and competitive interactions. Coalition formation. Stigmergy: indirect communication through environment modification."
+        },
+        {
+          "chapter_number": 6,
+          "title": "The ODD Protocol and Model Documentation",
+          "content_outline": "Overview, Design concepts, Details (ODD) protocol: the standard for describing ABMs. Purpose, entities/state variables/scales, process overview/scheduling. Design concepts: emergence, adaptation, objectives, learning, prediction, sensing, interaction, stochasticity, collectives, observation. Details: initialization, input data, submodels. ODD+D for human decision-making. TRACE protocol for ecological ABMs."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Verification, Validation, and Sensitivity Analysis",
+          "content_outline": "Verification: is the code doing what we intended? Unit testing agents, integration testing emergent behavior, alignment testing (micro-macro consistency). Validation: does the model match reality? Pattern-oriented modeling (POM): using multiple observed patterns as validation targets. Statistical validation: comparing simulated and observed distributions. Sensitivity analysis for ABMs: Morris method, Sobol indices via meta-model, OFAT. Julia testing framework for ABMs."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Parameter Calibration for ABMs",
+          "content_outline": "Challenge: ABMs typically have intractable likelihoods. Approximate Bayesian computation (ABC): rejection, MCMC, SMC variants. Summary statistics selection for ABC. History matching: ruling out implausible parameter regions. Surrogate-assisted calibration: Gaussian process emulators of ABM outputs. Machine learning calibration: training neural networks to map outputs to parameters. Bayesian optimization for ABM calibration. Julia implementation of ABC and surrogate calibration."
+        }
+      ]
+    },
+    {
+      "id": "ABM-002",
+      "title": "Network Science: Structure, Dynamics, and Inference",
+      "track": "Track C — Agent-Based Modeling",
+      "credits": 3,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-003 Probability", "CORE-002 Linear Algebra"],
+      "description": "The mathematical theory of networks: random graphs, small-world and scale-free structures, community detection, dynamics on and of networks, and network inference from data.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Graph Theory Fundamentals",
+          "content_outline": "Graphs, digraphs, multigraphs, hypergraphs. Adjacency and incidence matrices. Degree sequences. Paths, cycles, connectivity. Graph Laplacian: definition, properties, spectral gap. Algebraic connectivity (Fiedler value). Cheeger inequality. Bipartite graphs. Planar graphs. Julia Graphs.jl: graph construction, manipulation, and algorithms."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Random Graph Models",
+          "content_outline": "Erdős-Rényi G(n,p) and G(n,m) models. Phase transition: giant component emergence. Degree distribution: Poisson. Configuration model: generating graphs with prescribed degree sequence. Chung-Lu model. Stochastic block model: community structure. Planted partition model. Degree-corrected stochastic block model. Julia random graph generation."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Small-World and Scale-Free Networks",
+          "content_outline": "Small-world phenomenon: six degrees of separation. Watts-Strogatz model: high clustering + short path lengths. Clustering coefficient. Barabási-Albert preferential attachment: power-law degree distribution. Price's model. Fitness models. Measuring scale-free properties: challenges and controversies (Broido-Clauset). Log-normal vs power-law degree distributions."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Community Detection",
+          "content_outline": "Modularity: Newman-Girvan definition, resolution limit. Spectral methods: eigenvectors of modularity matrix. Louvain and Leiden algorithms. Label propagation. Stochastic block model inference: variational EM, belief propagation. Detectability threshold. Overlapping communities: mixed membership, BIGCLAM. Hierarchical community structure. Julia community detection implementations."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Centrality and Network Structure",
+          "content_outline": "Degree centrality. Betweenness centrality. Closeness centrality. Eigenvector centrality and PageRank. Katz centrality. Hub and authority scores (HITS). Core-periphery structure: k-core decomposition. Rich-club phenomenon. Motif analysis: subgraph patterns and their significance. Network visualization principles."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Dynamics on Networks: Epidemics and Diffusion",
+          "content_outline": "SIR/SIS on networks: heterogeneous mean-field, pair approximation. Epidemic threshold on networks: spectral condition. Percolation and network robustness: bond and site percolation. Targeted vs random attack. Cascading failures. Information diffusion: independent cascade, linear threshold models. Influence maximization. Voter model on networks. Julia simulation of network dynamics with Agents.jl."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Temporal and Multilayer Networks",
+          "content_outline": "Temporal networks: time-stamped edges, contact sequences. Temporal paths and reachability. Burstiness and inter-event time distributions. Temporal motifs. Activity-driven models. Multilayer networks: multiplex, interconnected, interdependent. Supra-adjacency matrix. Diffusion on multiplex networks. Layer aggregation vs full multilayer analysis."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Network Inference and Reconstruction",
+          "content_outline": "Inferring networks from time series data. Granger causality for network reconstruction. Transfer entropy. Correlation-based networks: thresholding, GLASSO (graphical LASSO). Bayesian network structure learning. Network inference from epidemic data: who-infected-whom. Network inference from diffusion cascades. Deep learning for network inference: graph neural networks."
+        }
+      ]
+    },
+    {
+      "id": "ABM-003",
+      "title": "Mean-Field Theory and Coarse-Graining: Connecting Micro to Macro",
+      "track": "Track C — Agent-Based Modeling",
+      "credits": 3,
+      "semester": "Year 3",
+      "prerequisites": ["ABM-001 ABM Foundations", "CORE-007 ODEs", "CORE-010 Stochastic Processes"],
+      "description": "The mathematical bridge between individual-based models and population-level equations. Covers how to derive ODE/PDE descriptions from agent rules and when such approximations are valid.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "From Individuals to Populations: The Master Equation",
+          "content_outline": "State space of a population of agents. Master equation: evolution of probability distribution over states. Transition rates from agent rules. Birth-death master equation. Chemical master equation for reaction systems. Generator matrix. Solving the master equation: analytical (generating functions), numerical (finite state projection). Gillespie algorithm as exact sampling from master equation. Julia Catalyst.jl for reaction network modeling."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Mean-Field Approximation",
+          "content_outline": "Moment equations from the master equation. First moment (mean): ODE for expected population. Moment closure problem: higher moments appear in lower moment equations. Mean-field approximation: assuming independence (factoring joint moments). When mean-field works: well-mixed, large populations. When it fails: spatial structure, correlations, small populations. Comparison of mean-field ODEs with stochastic simulation."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Moment Closure Techniques",
+          "content_outline": "Second-order moment closure: tracking means and covariances. Normal moment closure. Cumulant closure. Log-normal closure. Poisson moment closure. Pair approximation for spatial models: tracking singles and pairs. Triple closure. Comparison of closure accuracy across problem types. Systematic moment closure via maximum entropy. Julia implementation of moment equations."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Diffusion Approximations: Fokker-Planck and Langevin",
+          "content_outline": "System size expansion (van Kampen): deterministic part + fluctuations. Linear noise approximation. Kramers-Moyal expansion. Fokker-Planck equation from master equation: conditions for validity. Langevin equation: stochastic ODE for fluctuations. Chemical Langevin equation (CLE) for reaction systems. Validity conditions: molecule numbers >> 1. Noise-induced phenomena: stochastic resonance, noise-induced transitions."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Deriving PDEs from Agent-Based Models",
+          "content_outline": "Spatial agents and lattice models. Deriving diffusion equation from random walk. Deriving advection-diffusion from biased random walk. Chemotaxis: Keller-Segel equation from individual chemotactic agents. Nonlinear diffusion: density-dependent movement. Cross-diffusion from competing species. Reaction-diffusion from spatial birth-death processes. Continuum limit: scaling space and time. Conditions for PDE validity."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Kinetic Theory and Boltzmann Equations",
+          "content_outline": "Kinetic description: probability density in position-velocity space. BBGKY hierarchy: exact hierarchy of distribution functions. Boltzmann equation: binary collision assumption. H-theorem and approach to equilibrium. Hydrodynamic limit: Euler and Navier-Stokes from Boltzmann. Chapman-Enskog expansion. Applications: granular media, swarming models, traffic flow (kinetic models)."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Multiscale Coupling: ABM + Continuum",
+          "content_outline": "When to use hybrid models: different scales in different regions. Equation-free methods (Kevrekidis): coarse projective integration, gap-tooth method. Heterogeneous multiscale method (HMM) for ABMs. Lifting and restriction operators: mapping between micro and macro descriptions. Adaptive model selection: switching between ABM and continuum based on local conditions. Applications: tumor growth (ABM at invasion front, PDE in bulk)."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Validation of Coarse-Grained Models",
+          "content_outline": "Comparing ABM and mean-field: ensemble statistics, transient dynamics, steady states. When coarse-graining fails: critical phenomena, phase transitions, extinction. Finite-size effects. Quantifying approximation error. Information-theoretic comparison: KL divergence between ABM and approximate distributions. Calibrating coarse-grained models to ABM output. Multi-fidelity modeling: using ABM to correct continuum model."
+        }
+      ]
+    },
+    {
+      "id": "ABM-004",
+      "title": "Evolutionary Game Theory and Collective Behavior",
+      "track": "Track C — Agent-Based Modeling",
+      "credits": 3,
+      "semester": "Year 3",
+      "prerequisites": ["CORE-007 ODEs", "ABM-001 ABM Foundations"],
+      "description": "The mathematical theory of strategic interaction, evolution of cooperation, and collective phenomena emergent from simple agent rules.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Classical Game Theory Foundations",
+          "content_outline": "Normal form games. Nash equilibrium: existence (Brouwer fixed point), computation. Mixed strategies. Dominant strategies. Prisoner's dilemma, hawk-dove, coordination games, stag hunt. Repeated games: folk theorem, tit-for-tat. Extensive form games. Subgame perfect equilibrium. Bayesian games: incomplete information."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Evolutionary Game Theory",
+          "content_outline": "Replicator dynamics: derivation from biological selection, connection to Nash equilibrium. Evolutionary stable strategies (ESS). Relationship between ESS, Nash, and replicator dynamics. Rock-paper-scissors dynamics: heteroclinic cycles. Multi-population replicator dynamics. Lotka-Volterra and replicator dynamics equivalence. Finite population effects: stochastic evolutionary dynamics, Moran process."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Evolution of Cooperation",
+          "content_outline": "Prisoner's dilemma and the cooperation problem. Mechanisms for cooperation: kin selection (Hamilton's rule), direct reciprocity (iterated PD), indirect reciprocity (reputation), spatial structure, group selection. Spatial games: cooperation on lattices and networks. Evolutionary graph theory: fixation probability. Punishment and reward: costly punishment, pool punishment. Public goods games."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Opinion Dynamics and Social Influence",
+          "content_outline": "Voter model: consensus and coexistence. Heterogeneous voter model. Naming game. Bounded confidence models: Deffuant-Weisbuch, Hegselmann-Krause. Polarization and echo chambers. Axelrod's culture model. Zealots and stubborn agents. Mean-field analysis of opinion models. Phase transitions in opinion dynamics. Julia Agents.jl implementation of opinion dynamics."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Flocking, Swarming, and Collective Motion",
+          "content_outline": "Vicsek model: alignment + noise, phase transition to ordered motion. Cucker-Smale flocking: mathematical analysis of convergence to consensus. Reynolds rules: separation, alignment, cohesion. Couzin model: zones of repulsion, orientation, attraction. Topological interactions vs metric interactions. Hydrodynamic theories: Toner-Tu equations. Kinetic description of swarming. Applications: bird flocks, fish schools, bacterial colonies, crowd dynamics."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Self-Organization and Pattern Formation",
+          "content_outline": "Self-organized criticality: sandpile model, Bak-Tang-Wiesenfeld. Power laws and scale invariance. Cellular automata: elementary CA (Wolfram classification), Game of Life, rule 110 Turing completeness. Turing patterns from agent interactions. Segregation: Schelling model, tipping points. Traffic flow: Nagel-Schreckenberg model, spontaneous traffic jams as phase transitions."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Evolutionary Dynamics in Structured Populations",
+          "content_outline": "Evolutionary dynamics on graphs: Moran process on networks. Fixation probability: isothermal theorem, amplifiers and suppressors of selection. Death-birth vs birth-death updating. Evolutionary dynamics in subdivided populations: migration and local adaptation. Multi-level selection. Stochastic tunneling between fitness peaks. Adaptive dynamics: canonical equation, evolutionary branching."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Applications: Ecology, Economics, and Social Systems",
+          "content_outline": "Ecological applications: predator-prey games, host-parasite coevolution, niche construction. Economic applications: market dynamics, price formation, wealth inequality (Yard-Sale model, Bouchaud-Mézard). Social applications: norm emergence, institution formation, revolution dynamics. Computational experiments: parameter sweeps, phase diagrams, bifurcation analysis of ABMs. Julia batch simulation and visualization."
+        }
+      ]
+    },
+    {
+      "id": "POP-001",
+      "title": "Deterministic Population Models: Structured Populations and Bifurcations",
+      "track": "Track E — Population Dynamics",
+      "credits": 3,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-007 ODEs", "CORE-009 PDEs I"],
+      "description": "The classical ODE and PDE models of population dynamics, from Malthus through modern structured population theory.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Single-Species Models",
+          "content_outline": "Malthusian growth. Logistic equation: equilibria, stability, harvesting. Allee effects: strong and weak. Spruce budworm model: hysteresis and catastrophe. Delay logistic equation: Hopf bifurcation. Theta-logistic and generalized growth laws. Dimensional analysis and non-dimensionalization. Julia ODE solutions and bifurcation diagrams."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Interacting Species: Competition and Predation",
+          "content_outline": "Lotka-Volterra competition: competitive exclusion principle, coexistence. Lotka-Volterra predator-prey: neutral cycles. Functional responses: Holling Type I, II, III. Rosenzweig-MacArthur model: paradox of enrichment. Predator-prey with mutual interference. Three-species food chains: chaos in ecology. Mutualism models. Julia phase plane analysis with DifferentialEquations.jl."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Bifurcation Analysis in Population Models",
+          "content_outline": "Saddle-node bifurcation: tipping points and regime shifts (shallow lakes model). Transcritical bifurcation: invasion thresholds. Hopf bifurcation: onset of population cycles (predator-prey, disease models). Period-doubling and chaos in discrete-time models (Ricker map). Bifurcation diagrams and continuation methods. BifurcationKit.jl for numerical continuation and bifurcation detection."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Age-Structured Populations: The McKendrick-von Foerster Equation",
+          "content_outline": "McKendrick-von Foerster PDE: ∂n/∂t + ∂n/∂a = -μ(a)n. Boundary condition: birth rate from fecundity schedule. Characteristic method of solution. Lotka integral equation for intrinsic growth rate. Stable age distribution. Reproductive value. Leslie matrix: discrete-time age-structured model. Eigenvalue analysis: dominant eigenvalue = growth rate. Sensitivity and elasticity analysis. Julia structured population models."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Stage-Structured and Size-Structured Models",
+          "content_outline": "Stage-structured models: Lefkovitch matrix. Integral projection models (IPMs): continuous trait variable. Kernel construction: growth, survival, reproduction. IPM eigenanalysis. Density-dependent IPMs. Physiologically structured population models (PSPMs): individual state as continuous variable. PSPM dynamics: characteristic equation, numerical methods (escalator boxcar train). Julia IPM implementation."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Metapopulation Theory",
+          "content_outline": "Levins metapopulation model: colonization-extinction balance. Incidence function model (Hanski). Spatially explicit metapopulation models. Source-sink dynamics. Habitat destruction threshold. Rescue effect. Stochastic metapopulations: colonization-extinction as Markov chain. Metapopulation capacity: spectral radius of landscape matrix. Conservation applications: minimum viable metapopulation."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Spatial Population Dynamics",
+          "content_outline": "Reaction-diffusion in ecology: Fisher-KPP equation, traveling wave invasion. Critical domain size for persistence. Diffusion-mediated coexistence: Turing patterns in ecology. Integro-difference equations: discrete-time, continuous-space models. Invasion speed and spreading rates. Stratified diffusion: long-distance dispersal kernels. Advection-diffusion in rivers: drift paradox."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Harvesting, Conservation, and Optimal Management",
+          "content_outline": "Maximum sustainable yield: single-species, multi-species. Optimal harvesting with discounting: dynamic programming. Bioeconomic models: open-access vs optimal management. Marine protected areas: reserve-fishery models. PVA: population viability analysis. Minimum viable population. Optimal control of invasive species. Adaptive management under uncertainty. Julia optimal control solutions."
+        }
+      ]
+    },
+    {
+      "id": "POP-002",
+      "title": "Stochastic Population Models: Extinction, Fluctuations, and Individual Variation",
+      "track": "Track E — Population Dynamics",
+      "credits": 3,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-010 Stochastic Processes", "POP-001 Deterministic Models"],
+      "description": "Real populations are finite and stochastic. This textbook covers the mathematical theory of stochastic population dynamics, including demographic and environmental stochasticity, extinction risk, and individual-based stochastic models.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Demographic Stochasticity: Birth-Death Processes",
+          "content_outline": "Birth-death process formulation of population dynamics. Master equation for population size. Generating function methods: probability of extinction. Mean time to extinction for birth-death processes. Stochastic logistic model. Quasi-stationary distributions: population conditioned on survival. Relationship between demographic stochasticity and population size. Julia simulation with Catalyst.jl."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Environmental Stochasticity",
+          "content_outline": "Random environment models: stochastic growth rate. Tuljapurkar's approximation for stochastic growth. Log-normal approximation. Stationary distribution of population size. Environmental vs demographic stochasticity: which dominates when? Correlated environments: temporal autocorrelation, spatial correlation. Stochastic matrix models: stochastic Leslie matrices. Julia simulation of environmentally stochastic populations."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Diffusion Approximations for Population Models",
+          "content_outline": "From master equation to Fokker-Planck: system size expansion. Itô vs Stratonovich for population SDEs. Stochastic logistic SDE. Stationary density. Mean time to extinction via diffusion theory: backward Kolmogorov equation. Boundary conditions: absorbing, reflecting. Singular perturbation methods for mean extinction time. Comparison with exact birth-death results."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Branching Processes in Population Biology",
+          "content_outline": "Galton-Watson process: extinction probability. Supercritical branching: exponential growth phase. Subcritical: quasi-stationary phase. Multi-type branching: invasion of interacting species. Age-dependent (Bellman-Harris) branching. Branching in varying environments. Branching with immigration. Applications: early-phase epidemic growth, cancer initiation, stem cell dynamics."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Stochastic Multi-Species Models",
+          "content_outline": "Stochastic Lotka-Volterra: competitive exclusion with stochastic coexistence. Stochastic predator-prey: noise-sustained oscillations. Quasi-cycles: stochastic amplification of damped oscillations. Power spectral analysis of population fluctuations. Stochastic competitive exclusion: neutral theory of biodiversity. Hubbell's unified neutral theory. Ecological drift."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Individual-Based Models and Gillespie Simulation",
+          "content_outline": "Gillespie's stochastic simulation algorithm (SSA): exact sampling from CTMC. Next reaction method. Tau-leaping: approximate acceleration. Hybrid methods: partitioning fast and slow reactions. Chemical Langevin equation as intermediate approximation. Adaptive tau-leaping. Multi-scale simulation: slow manifold methods. Julia Catalyst.jl and JumpProcesses.jl for stochastic simulation."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Stochastic Spatial Models",
+          "content_outline": "Interacting particle systems: contact process (spatial SIS), voter model. Critical phenomena and universality. Stochastic lattice models: pair approximation, moment closure on lattices. Spatial birth-death processes in continuous space. Spatial point process models for populations. Individual-based movement: random walks, Lévy flights, correlated random walks. Julia Agents.jl for spatial stochastic simulation."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Statistical Inference for Stochastic Population Models",
+          "content_outline": "Likelihood for partially observed Markov processes: hidden Markov models. Particle filtering for population state estimation. Particle MCMC (PMMH) for parameter inference. Iterated filtering (IF2): maximum likelihood via sequential Monte Carlo. Approximate Bayesian computation for population models. Synthetic likelihood. Model selection for stochastic vs deterministic models. Julia Turing.jl inference for stochastic population models."
+        }
+      ]
+    },
+    {
+      "id": "POP-003",
+      "title": "Systems Biology: Biochemical Networks and Gene Regulation",
+      "track": "Track E — Population Dynamics",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["CORE-007 ODEs", "CORE-010 Stochastic Processes"],
+      "description": "Mathematical modeling of biological systems at the molecular and cellular level: reaction networks, metabolic pathways, gene regulation, and the stochastic dynamics of small-number biochemistry.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Chemical Reaction Network Theory",
+          "content_outline": "Stoichiometric matrix. Mass-action kinetics: deriving ODEs from reaction stoichiometry. Deficiency theory (Feinberg): deficiency zero theorem guarantees unique positive equilibrium. Complex balanced systems. Persistence and permanence. Detailed balance and thermodynamic constraints. Julia Catalyst.jl for reaction network specification and simulation."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Enzyme Kinetics and Metabolic Modeling",
+          "content_outline": "Michaelis-Menten kinetics: quasi-steady-state approximation, total quasi-steady-state approximation. Competitive, uncompetitive, noncompetitive inhibition. Cooperativity: Hill function. Allosteric regulation: Monod-Wyman-Changeux model. Metabolic flux analysis: stoichiometric constraints, flux balance analysis (FBA). Metabolic control analysis: flux control coefficients, elasticity coefficients, summation and connectivity theorems."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Gene Regulatory Networks: Deterministic Models",
+          "content_outline": "Transcription and translation kinetics. Promoter regulation: repression, activation, cooperative binding. Toggle switch: bistability from mutual repression (Gardner et al.). Repressilator: synthetic oscillator. Goodwin oscillator. Positive and negative feedback loops: stability and oscillation criteria. Boolean network models: synchronous and asynchronous dynamics. Attractor analysis."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Stochastic Gene Expression",
+          "content_outline": "Why stochasticity matters at the molecular level: low copy numbers. Master equation for gene expression: two-state (bursty) model. Noise decomposition: intrinsic vs extrinsic noise (Elowitz-Leibler). Fano factor and noise strength. Stochastic switching: telegraph model. Noise-induced phenotypic heterogeneity. Stochastic simulation with Gillespie algorithm. Chemical Langevin equation for gene circuits. Julia stochastic gene expression simulations."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Signal Transduction Pathways",
+          "content_outline": "Receptor-ligand binding kinetics. Signal amplification. MAPK cascade: ultrasensitivity, bistability. Phosphorylation-dephosphorylation cycles: Goldbeter-Koshland switch. Adaptation: perfect adaptation via integral feedback. Robustness: structural vs parametric. Bacterial chemotaxis as a case study in adaptation. Modular analysis of signaling pathways."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Cell Cycle and Growth Models",
+          "content_outline": "Cell cycle phases and checkpoints. Tyson-Novak models: bistable switches and oscillators in cell cycle control. Sizer, timer, adder models for cell size control. Structured population models for cell populations: age, size, cell-cycle phase. Division rate models. Cell population balance equations. Applications: cancer cell growth kinetics, drug effect modeling."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Parameter Identifiability and Sensitivity in Biochemical Models",
+          "content_outline": "Structural identifiability: can parameters be uniquely determined from ideal data? Differential algebra approach. Observable and unobservable modes. Practical identifiability: Fisher information, profile likelihood. Sensitivity analysis: local (sensitivity coefficients, sensitivity equations), global (Sobol indices for biochemical networks). Model reduction: quasi-steady-state, rapid equilibrium, lumping. Sloppy parameter combinations."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Multi-Scale Modeling in Biology",
+          "content_outline": "Intracellular to tissue scale: coupling gene regulation with cell mechanics. Agent-based cell models: center-based, vertex, cellular Potts. Cell-cell signaling: juxtacrine (Notch-Delta), paracrine, endocrine. Tissue patterning: reaction-diffusion + cell mechanics. Tumor growth: hybrid discrete-continuum models. Pharmacokinetics/pharmacodynamics: within-host drug action to population-level treatment. Julia multi-scale modeling frameworks."
+        }
+      ]
+    },
+    {
+      "id": "SCIML-002",
+      "title": "Deep Learning Theory: Mathematical Foundations for Scientific Machine Learning",
+      "track": "Track D — Scientific ML",
+      "credits": 4,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-005 Functional Analysis", "CORE-016 Optimization"],
+      "description": "The mathematical theory underlying deep learning: approximation theory, optimization landscape, generalization, and architecture design. Provides the theoretical foundation for all SciML methods.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Universal Approximation Theory",
+          "content_outline": "Classical universal approximation theorem (Cybenko, Hornik): single hidden layer networks approximate continuous functions. Quantitative bounds: Barron's theorem and the curse of dimensionality. Approximation rates for different function classes. Deep vs shallow: depth separation results. Approximation theory for ResNets and neural ODEs. ReLU network approximation: piecewise linear functions. Julia Flux.jl basics."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Neural Network Architectures as Mathematical Objects",
+          "content_outline": "Feedforward networks: composition of affine maps and nonlinearities. Convolutional networks: translation equivariance, parameter sharing, spectral analysis. Recurrent networks: dynamical systems, vanishing/exploding gradients. Residual networks: perturbation of identity, connection to ODEs. Attention and transformers: softmax kernel, positional encoding, contextual embeddings. Graph neural networks: message passing, Weisfeiler-Leman hierarchy."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Optimization Landscape of Neural Networks",
+          "content_outline": "Loss surface geometry: critical points, saddle points. Symmetries: permutation symmetry of hidden units. Global vs local minima: overparameterized networks, neural tangent kernel regime. Gradient descent dynamics: gradient flow ODE, implicit bias toward low-rank solutions. SGD: mini-batch noise, implicit regularization, escape from sharp minima. Learning rate warmup and scheduling. Julia Flux.jl training loops."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Generalization Theory",
+          "content_outline": "Classical: VC dimension, Rademacher complexity. Why classical bounds fail for overparameterized networks. PAC-Bayes bounds. Compression-based bounds. Double descent phenomenon. Neural tangent kernel: lazy training regime, infinite-width limit. Mean-field theory: feature learning regime. Bias-variance tradeoff revisited: interpolation and benign overfitting. Lottery ticket hypothesis."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Automatic Differentiation: Theory and Implementation",
+          "content_outline": "Forward-mode AD: dual numbers, directional derivatives. Reverse-mode AD: computational graph, chain rule, backpropagation. Jacobian-vector products (forward) vs vector-Jacobian products (reverse). Memory-compute tradeoffs: checkpointing. AD through control flow. AD through ODE solvers: discrete vs continuous adjoint. AD through linear algebra operations (implicit differentiation). Julia Zygote.jl and ForwardDiff.jl."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Regularization and Inductive Bias",
+          "content_outline": "Explicit regularization: L2 (weight decay), L1, dropout, data augmentation. Implicit regularization: SGD, early stopping, architecture choice. Spectral bias of neural networks: preferentially learning low frequencies. Fourier feature embedding to overcome spectral bias. Batch normalization: theory and practice. Layer normalization for transformers. Mixup and label smoothing."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Equivariant and Geometric Deep Learning",
+          "content_outline": "Symmetry in machine learning: group theory review. Equivariant maps: intertwining property. G-CNNs: convolution on groups. SE(3)-equivariant networks: spherical harmonics, tensor products of representations. E(n) equivariant graph neural networks. Gauge equivariant networks. Invariant architectures: DeepSets, SetTransformer. Applications: molecular property prediction, particle physics, material science. Julia equivariant network implementations."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Generative Models: Mathematical Foundations",
+          "content_outline": "Variational autoencoders: ELBO, reparameterization trick, posterior collapse. Generative adversarial networks: minimax formulation, Wasserstein GAN, spectral normalization. Normalizing flows: invertible transformations, change of variables formula, coupling layers. Score-based diffusion models: score matching, denoising score matching, SDE formulation (Song et al.), probability flow ODE. Connections between generative models and physics (Langevin dynamics, thermodynamics)."
+        }
+      ]
+    },
+    {
+      "id": "SCIML-003",
+      "title": "Probabilistic Machine Learning: Gaussian Processes, Bayesian Neural Networks, and Beyond",
+      "track": "Track D — Scientific ML",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["CORE-011 Bayesian Theory", "SCIML-002 Deep Learning Theory"],
+      "description": "Machine learning methods that quantify uncertainty. Essential for scientific applications where knowing what we don't know is as important as prediction.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Gaussian Processes: Theory",
+          "content_outline": "GP definition: collection of random variables, any finite subset jointly Gaussian. Mean and covariance functions. Reproducing kernel Hilbert space (RKHS) and GP connection. Kernel design: stationary, non-stationary, composite kernels. Spectral mixture kernels. Automatic relevance determination. GP regression: posterior mean and variance in closed form. Marginal likelihood and hyperparameter optimization. Julia GaussianProcesses.jl."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Gaussian Processes: Computation and Scalability",
+          "content_outline": "Computational cost: O(n³) for exact GP. Sparse GPs: inducing points, variational inference (Titsias), FITC. Structured kernel interpolation (SKI/KISS-GP). Random Fourier features for kernel approximation. Stochastic variational GPs for large datasets. Kronecker structure for grid data. GPU-accelerated GP computation. Comparison of approximations: accuracy, cost, implementation. Julia AbstractGPs.jl ecosystem."
+        },
+        {
+          "chapter_number": 3,
+          "title": "GP Classification and Non-Gaussian Likelihoods",
+          "content_outline": "GP classification: Laplace approximation, expectation propagation, variational inference. Multi-class GP classification. GP for Poisson count data. GP for ordinal data. Warped GPs: non-Gaussian output. Student-t processes for heavy-tailed data. Heteroscedastic GPs: input-dependent noise. Multi-output GPs: linear model of coregionalization, convolution processes."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Deep Gaussian Processes",
+          "content_outline": "Deep GP: composition of GP layers. Pathologies of deep GPs: collapsing posterior. Doubly stochastic variational inference for deep GPs. Deep GP as infinite-width deep neural network limit. Neural network Gaussian processes (NNGP): correspondence between wide networks and GPs. Neural tangent kernel. Convolutional GPs. Applications: function composition, non-stationary modeling."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Bayesian Neural Networks",
+          "content_outline": "Prior over weights: Gaussian, horseshoe, spike-and-slab. Posterior inference: variational inference (mean-field, full-covariance), MC dropout as approximate variational inference, Laplace approximation (LA), stochastic gradient MCMC (SGLD, SGHMC). Last-layer Bayesian approaches. Bayes by Backprop. Cold posteriors and the temperature puzzle. Calibration assessment. Julia Turing.jl + Flux.jl Bayesian networks."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Uncertainty Quantification in Deep Learning",
+          "content_outline": "Aleatoric vs epistemic uncertainty decomposition. Deep ensembles: training, diversity, uncertainty calibration. Snapshot ensembles and cyclical learning rates. MC dropout: theory and practice. Evidential deep learning: Dirichlet priors on class probabilities. Conformal prediction: distribution-free prediction intervals. Conformal prediction for regression and classification. Selective prediction: abstaining when uncertain."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Normalizing Flows and Density Estimation",
+          "content_outline": "Change of variables formula for probability densities. Planar and radial flows. Coupling flows: RealNVP, GLOW. Autoregressive flows: MAF, IAF. Neural spline flows. Continuous normalizing flows: neural ODE for density estimation, FFJORD. Residual flows. Training: maximum likelihood via change of variables. Applications: posterior approximation, generative modeling, anomaly detection."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Active Learning and Bayesian Optimization",
+          "content_outline": "Active learning: selecting informative data points. Pool-based, stream-based, query synthesis. Uncertainty sampling, query by committee. Bayesian optimization: Gaussian process surrogate + acquisition function. Acquisition functions: expected improvement, knowledge gradient, Thompson sampling. Multi-fidelity Bayesian optimization. High-dimensional Bayesian optimization: random embeddings, trust regions. Batch Bayesian optimization. Applications: hyperparameter tuning, experimental design, drug discovery. Julia BayesianOptimization.jl."
+        }
+      ]
+    },
+    {
+      "id": "PHYS-003",
+      "title": "Fluid Dynamics: From Navier-Stokes to Turbulence",
+      "track": "Track F — Physical Systems",
+      "credits": 4,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-009 PDEs", "PHYS-001 Continuum Mechanics"],
+      "description": "The mathematical theory of fluid motion. Covers the derivation and analysis of the governing equations, exact and approximate solutions, and computational approaches to turbulence.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Kinematics of Fluid Flow",
+          "content_outline": "Eulerian and Lagrangian descriptions. Material derivative. Streamlines, pathlines, streaklines. Deformation of fluid elements: rate of strain tensor, vorticity. Circulation and Kelvin's theorem. Reynolds transport theorem. Mass conservation: continuity equation. Incompressibility condition: ∇·u = 0. Stream function and velocity potential."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Navier-Stokes Equations",
+          "content_outline": "Cauchy momentum equation. Newtonian fluid: constitutive relation, dynamic viscosity. Navier-Stokes equations: incompressible form. Boundary conditions: no-slip, free surface, inflow/outflow. Non-dimensionalization: Reynolds number, Strouhal number, Froude number. Energy equation for viscous fluids. Dissipation function. Boussinesq approximation for buoyancy-driven flow."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Exact and Asymptotic Solutions",
+          "content_outline": "Couette flow. Poiseuille flow (plane and pipe). Stokes first and second problems: impulsively started plate, oscillating plate. Stagnation point flow. Creeping (Stokes) flow: Stokes paradox, Oseen correction. Lubrication theory: thin film approximation, Reynolds equation. Self-similar solutions: Blasius boundary layer. Jeffrey-Hamel flow."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Boundary Layer Theory",
+          "content_outline": "Prandtl's boundary layer concept. Boundary layer equations: derivation via matched asymptotic expansion. Blasius similarity solution for flat plate. Falkner-Skan solutions. Momentum integral method (von Kármán). Adverse pressure gradient and separation. Laminar-turbulent transition: linear stability, Orr-Sommerfeld equation, Tollmien-Schlichting waves. Turbulent boundary layers: law of the wall, log layer."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Vorticity Dynamics",
+          "content_outline": "Vorticity transport equation. Vortex stretching in 3D. Helmholtz vortex theorems. Biot-Savart law. Point vortices in 2D: Hamiltonian dynamics. Vortex sheets: Kelvin-Helmholtz instability. Vortex rings. Bathtub vortex. Enstrophy and vorticity cascade in 2D vs 3D. Applications: aircraft wake vortices, tornado dynamics."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Potential Flow and Waves",
+          "content_outline": "Irrotational flow: velocity potential, Laplace equation. Complex potential for 2D flows. Conformal mapping: Joukowski airfoil. Blasius theorem for force and moment. Surface gravity waves: dispersion relation, deep and shallow water limits. Group velocity and wave energy transport. Nonlinear waves: Stokes expansion, solitary waves, KdV equation. Internal waves in stratified fluids."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Turbulence",
+          "content_outline": "Reynolds decomposition: mean and fluctuating components. Reynolds-averaged Navier-Stokes (RANS): closure problem, Reynolds stress tensor. Turbulent kinetic energy equation. Kolmogorov's theory: energy cascade, -5/3 spectrum, dissipation range. Turbulence closures: mixing length, k-ε, k-ω, Reynolds stress models. Large eddy simulation (LES): filtering, subgrid-scale models (Smagorinsky, dynamic). Direct numerical simulation (DNS)."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Computational Fluid Dynamics",
+          "content_outline": "Finite volume method for incompressible flow: staggered grids, collocated grids with Rhie-Chow interpolation. Pressure-velocity coupling: SIMPLE, PISO, projection methods. Time integration: fractional step methods. Convection discretization: central, upwind, TVD, WENO. Finite element methods for fluids: stabilized formulations (SUPG, GLS), inf-sup stability. Immersed boundary methods for moving bodies. Julia-based CFD: writing solvers with DifferentialEquations.jl."
+        }
+      ]
+    },
+    {
+      "id": "PHYS-004",
+      "title": "Biomechanics: Soft Tissue, Cardiovascular, and Respiratory Systems",
+      "track": "Track F — Physical Systems",
+      "credits": 3,
+      "semester": "Year 3",
+      "prerequisites": ["PHYS-001 Continuum Mechanics", "PHYS-003 Fluid Dynamics"],
+      "description": "Application of continuum mechanics and fluid dynamics to biological systems with emphasis on soft tissue mechanics, cardiovascular hemodynamics, and respiratory mechanics.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Mechanics of Biological Soft Tissue",
+          "content_outline": "Microstructure of connective tissue: collagen, elastin, ground substance. Anisotropy from fiber reinforcement. Constitutive models: Fung exponential, Holzapfel-Gasser-Ogden (HGO). Fiber dispersion: von Mises distribution of fiber orientations. Viscoelasticity: quasi-linear viscoelasticity (QLV). Residual stress: opening angle experiment. Preconditioning. Experimental methods: uniaxial, biaxial, indentation testing."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Arterial Wall Mechanics",
+          "content_outline": "Arterial wall layers: intima, media, adventitia. Layer-specific constitutive models. Inflation-extension test analysis. Residual stress: opening angle, axial pre-stretch. Thick-walled cylinder models. Pulse wave propagation: 1D blood flow equations. Wave speed and arterial compliance. Windkessel models: 2-element, 3-element, 4-element. Fluid-structure interaction in arteries. Applications: aneurysm wall stress, stent mechanics."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Cardiovascular Hemodynamics",
+          "content_outline": "Blood rheology: non-Newtonian behavior, Casson and Carreau models. Pulsatile flow: Womersley solution. Wall shear stress and its biological significance. Atherosclerosis and disturbed flow. Computational hemodynamics: patient-specific modeling from CT/MRI. Inlet/outlet boundary conditions: Windkessel, impedance. Heart valve mechanics: opening, closing, regurgitation. Cardiac mechanics: fiber-reinforced myocardium, active contraction (Hunter-McCulloch-ter Keurs model)."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Respiratory Mechanics",
+          "content_outline": "Lung compliance and elastance. Pressure-volume relationships. Surface tension and surfactant: Laplace law, alveolar stability. Airway resistance: Poiseuille flow in branching networks. Airway tree models: Weibel morphometry. Mechanical ventilation: modes, tidal volume, PEEP. Neonatal respiratory mechanics: surfactant deficiency, RDS. Lung recruitment models. Respiratory system compliance in neonates."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Musculoskeletal Biomechanics",
+          "content_outline": "Hill muscle model: contractile element, series elastic, parallel elastic. Force-length and force-velocity relationships. Muscle activation dynamics. Multi-body dynamics: rigid body kinematics, Newton-Euler equations. Inverse dynamics: computing joint forces and moments from kinematics. Forward dynamics: computing motion from muscle activations. OpenSim integration concepts. Julia multi-body dynamics."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Brain and Neural Tissue Mechanics",
+          "content_outline": "Brain tissue constitutive models: Ogden, Mooney-Rivlin with viscoelasticity. Traumatic brain injury: strain-based injury criteria, computational head models. Hydrocephalus: poroelastic brain model, CSF dynamics. Brain shift during surgery: biomechanical modeling for image-guided surgery. Spinal cord mechanics. Peripheral nerve mechanics. Applications: helmet design, surgical planning."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Cell Mechanics and Mechanobiology",
+          "content_outline": "Cell as a mechanical object: cortical shell, cytoskeleton, nucleus. Constitutive models: viscoelastic solid, poroelastic, tensegrity. Experimental methods: AFM, micropipette aspiration, optical tweezers, traction force microscopy. Mechanotransduction: stretch-activated channels, focal adhesions, nuclear mechanotransduction. Mechanosensitive gene regulation. Cell migration mechanics: protrusion, adhesion, contraction. Durotaxis."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Computational Biomechanics: Patient-Specific Modeling",
+          "content_outline": "Image-based modeling pipeline: segmentation (CT, MRI, ultrasound), surface reconstruction, volume meshing. Mesh quality metrics for biological geometries. Material parameter identification from clinical data: inverse FEM. Uncertainty quantification in patient-specific models. FDA guidance on computational modeling. Verification (MMS, mesh convergence) and validation (comparison with experimental data). Digital twins in medicine. Julia Ferrite.jl for biomechanical FEM."
+        }
+      ]
+    },
+    {
+      "id": "CROSS-003",
+      "title": "Inverse Problems: Theory, Regularization, and Bayesian Approaches",
+      "track": "Cross-Cutting Methods",
+      "credits": 4,
+      "semester": "Year 3–4",
+      "prerequisites": ["CORE-005 Functional Analysis", "CORE-011 Bayesian Theory", "CORE-012 Numerical DE Methods"],
+      "description": "The mathematical theory of determining causes from observed effects. Every model calibration problem is an inverse problem. This course covers the theory of ill-posedness, regularization, and modern Bayesian and computational approaches.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Well-Posedness and Ill-Posedness",
+          "content_outline": "Hadamard's conditions: existence, uniqueness, stability. Examples of ill-posed problems: backward heat equation, deconvolution, integral equations of the first kind. Compact operators and ill-posedness: singular values decay, amplification of noise. Picard condition: solvability criterion. Ill-conditioning vs ill-posedness. Discrete ill-posed problems: condition number and truncated SVD."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Tikhonov Regularization",
+          "content_outline": "Tikhonov functional: data fidelity + penalty. Regularization parameter choice: L-curve, discrepancy principle (Morozov), generalized cross-validation. Tikhonov as MAP estimate with Gaussian prior. Generalized Tikhonov: derivative penalties (smoothing). Total variation regularization: edge-preserving. Iterative regularization: Landweber iteration as regularization by early stopping."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Iterative Methods for Inverse Problems",
+          "content_outline": "Landweber iteration. Steepest descent. Conjugate gradient for the normal equations (CGLS). Newton and Gauss-Newton methods for nonlinear inverse problems. Levenberg-Marquardt method. Iteratively regularized Gauss-Newton (IRGN). Convergence theory: rates under source conditions. Kaczmarz method for large systems. Julia implementation of iterative methods."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Bayesian Inverse Problems",
+          "content_outline": "Bayesian formulation: prior + likelihood → posterior. Well-posedness of Bayesian inverse problems (Stuart's framework). Gaussian priors and Gaussian posteriors for linear problems. MCMC for nonlinear Bayesian inverse problems. Dimension reduction: Karhunen-Loève, active subspaces. Low-rank posterior approximations. MAP estimation as generalized Tikhonov. Hierarchical Bayesian: learning regularization parameters. Julia Turing.jl for Bayesian inverse problems."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Nonlinear Inverse Problems",
+          "content_outline": "Nonlinear forward operators. Fréchet derivative and linearization. Newton's method in Banach spaces. Local convergence theory. Regularization of Newton methods. All-at-once vs reduced approaches. Multi-scale and multi-resolution strategies. Non-uniqueness and multiple solutions. Global optimization for non-convex inverse problems."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Inverse Problems for Differential Equations",
+          "content_outline": "Parameter estimation in ODEs: adjoint method, sensitivity analysis. Parameter estimation in PDEs: coefficient identification (diffusion coefficient, reaction rate). Source identification: locating pollution sources. Shape optimization and geometric inverse problems. Electrical impedance tomography (EIT). Inverse scattering. Seismic inversion: full waveform inversion (FWI). Julia DifferentialEquations.jl sensitivity analysis for inverse problems."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Sparsity and Compressed Sensing for Inverse Problems",
+          "content_outline": "Sparsity as a priori information. Compressed sensing: restricted isometry property (RIP), basis pursuit. L1 regularization for inverse problems. Iterative soft thresholding (ISTA) and FISTA. Group sparsity and structured sparsity. Total variation for image reconstruction. Compressed sensing MRI. Sparse Bayesian learning: relevance vector machine, automatic relevance determination."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Data Assimilation: Combining Models and Observations",
+          "content_outline": "Sequential data assimilation: Kalman filter, extended Kalman filter. Ensemble Kalman filter (EnKF): sample-based covariance, localization, inflation. Variational data assimilation: 3D-Var, 4D-Var (adjoint-based). Incremental 4D-Var. Hybrid ensemble-variational methods. Particle filters for nonlinear non-Gaussian problems. Data assimilation for chaotic systems. Applications: weather prediction, ocean state estimation, reservoir simulation, epidemiological state estimation."
+        }
+      ]
+    },
+    {
+      "id": "CROSS-004",
+      "title": "Information Geometry: The Geometry of Statistical Models",
+      "track": "Cross-Cutting Methods",
+      "credits": 3,
+      "semester": "Year 4",
+      "prerequisites": ["CORE-013 Differential Geometry", "CORE-008 Mathematical Statistics"],
+      "description": "Statistical models form a manifold. The Fisher information metric gives this manifold a Riemannian structure. Information geometry unifies statistical inference, machine learning optimization, and thermodynamics through differential geometry.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Statistical Manifolds and the Fisher Metric",
+          "content_outline": "Parametric statistical models as smooth manifolds. Fisher information matrix as a Riemannian metric. Coordinate-free definition via score functions. Cramér-Rao bound as a geometric inequality. Jeffreys prior as the volume form. Examples: multinomial simplex, Gaussian manifold, exponential family manifolds. Julia symbolic computation of Fisher metrics."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Exponential and Mixture Families",
+          "content_outline": "Exponential families: natural (θ) and expectation (η) parameterizations. Legendre duality between cumulant function and entropy. Mixture families: convex combinations of distributions. e-flat and m-flat submanifolds. Pythagoras-like theorems: e-projection and m-projection. Applications: maximum likelihood as m-projection, maximum entropy as e-projection."
+        },
+        {
+          "chapter_number": 3,
+          "title": "α-Connections and Duality",
+          "content_outline": "α-connections: one-parameter family of affine connections. α = 1: exponential connection (e-connection). α = -1: mixture connection (m-connection). α = 0: Levi-Civita connection. Dually flat structure of exponential families. α-divergences as generalized Kullback-Leibler. Bregman divergences and their connection to dually flat geometry. Canonical divergence."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Divergences and Information Measures",
+          "content_outline": "Kullback-Leibler divergence: properties, asymmetry, connection to Fisher metric. f-divergences: Hellinger, chi-squared, total variation as special cases. Rényi divergences. Bregman divergences: uniqueness from Pythagorean property. Wasserstein distance vs information divergences. Fisher-Rao distance: geodesic distance on statistical manifold. Applications: model selection, hypothesis testing, generative model training."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Natural Gradient Descent",
+          "content_outline": "Steepest descent with respect to Fisher metric. Natural gradient: invariance to parameterization. Fisher information matrix as preconditioner. Connection to Newton's method. Natural gradient for exponential families: simple closed form. Applications: training neural networks (K-FAC approximation), policy gradient in reinforcement learning, variational inference (natural gradient VI). Julia natural gradient implementations."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Information Geometry of Machine Learning",
+          "content_outline": "Neural networks as statistical models: the parameter space manifold. Fisher information for neural networks: layer-wise block structure. K-FAC: Kronecker-factored approximate curvature. Information geometry of variational inference: natural gradient on variational family. Wasserstein natural gradient. Information geometry of GANs: f-GAN as optimizing f-divergence. Neural architecture and information geometry."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Information Geometry and Thermodynamics",
+          "content_outline": "Exponential family structure of Gibbs distributions. Temperature as coordinate on thermodynamic manifold. Fisher metric and heat capacity. Phase transitions as singularities of the Fisher metric. Scalar curvature and critical phenomena. Thermodynamic length and optimal protocols. Stochastic thermodynamics and information geometry. Connections to statistical mechanics of inference."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Applications: Neuroscience, Quantum Information, and Beyond",
+          "content_outline": "Neural coding: Fisher information and optimal stimulus encoding. Population coding and the Cramér-Rao bound for neural populations. Quantum information geometry: density matrices as statistical manifold, quantum Fisher information. Information geometry of time series: autoregressive models. Semiparametric information geometry: nuisance parameters and efficient estimation. Current research frontiers and open problems."
+        }
+      ]
+    },
+    {
+      "id": "CROSS-005",
+      "title": "Multiscale and Multiphysics Methods",
+      "track": "Cross-Cutting Methods",
+      "credits": 3,
+      "semester": "Year 4",
+      "prerequisites": ["CORE-009 PDEs", "CORE-012 Numerical DE Methods", "CORE-014 PDEs II"],
+      "description": "Real-world systems span multiple scales in space and time. This textbook covers the mathematical and computational methods for coupling models across scales and physics.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Scale Separation and Dimensional Analysis",
+          "content_outline": "Identifying relevant scales: spatial, temporal, energy. Scale separation: when micro and macro scales are well-separated. Dimensional analysis: Buckingham Pi theorem revisited. Scaling laws and self-similarity. Power laws in nature. Allometric scaling in biology. Kolmogorov scaling in turbulence. When scale separation breaks down: multiscale chaos."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Homogenization Theory",
+          "content_outline": "Periodic homogenization: ε-oscillating coefficients. Two-scale expansion. Cell problem and effective (homogenized) coefficients. Convergence theory: H-convergence, G-convergence. Corrector results: first-order approximation. Homogenization of Stokes flow: Darcy's law derivation. Homogenization of elasticity: effective stiffness tensor. Random homogenization: ergodic theory. Julia finite element implementation of cell problems."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Averaging and Multiple Scales",
+          "content_outline": "Averaging for ODEs: slowly and rapidly varying components. Averaging theorem: O(ε) accuracy on O(1/ε) time. Higher-order averaging. Multiple time scales: secular terms and how to remove them. Method of multiple scales for PDEs. Modulation equations: Ginzburg-Landau, nonlinear Schrödinger. WKB approximation revisited. Applications: oscillatory chemical reactions, climate-weather interaction."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Heterogeneous Multiscale Method (HMM)",
+          "content_outline": "HMM framework: macroscale solver calls microscale solver. Type A problems: known macro model, unknown constitutive law (micro provides data). Type B problems: unknown macro model (micro provides effective behavior). Estimating macro quantities from micro simulations: constrained runs, force matching. Error analysis: modeling error + numerical error. Applications: molecular dynamics → continuum, lattice → PDE."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Equation-Free Methods",
+          "content_outline": "Equation-free framework (Kevrekidis): operating on microscopic simulators without deriving macroscopic equations. Coarse projective integration: lift → evolve → restrict → project. Gap-tooth method for spatial problems. Coarse bifurcation analysis: continuing branches of macroscopic equilibria. Coarse stability analysis. Patch dynamics. Applications: agent-based models with slow manifold, kinetic Monte Carlo."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Domain Decomposition and Concurrent Coupling",
+          "content_outline": "Domain decomposition: Schwarz methods (additive, multiplicative), Schur complement. FETI and BDD methods. Mortar methods for non-conforming interfaces. Concurrent multiscale coupling: Arlequin method, bridging domain method. QM/MM (quantum mechanics / molecular mechanics) coupling. Atomistic-continuum coupling: quasicontinuum method, CauchyBorn rule."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Multiphysics Coupling",
+          "content_outline": "Fluid-structure interaction: monolithic vs partitioned approaches, ALE method. Thermo-mechanical coupling: thermal expansion, heat generation from deformation. Electromechanics: piezoelectric materials, cardiac electromechanics. Chemomechanics: reactive transport with deformation (swelling gels, battery electrodes). Operator splitting for weakly coupled systems: Lie-Trotter, Strang splitting. Convergence of splitting methods."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Machine Learning for Multiscale Modeling",
+          "content_outline": "Neural network constitutive models: learning micro-macro maps. Physics-constrained neural constitutive models: thermodynamic consistency, frame indifference. Graph neural networks for heterogeneous microstructures. Transfer learning across scales. Neural operators for homogenized response. Active learning for sampling micro-scale parameter space. Multi-fidelity surrogates: combining models at different resolution levels. Julia SciML integration for multiscale learning."
+        }
+      ]
+    },
+    {
+      "id": "SCIML-004",
+      "title": "Automatic Differentiation and Differentiable Programming",
+      "track": "Track D — Scientific ML",
+      "credits": 3,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-004 Scientific Computing", "CORE-016 Optimization"],
+      "description": "Automatic differentiation is the computational engine powering modern scientific machine learning. This textbook covers the theory, implementation, and application of AD to scientific computing.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Principles of Automatic Differentiation",
+          "content_outline": "Symbolic, numerical, and automatic differentiation: comparison. Computational graphs. Forward-mode AD: dual numbers, directional derivatives. Reverse-mode AD: adjoint variables, backpropagation. Jacobian-vector products (JVPs) and vector-Jacobian products (VJPs). When to use forward vs reverse: Jacobian shape. Julia ForwardDiff.jl and Zygote.jl foundations."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Forward-Mode AD in Depth",
+          "content_outline": "Dual numbers: extending real arithmetic with ε. Higher-order dual numbers: Taylor-mode AD. Truncated Taylor series propagation. Forward-mode for Jacobian computation: n forward passes for n inputs. Sparse Jacobian computation: graph coloring, seed matrices. Applications: sensitivity analysis, uncertainty propagation. Julia ForwardDiff.jl: configuring chunk size, nested differentiation."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Reverse-Mode AD in Depth",
+          "content_outline": "Tape-based (operator overloading) vs source-to-source transformation. Adjoint computation: backward pass through the computational graph. Memory management: checkpointing strategies (binomial, periodic). Reverse-mode through control flow: if-else, loops, recursion. Custom adjoints: ChainRules.jl. Reverse-mode for scalar outputs: one backward pass regardless of input dimension. Zygote.jl internals."
+        },
+        {
+          "chapter_number": 4,
+          "title": "AD Through Differential Equation Solvers",
+          "content_outline": "Discrete adjoint: backpropagation through the solver steps. Continuous adjoint: adjoint ODE running backward in time. Comparison: memory, accuracy, implementation. Interpolating adjoint for memory efficiency. AD through implicit solvers: implicit function theorem. AD through event handling. AD through stiff solvers. DiffEqSensitivity.jl: unified interface for sensitivity methods."
+        },
+        {
+          "chapter_number": 5,
+          "title": "AD Through Linear Algebra",
+          "content_outline": "Derivatives of matrix operations: product, inverse, determinant, trace. AD through matrix factorizations: Cholesky, QR, SVD, eigendecomposition. Implicit differentiation for linear solves: adjoint of Ax = b. AD through iterative solvers. AD through sparse matrix operations. Applications: differentiable finite elements, differentiable simulation. Julia ChainRules.jl for linear algebra."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Differentiable Programming Paradigm",
+          "content_outline": "Differentiable programming: making entire programs differentiable. Composability: AD through libraries, not just expressions. Differentiable rendering. Differentiable physics simulation: rigid body, fluid, cloth. Differentiable ray tracing. Differentiable sorting and ranking. Straight-through estimators for discrete operations. Julia as a differentiable programming language."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Second-Order Methods and Hessians",
+          "content_outline": "Hessian computation: forward-over-reverse, reverse-over-forward. Hessian-vector products without forming the full Hessian. Gauss-Newton approximation. Fisher information matrix computation via AD. Natural gradient descent implementation. L-BFGS: limited-memory quasi-Newton. Applications: uncertainty quantification (Laplace approximation needs the Hessian), second-order optimization."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Advanced Topics: Custom Rules, Sparsity, and Mixed Precision",
+          "content_outline": "Custom chain rules for domain-specific operations: implementing frules and rrules in ChainRules.jl. Exploiting sparsity in Jacobians and Hessians: SparseDiffTools.jl, automatic sparsity detection. Mixed-precision AD: stability and accuracy. AD for stochastic programs: pathwise gradient, score function estimator, reparameterization. Differentiable Monte Carlo. AD on GPUs. Enzyme.jl: LLVM-level AD for Julia."
+        }
+      ]
+    },
+    {
+      "id": "SCIML-005",
+      "title": "Inverse Problems and Data Assimilation with Machine Learning",
+      "track": "Track D — Scientific ML",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["CROSS-003 Inverse Problems", "SCIML-001 Neural DEs"],
+      "description": "The fusion of classical inverse problem theory with modern machine learning: neural network surrogates for inverse problems, amortized inference, and simulation-based inference.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Neural Network Surrogates for Forward Models",
+          "content_outline": "Training neural network emulators of expensive forward models (PDE solvers, ABMs). Architecture selection: fully connected, convolutional, DeepONet, FNO. Training data generation: space-filling designs, Latin hypercube. Validation of surrogate accuracy. Error bounds and reliability. Transfer learning: pre-training on cheap models, fine-tuning on expensive. Multi-fidelity neural networks. Julia Lux.jl surrogate construction."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Gradient-Based Inversion with Differentiable Simulators",
+          "content_outline": "End-to-end differentiable simulation: embedding the forward model as a differentiable layer. Gradient-based optimization of model parameters using AD through the solver. Regularization strategies: physics-based (conservation, positivity), data-driven (learned regularization). Handling noisy gradients. Curriculum learning for inverse problems. Julia DiffEqFlux.jl for differentiable inversion."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Amortized Inference: Learning to Invert",
+          "content_outline": "Classical inference: solve a new optimization for each observation. Amortized inference: train a neural network to map observations directly to parameters (or posterior). Conditional density estimation: mixture density networks, conditional normalizing flows. Inference networks in VAEs. Training on simulated data: simulator as teacher. Generalization and out-of-distribution detection."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Simulation-Based Inference (SBI)",
+          "content_outline": "When likelihood is intractable but simulation is possible. Neural posterior estimation (NPE): learning the posterior directly. Neural likelihood estimation (NLE): learning the likelihood. Neural ratio estimation (NRE): learning the likelihood ratio. Sequential versions: SNPE, SNLE, SNRE. Calibration and coverage of SBI posteriors. Diagnostics: simulation-based calibration. Julia SBI implementations."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Physics-Informed Inverse Problems",
+          "content_outline": "PINNs for inverse problems: jointly solving forward problem and estimating parameters. Mixed-variable PINNs: unknown field and unknown parameter. Sparse observation inverse problems. PDE-constrained optimization with neural networks. Bayesian PINNs: posterior over both solution and parameters. Multi-experiment inference: combining data from different experimental conditions."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Learned Regularization and Priors",
+          "content_outline": "Data-driven regularization: learning regularization from training pairs. Deep image prior: neural network structure as regularization (no training data). Learned iterative reconstruction: unrolling optimization algorithms. Plug-and-play priors: using denoiser as implicit prior. Score-based diffusion models as priors for inverse problems. Posterior sampling via diffusion models. Conditional score-based generation."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Neural Data Assimilation",
+          "content_outline": "Learned data assimilation: replacing EnKF or 4D-Var with neural networks. Neural network forecast models for data assimilation. 4DVarNet: end-to-end learning of analysis. Reservoir computing for chaotic system state estimation. Graph neural networks for spatially distributed observations. Attention-based data assimilation. Comparison with classical methods: when does ML improve?"
+        },
+        {
+          "chapter_number": 8,
+          "title": "Case Studies in SciML Inverse Problems",
+          "content_outline": "Case 1: Cardiovascular parameter estimation from non-invasive measurements using UDEs. Case 2: Subsurface flow characterization from pressure data using neural surrogates. Case 3: Atmospheric source inversion using differentiable transport models. Case 4: Pharmacokinetic parameter estimation from sparse clinical data using SBI. Case 5: Ecological model calibration from time-series using neural likelihood. Julia code for all case studies."
+        }
+      ]
+    },
+    {
+      "id": "POP-004",
+      "title": "Demography and Human Population Modeling",
+      "track": "Track E — Population Dynamics",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["POP-001 Deterministic Models", "CORE-008 Mathematical Statistics"],
+      "description": "The mathematical demography of human populations: life tables, stable population theory, demographic transition, migration, and stochastic population forecasting.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Life Tables and Mortality Analysis",
+          "content_outline": "Period and cohort life tables. Life table functions: qx, lx, dx, Lx, Tx, ex. Abridged life tables. Mortality laws: Gompertz, Makeham, Siler. Lee-Carter model for mortality forecasting. Cause-deleted life tables. Associated single decrement tables. Multiple decrement theory. Julia construction of life tables from vital statistics data."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Fertility Analysis",
+          "content_outline": "Age-specific fertility rates. Total fertility rate (TFR). Gross and net reproduction rates. Tempo and quantum of fertility. Bongaarts proximate determinants framework. Coale-Trussell fertility model. Period vs cohort fertility. Fertility forecasting: time series approaches, Bayesian hierarchical models. Parity progression ratios."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Stable Population Theory",
+          "content_outline": "Lotka integral equation: characteristic equation for intrinsic growth rate. Stable age distribution. Reproductive value (Fisher). Sensitivity of growth rate to vital rates. Keyfitz's entropy. Population momentum: continued growth after reaching replacement fertility. Quasi-stable populations. Two-sex models: marriage functions, Fredrickson-Schoen model."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Population Projection: Cohort-Component Method",
+          "content_outline": "Leslie matrix projection. Multi-regional projection: Rogers' model. Population projection with migration. Projecting population pyramids. Probabilistic population projections: Bayesian approach (UN World Population Prospects methodology). Stochastic population forecasting: time series models for vital rates, bootstrap. Julia matrix population models."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Migration Modeling",
+          "content_outline": "Gravity model of migration. Radiation model. Intervening opportunities model. Push-pull factors. Age patterns of migration: Rogers-Castro schedule. International migration estimation: residual methods, indirect estimation. Immigration and emigration rates. Multi-regional population models with migration. Agent-based migration models."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Demographic Transition Theory",
+          "content_outline": "Classical demographic transition: high → low mortality and fertility. Second demographic transition: sub-replacement fertility. Mathematical models of the transition: logistic, S-shaped curves. Relationship between economic development and demographic change. Population aging: dependency ratios, support ratios. Demographic dividend. Population decline and its consequences."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Small Area and Subnational Demography",
+          "content_outline": "Small area estimation: direct vs indirect methods. Bayesian spatial models for subnational mortality and fertility. Synthetic estimation. Census disaggregation. Gridded population datasets: WorldPop, LandScan. Dasymetric mapping: distributing population using ancillary data. Health and demographic surveillance systems (HDSS). Verbal autopsy methods for cause of death."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Microsimulation for Population Analysis",
+          "content_outline": "Microsimulation: simulating individual life histories. Static vs dynamic microsimulation. Discrete-time and continuous-time microsimulation. SOCSIM, CAMSIM frameworks. Microsimulation of kinship networks. Health microsimulation: modeling disease trajectories in populations. Tax and benefit microsimulation. Validation of microsimulation models. Julia agent-based demographic microsimulation."
+        }
+      ]
+    }
+  ]
+}

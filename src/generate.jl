@@ -1,0 +1,295 @@
+#!/usr/bin/env julia
+"""
+    generate.jl — Main orchestrator for parallel textbook chapter generation.
+
+    Usage:
+        julia --project=. src/generate.jl                        # Full run, concurrency=5
+        julia --project=. src/generate.jl --concurrency 10       # Full run, concurrency=10
+        julia --project=. src/generate.jl --calibrate            # Generate 3 test chapters only
+        julia --project=. src/generate.jl --resume               # Resume from last state
+        julia --project=. src/generate.jl --textbook CORE-001    # Generate one textbook only
+        julia --project=. src/generate.jl --dry-run              # Show work queue, don't generate
+"""
+
+include("api_client.jl")
+include("prompt_builder.jl")
+
+using .APIClient
+using .PromptBuilder
+using JSON3, Dates, Logging
+
+# ─────────────────────────────────────────────
+# Configuration
+# ─────────────────────────────────────────────
+const PROJECT_ROOT = dirname(@__DIR__)
+const MANIFESTS = [
+    joinpath(PROJECT_ROOT, "manifests", "part1.json"),
+    joinpath(PROJECT_ROOT, "manifests", "part2.json")
+]
+const SYSTEM_PROMPT_PATH = joinpath(PROJECT_ROOT, "system_prompt.md")
+const STATE_PATH = joinpath(PROJECT_ROOT, "state.json")
+const OUTPUT_DIR = joinpath(PROJECT_ROOT, "output", "markdown")
+const LOG_PATH = joinpath(PROJECT_ROOT, "logs", "generation.log")
+
+# Calibration chapters: one pure math, one SciML/code-heavy, one applied/clinical
+const CALIBRATION_KEYS = [
+    "CORE-001/ch01",  # Real Analysis — completeness
+    "SCIML-001/ch03", # Neural DEs — UDEs (hybrid math + Julia)
+    "PHYS-004/ch04",  # Biomechanics — respiratory mechanics
+]
+
+# ─────────────────────────────────────────────
+# State Management
+# ─────────────────────────────────────────────
+mutable struct GenerationState
+    completed::Dict{String,String}  # key → ISO timestamp
+    failed::Dict{String,String}     # key → error message
+    started_at::String
+    last_updated::String
+end
+
+function load_state()::GenerationState
+    if isfile(STATE_PATH)
+        raw = JSON3.read(read(STATE_PATH, String))
+        return GenerationState(
+            Dict{String,String}(String(k) => String(v) for (k,v) in pairs(raw.completed)),
+            haskey(raw, :failed) ? Dict{String,String}(String(k) => String(v) for (k,v) in pairs(raw.failed)) : Dict{String,String}(),
+            String(raw.started_at),
+            String(raw.last_updated)
+        )
+    else
+        now_str = string(Dates.now())
+        return GenerationState(Dict{String,String}(), Dict{String,String}(), now_str, now_str)
+    end
+end
+
+function save_state(state::GenerationState)
+    state.last_updated = string(Dates.now())
+    json = JSON3.write(Dict(
+        "completed" => state.completed,
+        "failed" => state.failed,
+        "started_at" => state.started_at,
+        "last_updated" => state.last_updated
+    ))
+    # Atomic write: write to temp, then rename
+    tmp = STATE_PATH * ".tmp"
+    write(tmp, json)
+    mv(tmp, STATE_PATH; force=true)
+end
+
+# ─────────────────────────────────────────────
+# File I/O
+# ─────────────────────────────────────────────
+function save_chapter(key::String, content::String)
+    parts = split(key, "/")
+    textbook_dir = joinpath(OUTPUT_DIR, parts[1])
+    mkpath(textbook_dir)
+    filepath = joinpath(textbook_dir, "$(parts[2]).md")
+    write(filepath, content)
+    return filepath
+end
+
+# ─────────────────────────────────────────────
+# Parse CLI Args
+# ─────────────────────────────────────────────
+function parse_args()
+    args = Dict{Symbol,Any}(
+        :concurrency => 5,
+        :calibrate => false,
+        :resume => false,
+        :dry_run => false,
+        :textbook => nothing,
+        :retry_failed => false,
+    )
+
+    i = 1
+    while i <= length(ARGS)
+        arg = ARGS[i]
+        if arg == "--concurrency" && i < length(ARGS)
+            args[:concurrency] = parse(Int, ARGS[i+1])
+            i += 2
+        elseif arg == "--calibrate"
+            args[:calibrate] = true
+            i += 1
+        elseif arg == "--resume"
+            args[:resume] = true
+            i += 1
+        elseif arg == "--dry-run"
+            args[:dry_run] = true
+            i += 1
+        elseif arg == "--retry-failed"
+            args[:retry_failed] = true
+            i += 1
+        elseif arg == "--textbook" && i < length(ARGS)
+            args[:textbook] = ARGS[i+1]
+            i += 2
+        else
+            @warn "Unknown argument: $arg"
+            i += 1
+        end
+    end
+
+    return args
+end
+
+# ─────────────────────────────────────────────
+# Worker: Generate one chapter
+# ─────────────────────────────────────────────
+function generate_one(item::WorkItem, system_prompt::String, state::GenerationState,
+                      state_lock::ReentrantLock)
+    key = PromptBuilder.work_item_key(item)
+    t_start = time()
+
+    try
+        prompt = build_chapter_prompt(item)
+        content = generate_chapter(system_prompt, prompt)
+
+        filepath = save_chapter(key, content)
+
+        lock(state_lock) do
+            state.completed[key] = string(Dates.now())
+            delete!(state.failed, key)
+            save_state(state)
+        end
+
+        elapsed = round(time() - t_start, digits=1)
+        word_count = length(split(content))
+        @info "✓ $(key) — $(word_count) words in $(elapsed)s → $(filepath)"
+        return true
+
+    catch e
+        elapsed = round(time() - t_start, digits=1)
+        err_msg = sprint(showerror, e)
+
+        lock(state_lock) do
+            state.failed[key] = err_msg
+            save_state(state)
+        end
+
+        @error "✗ $(key) — FAILED in $(elapsed)s: $(err_msg)"
+        return false
+    end
+end
+
+# ─────────────────────────────────────────────
+# Main
+# ─────────────────────────────────────────────
+function main()
+    args = parse_args()
+
+    # Setup logging
+    mkpath(dirname(LOG_PATH))
+    log_io = open(LOG_PATH, "a")
+    logger = SimpleLogger(log_io, Logging.Info)
+    global_logger(logger)
+
+    println("=" ^ 60)
+    println("  TEXTBOOK GENERATION ORCHESTRATOR")
+    println("  $(Dates.now())")
+    println("=" ^ 60)
+
+    # Load manifests
+    println("\n📚 Loading manifests...")
+    all_items = load_manifests(MANIFESTS)
+    println("   Found $(length(all_items)) total chapters across $(length(unique(i.textbook_id for i in all_items))) textbooks")
+
+    # Load system prompt
+    system_prompt = load_system_prompt(SYSTEM_PROMPT_PATH)
+    println("   System prompt loaded ($(length(system_prompt)) chars)")
+
+    # Load state
+    state = load_state()
+    state_lock = ReentrantLock()
+    println("   State: $(length(state.completed)) completed, $(length(state.failed)) failed")
+
+    # Build work queue
+    work_queue = if args[:calibrate]
+        println("\n🔬 CALIBRATION MODE — generating 3 test chapters")
+        filter(item -> PromptBuilder.work_item_key(item) in CALIBRATION_KEYS, all_items)
+    elseif !isnothing(args[:textbook])
+        tb = args[:textbook]
+        println("\n📖 Single textbook mode: $tb")
+        filter(item -> item.textbook_id == tb, all_items)
+    else
+        all_items
+    end
+
+    # Filter completed (unless retry-failed)
+    if args[:resume] || !args[:retry_failed]
+        work_queue = filter(item -> !(PromptBuilder.work_item_key(item) in keys(state.completed)), work_queue)
+    end
+    if args[:retry_failed]
+        # Only retry previously failed items
+        work_queue = filter(item -> PromptBuilder.work_item_key(item) in keys(state.failed), work_queue)
+    end
+
+    println("   Work queue: $(length(work_queue)) chapters to generate")
+
+    if isempty(work_queue)
+        println("\n✅ Nothing to do — all chapters already completed!")
+        close(log_io)
+        return
+    end
+
+    # Dry run
+    if args[:dry_run]
+        println("\n📋 DRY RUN — would generate:")
+        for item in work_queue
+            key = PromptBuilder.work_item_key(item)
+            println("   $(key): $(item.chapter_title)")
+        end
+        close(log_io)
+        return
+    end
+
+    # Confirm
+    concurrency = args[:concurrency]
+    est_minutes = round(length(work_queue) * 1.0 / concurrency, digits=0)
+    println("\n⚡ Starting generation with concurrency=$concurrency")
+    println("   Estimated time: ~$(est_minutes) minutes")
+    println("   Output: $(OUTPUT_DIR)")
+    println("   Press Ctrl+C to stop (safe to resume later)\n")
+
+    # Run
+    t_total = time()
+    success_count = Threads.Atomic{Int}(0)
+    fail_count = Threads.Atomic{Int}(0)
+
+    # Use asyncmap for concurrent I/O-bound tasks
+    asyncmap(work_queue; ntasks=concurrency) do item
+        result = generate_one(item, system_prompt, state, state_lock)
+        if result
+            Threads.atomic_add!(success_count, 1)
+        else
+            Threads.atomic_add!(fail_count, 1)
+        end
+
+        # Progress report every 10 chapters
+        done = success_count[] + fail_count[]
+        total = length(work_queue)
+        if done % 10 == 0
+            pct = round(100 * done / total, digits=1)
+            elapsed = round((time() - t_total) / 60, digits=1)
+            rate = round(done / (time() - t_total) * 60, digits=1)
+            println("   📊 Progress: $done/$total ($pct%) — $(elapsed)min elapsed — $(rate) ch/min")
+        end
+    end
+
+    elapsed_total = round((time() - t_total) / 60, digits=1)
+
+    println("\n" * "=" ^ 60)
+    println("  GENERATION COMPLETE")
+    println("  ✓ Success: $(success_count[])")
+    println("  ✗ Failed:  $(fail_count[])")
+    println("  ⏱ Time:    $(elapsed_total) minutes")
+    println("  📁 Output:  $(OUTPUT_DIR)")
+    println("=" ^ 60)
+
+    if fail_count[] > 0
+        println("\n⚠️  $(fail_count[]) chapters failed. Re-run with --retry-failed to retry them.")
+    end
+
+    close(log_io)
+end
+
+main()

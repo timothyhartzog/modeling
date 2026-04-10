@@ -1,0 +1,1343 @@
+{
+  "manifest_version": "1.0.0",
+  "title": "Master Course of Study — Universal Modeling Mastery",
+  "description": "Complete textbook manifest for agentic generation of all required textbooks across the graduate modeling curriculum. Each entry contains the textbook title, metadata, and detailed chapter-by-chapter outlines with content descriptions sufficient to generate 15,000–40,000+ word textbooks per volume.",
+  "generation_instructions": {
+    "output_format": "DOCX",
+    "target_length_per_chapter": "3,000–8,000 words",
+    "target_length_per_textbook": "15,000–40,000+ words",
+    "style": "Graduate-level textbook with rigorous mathematical exposition, worked examples, proofs where appropriate, and computational implementation notes in Julia/Python",
+    "citations": "Include references to primary literature (journal articles, foundational texts) with author-year format",
+    "mathematical_notation": "Use standard LaTeX-style notation descriptions; define all symbols on first use",
+    "code_examples": "Julia as primary language; Python where ecosystem is stronger; include runnable code blocks",
+    "exercises": "Include 5–10 exercises per chapter ranging from computational to proof-based",
+    "usa_sources_only": true,
+    "exclude_authors": ["Bart D. Ehrman"]
+  },
+  "textbooks": [
+    {
+      "id": "CORE-001",
+      "title": "Real Analysis for Modelers",
+      "track": "Core Mathematics — Year 1",
+      "credits": 4,
+      "semester": "Fall Year 1",
+      "prerequisites": ["Undergraduate calculus sequence", "Introduction to proofs"],
+      "description": "A rigorous treatment of real analysis with emphasis on the tools most essential for modeling: metric space theory, convergence, integration theory, and function spaces. Prepares the student for measure-theoretic probability and functional analysis.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "The Real Number System and Completeness",
+          "content_outline": "Construction of the reals via Dedekind cuts and Cauchy sequences. The completeness axiom (least upper bound property). Archimedean property. Density of rationals and irrationals. Countability and uncountability — Cantor's diagonal argument. Cardinality of the continuum. Why completeness matters for modeling: guarantees that limiting processes (iterative solvers, series expansions, optimization algorithms) converge to actual real numbers."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Metric Spaces: The Language of Proximity",
+          "content_outline": "Definition and examples of metric spaces: Euclidean space, function spaces (sup norm, Lp norms), discrete metric, Hamming distance. Open and closed sets, interior, closure, boundary. Convergence of sequences in metric spaces. Cauchy sequences and completeness. The completion of a metric space. Equivalent metrics and topological equivalence. Product metrics. Applications: defining convergence of numerical methods, error metrics for model calibration."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Compactness",
+          "content_outline": "Open covers and compactness. Sequential compactness. Heine-Borel theorem in Euclidean space. Bolzano-Weierstrass theorem. Compactness in general metric spaces — equivalence of sequential compactness and compactness in metric spaces. Total boundedness. Compact subsets of function spaces — Arzelà-Ascoli theorem. Applications: existence of optimal solutions in optimization, existence of maximizers of likelihood functions."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Connectedness and Continuity",
+          "content_outline": "Connected and path-connected spaces. Intermediate value theorem as a consequence of connectedness. Continuous functions between metric spaces. Uniform continuity. Lipschitz continuity — connection to ODE existence theory (Picard-Lindelöf). Homeomorphisms and topological invariants. Continuous functions on compact sets: extreme value theorem, uniform continuity."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Sequences and Series of Functions",
+          "content_outline": "Pointwise vs. uniform convergence. Weierstrass M-test. Interchange of limits: when can you swap limits with integrals, derivatives, or sums? Uniform convergence and continuity, integration, differentiation. Power series and radius of convergence. Stone-Weierstrass theorem — density of polynomials and its implications for approximation theory and machine learning (universal approximation)."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Differentiation in Several Variables",
+          "content_outline": "Total derivative as a linear map. Jacobian matrix. Chain rule for multivariable functions. Inverse function theorem and implicit function theorem — critical for sensitivity analysis and bifurcation theory. Higher-order derivatives, Taylor's theorem in several variables. Optimization: necessary and sufficient conditions, Hessian matrix, constrained optimization (Lagrange multipliers as a preview of variational methods)."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Riemann Integration and Its Limitations",
+          "content_outline": "Riemann integral via partitions, upper and lower sums. Riemann integrability criteria. Properties of the Riemann integral. Fundamental theorem of calculus. Improper integrals. Limitations of Riemann integration: non-integrability of the Dirichlet function, difficulties with pointwise limits of integrable functions. Motivation for Lebesgue integration — why modelers need a more powerful integral."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Introduction to Measure and Lebesgue Integration",
+          "content_outline": "Sigma-algebras and measurable sets. Lebesgue outer measure and Lebesgue measure on the real line. Measurable functions. Lebesgue integral: simple functions, non-negative functions, general integrable functions. Monotone convergence theorem, Fatou's lemma, dominated convergence theorem — the three pillars that make Lebesgue integration powerful for analysis. Comparison with Riemann integration. Fubini's theorem preview."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Lp Spaces: A First Look at Function Spaces",
+          "content_outline": "Definition of Lp spaces. Hölder's and Minkowski's inequalities. Completeness of Lp spaces (Riesz-Fischer theorem). L2 as a Hilbert space — inner product, orthogonality, Fourier series as orthogonal projections. Dense subsets: continuous functions are dense in Lp. Dual spaces: Riesz representation theorem for Lp. Why Lp spaces matter: PDE weak solutions live in Sobolev spaces built on Lp; probability densities are L1 functions; regression is projection in L2."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Fixed Point Theorems and Applications to Modeling",
+          "content_outline": "Banach fixed point theorem (contraction mapping principle) — proof and applications. Existence and uniqueness of ODE solutions via Picard iteration. Brouwer and Schauder fixed point theorems. Applications: existence of Nash equilibria, existence of steady states in population models, convergence of iterative numerical methods (Jacobi, Gauss-Seidel). Fixed points as equilibria of dynamical systems."
+        }
+      ]
+    },
+    {
+      "id": "CORE-002",
+      "title": "Linear Algebra and Matrix Theory for Computational Science",
+      "track": "Core Mathematics — Year 1",
+      "credits": 3,
+      "semester": "Fall Year 1",
+      "prerequisites": ["Undergraduate linear algebra"],
+      "description": "Advanced linear algebra with emphasis on matrix decompositions, spectral theory, and computational aspects. Every model in the curriculum — from regression to finite elements to neural networks — is ultimately a problem in linear algebra.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Vector Spaces and Linear Maps",
+          "content_outline": "Abstract vector spaces over real and complex fields. Subspaces, span, linear independence, basis, dimension. Linear maps: kernel, image, rank-nullity theorem. Matrix representations. Change of basis. Direct sums and projections. Quotient spaces. Dual spaces and the transpose."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Inner Product Spaces and Orthogonality",
+          "content_outline": "Inner products on real and complex spaces. Cauchy-Schwarz and triangle inequalities. Orthogonal and orthonormal bases. Gram-Schmidt process. Orthogonal complements. Orthogonal projections — connection to least squares and best approximation. QR decomposition. Bessel's inequality and Parseval's identity."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Eigenvalues, Eigenvectors, and Diagonalization",
+          "content_outline": "Characteristic polynomial. Algebraic and geometric multiplicity. Diagonalization criteria. Spectral theorem for real symmetric matrices and Hermitian matrices. Simultaneous diagonalization of commuting matrices. Spectral mapping theorem. Applications: stability of linear ODE systems (eigenvalues of the Jacobian), principal component analysis, normal modes of vibration."
+        },
+        {
+          "chapter_number": 4,
+          "title": "The Singular Value Decomposition",
+          "content_outline": "Existence and uniqueness of SVD. Geometric interpretation: SVD as a sequence of rotation-scaling-rotation. Truncated SVD and low-rank approximation — Eckart-Young theorem. Connection to PCA. Pseudoinverse via SVD. Numerical rank and condition number. Applications: image compression, dimensionality reduction, solving ill-conditioned linear systems, dynamic mode decomposition."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Matrix Decompositions for Computation",
+          "content_outline": "LU decomposition with pivoting. Cholesky decomposition for positive definite matrices — connection to covariance matrices and Gaussian processes. Schur decomposition. Jordan canonical form (theoretical importance). QR algorithm for eigenvalue computation. Hessenberg reduction. Computational cost analysis: O(n³) for dense, importance of sparsity."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Norms, Condition Numbers, and Perturbation Theory",
+          "content_outline": "Vector norms and matrix norms (operator, Frobenius). Equivalence of norms in finite dimensions. Condition number of a matrix — sensitivity of linear systems to perturbation. Perturbation bounds for eigenvalues (Weyl, Bauer-Fike). Perturbation of the SVD. Backward error analysis. Why condition numbers matter: numerical stability of every algorithm in scientific computing."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Iterative Methods for Large-Scale Linear Systems",
+          "content_outline": "Motivation: when direct methods are too expensive (large sparse systems from PDEs). Jacobi, Gauss-Seidel, SOR methods and convergence criteria. Krylov subspace methods: conjugate gradient (for SPD systems), GMRES (for general systems), BiCGSTAB. Preconditioning: ILU, algebraic multigrid, domain decomposition. Convergence theory via spectral analysis."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Tensor Algebra and Multilinear Maps",
+          "content_outline": "Tensors as multilinear maps. Index notation and Einstein summation convention. Tensor products of vector spaces. Symmetric and antisymmetric tensors. Tensor decompositions: CP decomposition, Tucker decomposition, tensor train. Applications: continuum mechanics (stress and strain tensors), higher-order statistics, tensor networks in physics and machine learning."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Nonnegative Matrix Factorization and Structured Matrices",
+          "content_outline": "Nonnegative matrix factorization (NMF): algorithms and applications (topic modeling, spectral unmixing). Toeplitz and circulant matrices — connection to convolution and FFT. Sparse matrices: storage formats (CSR, CSC), graph representation. Band matrices from finite differences. Kronecker products and vec operator. Structured matrix computations in PDE solvers."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Matrix Functions and the Matrix Exponential",
+          "content_outline": "Matrix functions via spectral decomposition, Jordan form, and Cauchy integral formula. The matrix exponential: definition, properties, computation (scaling and squaring, Padé approximants, Krylov methods). Application to linear ODE systems: x'(t) = Ax(t) has solution x(t) = exp(At)x(0). Connection to Lie groups and Lie algebras. Matrix logarithm. Applications: continuous-time Markov chains, linear stability analysis."
+        }
+      ]
+    },
+    {
+      "id": "CORE-003",
+      "title": "Measure-Theoretic Probability I",
+      "track": "Core Mathematics — Year 1",
+      "credits": 4,
+      "semester": "Fall Year 1",
+      "prerequisites": ["Real Analysis I (concurrent)"],
+      "description": "Rigorous probability theory built on measure theory. This is the mathematical foundation for all statistical inference, stochastic modeling, and uncertainty quantification in the curriculum.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Probability Spaces and σ-Algebras",
+          "content_outline": "Sample spaces, events, σ-algebras. Why we need σ-algebras: non-measurable sets (Vitali). Borel σ-algebra on the real line. Probability measures: axioms, properties (continuity from above/below, inclusion-exclusion). Construction of probability measures via extension theorems (Carathéodory). Product σ-algebras and product measures."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Random Variables and Distribution Functions",
+          "content_outline": "Random variables as measurable functions. Distribution functions: CDF properties, quantile functions. Discrete, continuous, and singular distributions. Lebesgue decomposition. Radon-Nikodym theorem — density functions as Radon-Nikodym derivatives. Random vectors, joint and marginal distributions. Borel measurability."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Expectation via the Lebesgue Integral",
+          "content_outline": "Expectation defined as Lebesgue integral with respect to a probability measure. Properties: linearity, monotonicity, dominated convergence for expectations. Moments, variance, covariance, correlation. Moment generating functions and their properties. Jensen's inequality. Hölder and Minkowski inequalities for random variables. Lp spaces of random variables."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Independence and Product Measures",
+          "content_outline": "Independence of events, σ-algebras, and random variables. Fubini-Tonelli theorem for product measures. Independent sequences: Kolmogorov 0-1 law. Kolmogorov's inequality. Construction of independent random variables on a common probability space. Grouping lemma. Convolution of distributions."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Modes of Convergence",
+          "content_outline": "Almost sure convergence, convergence in probability, convergence in Lp, convergence in distribution. Relationships between modes: implications and counterexamples. Slutsky's theorem. Continuous mapping theorem. Borel-Cantelli lemmas (first and second). Convergence of random series — Kolmogorov three-series theorem."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Laws of Large Numbers",
+          "content_outline": "Weak law of large numbers (Chebyshev's approach, Khintchine's theorem). Strong law of large numbers (Kolmogorov). Glivenko-Cantelli theorem — uniform convergence of empirical distribution functions. Applications: Monte Carlo estimation, bootstrap justification, consistency of estimators."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Characteristic Functions and the Central Limit Theorem",
+          "content_outline": "Characteristic functions: definition, properties, inversion formula, uniqueness theorem. Lévy continuity theorem. Proof of the central limit theorem via characteristic functions. Berry-Esseen bound for rate of convergence. Multivariate CLT. Applications: asymptotic normality of MLEs, justification of normal approximations in biostatistics."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Conditional Expectation",
+          "content_outline": "Conditional expectation given a σ-algebra: definition via Radon-Nikodym theorem. Properties: linearity, tower property (law of iterated expectations), conditional Jensen's inequality. Conditional expectation as L2 projection. Regular conditional distributions. Conditional independence. Importance for Bayesian inference: posterior expectation is conditional expectation given data."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Generating Functions, Transforms, and Inequalities",
+          "content_outline": "Probability generating functions for discrete random variables. Moment generating functions and Laplace transforms. Chernoff bounds and sub-Gaussian random variables. Concentration inequalities: Hoeffding, Bernstein, McDiarmid. Sub-exponential random variables. Applications: high-dimensional statistics, learning theory, algorithm analysis."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Kolmogorov Extension and Infinite-Dimensional Probability",
+          "content_outline": "Consistent families of finite-dimensional distributions. Kolmogorov extension theorem — constructing stochastic processes on infinite product spaces. Cylinder sets and the product σ-algebra. Application: rigorous construction of Brownian motion (Wiener measure). Gaussian processes defined via finite-dimensional distributions. Preview of stochastic processes."
+        }
+      ]
+    },
+    {
+      "id": "CORE-004",
+      "title": "Scientific Computing I: Foundations of Numerical Methods",
+      "track": "Core Mathematics — Year 1",
+      "credits": 3,
+      "semester": "Fall Year 1",
+      "prerequisites": ["Undergraduate calculus", "Programming experience"],
+      "description": "Practical and theoretical foundations of numerical computation. Every model in the curriculum eventually requires numerical implementation; this course teaches the student to do it correctly, efficiently, and with rigorous error control.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Floating-Point Arithmetic and Error Analysis",
+          "content_outline": "IEEE 754 standard. Machine epsilon, rounding modes, overflow/underflow. Catastrophic cancellation. Forward and backward error analysis. Conditioning of a problem vs. stability of an algorithm. Condition numbers revisited. Examples of numerical disasters: the Patriot missile failure, the Vancouver Stock Exchange. Julia/Python floating-point behavior."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Root Finding",
+          "content_outline": "Bisection method: guaranteed convergence, linear rate. Newton's method: quadratic convergence, convergence basin, connection to fixed-point iteration. Secant method. Brent's method — combining reliability and speed. Systems of nonlinear equations: multivariate Newton. Convergence theory: contractive mappings. Applications: finding equilibria of ODE models, solving implicit numerical schemes."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Polynomial Interpolation and Approximation",
+          "content_outline": "Lagrange and Newton interpolation. Runge phenomenon and the danger of high-degree polynomials. Chebyshev nodes and near-optimal interpolation. Piecewise polynomial interpolation: linear, cubic splines (natural, clamped, not-a-knot). B-splines and NURBS. Approximation theory: Weierstrass theorem, best approximation, minimax. Connection to finite element basis functions."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Numerical Differentiation and Integration",
+          "content_outline": "Finite difference formulas: forward, backward, central. Truncation error analysis via Taylor expansion. Richardson extrapolation. Automatic differentiation (forward and reverse mode) — the computational backbone of modern ML and SciML. Numerical quadrature: Newton-Cotes (trapezoid, Simpson), Gaussian quadrature, adaptive quadrature. Monte Carlo integration for high dimensions. Sparse grids."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Direct Methods for Linear Systems",
+          "content_outline": "Gaussian elimination with partial pivoting. LU decomposition: existence, uniqueness for nonsingular matrices, computational cost O(n³). Cholesky for symmetric positive definite systems: half the cost. Banded systems: O(n) for tridiagonal. QR factorization via Householder reflectors. Least squares via QR and SVD. Sparse direct solvers. Julia LinearAlgebra and SparseArrays packages."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Iterative Methods for Linear Systems",
+          "content_outline": "Classical iterations: Jacobi, Gauss-Seidel, SOR. Convergence conditions via spectral radius. Krylov subspace methods: conjugate gradient method for SPD systems — derivation, convergence, preconditioning. GMRES for non-symmetric systems. Preconditioning strategies: incomplete factorizations, multigrid preview. When to use iterative vs. direct: problem size and sparsity considerations."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Eigenvalue Problems",
+          "content_outline": "Power method and inverse iteration. QR algorithm: shifts, implicit QR, Hessenberg reduction. Symmetric eigenvalue problems: Jacobi rotations, divide-and-conquer, MRRR. SVD computation. Eigenvalue problems in modeling: stability analysis (computing eigenvalues of large Jacobians), PCA (eigenvalues of covariance matrices), Google PageRank. Julia eigen() and svd() functions."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Numerical Methods for Initial Value ODEs",
+          "content_outline": "Euler's method: forward and backward. Runge-Kutta methods: derivation, order conditions, embedded pairs (Dormand-Prince). Multistep methods: Adams-Bashforth, Adams-Moulton, BDF. Stiffness: what it is, why explicit methods fail, A-stability and L-stability. Adaptive time-stepping: error estimation and step-size control. Julia DifferentialEquations.jl: solving ODE systems with automatic stiffness detection."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Fast Algorithms: FFT, Fast Multipole, and Randomized Methods",
+          "content_outline": "Discrete Fourier transform and the Cooley-Tukey FFT algorithm. Applications: spectral methods for PDEs, convolution, signal processing. Fast multipole method for N-body problems. Randomized algorithms: randomized SVD, random projection, sketching. Complexity reduction from O(n²) or O(n³) to O(n log n) or O(n). When to use randomized methods: large-scale data and simulation."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Software Engineering for Scientific Computing",
+          "content_outline": "Version control with Git for computational research. Reproducibility: random seeds, environment management (Julia Project.toml, Python requirements.txt). Testing scientific code: unit tests, convergence tests, method of manufactured solutions. Profiling and optimization: identifying bottlenecks, memory allocation, type stability in Julia. Parallelism: multithreading, distributed computing, GPU computing basics. Documentation and literate programming (Quarto, Pluto notebooks)."
+        }
+      ]
+    },
+    {
+      "id": "CORE-005",
+      "title": "Functional Analysis for Modelers",
+      "track": "Core Mathematics — Year 1",
+      "credits": 4,
+      "semester": "Spring Year 1",
+      "prerequisites": ["CORE-001 Real Analysis I"],
+      "description": "The theory of infinite-dimensional vector spaces and operators. Functional analysis provides the rigorous framework for PDEs, integral equations, optimization in function spaces, and the mathematical foundations of machine learning (reproducing kernel Hilbert spaces, universal approximation).",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Banach Spaces",
+          "content_outline": "Normed spaces and Banach spaces. Examples: C[a,b], Lp spaces, sequence spaces (ℓp). Completion of normed spaces. Schauder bases. Separability. Finite-dimensional vs. infinite-dimensional: compactness of the unit ball characterizes finite dimension. Applications: why PDE solutions live in Banach spaces."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Hilbert Spaces",
+          "content_outline": "Inner product spaces and Hilbert spaces. Orthogonal complements and the projection theorem. Riesz representation theorem. Orthonormal bases and Parseval's identity. Fourier series as expansion in orthonormal basis of L2. Separable Hilbert spaces are all isomorphic to ℓ2. Reproducing kernel Hilbert spaces (RKHS) — connection to Gaussian processes and kernel methods in machine learning."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Bounded Linear Operators",
+          "content_outline": "Bounded linear operators between Banach spaces. Operator norm. Space of bounded operators B(X,Y). Uniform boundedness principle (Banach-Steinhaus). Open mapping theorem. Closed graph theorem. Applications: proving continuity of solution operators for PDEs, well-posedness of inverse problems."
+        },
+        {
+          "chapter_number": 4,
+          "title": "The Hahn-Banach Theorem and Duality",
+          "content_outline": "Hahn-Banach theorem (analytic and geometric forms). Dual spaces. Reflexive spaces. Weak and weak* topologies. Banach-Alaoglu theorem: weak* compactness of the unit ball. Applications: existence of solutions to optimization problems via weak compactness, duality in convex optimization."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Compact Operators and Spectral Theory",
+          "content_outline": "Compact operators: definition, properties, examples (integral operators, embedding operators). Spectral theorem for compact self-adjoint operators. Fredholm alternative. Hilbert-Schmidt operators. Trace class operators. Mercer's theorem — connection to kernel methods and Gaussian processes. Applications: spectral methods for PDEs, Karhunen-Loève expansion for random fields."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Sobolev Spaces",
+          "content_outline": "Weak derivatives. Sobolev spaces Wk,p and Hk = Wk,2. Sobolev embedding theorems. Trace theorems: restricting Sobolev functions to boundaries. Poincaré and Friedrichs inequalities. Rellich-Kondrachov compactness theorem. Why Sobolev spaces matter: PDE weak solutions, finite element error analysis, regularity theory."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Variational Formulations and Weak Solutions",
+          "content_outline": "Bilinear forms: continuity and coercivity. Lax-Milgram theorem — existence and uniqueness for elliptic PDEs in weak form. Galerkin approximation: projecting onto finite-dimensional subspaces. Céa's lemma: quasi-optimality of Galerkin solutions. Connection to finite element methods. Variational inequalities. Saddle point problems (Stokes equations, mixed methods)."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Semigroups of Operators",
+          "content_outline": "Strongly continuous semigroups (C0-semigroups). Generators: Hille-Yosida theorem. Lumer-Phillips theorem for dissipative operators. Examples: heat semigroup, translation semigroup, Markov semigroups. Application to evolution equations: existence of solutions to ut = Au via semigroup theory. Analytic semigroups and parabolic equations. Connection to operator splitting methods."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Distribution Theory",
+          "content_outline": "Test functions and distributions (generalized functions). Dirac delta as a distribution. Derivatives of distributions. Fundamental solutions: Green's functions as distributional solutions. Fourier transform of distributions. Applications: singular source terms in PDEs, point masses in probability, impulse forcing in mechanics."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Approximation Theory and Universal Approximation",
+          "content_outline": "Best approximation in normed spaces. Projection theorems. Kolmogorov n-widths: optimal approximation rates. Neural network universal approximation theorems (Cybenko, Hornik, Barron). Approximation rates for neural networks vs. polynomials vs. wavelets. Curse of dimensionality and how neural networks circumvent it (Barron spaces). Connection to SciML: neural networks as function approximators in differential equation models."
+        }
+      ]
+    },
+    {
+      "id": "CORE-006",
+      "title": "Probability Theory II: Martingales, Brownian Motion, and Stochastic Calculus Foundations",
+      "track": "Core Mathematics — Year 1",
+      "credits": 3,
+      "semester": "Spring Year 1",
+      "prerequisites": ["CORE-003 Probability Theory I"],
+      "description": "Advanced probability covering martingale theory, Brownian motion, and the foundations of stochastic calculus. Essential for stochastic modeling in every domain track.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Conditional Expectation: Advanced Properties",
+          "content_outline": "Review of conditional expectation as L2 projection. Conditional expectation with respect to increasing σ-algebras (filtrations). Regular conditional probabilities. Disintegration theorem. Conditional independence and graphical models preview. Tower property as a computational tool."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Martingale Theory",
+          "content_outline": "Filtrations and adapted processes. Martingales, submartingales, supermartingales. Examples: random walks, Pólya urns, Doob martingales. Doob's decomposition. Optional stopping theorem — conditions and counterexamples. Martingale convergence theorems. Doob's maximal inequality. Azuma-Hoeffding inequality. Applications: sequential analysis, optional stopping in clinical trials, convergence of stochastic algorithms."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Construction of Brownian Motion",
+          "content_outline": "Definition and properties of Brownian motion. Lévy's construction. Nowhere differentiability of Brownian paths (a.s.). Quadratic variation. Brownian motion as a Gaussian process. Markov property and strong Markov property. Reflection principle. Maximum and hitting times. Brownian motion as the scaling limit of random walks (Donsker's theorem)."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Continuous-Time Martingales and Stochastic Integration Preview",
+          "content_outline": "Continuous-time filtrations and adapted processes. Brownian motion as a continuous-time martingale. Quadratic variation process. Lévy's characterization of Brownian motion. Stochastic integral of simple processes with respect to Brownian motion. Extension to L2 integrand processes. Itô isometry. Preview of Itô's formula."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Central Limit Theorem: Extensions and Refinements",
+          "content_outline": "Lindeberg-Feller CLT for triangular arrays. Lyapunov condition. CLT for martingale difference sequences. Multivariate CLT. Delta method. Edgeworth expansions. CLT for dependent sequences: mixing conditions. Functional CLT (Donsker's invariance principle). Applications: asymptotic inference, diffusion approximations of discrete models."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Convergence of Random Series and Tail Events",
+          "content_outline": "Kolmogorov three-series theorem. Hewitt-Savage 0-1 law. Tail σ-algebra and tail events. Convergence of random power series. Kolmogorov's maximal inequality. Strong law via martingale methods. Application: almost sure convergence of MCMC algorithms, convergence of stochastic gradient descent."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Weak Convergence and Empirical Processes",
+          "content_outline": "Weak convergence of probability measures. Portmanteau theorem. Prokhorov's theorem: tightness and relative compactness. Skorokhod's representation theorem. Empirical processes: Glivenko-Cantelli and Donsker theorems. Quantile processes. Applications: bootstrap theory, goodness-of-fit tests, nonparametric inference."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Large Deviations",
+          "content_outline": "Large deviation principle. Cramér's theorem. Rate functions and exponential tightness. Varadhan's integral lemma. Sanov's theorem for empirical measures. Gärtner-Ellis theorem. Applications: rare event simulation, importance sampling design, asymptotic efficiency of hypothesis tests, statistical mechanics connections."
+        }
+      ]
+    },
+    {
+      "id": "CORE-007",
+      "title": "Ordinary Differential Equations: Theory, Analysis, and Computation",
+      "track": "Core Mathematics — Year 1",
+      "credits": 3,
+      "semester": "Spring Year 1",
+      "prerequisites": ["CORE-001 Real Analysis I", "CORE-002 Linear Algebra"],
+      "description": "ODEs are the language of dynamics. This course covers existence theory, qualitative analysis, stability, and numerical methods — preparing the student for every dynamical model in the curriculum.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Existence and Uniqueness",
+          "content_outline": "Initial value problems. Picard-Lindelöf theorem: existence and uniqueness via contraction mapping. Peano existence theorem (existence without Lipschitz). Maximal interval of existence. Gronwall's inequality. Continuous dependence on initial conditions and parameters. Sensitivity equations. Extension and blow-up."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Linear Systems",
+          "content_outline": "Homogeneous linear systems: fundamental matrix, matrix exponential. Variation of parameters. Constant coefficient systems: eigenvalue classification (nodes, spirals, saddles, centers). Jordan normal form solutions. Floquet theory for periodic coefficients. Linear stability and the spectral abscissa."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Phase Plane Analysis and Qualitative Theory",
+          "content_outline": "Phase portraits for 2D systems. Classification of equilibria via linearization. Hartman-Grobman theorem. Poincaré-Bendixson theorem: limit cycles in 2D. Dulac's criterion. Index theory. Nullclines and trapping regions. Applications: predator-prey models, SIR epidemics, Fitzhugh-Nagumo neuron model."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Stability Theory",
+          "content_outline": "Lyapunov stability, asymptotic stability, exponential stability. Lyapunov's direct method: constructing Lyapunov functions. LaSalle invariance principle. Linearization and Lyapunov's indirect method. Input-to-state stability. Applications: proving stability of ecological equilibria, control system design, convergence of optimization algorithms."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Bifurcation Theory",
+          "content_outline": "Structural stability and bifurcations. Saddle-node bifurcation. Transcritical and pitchfork bifurcations. Hopf bifurcation: birth of limit cycles. Center manifold reduction. Normal forms. Codimension-one bifurcations. Bifurcation diagrams. Numerical continuation (AUTO, BifurcationKit.jl). Applications: tipping points in ecological models, onset of oscillations in physiological systems."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Perturbation Methods",
+          "content_outline": "Regular perturbation expansions. Singular perturbations: boundary layers, matched asymptotic expansions. Multiple scales method. WKB approximation. Averaging methods for oscillatory systems. Poincaré-Lindstedt method. Applications: slow-fast dynamics in neuroscience, geophysical flows, pharmacokinetics."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Delay Differential Equations",
+          "content_outline": "DDEs: existence, uniqueness, infinite-dimensional phase space. Characteristic equations with exponential terms. Stability of DDEs: D-subdivisions, characteristic root methods. Hopf bifurcation in DDEs. Numerical methods for DDEs (method of steps, continuous Runge-Kutta). Applications: population dynamics with maturation delays, immune response with delay, neural networks with transmission delay."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Numerical Methods for ODE Systems",
+          "content_outline": "Comprehensive treatment: explicit Runge-Kutta (ERK), implicit Runge-Kutta (SDIRK, Radau), BDF methods, Adams methods. Error estimation and adaptive stepping. Stiffness detection. Symplectic integrators for Hamiltonian systems (Störmer-Verlet, symplectic Euler). Exponential integrators for semilinear problems. Event handling: zero-crossing detection for discontinuities. DifferentialEquations.jl ecosystem."
+        }
+      ]
+    },
+    {
+      "id": "CORE-008",
+      "title": "Mathematical Statistics: Inference, Estimation, and Testing",
+      "track": "Core Mathematics — Year 1",
+      "credits": 3,
+      "semester": "Spring Year 1",
+      "prerequisites": ["CORE-003 Probability Theory I"],
+      "description": "The rigorous theory of statistical inference. Provides the mathematical foundations for every data-facing component of the curriculum: parameter estimation, hypothesis testing, model selection, and the asymptotic theory that justifies practical methods.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Statistical Models and Sufficiency",
+          "content_outline": "Statistical models as parametric families of distributions. The likelihood function. Sufficient statistics: Fisher-Neyman factorization theorem. Minimal sufficiency. Complete statistics. Ancillary statistics. Basu's theorem: independence of complete sufficient and ancillary statistics. Exponential families: canonical form, sufficient statistics, moment/cumulant generation."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Point Estimation Theory",
+          "content_outline": "Method of moments. Maximum likelihood estimation: consistency, asymptotic normality, asymptotic efficiency (achieving Cramér-Rao bound). Fisher information and its geometric interpretation. UMVUE: Rao-Blackwell theorem, Lehmann-Scheffé theorem. Equivariant estimators. James-Stein estimator and the inadmissibility of MLE in dimension ≥ 3. Shrinkage estimation."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Hypothesis Testing",
+          "content_outline": "Neyman-Pearson lemma: most powerful tests for simple hypotheses. Uniformly most powerful tests. Monotone likelihood ratio. Likelihood ratio tests: Wilks' theorem (asymptotic chi-squared distribution). Score tests and Wald tests. Multiple testing: Bonferroni, Holm, Benjamini-Hochberg FDR control. P-values: exact vs. asymptotic, misinterpretation issues."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Confidence Regions and Interval Estimation",
+          "content_outline": "Pivotal quantities. Exact confidence intervals for normal populations. Asymptotic confidence intervals via MLE theory. Profile likelihood intervals. Bootstrap confidence intervals: percentile, BCa, studentized. Coverage probability and expected length. Simultaneous confidence intervals. Bayesian credible intervals vs. frequentist confidence intervals."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Asymptotic Theory",
+          "content_outline": "Consistency: conditions and proofs. Asymptotic normality of MLEs: regularity conditions, proof via Taylor expansion of the score function. Asymptotic relative efficiency. Contiguity and Le Cam's theory. Local asymptotic normality (LAN). Semiparametric efficiency bounds. Delta method and variance stabilizing transformations. Applications: justifying large-sample inference in biostatistics."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Decision Theory",
+          "content_outline": "Statistical decision theory: loss functions, risk functions, Bayes risk, minimax risk. Admissibility and completeness. Bayes procedures as admissible procedures. Minimax estimation. James-Stein as empirical Bayes. Connection to machine learning: empirical risk minimization, structural risk minimization. PAC learning bounds."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Nonparametric and Robust Methods",
+          "content_outline": "Empirical distribution function and plug-in principle. U-statistics: Hoeffding decomposition, asymptotic normality. Kernel density estimation: bandwidth selection, bias-variance tradeoff. Nonparametric regression: local polynomial, kernel smoothing, splines. Rank-based tests: Wilcoxon, Kruskal-Wallis. Robust estimation: M-estimators, influence functions, breakdown point. Quantile regression."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Information-Theoretic Model Selection",
+          "content_outline": "Kullback-Leibler divergence as the foundational model selection criterion. AIC: derivation from KL divergence, bias correction, AICc. BIC: Bayesian justification, consistency. Cross-validation: leave-one-out, K-fold, generalized CV. Minimum description length principle. Focused information criterion (FIC). Model averaging. Applications: choosing among competing models in any domain."
+        }
+      ]
+    },
+    {
+      "id": "CORE-009",
+      "title": "Partial Differential Equations I: Classical and Weak Solutions",
+      "track": "Core Mathematics — Year 2",
+      "credits": 4,
+      "semester": "Fall Year 2",
+      "prerequisites": ["CORE-001 Real Analysis", "CORE-005 Functional Analysis", "CORE-007 ODEs"],
+      "description": "PDEs are the mathematical language of spatially extended systems: diffusion, wave propagation, fluid flow, electrostatics, population spread, and more. This course covers classical theory, weak solutions, and variational methods.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Classification and Canonical Forms",
+          "content_outline": "First-order PDEs: method of characteristics, transport equation. Classification of second-order linear PDEs: elliptic (Laplace, Poisson), parabolic (heat equation), hyperbolic (wave equation). Characteristics and well-posedness. Physical interpretation of each type. Systems of PDEs: classification via eigenvalues of symbol matrix."
+        },
+        {
+          "chapter_number": 2,
+          "title": "The Laplace and Poisson Equations",
+          "content_outline": "Fundamental solution. Mean value property. Maximum principle (weak and strong). Regularity of harmonic functions. Dirichlet and Neumann boundary conditions. Green's functions for standard domains. Poisson's formula. Boundary regularity. Harnack inequality. Perron's method for existence. Applications: steady-state heat conduction, electrostatics, potential theory in geophysics."
+        },
+        {
+          "chapter_number": 3,
+          "title": "The Heat Equation",
+          "content_outline": "Derivation from conservation of energy. Fundamental solution (heat kernel). Maximum principle for parabolic equations. Uniqueness and stability. Duhamel's principle for inhomogeneous problems. Separation of variables and Fourier series solutions. Long-time behavior and approach to equilibrium. Energy methods. Applications: diffusion in tissue, population spread, option pricing (Black-Scholes as a heat equation)."
+        },
+        {
+          "chapter_number": 4,
+          "title": "The Wave Equation",
+          "content_outline": "D'Alembert's formula in 1D. Kirchhoff's formula in 3D. Hadamard's method of descent. Huygens' principle: why you hear sharp sounds in 3D but not in 2D. Energy conservation. Domain of dependence and finite propagation speed. Reflection and transmission at interfaces. Applications: seismic waves, acoustic propagation, elastic wave propagation in biomechanics."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Fourier Analysis Methods for PDEs",
+          "content_outline": "Fourier series solutions for boundary value problems. Fourier transform and its application to PDEs on unbounded domains. Spectral representation of differential operators. Parseval's theorem and energy in frequency domain. Discrete Fourier transform and aliasing. Applications: spectral methods for numerical solution, signal processing interpretation of PDE solutions."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Green's Functions and Integral Representations",
+          "content_outline": "Green's functions for boundary value problems. Existence via Fredholm theory. Symmetry of Green's functions. Construction methods: images, eigenfunction expansion, conformal mapping. Boundary integral equations. Applications: BEM (boundary element method), electrostatics, potential flow, geophysical inverse problems."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Weak Solutions and Sobolev Spaces",
+          "content_outline": "Motivation: classical solutions may not exist or may be insufficient. Weak formulation of elliptic problems. Lax-Milgram theorem for existence and uniqueness. Sobolev embedding and regularity. Weak solutions of parabolic and hyperbolic equations. Lions-Magenes theory. Galerkin approximations and convergence. Connection to finite element methods."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Variational Methods and Calculus of Variations",
+          "content_outline": "Euler-Lagrange equations. Direct method of calculus of variations: existence via lower semicontinuity and coercivity. Regularity of minimizers. Constraints and Lagrange multipliers in infinite dimensions. Rayleigh quotient and eigenvalue problems. Variational principles in mechanics: Hamilton's principle, principle of virtual work. Connection to optimization."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Introduction to Nonlinear PDEs",
+          "content_outline": "Nonlinear elliptic equations: monotone operator theory, fixed-point methods. Semilinear heat equation: blow-up in finite time. Reaction-diffusion equations: traveling wave solutions, Fisher-KPP equation. Conservation laws: Burgers equation, shock formation, Rankine-Hugoniot conditions, entropy conditions. Viscosity solutions of Hamilton-Jacobi equations."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Eigenvalue Problems for PDEs",
+          "content_outline": "Sturm-Liouville theory. Spectral theorem for elliptic operators. Eigenfunction expansions. Rayleigh-Ritz variational characterization of eigenvalues. Asymptotic distribution of eigenvalues (Weyl's law). Spectral gaps and stability. Applications: vibration modes (structural, acoustic), quantum mechanics, stability of steady states in reaction-diffusion."
+        }
+      ]
+    },
+    {
+      "id": "CORE-010",
+      "title": "Stochastic Processes for Modeling",
+      "track": "Core Mathematics — Year 2",
+      "credits": 3,
+      "semester": "Fall Year 2",
+      "prerequisites": ["CORE-003 Probability Theory I", "CORE-006 Probability Theory II"],
+      "description": "Stochastic processes provide the mathematical framework for modeling randomness that evolves over time. This course covers the major process types used across all domain tracks.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Discrete-Time Markov Chains",
+          "content_outline": "Transition matrices, Chapman-Kolmogorov equations. Classification of states: transient, recurrent, absorbing. Stationary distributions: existence, uniqueness, convergence. Ergodic theorem. First passage times. Absorbing Markov chains. Applications: disease progression models, population genetics (Wright-Fisher model), MCMC algorithms."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Continuous-Time Markov Chains",
+          "content_outline": "Generator matrix (Q-matrix). Kolmogorov forward and backward equations. Embedded discrete-time chain. Birth-death processes. Poisson process as a special case. Explosion and regularity. Stationary distributions and detailed balance. Reversible chains. Applications: chemical kinetics (Gillespie algorithm), queueing theory (M/M/1, M/M/c), compartmental models in continuous time."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Poisson Processes and Generalizations",
+          "content_outline": "Homogeneous Poisson process: construction, properties, inter-arrival times. Superposition and thinning. Non-homogeneous Poisson processes. Compound Poisson processes. Poisson random measures. Spatial Poisson processes. Cox processes (doubly stochastic). Applications: event modeling (disease outbreaks, earthquakes), spatial point patterns, insurance claims."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Renewal Theory",
+          "content_outline": "Renewal processes and the renewal equation. Elementary renewal theorem. Key renewal theorem. Renewal reward theorem. Alternating renewal processes. Regenerative processes. Applications: replacement and maintenance models, age-dependent branching processes, semi-Markov processes."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Branching Processes",
+          "content_outline": "Galton-Watson branching processes: extinction probability, generating function methods. Subcritical, critical, supercritical classification. Multi-type branching processes. Age-dependent (Bellman-Harris) branching processes. Branching processes in random environments. Applications: extinction of populations, spread of epidemics in early phase, cell division, cascade failures."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Brownian Motion and Diffusion Processes",
+          "content_outline": "Review of Brownian motion properties. Brownian motion with drift. Geometric Brownian motion. Ornstein-Uhlenbeck process. Diffusion processes: infinitesimal generator, Kolmogorov forward (Fokker-Planck) and backward equations. Scale functions and speed measures. Boundary classification (Feller). First passage times for diffusions. Applications: population diffusion, financial modeling, neural firing models."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Stochastic Differential Equations",
+          "content_outline": "Itô integral: construction, properties, Itô isometry. Itô's formula. Stochastic differential equations: existence and uniqueness (Lipschitz conditions). Stratonovich integral and its relation to Itô. Geometric Brownian motion SDE. Ornstein-Uhlenbeck SDE. Numerical methods: Euler-Maruyama, Milstein, strong vs. weak convergence. Julia DifferentialEquations.jl SDE solvers."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Markov Random Fields and Spatial Stochastic Processes",
+          "content_outline": "Gibbs distributions and Markov random fields. Hammersley-Clifford theorem. Ising model and Potts model. Gaussian Markov random fields (GMRFs): precision matrices, sparse structure. Connection between GPs and GMRFs via SPDE approach. Simulation: Gibbs sampler for MRFs. Applications: spatial statistics, image analysis, disease mapping (BYM model)."
+        }
+      ]
+    },
+    {
+      "id": "CORE-011",
+      "title": "Bayesian Statistical Theory and Computation",
+      "track": "Core Mathematics — Year 2",
+      "credits": 4,
+      "semester": "Fall Year 2",
+      "prerequisites": ["CORE-008 Mathematical Statistics", "CORE-003 Probability Theory I"],
+      "description": "Bayesian inference is the universal framework for learning from data under uncertainty. This course covers the full theory from prior specification through posterior computation and model comparison.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Foundations of Bayesian Inference",
+          "content_outline": "Bayes' theorem as an updating rule. Prior, likelihood, posterior. Subjective vs. objective Bayes. De Finetti's theorem: exchangeability implies mixture of iid. Bayesian vs. frequentist: philosophical and practical contrasts. Bayesian decision theory: posterior expected loss, Bayes estimators. Connection to regularization."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Prior Specification",
+          "content_outline": "Conjugate priors: beta-binomial, normal-normal, gamma-Poisson. Jeffreys priors and reference priors. Maximum entropy priors. Weakly informative priors (Gelman's recommendations). Penalized complexity priors. Prior predictive checking. Prior sensitivity analysis. Hierarchical priors: hyperpriors and partial pooling. Improper priors and their dangers."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Conjugate and Analytical Solutions",
+          "content_outline": "Complete analytical solutions for exponential family models. Normal-normal, binomial-beta, Poisson-gamma, multinomial-Dirichlet, normal-inverse-gamma. Predictive distributions. Sufficiency and Bayesian updating. Natural conjugate families. Limitations of conjugate analysis: when models are not in exponential family."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Markov Chain Monte Carlo: Theory",
+          "content_outline": "Motivation: posterior distributions we cannot compute analytically. Metropolis-Hastings algorithm: detailed balance, ergodicity, convergence. Gibbs sampler as a special case. Random-walk Metropolis: acceptance rates, scaling theory (Roberts-Rosenthal). Convergence diagnostics: R-hat, ESS, trace plots, autocorrelation. Burn-in and thinning. Geometric ergodicity and CLT for MCMC."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Hamiltonian Monte Carlo and Modern Samplers",
+          "content_outline": "Hamiltonian dynamics and the leapfrog integrator. HMC: volume preservation, time reversibility, detailed balance. NUTS (No-U-Turn Sampler): adaptive trajectory length. Mass matrix adaptation. Comparison with random-walk MH: exploration efficiency in high dimensions. Riemannian HMC for challenging geometries. Practical implementation in Stan, Turing.jl, NumPyro."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Variational Inference",
+          "content_outline": "Evidence lower bound (ELBO). Mean-field variational family. Coordinate ascent variational inference (CAVI). Stochastic variational inference (SVI) for large datasets. Black-box variational inference: reparameterization trick, score function estimator. Normalizing flows for flexible variational families. Comparison with MCMC: speed vs. accuracy tradeoff. Pathologies of variational inference."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Hierarchical and Multilevel Models",
+          "content_outline": "Partial pooling: shrinkage toward group means. Random intercepts and random slopes. Non-centered parameterization for efficient MCMC. Hierarchical priors for variance components. Meta-analysis as hierarchical modeling. Spatial hierarchical models. Exchangeability and its generalizations. Applications: clinical trial meta-analysis, school effects, spatial disease mapping."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Model Comparison and Selection",
+          "content_outline": "Marginal likelihood (model evidence). Bayes factors: computation, interpretation, Jeffreys' scale. Challenges of Bayes factor computation: bridge sampling, nested sampling, thermodynamic integration. Information criteria: DIC, WAIC, LOO-CV (Pareto-smoothed importance sampling). Bayesian model averaging. Bayesian stacking. Posterior predictive checking: replicated data, test quantities."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Bayesian Nonparametrics",
+          "content_outline": "Dirichlet process: stick-breaking construction, Chinese restaurant process, Pólya urn. Dirichlet process mixture models. Gaussian process regression: kernel selection, hyperparameter optimization, sparse approximations. Beta process and Indian buffet process. Bayesian nonparametric survival analysis. Infinite-dimensional priors. Applications: density estimation, clustering, flexible regression."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Approximate Bayesian Computation and Simulation-Based Inference",
+          "content_outline": "Likelihood-free inference: when the likelihood is intractable. ABC rejection, ABC-MCMC, ABC-SMC. Choice of summary statistics. Regression adjustment. Neural density estimation: learning posterior or likelihood with neural networks. Simulation-based inference (SBI) frameworks. Applications: agent-based model calibration, evolutionary models, complex mechanistic models in ecology and epidemiology."
+        }
+      ]
+    },
+    {
+      "id": "CORE-012",
+      "title": "Numerical Methods for Differential Equations",
+      "track": "Core Mathematics — Year 2",
+      "credits": 3,
+      "semester": "Fall Year 2",
+      "prerequisites": ["CORE-004 Scientific Computing I", "CORE-007 ODEs", "CORE-009 PDEs I (concurrent)"],
+      "description": "Rigorous numerical methods for solving the differential equations that arise in every domain of this curriculum. Covers finite difference, finite element, and spectral methods with convergence theory.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Finite Difference Methods for Elliptic Problems",
+          "content_outline": "Grid generation. Central difference approximation of the Laplacian. Consistency, stability, and convergence. Maximum principle for discrete Laplacian. Error estimates. Irregular domains: cut-cell methods, immersed boundary. Multigrid methods: smoothing, restriction, prolongation, V-cycle, W-cycle, convergence theory."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Finite Difference Methods for Parabolic Problems",
+          "content_outline": "Forward Euler (explicit), backward Euler (implicit), Crank-Nicolson. Von Neumann stability analysis. CFL condition. Lax equivalence theorem: consistency + stability = convergence. Method of lines: semi-discretize in space, use ODE solver in time. ADI (alternating direction implicit) for 2D problems. Applications: heat conduction, diffusion, Black-Scholes."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Finite Difference Methods for Hyperbolic Problems",
+          "content_outline": "Upwind scheme for advection. Lax-Friedrichs and Lax-Wendroff schemes. Numerical dispersion and dissipation. CFL condition for hyperbolic equations. TVD (total variation diminishing) schemes. ENO and WENO schemes for shock capturing. Godunov's method and Riemann solvers. Applications: wave propagation, conservation laws, shallow water equations."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Finite Element Methods: Theory",
+          "content_outline": "Weak formulation and Galerkin approximation. Finite element spaces: piecewise linear, quadratic, higher-order. Céa's lemma and best approximation. A priori error estimates in H1 and L2 norms. Mesh generation: triangulation, quality measures. Isoparametric elements. Implementation: assembly of stiffness matrix and load vector. Quadrature for element integrals."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Finite Element Methods: Advanced Topics",
+          "content_outline": "Mixed methods for saddle-point problems (Stokes, elasticity). Inf-sup (LBB) condition. A posteriori error estimation: residual-based, recovery-based (Zienkiewicz-Zhu). Adaptive mesh refinement. Discontinuous Galerkin methods. Stabilized methods: SUPG, GLS. Nonlinear problems: Newton's method on the discrete system. Time-dependent problems: semi-discrete and fully discrete schemes."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Spectral Methods",
+          "content_outline": "Fourier spectral methods for periodic problems. Chebyshev spectral methods for non-periodic problems. Spectral convergence: exponential vs. algebraic rates. Galerkin vs. collocation (pseudospectral) methods. Spectral element methods: combining spectral accuracy with geometric flexibility. Applications: turbulence simulation, atmospheric modeling (spherical harmonics), high-accuracy solutions."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Finite Volume Methods",
+          "content_outline": "Conservation form and cell-averaged quantities. Flux computation: central, upwind, Riemann-solver based. Reconstruction: piecewise constant (first order), piecewise linear with limiters (second order), WENO (high order). Structured and unstructured grids. Applications: computational fluid dynamics, shallow water equations, advection-dominated transport."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Structure-Preserving and Geometric Integrators",
+          "content_outline": "Symplectic integrators for Hamiltonian systems: symplectic Euler, Störmer-Verlet, Gauss-Legendre Runge-Kutta. Long-time energy conservation. Lie group integrators for systems on manifolds. Discrete exterior calculus and compatible discretizations. Positivity-preserving schemes. Mass-conserving schemes. Applications: molecular dynamics, celestial mechanics, incompressible flow, population models (positivity)."
+        }
+      ]
+    },
+    {
+      "id": "CORE-013",
+      "title": "Differential Geometry and Tensor Analysis for Physical Modeling",
+      "track": "Core Mathematics — Year 2",
+      "credits": 3,
+      "semester": "Spring Year 2",
+      "prerequisites": ["CORE-001 Real Analysis", "CORE-002 Linear Algebra"],
+      "description": "The geometric language of modern physics, continuum mechanics, and geometric methods in statistics and machine learning. Manifolds, tensors, and differential forms provide the coordinate-free framework for models on curved or constrained domains.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Smooth Manifolds",
+          "content_outline": "Topological manifolds. Charts, atlases, smooth structure. Examples: spheres, tori, Lie groups, projective spaces. Smooth maps between manifolds. Diffeomorphisms. Submanifolds and implicit function theorem on manifolds. Partition of unity."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Tangent Spaces and Vector Fields",
+          "content_outline": "Tangent vectors as derivations. Tangent bundle TM. Vector fields as sections of TM. Integral curves and flows. Lie bracket of vector fields. Push-forward of tangent vectors. Applications: velocity fields in fluid dynamics, phase space in mechanics."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Covectors, Tensors, and the Cotangent Bundle",
+          "content_outline": "Cotangent space and covectors (1-forms). Cotangent bundle T*M. Tensors of type (r,s): multilinear maps. Tensor products and tensor algebra. Index notation and abstract index notation. Metric tensor as a (0,2) tensor. Musical isomorphisms (raising and lowering indices). Stress and strain as tensor fields in continuum mechanics."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Differential Forms and Exterior Calculus",
+          "content_outline": "Exterior algebra and wedge product. Differential k-forms. Exterior derivative d. Closed and exact forms. Pull-back of forms. Integration of forms on manifolds. Oriented manifolds and volume forms. Applications: conservation laws as exact forms, Maxwell's equations in differential form notation."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Stokes' Theorem and Its Applications",
+          "content_outline": "Generalized Stokes' theorem: ∫_M dω = ∫_∂M ω. Classical theorems as special cases: fundamental theorem of calculus, Green's theorem, divergence theorem, classical Stokes' theorem. De Rham cohomology. Applications: conservation laws, circulation and flux theorems in fluid dynamics, topological invariants."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Riemannian Geometry",
+          "content_outline": "Riemannian metrics. Length of curves and geodesics. Levi-Civita connection. Parallel transport. Curvature tensor: Riemann, Ricci, scalar curvature. Geodesic deviation. Gauss and Codazzi equations for surfaces. Applications: geometry of deformed bodies in continuum mechanics, information geometry (Fisher metric on statistical manifolds)."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Lie Groups and Lie Algebras",
+          "content_outline": "Lie groups: definition, examples (GL(n), SO(n), SU(n), SE(3)). Lie algebra as the tangent space at identity. Exponential map. Baker-Campbell-Hausdorff formula. Adjoint representation. One-parameter subgroups. Applications: rigid body dynamics (SO(3)), robotics and biomechanics (SE(3)), symmetry groups of differential equations, equivariant neural networks."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Applications: Continuum Mechanics in Geometric Language",
+          "content_outline": "Configuration space as a manifold. Deformation as a map between manifolds. Pullback metric and strain. Stress as a section of a tensor bundle. Conservation laws via Noether's theorem. Material symmetry groups. Geometric formulation of elasticity, fluid mechanics, and electromagnetism. Discrete exterior calculus for numerical simulation."
+        }
+      ]
+    },
+    {
+      "id": "CORE-014",
+      "title": "Partial Differential Equations II: Nonlinear PDEs and Modern Methods",
+      "track": "Core Mathematics — Year 2",
+      "credits": 3,
+      "semester": "Spring Year 2",
+      "prerequisites": ["CORE-009 PDEs I"],
+      "description": "Nonlinear PDEs, conservation laws, reaction-diffusion systems, and the modern theory of existence and regularity. The mathematical tools for modeling shock waves, pattern formation, turbulence, and complex dynamics.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Scalar Conservation Laws and Shock Waves",
+          "content_outline": "Burgers equation: characteristics, gradient catastrophe, shock formation. Weak solutions: non-uniqueness. Rankine-Hugoniot jump conditions. Entropy conditions: Lax, Oleinik, Kruzkov. Riemann problem. Rarefaction waves. Traffic flow as a conservation law. Numerical methods: Godunov, Lax-Friedrichs, and modern high-resolution schemes."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Systems of Conservation Laws",
+          "content_outline": "Euler equations of gas dynamics. Hyperbolicity: eigenvalues of the flux Jacobian. Riemann problem for systems: shock waves, contact discontinuities, rarefaction waves. Lax's entropy condition for systems. Glimm's scheme and existence. Approximate Riemann solvers: Roe, HLL, HLLC. Applications: compressible flow, shallow water equations, magnetohydrodynamics."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Reaction-Diffusion Systems",
+          "content_outline": "Fisher-KPP equation: traveling wave solutions, minimum wave speed. Bistable reaction-diffusion: traveling fronts. Turing instability: diffusion-driven instability, pattern formation. Activator-inhibitor systems (Gierer-Meinhardt). Spiral waves and excitable media. Applications: morphogenesis, chemical patterns, neural field equations, ecological spatial dynamics."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Hamilton-Jacobi Equations and Viscosity Solutions",
+          "content_outline": "Hamilton-Jacobi equations: eikonal equation, optimal control connection. Classical solutions and breakdown. Viscosity solutions: definition, uniqueness, comparison principle. Existence via Perron's method. Level set methods: tracking interfaces, fast marching. Applications: optimal control, front propagation, computational geometry, image processing."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Navier-Stokes Equations",
+          "content_outline": "Derivation from conservation of mass and momentum. Weak solutions: Leray-Hopf solutions. Energy inequality. Existence in 2D (global) and 3D (local). Regularity problem in 3D: the millennium prize problem. Serrin's regularity criterion. Numerical approaches: pressure-velocity coupling (SIMPLE, projection methods), turbulence modeling (RANS, LES)."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Free Boundary Problems",
+          "content_outline": "Stefan problem: melting and solidification. Mushy regions. Enthalpy formulation. Hele-Shaw flow. Obstacle problem as a variational inequality. American option pricing as a free boundary problem. Level set and phase field methods for moving interfaces. Applications: ice sheet dynamics, tumor growth, solidification in materials science."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Stochastic PDEs",
+          "content_outline": "White noise and cylindrical Brownian motion. Stochastic heat equation: mild solutions. Regularity of SPDE solutions. Kardar-Parisi-Zhang (KPZ) equation. Stochastic Navier-Stokes. Numerical methods for SPDEs. Connection to spatial statistics: SPDE approach to Gaussian random fields (Lindgren, Rue, Lindström). Applications: turbulence, spatial statistics, random media."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Homogenization and Multiscale PDEs",
+          "content_outline": "Periodic homogenization: two-scale expansion, cell problems, effective coefficients. H-convergence and G-convergence. Corrector results. Homogenization of Stokes flow in porous media (Darcy's law derivation). Homogenization of elastic composites. Computational homogenization: FE² method. Connection to multiscale methods in Part IV."
+        }
+      ]
+    },
+    {
+      "id": "CORE-015",
+      "title": "Computational Statistics and Monte Carlo Methods",
+      "track": "Core Mathematics — Year 2",
+      "credits": 3,
+      "semester": "Spring Year 2",
+      "prerequisites": ["CORE-008 Mathematical Statistics", "CORE-011 Bayesian Theory (concurrent)"],
+      "description": "The computational methods that make modern statistics possible. Monte Carlo, bootstrap, EM algorithm, and the theory behind simulation-based inference.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Random Number Generation and Simulation",
+          "content_outline": "Pseudorandom number generators: linear congruential, Mersenne Twister, xoshiro. Quasi-random sequences: Halton, Sobol. Inverse transform method. Accept-reject sampling. Generating from standard distributions. Multivariate normal sampling: Cholesky factorization. Copulas for dependent random vectors."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Monte Carlo Integration",
+          "content_outline": "Basic Monte Carlo estimator: unbiasedness, variance, CLT. Variance reduction: antithetic variates, control variates, stratified sampling. Importance sampling: optimal proposal, degeneracy in high dimensions. Rao-Blackwellization. Multi-level Monte Carlo. Computational complexity comparison with deterministic quadrature."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Bootstrap Methods",
+          "content_outline": "Nonparametric bootstrap: Efron's original method. Bootstrap confidence intervals: percentile, basic, studentized, BCa. Theoretical justification: Edgeworth expansion. Parametric bootstrap. Double bootstrap. Bootstrap for dependent data: block bootstrap, stationary bootstrap. Subsampling. Bootstrap for complex statistics: eigenvalues, quantiles, regression."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Permutation Tests and Exact Methods",
+          "content_outline": "Permutation testing principle. Two-sample tests, paired tests, correlation tests. Exact computation vs. Monte Carlo approximation. Multiple testing with permutations: maxT procedure, step-down minP. Conditional inference. Exact tests for 2×2 tables (Fisher's exact test). Connection to conformal prediction."
+        },
+        {
+          "chapter_number": 5,
+          "title": "The EM Algorithm and Extensions",
+          "content_outline": "Expectation-Maximization: derivation from Jensen's inequality, convergence theory. Examples: Gaussian mixtures, missing data, hidden Markov models. Variants: ECM, ECME, AECM, stochastic EM, Monte Carlo EM. Variational EM. Connection to variational inference. Applications: mixture models in spatial statistics, latent variable models in epidemiology."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Sequential Monte Carlo (Particle Filters)",
+          "content_outline": "State-space models and filtering. Sequential importance sampling. Resampling: multinomial, stratified, systematic, residual. Bootstrap particle filter (Gordon et al.). Auxiliary particle filter. Particle MCMC: PMMH, SMC². Convergence theory. Applications: tracking, signal processing, online Bayesian inference, data assimilation for weather prediction."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Cross-Validation and Predictive Assessment",
+          "content_outline": "Leave-one-out cross-validation: theory, connection to AIC (Stone). K-fold cross-validation: variance analysis, choice of K. Generalized cross-validation for linear smoothers. LOOCV via influence functions. Pareto-smoothed importance sampling LOO (PSIS-LOO) for Bayesian models. Repeated cross-validation. Nested cross-validation for hyperparameter tuning."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Optimization Algorithms for Statistics",
+          "content_outline": "Newton-Raphson and Fisher scoring. Quasi-Newton methods: BFGS, L-BFGS. Coordinate descent for LASSO and elastic net. Proximal gradient methods. Stochastic gradient descent: convergence theory, learning rate schedules, Adam optimizer. Natural gradient descent: connection to information geometry. Expectation propagation. Applications across all statistical models."
+        }
+      ]
+    },
+    {
+      "id": "CORE-016",
+      "title": "Optimization Theory for Modelers",
+      "track": "Core Mathematics — Year 2",
+      "credits": 3,
+      "semester": "Spring Year 2",
+      "prerequisites": ["CORE-001 Real Analysis", "CORE-002 Linear Algebra", "CORE-005 Functional Analysis"],
+      "description": "Optimization is the mathematical engine of model calibration, control, and machine learning. This course covers convex and nonconvex theory, variational methods, and optimal control.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Convex Sets and Convex Functions",
+          "content_outline": "Convex sets: halfspaces, polyhedra, cones, ellipsoids. Separation theorems. Convex functions: characterizations, Jensen's inequality, preservation under operations. Conjugate functions (Fenchel conjugate). Sublevel sets. Epigraph. Convex hulls and extreme points. Applications: constraint sets in optimization, convex relaxation."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Optimality Conditions",
+          "content_outline": "Unconstrained optimization: first and second-order necessary and sufficient conditions. Constrained optimization: KKT conditions. Constraint qualification: Slater, LICQ, MFCQ. Duality: Lagrangian dual, weak and strong duality, complementary slackness. Saddle point characterization. Sensitivity analysis via dual variables."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Convex Optimization Algorithms",
+          "content_outline": "Gradient descent: convergence rates for smooth and strongly convex objectives. Projected gradient descent. Proximal operators and proximal gradient method (ISTA, FISTA). ADMM (alternating direction method of multipliers). Interior point methods: barrier functions, path following. Cutting plane methods. Complexity: polynomial time solvability of convex programs."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Nonconvex Optimization",
+          "content_outline": "Local vs. global optima. Gradient descent on nonconvex landscapes: convergence to stationary points. Saddle points and the prevalence of saddle points in high dimensions. Stochastic gradient descent: convergence theory, variance reduction (SVRG, SAGA). Global optimization: simulated annealing, genetic algorithms, Bayesian optimization. Landscape analysis of neural network loss surfaces."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Calculus of Variations",
+          "content_outline": "Functionals and the Euler-Lagrange equation. Boundary conditions: natural and essential. Second variation and Jacobi accessory equation. Constrained variational problems: isoperimetric problems, Lagrange multipliers in function spaces. Brachistochrone and geodesics. Direct methods: existence of minimizers via lower semicontinuity and compactness. Gamma-convergence."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Optimal Control Theory",
+          "content_outline": "Formulation: state equations, cost functional, control constraints. Pontryagin maximum principle: adjoint equations, Hamiltonian, transversality conditions. Dynamic programming: Hamilton-Jacobi-Bellman equation, value function. Linear-quadratic regulator (LQR). Numerical methods: direct (collocation) and indirect (shooting). Applications: optimal drug dosing, disease intervention strategies, trajectory optimization."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Optimization on Manifolds",
+          "content_outline": "Riemannian gradient and Riemannian Hessian. Retractions and vector transport. Riemannian gradient descent: convergence theory. Applications: optimization over orthogonal matrices (Stiefel manifold), positive definite matrices, low-rank matrices. Geometric optimization in machine learning. Tools: Manopt, Manifolds.jl."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Bilevel Optimization and Learning to Optimize",
+          "content_outline": "Bilevel optimization: upper and lower level problems. Implicit differentiation for bilevel optimization. Hyperparameter optimization as bilevel optimization. Meta-learning. Learning rate schedules as optimization. Differentiable optimization layers in neural networks. Applications: SciML (learning physics parameters while training neural networks), causal discovery, automated machine learning."
+        }
+      ]
+    },
+    {
+      "id": "BIO-001",
+      "title": "Generalized Linear Models and Extensions",
+      "track": "Track A — Biostatistics",
+      "credits": 3,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-008 Mathematical Statistics", "CORE-011 Bayesian Theory"],
+      "description": "The workhorse models of applied biostatistics: regression models for non-normal response data with rigorous theory of estimation, inference, and model checking.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Exponential Dispersion Family and Link Functions",
+          "content_outline": "Exponential family in canonical form. Natural parameter, cumulant function. Mean and variance as functions of the natural parameter. Dispersion parameter. Link functions: canonical, identity, log, logit, probit, complementary log-log. Systematic component and linear predictor."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Maximum Likelihood Estimation for GLMs",
+          "content_outline": "Score equations. Fisher scoring algorithm (iteratively reweighted least squares). Existence and uniqueness of MLE. Asymptotic properties: consistency, asymptotic normality. Information matrix and standard errors. Wald, likelihood ratio, and score tests for GLMs. Deviance and model comparison."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Logistic Regression",
+          "content_outline": "Binary logistic regression: interpretation of coefficients as log-odds ratios. Multinomial and ordinal logistic regression. Separation and quasi-complete separation. Firth's penalized likelihood. ROC curves and AUC. Calibration assessment. Hosmer-Lemeshow test. Conditional and exact logistic regression."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Poisson Regression and Count Data Models",
+          "content_outline": "Poisson regression: log link, interpretation as rate ratios. Offset term for exposure. Overdispersion: quasi-Poisson, negative binomial regression. Zero-inflated models: ZIP, ZINB. Hurdle models. Rate modeling with person-time denominators. Applications: disease incidence modeling, event counts in clinical trials."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Quasi-Likelihood and Generalized Estimating Equations",
+          "content_outline": "Quasi-likelihood: relaxing distributional assumptions, keeping mean-variance relationship. Quasi-AIC. Generalized estimating equations (GEE) for correlated data: working correlation structures (independence, exchangeable, AR(1), unstructured). Sandwich (robust) standard errors. QIC for working correlation selection. Comparison with mixed models."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Penalized Regression: Ridge, LASSO, Elastic Net",
+          "content_outline": "Ridge regression: L2 penalty, bias-variance tradeoff, connection to Bayesian normal prior. LASSO: L1 penalty, sparsity, geometric interpretation. Elastic net: combining L1 and L2. Coordinate descent algorithm. Cross-validation for tuning parameter selection. Adaptive LASSO for oracle properties. Group LASSO. Stability selection. Applications: variable selection in high-dimensional clinical data."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Generalized Additive Models",
+          "content_outline": "Smoothing splines: penalized regression splines, thin plate splines. Tensor product smooths for interactions. Backfitting algorithm. Penalized iteratively reweighted least squares. Automatic smoothness selection: GCV, REML. Concurvity. GAMs in mgcv (R) and GAM.jl. Applications: dose-response curves, nonlinear exposure-outcome relationships."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Diagnostics, Residuals, and Model Checking",
+          "content_outline": "Deviance residuals, Pearson residuals, Anscombe residuals. Leverage and influence in GLMs. Cook's distance. Added variable plots. Partial residual plots. Goodness-of-fit tests. Overdispersion testing. Residual diagnostics for GAMs. Posterior predictive checking for Bayesian GLMs. Simulation-based residuals (DHARMa approach)."
+        }
+      ]
+    },
+    {
+      "id": "BIO-002",
+      "title": "Survival Analysis: Theory and Advanced Methods",
+      "track": "Track A — Biostatistics",
+      "credits": 4,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-008 Mathematical Statistics", "CORE-010 Stochastic Processes"],
+      "description": "The mathematics of time-to-event data: censoring, hazard functions, and the counting process framework that unifies nonparametric, semiparametric, and parametric approaches.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Survival Functions, Hazards, and Censoring",
+          "content_outline": "Survival function, hazard function, cumulative hazard, and their relationships. Types of censoring: right, left, interval. Truncation: left and right. Likelihood construction under censoring. Common parametric distributions: exponential, Weibull, log-normal, log-logistic, Gompertz. Mean residual life. Conditional survival."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Nonparametric Estimation",
+          "content_outline": "Kaplan-Meier estimator: derivation, Greenwood's formula for variance. Nelson-Aalen estimator. Log-rank test and its extensions (weighted log-rank, stratified log-rank). Renyi-type tests. Confidence bands: Hall-Wellner, EP. Median survival estimation. Multiple comparison adjustments."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Cox Proportional Hazards Model",
+          "content_outline": "Semiparametric model: no baseline hazard specification. Partial likelihood: derivation, properties, asymptotic theory (Andersen-Gill). Breslow and Efron approximations for ties. Time-varying covariates. Stratified Cox model. Baseline hazard estimation: Breslow, Nelson-Aalen. Interpretation of hazard ratios."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Counting Process Formulation",
+          "content_outline": "Counting processes N(t), at-risk processes Y(t). Martingale residuals. Nelson-Aalen via counting processes. Multiplicative intensity model. Martingale CLT. Andersen-Gill extension for recurrent events. Aalen's additive hazards model. Connection to empirical process theory. This formulation provides the rigorous mathematical framework for all survival analysis."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Accelerated Failure Time Models",
+          "content_outline": "AFT model: log-linear form, interpretation as time acceleration/deceleration. Parametric AFT: Weibull, log-normal, log-logistic. Semiparametric AFT: rank-based estimation (Gehan, logrank). Comparison with Cox PH model. When to use AFT vs. PH. Bayesian AFT models."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Competing Risks",
+          "content_outline": "Competing risks framework: cause-specific hazards, subdistribution hazards. Cause-specific Cox models. Fine-Gray subdistribution hazard model. Cumulative incidence function: Aalen-Johansen estimator. Gray's test. Multi-state models: illness-death model, general multi-state. Transition probabilities and hazards. Aalen-Johansen estimator for multi-state models."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Frailty Models and Correlated Survival",
+          "content_outline": "Shared frailty models: gamma, log-normal, inverse Gaussian frailty distributions. Penalized partial likelihood estimation. Connection to random effects models. Correlated frailty. Multi-center clinical trials with frailty. Cure fraction models: mixture cure model, promotion time cure model. Applications: family studies, multi-center trials, dental survival."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Joint Models for Longitudinal and Survival Data",
+          "content_outline": "Shared parameter joint models. Bayesian estimation via MCMC. Dynamic predictions: updating survival probabilities as longitudinal data accumulates. Discrimination and calibration of dynamic predictions. Software: JMbayes2, rstanarm. Applications: biomarker-driven survival prediction, personalized medicine, oncology dose optimization."
+        }
+      ]
+    },
+    {
+      "id": "SCIML-001",
+      "title": "Neural Differential Equations and Universal Differential Equations",
+      "track": "Track D — Scientific Machine Learning",
+      "credits": 4,
+      "semester": "Year 3",
+      "prerequisites": ["CORE-007 ODEs", "CORE-009 PDEs", "CORE-012 Numerical DE Methods", "Deep Learning Theory"],
+      "description": "The core course of the SciML track: using neural networks inside differential equations to create hybrid mechanistic-data-driven models. Covers neural ODEs, physics-informed neural networks, and the universal differential equation framework.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Neural ODEs: Continuous-Depth Neural Networks",
+          "content_outline": "ResNets as Euler discretizations of ODEs. Neural ODE formulation: dx/dt = f_θ(x,t). Forward pass via ODE solver. Memory-efficient training via adjoint sensitivity method (continuous adjoint). Comparison with backpropagation through the solver (discrete adjoint). Regularization: weight decay, Jacobian penalty, augmented neural ODEs. Computational considerations: adaptive stepping, implicit solvers for stiff neural ODEs."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Training Neural ODEs: Sensitivity Analysis",
+          "content_outline": "Forward sensitivity analysis: O(np) cost. Adjoint sensitivity analysis: O(n) cost independent of parameters. Continuous vs. discrete adjoint: accuracy tradeoffs. Interpolating adjoint for memory efficiency. Automatic differentiation through ODE solvers. Checkpointing strategies. Sensitivity analysis in DiffEqFlux.jl and torchdiffeq."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Universal Differential Equations (UDEs)",
+          "content_outline": "The UDE paradigm: known physics + neural network for unknown terms. Formulation: dx/dt = f_known(x) + NN_θ(x). Training: adjoint methods through the hybrid system. Symbolic regression for interpretability: recovering equations from trained neural networks (SINDy post-processing). Identifiability of neural network terms. Regularization to promote physical plausibility. Examples: learning missing physics in Lotka-Volterra, Lorenz, pharmacokinetics."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Physics-Informed Neural Networks (PINNs)",
+          "content_outline": "Formulation: neural network as approximate solution, PDE residual as loss. Collocation points and residual sampling strategies. Boundary and initial condition enforcement: soft (penalty) vs. hard (architecture). Training challenges: spectral bias, causality failure, multiscale problems. Remedies: adaptive weighting, curriculum learning, Fourier feature embeddings, causal training. Convergence theory: what do PINNs approximate and when do they fail?"
+        },
+        {
+          "chapter_number": 5,
+          "title": "Neural Operators: DeepONet and Fourier Neural Operator",
+          "content_outline": "Learning operators (maps between function spaces) rather than functions. DeepONet: branch and trunk network architecture, universal approximation for operators. Fourier Neural Operator (FNO): spectral convolution layers, resolution invariance. U-shaped Neural Operator (UNO). Comparison with PINNs: operator learning generalizes across initial/boundary conditions. Training data requirements. Applications: weather prediction (FourCastNet), fluid dynamics, material science."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Neural SDEs and Stochastic Models",
+          "content_outline": "Neural SDE formulation: drift and diffusion as neural networks. Training via adjoint methods for SDEs. Latent SDE models for irregularly sampled time series. Score-based diffusion models as neural SDEs. Variational inference for neural SDEs. Applications: stochastic population dynamics, financial modeling, uncertainty quantification in dynamical systems."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Structure-Preserving Neural Networks",
+          "content_outline": "Hamiltonian neural networks: learning energy-conserving dynamics. Lagrangian neural networks. Symplectic neural networks. Port-Hamiltonian neural networks for dissipative systems. SE(3)-equivariant networks for molecular dynamics. Conservation law enforcement: divergence-free networks for incompressible flow, positivity constraints. Noether's theorem as architectural constraint."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Surrogate Modeling and Emulation",
+          "content_outline": "Neural network surrogates for expensive simulations. Training data generation: Latin hypercube sampling, space-filling designs. Active learning for efficient data acquisition. Multi-fidelity surrogates: combining cheap low-fidelity and expensive high-fidelity simulations. Transfer learning for surrogate models. Uncertainty quantification for surrogates: ensemble methods, MC dropout, conformal prediction. Applications: climate model emulation, patient-specific biomechanical simulation, real-time digital twins."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Inverse Problems and System Identification with SciML",
+          "content_outline": "Classical inverse problems: ill-posedness, regularization. SciML approach: embed the forward model (ODE/PDE) as a differentiable layer, optimize parameters via gradient descent through the solver. Hybrid inverse problems: learn both parameters and missing physics simultaneously. Bayesian SciML: posterior inference over neural network weights and physical parameters. Amortized inference with neural posterior estimation. Applications: estimating cardiovascular parameters from pressure waveforms, identifying ecological interaction networks from time-series data."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Case Studies: SciML Across Domains",
+          "content_outline": "Case Study 1: Neonatal hemodynamics — UDE with Windkessel equations and neural network for unknown compliance. Case Study 2: Epidemic forecasting — neural ODE augmenting SIR model with learned behavioral response. Case Study 3: Climate emulation — FNO trained on CESM output for fast scenario evaluation. Case Study 4: Biomechanics — PINN for tissue mechanics with learned constitutive law. Case Study 5: Pharmacokinetics — neural SDE for patient-specific drug metabolism. Each case includes data, code, and validation."
+        }
+      ]
+    },
+    {
+      "id": "PHYS-001",
+      "title": "Continuum Mechanics: From Fundamentals to Biological Tissue",
+      "track": "Track F — Physical Systems",
+      "credits": 4,
+      "semester": "Year 2–3",
+      "prerequisites": ["CORE-002 Linear Algebra", "CORE-013 Differential Geometry", "CORE-009 PDEs I"],
+      "description": "The mathematical theory of continuous media: solids, fluids, and biological tissues. Provides the unified framework for biomechanics, fluid dynamics, and any model involving deformable bodies.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Kinematics of Deformation",
+          "content_outline": "Body, configuration, motion. Material (Lagrangian) and spatial (Eulerian) descriptions. Deformation gradient F. Polar decomposition: rotation and stretch. Strain measures: Green-Lagrange strain E, Almansi strain e, logarithmic strain. Rate of deformation tensor D, spin tensor W. Material time derivative. Reynolds transport theorem."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Stress and Balance Laws",
+          "content_outline": "Cauchy stress tensor: traction vector, Cauchy's theorem. First and second Piola-Kirchhoff stress tensors. Balance of mass (continuity equation). Balance of linear momentum (equations of motion). Balance of angular momentum (symmetry of Cauchy stress). Balance of energy (first law of thermodynamics). Entropy inequality (second law, Clausius-Duhem)."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Constitutive Theory: Principles and Constraints",
+          "content_outline": "Constitutive equations: mapping deformation to stress. Principles of constitutive theory: determinism, local action, material frame indifference (objectivity), material symmetry. Representation theorems for isotropic tensor functions. Thermodynamic restrictions from Clausius-Duhem inequality. Coleman-Noll procedure. Simple materials. Internal variables."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Linear Elasticity",
+          "content_outline": "Linearization of finite elasticity. Generalized Hooke's law: stiffness tensor, compliance tensor. Symmetry classes: isotropic (2 constants: λ, μ), transversely isotropic (5), orthotropic (9), anisotropic (21). Navier equations. Plane stress and plane strain. Airy stress function. Saint-Venant's principle. Variational formulation and finite element methods for linear elasticity."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Hyperelasticity",
+          "content_outline": "Strain energy functions: W(F) or W(C) or W(E). Stress from energy: S = ∂W/∂E, P = ∂W/∂F. Neo-Hookean model. Mooney-Rivlin model. Ogden model. Arruda-Boyce (eight-chain) model. Nearly incompressible formulations: penalty and mixed methods. Polyconvexity and existence of minimizers. Material stability (strong ellipticity). Implementation in FEM."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Viscoelasticity",
+          "content_outline": "Linear viscoelasticity: creep and relaxation functions, Boltzmann superposition. Spring-dashpot models: Maxwell, Kelvin-Voigt, standard linear solid, generalized Maxwell (Prony series). Complex modulus and loss tangent. Correspondence principle. Nonlinear viscoelasticity: quasi-linear viscoelasticity (Fung model for biological tissue). Finite deformation viscoelasticity: multiplicative decomposition of deformation gradient."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Biological Tissue Mechanics",
+          "content_outline": "Special properties of biological tissue: large deformations, anisotropy (fiber-reinforced), viscoelasticity, incompressibility, active contraction, growth and remodeling. Holzapfel-Gasser-Ogden (HGO) model for arterial tissue. Fiber dispersion. Residual stress and opening angle experiments. Active stress vs. active strain formulations for muscle. Mixture theory for soft tissue: solid skeleton + fluid."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Growth and Remodeling",
+          "content_outline": "Volumetric growth: multiplicative decomposition F = F_e · F_g. Growth laws: stress-driven, strain-driven, nutrient-driven. Morphoelasticity: mechanics of growing biological structures. Tumor growth models. Wound healing mechanics. Bone remodeling: Wolff's law, computational models. Cardiac growth and remodeling in hypertrophy. Connection to agent-based models of tissue growth."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Poroelasticity and Mixture Theory",
+          "content_outline": "Biot's theory of poroelasticity: coupled solid deformation and fluid flow. Effective stress. Consolidation theory (Terzaghi). Darcy's law from homogenization. Anisotropic poroelasticity. Mixture theory: balance laws for multi-component continua. Biphasic and triphasic models for cartilage. Swelling of hydrogels. Applications: brain tissue (poroelastic model of hydrocephalus), intervertebral disc, lung tissue."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Computational Continuum Mechanics",
+          "content_outline": "Weak form and virtual work principle. Finite element discretization: isoparametric elements, Gauss quadrature. Nonlinear FEM: Newton-Raphson iteration, consistent tangent stiffness. Large deformation FEM: total Lagrangian and updated Lagrangian. Mixed formulations for incompressibility. Contact mechanics. Adaptive mesh refinement. Verification and validation for biomechanical FEM. Software: FEBio, FEniCS, Ferrite.jl."
+        }
+      ]
+    },
+    {
+      "id": "PHYS-002",
+      "title": "Geophysical Fluid Dynamics and Atmospheric Modeling",
+      "track": "Track F — Physical Systems",
+      "credits": 4,
+      "semester": "Year 3",
+      "prerequisites": ["CORE-009 PDEs", "CORE-012 Numerical DE Methods", "Fluid Dynamics"],
+      "description": "The dynamics of rotating, stratified fluids on planetary scales: the mathematical foundation for weather prediction, ocean modeling, and climate science.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Governing Equations on a Rotating Earth",
+          "content_outline": "Navier-Stokes in a rotating frame: Coriolis and centrifugal accelerations. Primitive equations: hydrostatic approximation. Pressure coordinates. Thermodynamic energy equation. Equation of state for moist air. Boussinesq approximation. Shallow water equations: derivation, conservation properties. Spherical coordinates and the beta-plane approximation."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Geostrophic Balance and Thermal Wind",
+          "content_outline": "Geostrophic balance: Coriolis force balancing pressure gradient. Geostrophic wind. Thermal wind relation: vertical wind shear from horizontal temperature gradients. Ageostrophic motions. Ekman layers: boundary layer in rotating fluid, Ekman spiral, Ekman pumping. Applications: large-scale atmospheric and oceanic circulation patterns."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Rossby Waves and Planetary Wave Dynamics",
+          "content_outline": "Potential vorticity: Ertel's theorem, conservation on isentropic surfaces. Rossby waves: barotropic and baroclinic. Dispersion relation and group velocity. Rossby wave breaking. Wave-mean flow interaction: Eliassen-Palm flux. Critical layers. Vertically propagating waves. Stationary waves forced by topography and heating."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Baroclinic Instability",
+          "content_outline": "Eady model: growth rates, most unstable mode, structure. Charney model: semi-infinite atmosphere. Necessary conditions for instability: Charney-Stern theorem. Energetics: conversion of available potential energy to kinetic energy. Life cycle of baroclinic waves. Connection to mid-latitude weather systems (cyclogenesis)."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Quasi-Geostrophic Theory",
+          "content_outline": "QG scaling and asymptotic derivation from primitive equations. QG potential vorticity equation. QG omega equation: diagnosis of vertical motion. QG energetics. Numerical solution of the QG system. Limitations and when QG breaks down. Connection to more complete models."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Parameterization of Sub-Grid Processes",
+          "content_outline": "Why parameterization is necessary: processes below grid resolution. Convective parameterization: mass flux schemes, CAPE-based triggers. Boundary layer parameterization: K-theory, TKE closures. Radiation: two-stream approximation, correlated-k method. Cloud microphysics: bulk vs. bin approaches. Stochastic parameterization. Machine learning parameterization: neural network emulators of sub-grid processes."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Numerical Methods for Atmospheric Models",
+          "content_outline": "Spectral transform method: spherical harmonics, transform grid. Finite volume on the cubed-sphere grid. Discontinuous Galerkin methods for atmospheric dynamics. Time integration: semi-implicit, split-explicit. Advection schemes: flux-form semi-Lagrangian. Conservation properties: mass, energy, potential vorticity. Grid imprinting and computational mode issues."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Data Assimilation for Weather Prediction",
+          "content_outline": "Optimal interpolation. 3D-Var and 4D-Var: cost function formulation, adjoint model, incremental approach. Ensemble Kalman filter: stochastic and deterministic variants, localization, inflation. Hybrid methods: combining ensemble and variational. Observation operators: satellite radiances, radar, radiosondes. Quality control. Forecast verification: skill scores, reliability diagrams, economic value."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Climate Modeling and Earth System Science",
+          "content_outline": "Energy balance models: zero and one-dimensional. Radiative-convective equilibrium. Climate sensitivity and feedback analysis: Planck, water vapor, lapse rate, albedo, cloud feedbacks. Carbon cycle: terrestrial and ocean. Coupled ocean-atmosphere models: AMOC, ENSO. Ice sheet dynamics: shallow ice approximation. Climate model evaluation. Detection and attribution of climate change."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Climate Model Emulation and SciML in Climate Science",
+          "content_outline": "Gaussian process emulators for climate model output. Neural network emulators: training on CMIP ensembles. Fourier Neural Operator for weather prediction (Pangu-Weather, GraphCast). Hybrid models: ML-corrected climate models. Uncertainty quantification: perturbed physics ensembles. Integrated assessment models. Scenario analysis: SSP-RCP framework. Ethical considerations in climate modeling."
+        }
+      ]
+    },
+    {
+      "id": "UQ-001",
+      "title": "Uncertainty Quantification: Theory and Practice",
+      "track": "Cross-Cutting Methods",
+      "credits": 4,
+      "semester": "Year 3–4",
+      "prerequisites": ["CORE-003 Probability I", "CORE-011 Bayesian Theory", "CORE-012 Numerical DE Methods"],
+      "description": "The mathematical framework for quantifying, propagating, and reducing uncertainty in computational models. UQ is the bridge between model and reality — without it, predictions are meaningless.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Taxonomy of Uncertainty",
+          "content_outline": "Aleatory (irreducible) vs. epistemic (reducible) uncertainty. Parametric uncertainty, structural uncertainty (model form error), numerical uncertainty (discretization error). Input uncertainty, output uncertainty. Uncertainty in initial conditions, boundary conditions, forcing. The uncertainty pyramid: from data to decisions."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Forward Uncertainty Propagation: Monte Carlo Methods",
+          "content_outline": "Standard Monte Carlo: convergence rate O(1/√N). Variance reduction: antithetic variates, control variates, importance sampling. Quasi-Monte Carlo: low-discrepancy sequences, Koksma-Hlawka inequality. Latin hypercube sampling. Multilevel Monte Carlo: variance reduction by combining cheap and expensive models. Multilevel quasi-Monte Carlo."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Polynomial Chaos Expansions",
+          "content_outline": "Wiener-Askey scheme: matching polynomial basis to input distribution (Hermite-Gaussian, Legendre-uniform, etc.). Intrusive methods: stochastic Galerkin. Non-intrusive methods: stochastic collocation, regression. Sparse grids (Smolyak). Adaptive polynomial chaos. Convergence rates. Multi-element polynomial chaos for discontinuities. Comparison with Monte Carlo for different problem dimensions."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Global Sensitivity Analysis",
+          "content_outline": "Variance-based methods: Sobol indices (first-order, total-order, higher-order interactions). ANOVA decomposition. Estimation of Sobol indices: Monte Carlo (Saltelli), polynomial chaos. Morris screening for factor fixing. Shapley effects for correlated inputs. Derivative-based global sensitivity measures (DGSM). Applications: identifying which parameters most influence model predictions."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Bayesian Calibration of Computer Models",
+          "content_outline": "Kennedy-O'Hagan framework: calibration parameter θ, model inadequacy δ(x), observation error ε. Gaussian process emulator for the computer model. Identifiability: separating calibration parameters from model discrepancy. Modular vs. full Bayesian calibration. History matching: implausibility measures, iterative refocusing. Applications: calibrating climate models, biomechanical models, pharmacokinetic models."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Surrogate-Based UQ",
+          "content_outline": "Gaussian process surrogates: prediction mean and variance. Adaptive design: expected improvement, integrated mean squared prediction error. Neural network surrogates with uncertainty: ensembles, MC dropout, Bayesian neural networks. Multi-fidelity surrogates: co-kriging, multi-fidelity neural networks. Active subspaces: dimension reduction for UQ. Applications: real-time UQ for expensive simulations."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Reliability Analysis and Rare Event Estimation",
+          "content_outline": "Limit state functions and failure probability. First-order reliability method (FORM): most probable point, Hasofer-Lind index. Second-order reliability method (SORM). Importance sampling for rare events. Subset simulation: Markov chain sampling in nested subsets. Line sampling. Applications: structural reliability, nuclear safety, extreme weather events."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Model Validation and Prediction Under Uncertainty",
+          "content_outline": "Verification vs. validation. Model validation metrics: area metric, statistical hypothesis tests, Bayesian validation. Validation domains and extrapolation. Predictive assessment: posterior predictive checks, calibration-sharp prediction. Decision under uncertainty: expected utility, robust optimization. Value of information analysis: how much should we invest in reducing uncertainty? Communicating uncertainty to stakeholders."
+        }
+      ]
+    },
+    {
+      "id": "CROSS-001",
+      "title": "Advanced Dynamical Systems: From Chaos to Data-Driven Discovery",
+      "track": "Cross-Cutting Methods",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["CORE-007 ODEs", "CORE-002 Linear Algebra"],
+      "description": "Nonlinear dynamics, chaos, and modern data-driven methods for discovering and analyzing dynamical systems from data. Connects classical dynamical systems theory to machine learning and SciML.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Invariant Manifolds and Global Dynamics",
+          "content_outline": "Stable, unstable, and center manifolds. Stable manifold theorem. Center manifold reduction for bifurcation analysis. Invariant tori. Homoclinic and heteroclinic orbits. Melnikov method for homoclinic bifurcations. Global bifurcations: homoclinic explosion, Shilnikov. Applications: transport barriers in geophysical flows, escape from potential wells in biomechanics."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Chaos and Strange Attractors",
+          "content_outline": "Sensitive dependence on initial conditions. Lyapunov exponents: definition, computation, spectrum. Strange attractors: Lorenz, Rössler, Hénon. Fractal dimension: box-counting, correlation dimension, Kaplan-Yorke. Horseshoe maps and symbolic dynamics. Takens embedding theorem: reconstructing attractors from time series. Chaos in Hamiltonian systems: KAM theorem."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Ergodic Theory for Dynamical Systems",
+          "content_outline": "Invariant measures. Birkhoff ergodic theorem. Mixing and ergodicity. Ergodic hierarchy: ergodic → mixing → K-system → Bernoulli. Physical (SRB) measures. Ergodic theory of Markov processes. Connection to statistical mechanics. Applications: time averages equal ensemble averages (justification for long-time simulation statistics)."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Koopman Operator Theory",
+          "content_outline": "Koopman operator: infinite-dimensional linear representation of nonlinear dynamics. Koopman eigenfunctions, eigenvalues, and modes. Spectral decomposition of observables. Connection to harmonic analysis and ergodic theory. Koopman analysis of periodic, quasi-periodic, and chaotic systems. Applications: linear prediction of nonlinear systems, control design, model reduction."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Dynamic Mode Decomposition (DMD)",
+          "content_outline": "DMD algorithm: data-driven approximation of Koopman operator. Standard DMD, exact DMD, optimized DMD. Connection to SVD and low-rank approximation. Extended DMD (EDMD) with dictionary functions. Kernel DMD. DMD with control. Sparsity-promoting DMD. Applications: fluid dynamics (coherent structure identification), neuroscience, epidemiology (identifying dominant modes in disease dynamics)."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Sparse Identification of Nonlinear Dynamics (SINDy)",
+          "content_outline": "SINDy algorithm: sparse regression on a library of candidate functions. Sequential thresholded least squares (STLSQ). Choosing the library: polynomial, trigonometric, custom. Handling noise: integral formulation, ensemble SINDy. SINDy with control inputs. PDE-FIND: discovering PDEs from data. Implicit SINDy for rational dynamics. Bayesian SINDy for uncertainty quantification. Applications: discovering governing equations for unknown systems."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Data-Driven Reduced-Order Models",
+          "content_outline": "Proper Orthogonal Decomposition (POD): SVD of snapshot matrix, Galerkin projection. Balanced truncation. POD-Galerkin reduced models: limitations (stability, accuracy). Closure models for reduced systems. Neural network closure. Autoencoders for nonlinear dimension reduction. Graph-based reduction for network dynamics. Applications: real-time simulation of parameterized PDEs, digital twins."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Control of Dynamical Systems",
+          "content_outline": "Controllability and observability. State feedback: pole placement, LQR. Output feedback: observer design, separation principle. Nonlinear control: feedback linearization, sliding mode control. Model predictive control (MPC). Data-driven control: reinforcement learning for continuous systems. Koopman-based control. Applications: controlling epidemics (optimal intervention timing), bioreactor control, prosthetics."
+        }
+      ]
+    },
+    {
+      "id": "CROSS-002",
+      "title": "Optimal Transport: Theory, Computation, and Applications Across Domains",
+      "track": "Cross-Cutting Methods",
+      "credits": 3,
+      "semester": "Year 3–4",
+      "prerequisites": ["CORE-001 Real Analysis", "CORE-005 Functional Analysis", "CORE-003 Probability I"],
+      "description": "Optimal transport provides a geometry on the space of probability distributions. This emerging field connects analysis, geometry, probability, and computation with applications in every domain of this curriculum.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Monge and Kantorovich Formulations",
+          "content_outline": "Monge's problem: finding the optimal map. Kantorovich relaxation: transport plans. Existence of optimal plans. Wasserstein distances: W1 (earth mover's distance), W2. Kantorovich duality. c-concavity and c-transforms. Metric properties of Wasserstein spaces."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Brenier's Theorem and Structure of Optimal Maps",
+          "content_outline": "Brenier's theorem: optimal map is the gradient of a convex function. Monge-Ampère equation. Regularity of optimal maps: Caffarelli's regularity theory. McCann's displacement interpolation. Geodesics in Wasserstein space. Comparison with Fisher-Rao distance on statistical manifolds."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Entropic Regularization and the Sinkhorn Algorithm",
+          "content_outline": "Entropic optimal transport. Sinkhorn-Knopp algorithm: matrix scaling, linear convergence. Computational complexity. Debiased Sinkhorn divergences. Connection to Schrödinger bridges. GPU-accelerated implementations. Applications: large-scale distribution comparison, image matching, natural language processing."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Gradient Flows in Wasserstein Space",
+          "content_outline": "Jordan-Kinderlehrer-Otto (JKO) scheme: implicit Euler in Wasserstein space. Heat equation as gradient flow of entropy. Fokker-Planck equation as gradient flow of free energy. Porous medium equation. Applications: diffusion processes, Bayesian inference as gradient flow (Stein variational gradient descent), sampling algorithms."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Computational Optimal Transport",
+          "content_outline": "Discrete optimal transport: linear programming. Network simplex algorithm. Auction algorithm. Continuous optimal transport: Benamou-Brenier formulation (fluid mechanics). Semi-discrete optimal transport. Wasserstein barycenters: Fréchet mean of distributions. Free support barycenters. Sliced Wasserstein distance: 1D projections for fast computation."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Applications in Machine Learning and Statistics",
+          "content_outline": "Wasserstein GANs: using Wasserstein distance as training objective. Distributional regression: predicting entire distributions. Domain adaptation via optimal transport. Fairness: removing distributional bias. Wasserstein distances for hypothesis testing. Two-sample tests based on optimal transport. Optimal transport for causal inference."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Applications in Natural Sciences",
+          "content_outline": "Computational biology: single-cell trajectory inference (Waddington-OT), cell fate prediction. Geophysics: moisture transport in the atmosphere. Ecology: comparing species distributions. Economics: matching markets, assignment problems. Fluid dynamics: semi-geostrophic equations as optimal transport. Cancer biology: tracking tumor evolution."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Unbalanced Optimal Transport and Extensions",
+          "content_outline": "Unbalanced OT: relaxing mass conservation. Wasserstein-Fisher-Rao (Hellinger-Kantorovich) distance. Gromov-Wasserstein distance: comparing distributions on different spaces. Partial optimal transport. Multi-marginal optimal transport: Wasserstein barycenters as a special case. Martingale optimal transport: finance applications. Quantum optimal transport."
+        }
+      ]
+    }
+  ]
+}

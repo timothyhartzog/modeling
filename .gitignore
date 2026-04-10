@@ -1,0 +1,18 @@
+# Julia
+Manifest.toml
+
+# Output (generated content — large files)
+output/markdown/
+output/assembled/
+output/docx/
+
+# State (local to each machine)
+state.json
+state.json.tmp
+
+# Logs
+logs/
+
+# OS
+.DS_Store
+Thumbs.db

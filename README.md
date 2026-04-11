@@ -10,7 +10,7 @@ cd ~/Documents/github
 git clone https://github.com/timothyhartzog/modeling.git
 cd modeling
 
-# Install Julia dependencies
+# Install Julia dependencies (uses pinned versions from Manifest.toml — do not run Pkg.update())
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
 
 # Set API key
@@ -64,6 +64,20 @@ julia --project=. src/assemble_docx.jl
 - **Population Dynamics (4 textbooks)**: Deterministic, Stochastic, Systems Biology, Demography
 - **Physical Systems (4 textbooks)**: Continuum Mechanics, Fluid Dynamics, Biomechanics, Atmospheric/Climate
 - **Cross-Cutting (5 textbooks)**: UQ, Inverse Problems, Dynamical Systems, Optimal Transport, Information Geometry, Multiscale Methods
+
+## Dependency Management
+
+`Manifest.toml` is committed to this repository to pin exact package versions for reproducibility. Always use `Pkg.instantiate()` to install dependencies — **do not** run `Pkg.update()` as that will upgrade packages to newer versions and may break compatibility.
+
+```bash
+# Correct: installs exact pinned versions
+julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+# Incorrect: upgrades to latest compatible versions (breaks reproducibility)
+# julia --project=. -e 'using Pkg; Pkg.update()'
+```
+
+If you intentionally want to upgrade a dependency, run `Pkg.update("PackageName")`, review the diff in `Manifest.toml`, test thoroughly, and commit the updated lockfile.
 
 ## Requirements
 

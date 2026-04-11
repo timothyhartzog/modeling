@@ -1,0 +1,69 @@
+---
+title: "Linear Algebra and Matrix Theory for Computational Science"
+subtitle: "Core Mathematics — Year 1"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Linear Algebra and Matrix Theory for Computational Science
+
+**Track**: Core Mathematics — Year 1
+
+Advanced linear algebra with emphasis on matrix decompositions, spectral theory, and computational aspects. Every model in the curriculum — from regression to finite elements to neural networks — is ultimately a problem in linear algebra.
+
+## Table of Contents
+
+1. Vector Spaces and Linear Maps
+2. Inner Product Spaces and Orthogonality
+3. Eigenvalues, Eigenvectors, and Diagonalization
+4. The Singular Value Decomposition
+5. Matrix Decompositions for Computation
+6. Norms, Condition Numbers, and Perturbation Theory
+7. Iterative Methods for Large-Scale Linear Systems
+8. Tensor Algebra and Multilinear Maps
+9. Nonnegative Matrix Factorization and Structured Matrices
+10. Matrix Functions and the Matrix Exponential
+
+---
+
+## Chapter 1: Vector Spaces and Linear Maps
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Inner Product Spaces and Orthogonality
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Eigenvalues, Eigenvectors, and Diagonalization
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: The Singular Value Decomposition
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Matrix Decompositions for Computation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Norms, Condition Numbers, and Perturbation Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Iterative Methods for Large-Scale Linear Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Tensor Algebra and Multilinear Maps
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Nonnegative Matrix Factorization and Structured Matrices
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Matrix Functions and the Matrix Exponential
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

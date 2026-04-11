@@ -23,6 +23,16 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Verify QMD source files exist
+        run: |
+          count=$(find output/generated -name "*.qmd" | wc -l)
+          echo "Found $count .qmd files in output/generated/"
+          if [ "$count" -lt 52 ]; then
+            echo "ERROR: Expected at least 52 .qmd files in output/generated/, found $count"
+            echo "Run 'julia --project=. src/quarto_export.jl --stubs-only' to generate stubs."
+            exit 1
+          fi
+
       - name: Render Quarto project
         working-directory: ./output
         run: |

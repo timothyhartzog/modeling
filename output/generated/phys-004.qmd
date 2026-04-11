@@ -1,0 +1,59 @@
+---
+title: "Biomechanics: Soft Tissue, Cardiovascular, and Respiratory Systems"
+subtitle: "Track F — Physical Systems"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Biomechanics: Soft Tissue, Cardiovascular, and Respiratory Systems
+
+**Track**: Track F — Physical Systems
+
+Application of continuum mechanics and fluid dynamics to biological systems with emphasis on soft tissue mechanics, cardiovascular hemodynamics, and respiratory mechanics.
+
+## Table of Contents
+
+1. Mechanics of Biological Soft Tissue
+2. Arterial Wall Mechanics
+3. Cardiovascular Hemodynamics
+4. Respiratory Mechanics
+5. Musculoskeletal Biomechanics
+6. Brain and Neural Tissue Mechanics
+7. Cell Mechanics and Mechanobiology
+8. Computational Biomechanics: Patient-Specific Modeling
+
+---
+
+## Chapter 1: Mechanics of Biological Soft Tissue
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Arterial Wall Mechanics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Cardiovascular Hemodynamics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Respiratory Mechanics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Musculoskeletal Biomechanics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Brain and Neural Tissue Mechanics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Cell Mechanics and Mechanobiology
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Computational Biomechanics: Patient-Specific Modeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

@@ -1,0 +1,59 @@
+---
+title: "Evolutionary Game Theory and Collective Behavior"
+subtitle: "Track C — Agent-Based Modeling"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Evolutionary Game Theory and Collective Behavior
+
+**Track**: Track C — Agent-Based Modeling
+
+The mathematical theory of strategic interaction, evolution of cooperation, and collective phenomena emergent from simple agent rules.
+
+## Table of Contents
+
+1. Classical Game Theory Foundations
+2. Evolutionary Game Theory
+3. Evolution of Cooperation
+4. Opinion Dynamics and Social Influence
+5. Flocking, Swarming, and Collective Motion
+6. Self-Organization and Pattern Formation
+7. Evolutionary Dynamics in Structured Populations
+8. Applications: Ecology, Economics, and Social Systems
+
+---
+
+## Chapter 1: Classical Game Theory Foundations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Evolutionary Game Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Evolution of Cooperation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Opinion Dynamics and Social Influence
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Flocking, Swarming, and Collective Motion
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Self-Organization and Pattern Formation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Evolutionary Dynamics in Structured Populations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Applications: Ecology, Economics, and Social Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

@@ -1,0 +1,59 @@
+---
+title: "Differential Geometry and Tensor Analysis for Physical Modeling"
+subtitle: "Core Mathematics — Year 2"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Differential Geometry and Tensor Analysis for Physical Modeling
+
+**Track**: Core Mathematics — Year 2
+
+The geometric language of modern physics, continuum mechanics, and geometric methods in statistics and machine learning. Manifolds, tensors, and differential forms provide the coordinate-free framework for models on curved or constrained domains.
+
+## Table of Contents
+
+1. Smooth Manifolds
+2. Tangent Spaces and Vector Fields
+3. Covectors, Tensors, and the Cotangent Bundle
+4. Differential Forms and Exterior Calculus
+5. Stokes' Theorem and Its Applications
+6. Riemannian Geometry
+7. Lie Groups and Lie Algebras
+8. Applications: Continuum Mechanics in Geometric Language
+
+---
+
+## Chapter 1: Smooth Manifolds
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Tangent Spaces and Vector Fields
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Covectors, Tensors, and the Cotangent Bundle
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Differential Forms and Exterior Calculus
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Stokes' Theorem and Its Applications
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Riemannian Geometry
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Lie Groups and Lie Algebras
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Applications: Continuum Mechanics in Geometric Language
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

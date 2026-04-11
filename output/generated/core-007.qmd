@@ -1,0 +1,59 @@
+---
+title: "Ordinary Differential Equations: Theory, Analysis, and Computation"
+subtitle: "Core Mathematics — Year 1"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Ordinary Differential Equations: Theory, Analysis, and Computation
+
+**Track**: Core Mathematics — Year 1
+
+ODEs are the language of dynamics. This course covers existence theory, qualitative analysis, stability, and numerical methods — preparing the student for every dynamical model in the curriculum.
+
+## Table of Contents
+
+1. Existence and Uniqueness
+2. Linear Systems
+3. Phase Plane Analysis and Qualitative Theory
+4. Stability Theory
+5. Bifurcation Theory
+6. Perturbation Methods
+7. Delay Differential Equations
+8. Numerical Methods for ODE Systems
+
+---
+
+## Chapter 1: Existence and Uniqueness
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Linear Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Phase Plane Analysis and Qualitative Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Stability Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Bifurcation Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Perturbation Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Delay Differential Equations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Numerical Methods for ODE Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

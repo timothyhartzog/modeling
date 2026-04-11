@@ -1,0 +1,69 @@
+---
+title: "Scientific Computing I: Foundations of Numerical Methods"
+subtitle: "Core Mathematics — Year 1"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Scientific Computing I: Foundations of Numerical Methods
+
+**Track**: Core Mathematics — Year 1
+
+Practical and theoretical foundations of numerical computation. Every model in the curriculum eventually requires numerical implementation; this course teaches the student to do it correctly, efficiently, and with rigorous error control.
+
+## Table of Contents
+
+1. Floating-Point Arithmetic and Error Analysis
+2. Root Finding
+3. Polynomial Interpolation and Approximation
+4. Numerical Differentiation and Integration
+5. Direct Methods for Linear Systems
+6. Iterative Methods for Linear Systems
+7. Eigenvalue Problems
+8. Numerical Methods for Initial Value ODEs
+9. Fast Algorithms: FFT, Fast Multipole, and Randomized Methods
+10. Software Engineering for Scientific Computing
+
+---
+
+## Chapter 1: Floating-Point Arithmetic and Error Analysis
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Root Finding
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Polynomial Interpolation and Approximation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Numerical Differentiation and Integration
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Direct Methods for Linear Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Iterative Methods for Linear Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Eigenvalue Problems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Numerical Methods for Initial Value ODEs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Fast Algorithms: FFT, Fast Multipole, and Randomized Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Software Engineering for Scientific Computing
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

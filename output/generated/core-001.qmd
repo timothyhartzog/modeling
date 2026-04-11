@@ -1,0 +1,69 @@
+---
+title: "Real Analysis for Modelers"
+subtitle: "Core Mathematics — Year 1"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Real Analysis for Modelers
+
+**Track**: Core Mathematics — Year 1
+
+A rigorous treatment of real analysis with emphasis on the tools most essential for modeling: metric space theory, convergence, integration theory, and function spaces. Prepares the student for measure-theoretic probability and functional analysis.
+
+## Table of Contents
+
+1. The Real Number System and Completeness
+2. Metric Spaces: The Language of Proximity
+3. Compactness
+4. Connectedness and Continuity
+5. Sequences and Series of Functions
+6. Differentiation in Several Variables
+7. Riemann Integration and Its Limitations
+8. Introduction to Measure and Lebesgue Integration
+9. Lp Spaces: A First Look at Function Spaces
+10. Fixed Point Theorems and Applications to Modeling
+
+---
+
+## Chapter 1: The Real Number System and Completeness
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Metric Spaces: The Language of Proximity
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Compactness
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Connectedness and Continuity
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Sequences and Series of Functions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Differentiation in Several Variables
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Riemann Integration and Its Limitations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Introduction to Measure and Lebesgue Integration
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Lp Spaces: A First Look at Function Spaces
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Fixed Point Theorems and Applications to Modeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

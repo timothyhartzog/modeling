@@ -1,0 +1,59 @@
+---
+title: "Longitudinal Data Analysis: Mixed Models, GEE, and Missing Data"
+subtitle: "Track A — Biostatistics"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Longitudinal Data Analysis: Mixed Models, GEE, and Missing Data
+
+**Track**: Track A — Biostatistics
+
+Repeated measures and correlated data arise in virtually every clinical study. This textbook covers the two major frameworks — subject-specific (mixed models) and population-averaged (GEE) — along with the critical problem of missing data.
+
+## Table of Contents
+
+1. Longitudinal Study Design and Data Structures
+2. Linear Mixed Models: Theory
+3. Covariance Structure Modeling
+4. Generalized Linear Mixed Models (GLMMs)
+5. Generalized Estimating Equations (GEE)
+6. Missing Data Mechanisms and Impact
+7. Multiple Imputation
+8. Joint Models for Longitudinal and Time-to-Event Data
+
+---
+
+## Chapter 1: Longitudinal Study Design and Data Structures
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Linear Mixed Models: Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Covariance Structure Modeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Generalized Linear Mixed Models (GLMMs)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Generalized Estimating Equations (GEE)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Missing Data Mechanisms and Impact
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Multiple Imputation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Joint Models for Longitudinal and Time-to-Event Data
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

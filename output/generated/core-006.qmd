@@ -1,0 +1,59 @@
+---
+title: "Probability Theory II: Martingales, Brownian Motion, and Stochastic Calculus Foundations"
+subtitle: "Core Mathematics — Year 1"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Probability Theory II: Martingales, Brownian Motion, and Stochastic Calculus Foundations
+
+**Track**: Core Mathematics — Year 1
+
+Advanced probability covering martingale theory, Brownian motion, and the foundations of stochastic calculus. Essential for stochastic modeling in every domain track.
+
+## Table of Contents
+
+1. Conditional Expectation: Advanced Properties
+2. Martingale Theory
+3. Construction of Brownian Motion
+4. Continuous-Time Martingales and Stochastic Integration Preview
+5. Central Limit Theorem: Extensions and Refinements
+6. Convergence of Random Series and Tail Events
+7. Weak Convergence and Empirical Processes
+8. Large Deviations
+
+---
+
+## Chapter 1: Conditional Expectation: Advanced Properties
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Martingale Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Construction of Brownian Motion
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Continuous-Time Martingales and Stochastic Integration Preview
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Central Limit Theorem: Extensions and Refinements
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Convergence of Random Series and Tail Events
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Weak Convergence and Empirical Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Large Deviations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

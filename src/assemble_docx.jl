@@ -21,6 +21,7 @@ const MANIFESTS = [
 const MD_INPUT = joinpath(PROJECT_ROOT, "output", "markdown")
 const MD_ASSEMBLED = joinpath(PROJECT_ROOT, "output", "assembled")
 const DOCX_OUTPUT = joinpath(PROJECT_ROOT, "output", "docx")
+const REFERENCE_DOC = joinpath(PROJECT_ROOT, "templates", "reference.docx")
 
 function parse_args()
     args = Dict{Symbol,Any}(
@@ -139,13 +140,25 @@ function convert_to_docx(md_path::String, textbook_id::String)
         return nothing
     end
 
-    cmd = `pandoc $md_path -o $docx_path
-           --from markdown
-           --to docx
-           --toc
-           --toc-depth=3
-           --number-sections
-           --standalone`
+    cmd = if isfile(REFERENCE_DOC)
+        `pandoc $md_path -o $docx_path
+               --from markdown
+               --to docx
+               --reference-doc=$REFERENCE_DOC
+               --toc
+               --toc-depth=3
+               --number-sections
+               --standalone`
+    else
+        @warn "No reference.docx template found at $REFERENCE_DOC — using pandoc defaults"
+        `pandoc $md_path -o $docx_path
+               --from markdown
+               --to docx
+               --toc
+               --toc-depth=3
+               --number-sections
+               --standalone`
+    end
 
     try
         run(cmd)

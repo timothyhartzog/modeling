@@ -5,6 +5,7 @@ Manifest.toml
 output/markdown/
 output/assembled/
 output/docx/
+output/generated/
 
 # State (local to each machine)
 state.json

@@ -3,8 +3,6 @@ name: Publish Quarto Website to GitHub Pages
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -31,7 +29,10 @@ jobs:
       - name: Set up Julia
         uses: julia-actions/setup-julia@v2
         with:
-          version: '1'
+          version: '1.11'
+
+      - name: Cache Julia packages
+        uses: julia-actions/cache@v2
 
       - name: Install Julia dependencies
         run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
@@ -42,20 +43,12 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Verify QMD source files exist
-        run: |
-          count=$(find output/generated -name "*.qmd" | wc -l)
-          echo "Found $count .qmd files in output/generated/"
-          if [ "$count" -lt 52 ]; then
-            echo "ERROR: Expected at least 52 .qmd files in output/generated/, found $count"
-            echo "Run 'julia --project=. src/quarto_export.jl --stubs-only' to generate stubs."
-            exit 1
-          fi
+      - name: Generate QMD stub files
+        run: julia --project=. src/quarto_export.jl --stubs-only
 
       - name: Render Quarto project
         working-directory: ./output
-        run: |
-          quarto render
+        run: quarto render
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3

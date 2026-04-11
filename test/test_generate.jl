@@ -34,6 +34,7 @@ include(joinpath(@__DIR__, "..", "src", "generate.jl"))
             original = GenerationState(
                 Dict("CORE-001/ch01" => "2025-01-01T00:00:00"),
                 Dict("CORE-001/ch02" => "network error"),
+                Dict{String,Int}(),
                 "2025-01-01T00:00:00",
                 "2025-01-01T00:00:00",
             )

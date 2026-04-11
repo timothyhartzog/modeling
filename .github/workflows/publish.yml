@@ -20,6 +20,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install pandoc
+        run: sudo apt-get install -y pandoc
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 

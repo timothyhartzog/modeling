@@ -135,7 +135,14 @@ function convert_to_docx(md_path::String, textbook_id::String)
     try
         run(pipeline(`which pandoc`, devnull))
     catch
-        @error "pandoc not found. Install with: brew install pandoc"
+        install_cmd = if Sys.islinux()
+            "sudo apt-get install -y pandoc  # Debian/Ubuntu\nsudo dnf install pandoc          # Fedora/RHEL"
+        elseif Sys.isapple()
+            "brew install pandoc"
+        else
+            "winget install --id JohnMacFarlane.Pandoc  # Windows"
+        end
+        @error "pandoc not found. Install it first:\n$install_cmd\n\nOr download from: https://pandoc.org/installing.html"
         return nothing
     end
 

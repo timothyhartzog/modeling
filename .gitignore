@@ -5,6 +5,8 @@
 output/markdown/
 output/assembled/
 output/docx/
+output/pdf/
+output/html/
 
 # State (local to each machine)
 state.json

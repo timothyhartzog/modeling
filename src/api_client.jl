@@ -36,13 +36,20 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
     headers = [
         "x-api-key" => api_key,
         "anthropic-version" => "2023-06-01",
+        "anthropic-beta" => "prompt-caching-2024-07-31",
         "content-type" => "application/json"
     ]
 
     body = JSON3.write(Dict(
         "model" => MODEL,
         "max_tokens" => MAX_TOKENS,
-        "system" => system_prompt,
+        "system" => [
+            Dict(
+                "type" => "text",
+                "text" => system_prompt,
+                "cache_control" => Dict("type" => "ephemeral")
+            )
+        ],
         "messages" => [
             Dict("role" => "user", "content" => chapter_prompt)
         ]
@@ -58,6 +65,15 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
 
             if status == 200
                 result = JSON3.read(String(response.body))
+                # Log token usage including cache hits/misses
+                if haskey(result, :usage)
+                    u = result.usage
+                    input_tokens                 = get(u, :input_tokens, 0)
+                    output_tokens                = get(u, :output_tokens, 0)
+                    cache_creation_input_tokens  = get(u, :cache_creation_input_tokens, 0)
+                    cache_read_input_tokens      = get(u, :cache_read_input_tokens, 0)
+                    @debug "Token usage" input_tokens output_tokens cache_creation_input_tokens cache_read_input_tokens
+                end
                 # Extract text from content blocks
                 text_parts = String[]
                 for block in result.content

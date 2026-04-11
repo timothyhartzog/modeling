@@ -41,6 +41,8 @@ const CALIBRATION_KEYS = [
 # ─────────────────────────────────────────────
 # State Management
 # ─────────────────────────────────────────────
+const STATE_SCHEMA_VERSION = "1.1"
+
 mutable struct GenerationState
     completed::Dict{String,String}  # key → ISO timestamp
     failed::Dict{String,String}     # key → error message
@@ -51,6 +53,16 @@ end
 function load_state()::GenerationState
     if isfile(STATE_PATH)
         raw = JSON3.read(read(STATE_PATH, String))
+        version = haskey(raw, :schema_version) ? String(raw.schema_version) : "1.0"
+
+        if version == "1.0"
+            @info "Migrating state.json from schema v1.0 → v$(STATE_SCHEMA_VERSION)"
+            # v1.0 → v1.1: no structural changes, version field is added on next save
+        elseif version != STATE_SCHEMA_VERSION
+            error("state.json schema version '$(version)' is not supported by this version of generate.jl " *
+                  "(expected $(STATE_SCHEMA_VERSION)). Delete state.json to start fresh, or downgrade the generator.")
+        end
+
         return GenerationState(
             Dict{String,String}(String(k) => String(v) for (k,v) in pairs(raw.completed)),
             haskey(raw, :failed) ? Dict{String,String}(String(k) => String(v) for (k,v) in pairs(raw.failed)) : Dict{String,String}(),
@@ -66,6 +78,7 @@ end
 function save_state(state::GenerationState)
     state.last_updated = string(Dates.now())
     json = JSON3.write(Dict(
+        "schema_version" => STATE_SCHEMA_VERSION,
         "completed" => state.completed,
         "failed" => state.failed,
         "started_at" => state.started_at,

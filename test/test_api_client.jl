@@ -48,22 +48,16 @@ using .APIClient
         base = APIClient.BASE_DELAY
         @test base > 0.0
 
-        # Delay for attempt n = BASE_DELAY * 2^(n-1)
-        for attempt in 1:5
-            expected = base * 2^(attempt - 1)
-            @test base * 2^(attempt - 1) ≈ expected
-        end
+        # Delay for attempt n = BASE_DELAY * 2^(n-1) — check against concrete values
+        expected_delays = [base * 2^(a - 1) for a in 1:5]
+        @test expected_delays[1] == base          # attempt 1: 2.0s
+        @test expected_delays[2] ≈ 2 * base       # attempt 2: 4.0s
+        @test expected_delays[3] ≈ 4 * base       # attempt 3: 8.0s
+        @test expected_delays[4] ≈ 8 * base       # attempt 4: 16.0s
+        @test expected_delays[5] ≈ 16 * base      # attempt 5: 32.0s
 
-        # Verify increasing sequence
-        delays = [base * 2^(a - 1) for a in 1:5]
-        @test issorted(delays)
-
-        # Attempt 1: no extra wait beyond base
-        @test delays[1] == base
-        # Attempt 2: double the base
-        @test delays[2] ≈ 2 * base
-        # Attempt 3: four times the base
-        @test delays[3] ≈ 4 * base
+        # Verify strictly increasing sequence
+        @test issorted(expected_delays)
     end
 
 end

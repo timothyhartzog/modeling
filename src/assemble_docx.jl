@@ -42,7 +42,7 @@ end
 
 function load_textbook_metadata(manifests::Vector{String}=MANIFESTS)
     textbooks = Dict{String, Any}()
-    for path in MANIFESTS
+    for path in manifests
         raw = JSON3.read(read(path, String))
         for tb in raw.textbooks
             id = String(tb.id)

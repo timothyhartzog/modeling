@@ -1,0 +1,142 @@
+{
+  "id": "supplements",
+  "title": "Curriculum Gap Supplements",
+  "textbooks": [
+    {
+      "id": "CORE-017",
+      "title": "Numerical Linear Algebra: Algorithms, Analysis, and High-Performance Computing",
+      "track": "Core Mathematics \u2014 Year 2",
+      "credits": 4,
+      "semester": "Spring Year 2",
+      "prerequisites": [
+        "CORE-002 (Linear Algebra and Matrix Theory)",
+        "CORE-004 (Scientific Computing I)",
+        "CORE-009 (Partial Differential Equations I)"
+      ],
+      "description": "A comprehensive treatment of numerical linear algebra as the computational backbone of scientific modeling. Covers matrix factorizations, iterative solvers, eigenvalue algorithms, sparse and structured matrices, randomized methods, and high-performance implementations in Julia. Every algorithm is analyzed for stability, accuracy, and computational complexity, and connected to modeling applications where it serves as the inner loop.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "Floating-Point Arithmetic and the Algebra of Rounding",
+          "content_outline": "IEEE 754 floating-point representation. Machine epsilon and unit roundoff. Forward and backward error analysis. Conditioning of a problem vs stability of an algorithm. Condition numbers for linear systems: kappa(A) = ||A|| ||A^-1||. Catastrophic cancellation and how to avoid it. The axioms of floating-point arithmetic (Higham's model). Worked examples: computing sample variance via naive vs Welford's algorithm; catastrophic loss of significance in the quadratic formula. Julia: Float64 internals, bitstring(), eps(), nextfloat(). Computational laboratory: empirically measuring condition number effects on solution accuracy."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Direct Methods I: LU, Cholesky, and Pivoting",
+          "content_outline": "Gaussian elimination as LU factorization. Existence and uniqueness of LU. Partial pivoting and PA = LU. Complete pivoting. Growth factors and stability analysis. Cholesky factorization for SPD matrices: existence, uniqueness, and sqrt(n)-fold savings. LDLT factorization for symmetric indefinite systems. Band and profile structure exploitation. Block factorizations for cache efficiency. Operation counts: 2n^3/3 for LU, n^3/3 for Cholesky. Error analysis: backward stability of Gaussian elimination with partial pivoting. Julia: LinearAlgebra.lu, cholesky, ldlt. Connection to FEM assembly in CORE-009."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Direct Methods II: QR Factorization and Least Squares",
+          "content_outline": "QR factorization via Householder reflections, Givens rotations, and modified Gram-Schmidt. Backward stability of Householder QR. Solving least-squares problems: normal equations vs QR vs SVD. Rank-deficient least squares and minimum-norm solutions. Updating and downdating QR. Condition number of the least-squares problem: kappa(A) vs kappa(A^T A). Regularized least squares: Tikhonov, truncated SVD. Julia: qr(), backslash for overdetermined systems. Application: fitting polynomial regression models, inverse problems in geophysics."
+        },
+        {
+          "chapter_number": 4,
+          "title": "The Singular Value Decomposition",
+          "content_outline": "Existence and computation of the SVD. Geometric interpretation: SVD as successive rotations and scalings. Low-rank approximation: Eckart-Young-Mirsky theorem. Numerical rank and epsilon-rank. Principal component analysis as truncated SVD. Pseudoinverse and minimum-norm least squares. Computing the SVD: bidiagonalization + implicit QR. Randomized SVD: the HMT algorithm. Connections to eigenvalue problems via A^T A and AA^T. Julia: svd(), svds() for sparse/large matrices, truncated SVD. Application: image compression, reduced-order modeling in fluid dynamics."
+        },
+        {
+          "chapter_number": 5,
+          "title": "Eigenvalue Problems: Symmetric and Non-Symmetric",
+          "content_outline": "The algebraic eigenvalue problem. Symmetric eigenvalue problem: real eigenvalues, orthogonal eigenvectors, variational characterization (Courant-Fischer min-max). The QR algorithm: explicit and implicit shifts, Wilkinson shift, convergence theory. Reduction to Hessenberg/tridiagonal form. Divide-and-conquer for symmetric tridiagonal. The non-symmetric eigenvalue problem: Schur decomposition, sensitivity of eigenvalues (Bauer-Fike theorem), pseudospectra. Arnoldi and Lanczos algorithms (preview of iterative methods). Julia: eigen(), eigvals(), hessenberg(). Application: stability analysis of ODEs, PageRank, vibration modes in structural mechanics."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Iterative Methods for Linear Systems: Krylov Subspace Methods",
+          "content_outline": "From stationary iterations (Jacobi, Gauss-Seidel, SOR) to Krylov methods. The Krylov subspace K_k(A, b) and its role. Conjugate gradient method: derivation from optimization, convergence theory (dependence on condition number and eigenvalue clustering), finite-precision effects. GMRES for non-symmetric systems: Arnoldi-based, restarts, convergence bounds. BiCGSTAB and TFQMR. MINRES for symmetric indefinite. Preconditioning: ILU, incomplete Cholesky, algebraic multigrid (AMG), domain decomposition. Choosing a solver: flowchart for practitioners. Julia: IterativeSolvers.jl, Krylov.jl, AlgebraicMultigrid.jl. Application: solving the linear systems from FEM discretization of PDEs."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Sparse Matrix Computation",
+          "content_outline": "Sparse storage formats: CSC, CSR, COO, BSR. Graph theory of sparse matrices: adjacency graphs, elimination trees. Fill-in during factorization: nested dissection, minimum degree, Cuthill-McKee reordering. Sparse direct solvers: multifrontal methods, supernodal factorization. Sparse iterative solvers (connecting to Chapter 6). Matrix-vector products for structured matrices: FFT for circulant/Toeplitz, hierarchical matrices (H-matrices). Julia: SparseArrays, sparse(), droptol!(), SuiteSparse integration. Application: large-scale PDE discretizations, network Laplacians in graph-based models."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Randomized Numerical Linear Algebra",
+          "content_outline": "Random sketching and the Johnson-Lindenstrauss lemma. Randomized SVD: the Halko-Martinsson-Tropp framework, analysis of approximation error, adaptive rank determination. Sketched least squares: CountSketch, SRHT, Gaussian sketches. Randomized trace estimation: Hutchinson's estimator, applications to log-determinants in Gaussian processes. Randomized preconditioning. Streaming and single-pass algorithms for massive datasets. Julia: implementing randomized SVD from scratch, comparison to deterministic svd(). Application: dimension reduction in high-dimensional biostatistics, fast kernel methods in SCIML."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Matrix Functions and the Matrix Exponential",
+          "content_outline": "Definition of f(A) via Jordan form, Cauchy integral, and polynomial interpolation. The matrix exponential: properties, connection to linear ODEs (du/dt = Au), Lie groups. Computing e^A: scaling and squaring with Pad\u00e9 approximants (the \"Nineteen Dubious Ways\" revisited). The matrix logarithm and square root. Fr\u00e9chet derivatives of matrix functions. Krylov approximation of matrix-vector products: computing e^{tA}v without forming e^{tA}. Julia: exp(A), ExponentialUtilities.jl for expv(). Application: exponential integrators for stiff ODEs in chemical kinetics and reactor modeling (POP-003)."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Structured Matrices and Fast Algorithms",
+          "content_outline": "Toeplitz, circulant, and Hankel matrices: fast multiplication via FFT. Vandermonde matrices and interpolation. Cauchy and L\u00f6wner matrices in rational approximation. Kronecker products: properties, vec-permutation, applications to separable PDEs. Displacement structure and fast Toeplitz solvers. Hierarchical matrices (H-matrices) and H^2-matrices: fast approximate factorization for dense matrices arising from integral equations and kernel methods. Butterfly factorizations. Julia: FFTW.jl, Kronecker.jl, custom Toeplitz types. Application: fast BEM solvers, Gaussian process inference via structured kernel interpolation."
+        },
+        {
+          "chapter_number": 11,
+          "title": "High-Performance and Parallel Numerical Linear Algebra",
+          "content_outline": "Memory hierarchy and the roofline model. BLAS levels 1/2/3 and why level-3 matters. Blocked algorithms for cache efficiency. Parallel linear algebra: distributed-memory LU (ScaLAPACK model), communication-avoiding algorithms. GPU-accelerated linear algebra: cuBLAS, cuSOLVER patterns. Mixed-precision algorithms: iterative refinement with FP16/FP32/FP64. Tensor decompositions: CP, Tucker, tensor-train (connecting to SCIML dimensionality reduction). Julia: BLAS configuration, CUDA.jl, multi-threading with @threads, distributed computing basics. Application: scaling PDE solvers to millions of unknowns."
+        }
+      ]
+    },
+    {
+      "id": "CROSS-006",
+      "title": "Model Selection, Validation, and the Art of Scientific Judgment",
+      "track": "Cross-Cutting Methods",
+      "credits": 3,
+      "semester": "Fall Year 3",
+      "prerequisites": [
+        "CORE-003 (Measure-Theoretic Probability)",
+        "CORE-008 (Mathematical Statistics)",
+        "CORE-011 (Bayesian Statistical Theory)",
+        "CORE-016 (Optimization Theory)"
+      ],
+      "description": "The meta-problem of choosing among competing models \u2014 arguably the most practically important skill for any modeler and the one least often taught rigorously. Covers information criteria (AIC, BIC, WAIC, DIC), cross-validation theory, Bayesian model comparison (Bayes factors, marginal likelihoods, bridge sampling), posterior predictive checks, sensitivity analysis, model averaging, and the philosophy of model selection. Every method is analyzed for its assumptions, failure modes, and computational cost, then applied to realistic modeling scenarios across the curriculum.",
+      "chapters": [
+        {
+          "chapter_number": 1,
+          "title": "The Model Selection Problem: Why Fit Is Not Enough",
+          "content_outline": "Motivating the problem: overfitting, underfitting, and the bias-variance tradeoff visualized for polynomial regression and ODE model selection. In-sample fit vs out-of-sample prediction. The dangers of comparing models by training-set likelihood alone. The true goal: estimating expected out-of-sample predictive accuracy. Connection to Occam's razor and parsimony. The model selection landscape: information criteria, cross-validation, Bayesian model comparison. Preview of when each approach is appropriate. The \"all models are wrong\" perspective (Box, 1976): model selection as choosing the least wrong model for a specific purpose. Julia: fitting competing polynomial models, demonstrating overfitting with increasing degree."
+        },
+        {
+          "chapter_number": 2,
+          "title": "Information Criteria: AIC, BIC, and Their Foundations",
+          "content_outline": "Kullback-Leibler divergence as the fundamental measure of model discrepancy. AIC: derivation from KL divergence estimation, Akaike's theorem, the bias correction for finite samples (AICc). Interpretation: AIC estimates expected KL divergence on new data. BIC: derivation from Laplace approximation to marginal likelihood, consistency property, connection to Bayes factors. When AIC and BIC disagree: AIC favors prediction, BIC favors identification. DIC for hierarchical models: effective number of parameters, problems with multimodal posteriors. Focused information criterion (FIC). Julia: implementing AIC/BIC/AICc from log-likelihoods, model comparison tables. Application: choosing between SIR, SEIR, and SEIRS epidemic models."
+        },
+        {
+          "chapter_number": 3,
+          "title": "Cross-Validation: Theory and Practice",
+          "content_outline": "Leave-one-out cross-validation (LOO-CV): definition, connection to AIC, computational cost. K-fold CV: bias-variance tradeoff in the choice of K. Repeated CV and nested CV. The bootstrap as an alternative to CV. Stone's theorem: asymptotic equivalence of LOO-CV and AIC. Pareto-smoothed importance sampling LOO (PSIS-LOO) for Bayesian models: theory, diagnostics (Pareto k-hat), and when it fails. Cross-validation for time series: rolling-window and expanding-window schemes. Cross-validation for spatial data: spatial blocking to avoid data leakage. Julia: implementing K-fold CV from scratch, using ParetoSmooth.jl. Application: comparing neural network architectures for scientific ML."
+        },
+        {
+          "chapter_number": 4,
+          "title": "Bayesian Model Comparison: Bayes Factors and Marginal Likelihoods",
+          "content_outline": "The Bayesian approach to model comparison: posterior model probabilities. Marginal likelihood (evidence): definition, interpretation as a built-in Occam's razor. Bayes factors: definition, interpretation scales (Jeffreys, Kass-Raftery), sensitivity to priors. Computing marginal likelihoods: the fundamental computational challenge. Analytic solutions for conjugate models. Laplace approximation. Harmonic mean estimator (and why it's terrible). Importance sampling estimators. Bridge sampling: theory, optimal bridge function, practical implementation. Stepping-stone sampling and thermodynamic integration. Julia: implementing bridge sampling with Turing.jl posteriors. Application: comparing growth models for tumor dynamics (exponential vs Gompertz vs logistic)."
+        },
+        {
+          "chapter_number": 5,
+          "title": "WAIC, LOO-CV, and Modern Bayesian Predictive Assessment",
+          "content_outline": "Watanabe-Akaike information criterion (WAIC): derivation from the posterior predictive distribution, pointwise computation from MCMC draws, effective number of parameters p_WAIC. Comparison to DIC: when and why WAIC is preferred. Connection between WAIC and LOO-CV: asymptotic equivalence. PSIS-LOO in practice: computation from a single MCMC run, Pareto k diagnostics, handling problematic observations. Model comparison using elpd differences with standard errors. Stacking of predictive distributions: a decision-theoretic alternative to Bayesian model averaging. Julia: computing WAIC from Turing.jl chains, PSIS-LOO diagnostics, stacking weights. Application: comparing spatial models for disease mapping (BYM vs Leroux vs proper CAR)."
+        },
+        {
+          "chapter_number": 6,
+          "title": "Posterior Predictive Checks and Model Criticism",
+          "content_outline": "The distinction between model selection and model checking. Posterior predictive distribution: definition and simulation-based computation. Bayesian p-values and discrepancy measures. Graphical posterior predictive checks: density overlay, residual plots, rootograms. Choosing test statistics: sufficient statistics, pivotal quantities, domain-specific diagnostics. Calibration checks: coverage of posterior intervals, reliability diagrams. Prior predictive checks: ensuring the prior makes scientific sense. Sensitivity to the choice of test statistic: the \"garden of forking paths\" problem. Julia: generating posterior predictive draws from Turing.jl, visualization with Makie.jl. Application: checking whether an SDE model captures the volatility clustering in financial time series."
+        },
+        {
+          "chapter_number": 7,
+          "title": "Sensitivity Analysis and Robustness",
+          "content_outline": "Global sensitivity analysis: Sobol indices, Morris method, variance decomposition. Local sensitivity analysis: parameter perturbation, Fisher information, profile likelihoods. Prior sensitivity in Bayesian models: how much do conclusions change with different priors? Power priors and commensurability. Influence diagnostics: Cook's distance generalized to Bayesian models, case-deletion importance sampling. Structural sensitivity: what if the model class is wrong? Misspecification and the M-open/M-complete/M-closed framework (Bernardo and Smith). E-values for sensitivity to unmeasured confounding in causal inference. Julia: implementing Sobol indices with quasi-Monte Carlo sampling, prior sensitivity analysis. Application: sensitivity of a pharmacokinetic model to parameter assumptions."
+        },
+        {
+          "chapter_number": 8,
+          "title": "Model Averaging and Ensemble Methods",
+          "content_outline": "Bayesian model averaging (BMA): theory, posterior model weights, predictive distribution as a mixture. Frequentist model averaging: smoothed AIC/BIC weights. Model averaging vs model selection: when is averaging better? Stacking: Wolpert's stacking of predictive distributions, optimal linear combinations. Ensemble methods from machine learning: bagging, random forests, boosting \u2014 reinterpreted through the lens of model combination. Super learner (van der Laan): cross-validation-based ensemble with theoretical guarantees. Practical issues: multicollinearity among model predictions, computational cost, interpretability. Julia: implementing BMA weights from bridge sampling, stacking via constrained optimization. Application: ensemble weather forecasting, combining multiple species distribution models."
+        },
+        {
+          "chapter_number": 9,
+          "title": "Model Selection for Dynamical Systems and Differential Equations",
+          "content_outline": "Unique challenges of ODE/PDE model selection: non-nested models, expensive likelihood evaluations, identifiability issues. Profile likelihood for ODE parameters. Structural identifiability analysis: observability rank condition, differential algebra approach. Practical identifiability: Fisher information, Monte Carlo identifiability. ABC (Approximate Bayesian Computation) for simulator-based models without tractable likelihoods. Bayes factors for ODE models: thermodynamic integration with ODE solvers in the loop. SINDy-based model selection: sparse regression for equation discovery. Symbolic regression: genetic programming and neural-guided search. Julia: implementing ABC rejection for ODE model selection, SINDy with sequentially thresholded least squares. Application: choosing between competing models of cell signaling pathways."
+        },
+        {
+          "chapter_number": 10,
+          "title": "Philosophy, Ethics, and the Human Side of Model Choice",
+          "content_outline": "The philosophy of model selection: instrumentalism vs realism, Lakatos and research programmes. The role of domain knowledge: when statistical criteria should be overridden. Preregistration and the problem of post-hoc model selection. The multiverse analysis: exploring how conclusions change across all defensible analytical choices. Specification curve analysis. The replication crisis and its connection to model selection: p-hacking, the garden of forking paths, researcher degrees of freedom. Reporting guidelines: presenting model uncertainty honestly, showing sensitivity analyses. Decision-theoretic model selection: when the loss function matters more than the model. Julia: implementing a multiverse analysis across model specifications. Application: the practical workflow for a complete modeling study from data to publication."
+        }
+      ]
+    }
+  ]
+}

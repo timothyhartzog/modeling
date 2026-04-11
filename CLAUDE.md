@@ -8,6 +8,7 @@ Parallel batch generation of 52 graduate-level textbooks (438 chapters) for the 
 - `src/api_client.jl` — Anthropic API wrapper. Claude Sonnet 4, 8192 max tokens, exponential backoff on 429/5xx.
 - `src/prompt_builder.jl` — Constructs per-chapter prompts from manifest JSON. Each prompt includes textbook context, TOC, and detailed content specification.
 - `src/assemble_docx.jl` — Post-generation. Concatenates per-chapter .md files into single textbook markdown, converts to DOCX via pandoc.
+- `src/validate.jl` — Post-generation quality checker. Reads every generated .md and runs 6 per-chapter checks; prints structured report; exports failures to JSON for re-queuing.
 - `system_prompt.md` — Locked system prompt for all API calls. Julia-only code, graduate rigor, USA sources.
 - `state.json` — Progress tracker. Atomic write. Maps chapter keys ("CORE-001/ch01") to completion timestamps.
 - `manifests/part1.json` — 24 textbooks, 212 chapters (core math + flagship domain courses).
@@ -32,6 +33,15 @@ julia --project=. src/generate.jl --retry-failed --resume
 
 # Assemble DOCX
 julia --project=. src/assemble_docx.jl
+
+# Validate all chapters
+julia --project=. src/validate.jl
+
+# Validate one textbook
+julia --project=. src/validate.jl --textbook CORE-001
+
+# Export failures to JSON for retry
+julia --project=. src/validate.jl --export-failures failures.json
 
 # Dry run (show queue)
 julia --project=. src/generate.jl --dry-run

@@ -37,6 +37,7 @@ julia --project=. src/assemble_docx.jl
 | `src/api_client.jl` | Anthropic API wrapper with exponential backoff |
 | `src/prompt_builder.jl` | Constructs per-chapter prompts from manifest JSON |
 | `src/assemble_docx.jl` | Concatenates chapters → DOCX via pandoc |
+| `src/validate.jl` | Post-generation quality checker — 6 per-chapter checks |
 | `system_prompt.md` | Locked system prompt for consistent generation |
 | `manifests/part1.json` | 24 textbooks, 212 chapters |
 | `manifests/part2.json` | 28 textbooks, 226 chapters |
@@ -45,6 +46,7 @@ julia --project=. src/assemble_docx.jl
 
 ## CLI Options
 
+### generate.jl
 ```
 --concurrency N     Parallel API calls (default: 5, recommended: 8)
 --calibrate         Generate 3 test chapters only
@@ -53,6 +55,14 @@ julia --project=. src/assemble_docx.jl
 --textbook ID       Generate one textbook (e.g., CORE-001)
 --dry-run           Show work queue without generating
 ```
+
+### validate.jl
+```
+--textbook ID            Validate one textbook only
+--export-failures FILE   Write failed chapter keys to JSON for re-queuing
+```
+
+Exits with code 1 when any chapter fails a critical check (suitable for CI).
 
 ## Curriculum Coverage
 

@@ -1,14 +1,17 @@
 #!/usr/bin/env julia
 """
-    assemble_docx.jl — Post-generation DOCX assembly.
+    assemble_docx.jl — Post-generation textbook assembly.
 
     Concatenates per-chapter markdown files into single textbook markdown files,
-    then converts to DOCX via pandoc.
+    then converts to DOCX, PDF, and/or HTML via pandoc.
 
     Usage:
-        julia --project=. src/assemble_docx.jl                    # All textbooks
-        julia --project=. src/assemble_docx.jl --textbook CORE-001  # One textbook
-        julia --project=. src/assemble_docx.jl --markdown-only     # Only concatenate, skip DOCX
+        julia --project=. src/assemble_docx.jl                         # All textbooks → DOCX (default)
+        julia --project=. src/assemble_docx.jl --textbook CORE-001     # One textbook → DOCX
+        julia --project=. src/assemble_docx.jl --markdown-only         # Only concatenate, skip conversion
+        julia --project=. src/assemble_docx.jl --format pdf            # PDF only
+        julia --project=. src/assemble_docx.jl --format html           # HTML single-file only
+        julia --project=. src/assemble_docx.jl --format all            # DOCX + PDF + HTML
 """
 
 using JSON3, Dates
@@ -21,11 +24,16 @@ const MANIFESTS = [
 const MD_INPUT = joinpath(PROJECT_ROOT, "output", "markdown")
 const MD_ASSEMBLED = joinpath(PROJECT_ROOT, "output", "assembled")
 const DOCX_OUTPUT = joinpath(PROJECT_ROOT, "output", "docx")
+const PDF_OUTPUT = joinpath(PROJECT_ROOT, "output", "pdf")
+const HTML_OUTPUT = joinpath(PROJECT_ROOT, "output", "html")
+
+const VALID_FORMATS = ("docx", "pdf", "html", "all")
 
 function parse_args()
     args = Dict{Symbol,Any}(
         :textbook => nothing,
         :markdown_only => false,
+        :format => "docx",
     )
     i = 1
     while i <= length(ARGS)
@@ -33,6 +41,13 @@ function parse_args()
             args[:textbook] = ARGS[i+1]; i += 2
         elseif ARGS[i] == "--markdown-only"
             args[:markdown_only] = true; i += 1
+        elseif ARGS[i] == "--format" && i < length(ARGS)
+            fmt = lowercase(ARGS[i+1])
+            if fmt ∉ VALID_FORMATS
+                @error "Unknown format '$(ARGS[i+1])'. Valid options: $(join(VALID_FORMATS, ", "))"
+                exit(1)
+            end
+            args[:format] = fmt; i += 2
         else
             i += 1
         end
@@ -157,6 +172,88 @@ function convert_to_docx(md_path::String, textbook_id::String)
     end
 end
 
+function convert_to_pdf(md_path::String, textbook_id::String)
+    mkpath(PDF_OUTPUT)
+    pdf_path = joinpath(PDF_OUTPUT, "$(textbook_id).pdf")
+
+    # Check for pandoc
+    try
+        run(pipeline(`which pandoc`, devnull))
+    catch
+        @error "pandoc not found. Install with:\n" *
+               "  macOS:  brew install pandoc\n" *
+               "  Ubuntu: sudo apt-get install pandoc\n" *
+               "  Windows: https://pandoc.org/installing.html"
+        return nothing
+    end
+
+    # Check for a LaTeX engine
+    latex_engine = nothing
+    for engine in ("xelatex", "lualatex", "pdflatex")
+        try
+            run(pipeline(`which $engine`, devnull))
+            latex_engine = engine
+            break
+        catch
+        end
+    end
+    if isnothing(latex_engine)
+        @error "No LaTeX engine found. Install one with:\n" *
+               "  macOS:  brew install --cask mactex-no-gui\n" *
+               "  Ubuntu: sudo apt-get install texlive-xetex\n" *
+               "  Windows: https://miktex.org/download"
+        return nothing
+    end
+
+    cmd = `pandoc $md_path -o $pdf_path
+           --from markdown --to pdf
+           --pdf-engine=$latex_engine
+           --toc --toc-depth=3 --number-sections
+           -V geometry:margin=1in
+           -V fontsize=11pt
+           --standalone`
+
+    try
+        run(cmd)
+        println("  📕 Converted → $pdf_path")
+        return pdf_path
+    catch e
+        @error "PDF conversion failed for $textbook_id: $e"
+        return nothing
+    end
+end
+
+function convert_to_html(md_path::String, textbook_id::String)
+    mkpath(HTML_OUTPUT)
+    html_path = joinpath(HTML_OUTPUT, "$(textbook_id).html")
+
+    # Check for pandoc
+    try
+        run(pipeline(`which pandoc`, devnull))
+    catch
+        @error "pandoc not found. Install with:\n" *
+               "  macOS:  brew install pandoc\n" *
+               "  Ubuntu: sudo apt-get install pandoc\n" *
+               "  Windows: https://pandoc.org/installing.html"
+        return nothing
+    end
+
+    cmd = `pandoc $md_path -o $html_path
+           --from markdown --to html5
+           --toc --toc-depth=3 --number-sections
+           --standalone
+           --self-contained`
+
+    try
+        run(cmd)
+        println("  🌐 Converted → $html_path")
+        return html_path
+    catch e
+        @error "HTML conversion failed for $textbook_id: $e"
+        return nothing
+    end
+end
+
 function main()
     args = parse_args()
 
@@ -176,7 +273,14 @@ function main()
     end
 
     assembled = 0
-    converted = 0
+    converted_docx = 0
+    converted_pdf  = 0
+    converted_html = 0
+
+    fmt = args[:format]
+    do_docx = !args[:markdown_only] && (fmt == "docx" || fmt == "all")
+    do_pdf  = !args[:markdown_only] && (fmt == "pdf"  || fmt == "all")
+    do_html = !args[:markdown_only] && (fmt == "html" || fmt == "all")
 
     for id in ids
         if !haskey(metadata, id)
@@ -190,10 +294,22 @@ function main()
         end
         assembled += 1
 
-        if !args[:markdown_only]
+        if do_docx
             result = convert_to_docx(md_path, id)
             if !isnothing(result)
-                converted += 1
+                converted_docx += 1
+            end
+        end
+        if do_pdf
+            result = convert_to_pdf(md_path, id)
+            if !isnothing(result)
+                converted_pdf += 1
+            end
+        end
+        if do_html
+            result = convert_to_html(md_path, id)
+            if !isnothing(result)
+                converted_html += 1
             end
         end
     end
@@ -201,9 +317,9 @@ function main()
     println("\n" * "=" ^ 60)
     println("  ASSEMBLY COMPLETE")
     println("  📄 Assembled: $assembled textbooks")
-    if !args[:markdown_only]
-        println("  📘 Converted: $converted DOCX files")
-    end
+    if do_docx; println("  📘 DOCX:      $converted_docx files"); end
+    if do_pdf;  println("  📕 PDF:       $converted_pdf files");  end
+    if do_html; println("  🌐 HTML:      $converted_html files"); end
     println("=" ^ 60)
 end
 

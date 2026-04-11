@@ -193,6 +193,12 @@ function main()
     all_items = load_manifests(MANIFESTS)
     println("   Found $(length(all_items)) total chapters across $(length(unique(i.textbook_id for i in all_items))) textbooks")
 
+    # Validate calibration keys exist in loaded manifests
+    all_keys = Set(PromptBuilder.work_item_key(item) for item in all_items)
+    for key in CALIBRATION_KEYS
+        key in all_keys || error("Calibration key \"$key\" not found in loaded manifests — update CALIBRATION_KEYS or fix the manifest")
+    end
+
     # Load system prompt
     system_prompt = load_system_prompt(SYSTEM_PROMPT_PATH)
     println("   System prompt loaded ($(length(system_prompt)) chars)")

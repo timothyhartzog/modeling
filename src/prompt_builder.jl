@@ -5,7 +5,7 @@ module PromptBuilder
 
 using JSON3
 
-export load_manifests, build_chapter_prompt, WorkItem, load_system_prompt
+export load_manifests, build_chapter_prompt, WorkItem, load_system_prompt, validate_manifest
 
 """
     WorkItem — A single chapter generation task.
@@ -31,6 +31,32 @@ function load_system_prompt(path::String)
 end
 
 """
+    validate_manifest(raw, path::String)
+
+Validate that a parsed manifest has all required fields with correct types.
+Throws an informative error if any required field is missing or has a wrong type.
+"""
+function validate_manifest(raw, path::String)
+    required_textbook_fields = [:id, :title, :track, :description, :chapters]
+    required_chapter_fields = [:chapter_number, :title, :content_outline]
+
+    haskey(raw, :textbooks) || error("Manifest $path: missing top-level 'textbooks' array")
+
+    for (i, tb) in enumerate(raw.textbooks)
+        for field in required_textbook_fields
+            haskey(tb, field) || error("Manifest $path textbook[$i]: missing field '$field'")
+        end
+        tb_id = string(tb.id)
+        for (j, ch) in enumerate(tb.chapters)
+            for field in required_chapter_fields
+                haskey(ch, field) || error("Manifest $path textbook[$tb_id] chapter[$j]: missing field '$field'")
+            end
+            isa(ch.chapter_number, Integer) || error("Manifest $path textbook[$tb_id] chapter[$j]: chapter_number must be an integer, got $(typeof(ch.chapter_number))")
+        end
+    end
+end
+
+"""
     load_manifests(paths::Vector{String}) → Vector{WorkItem}
 
 Load one or more manifest JSON files and return a flat list of WorkItems.
@@ -40,6 +66,7 @@ function load_manifests(paths::Vector{String})
 
     for path in paths
         raw = JSON3.read(read(path, String))
+        validate_manifest(raw, path)
         textbooks = raw.textbooks
 
         for tb in textbooks

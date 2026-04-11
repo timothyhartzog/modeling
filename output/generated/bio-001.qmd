@@ -1,0 +1,15 @@
+---
+title: "Generalized Linear Models and Extensions"
+subtitle: "BIO-001 | Track A — Biostatistics"
+description: "The workhorse models of applied biostatistics: regression models for non-normal response data with rigorous theory of estimation, inference, and model checking."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Generalized Linear Models and Extensions
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

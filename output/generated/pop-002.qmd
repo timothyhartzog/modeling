@@ -1,0 +1,15 @@
+---
+title: "Stochastic Population Models: Extinction, Fluctuations, and Individual Variation"
+subtitle: "POP-002 | Track E — Population Dynamics"
+description: "Real populations are finite and stochastic. This textbook covers the mathematical theory of stochastic population dynamics, including demographic and environmental stochasticity, extinction risk, and individual-based stochastic models."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Stochastic Population Models: Extinction, Fluctuations, and Individual Variation
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

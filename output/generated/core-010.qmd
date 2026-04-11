@@ -1,0 +1,15 @@
+---
+title: "Stochastic Processes for Modeling"
+subtitle: "CORE-010 | Core Mathematics — Year 2"
+description: "Stochastic processes provide the mathematical framework for modeling randomness that evolves over time. This course covers the major process types used across all domain tracks."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Stochastic Processes for Modeling
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

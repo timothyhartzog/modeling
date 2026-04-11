@@ -1,0 +1,15 @@
+---
+title: "Neural Differential Equations and Universal Differential Equations"
+subtitle: "SCIML-001 | Track D — Scientific Machine Learning"
+description: "The core course of the SciML track: using neural networks inside differential equations to create hybrid mechanistic-data-driven models. Covers neural ODEs, physics-informed neural networks, and the universal differential equation framework."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Neural Differential Equations and Universal Differential Equations
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

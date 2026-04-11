@@ -1,0 +1,15 @@
+---
+title: "Scientific Computing I: Foundations of Numerical Methods"
+subtitle: "CORE-004 | Core Mathematics — Year 1"
+description: "Practical and theoretical foundations of numerical computation. Every model in the curriculum eventually requires numerical implementation; this course teaches the student to do it correctly, efficiently, and with rigorous error control."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Scientific Computing I: Foundations of Numerical Methods
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

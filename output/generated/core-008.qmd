@@ -1,0 +1,15 @@
+---
+title: "Mathematical Statistics: Inference, Estimation, and Testing"
+subtitle: "CORE-008 | Core Mathematics — Year 1"
+description: "The rigorous theory of statistical inference. Provides the mathematical foundations for every data-facing component of the curriculum: parameter estimation, hypothesis testing, model selection, and the asymptotic theory that justifies practical methods."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Mathematical Statistics: Inference, Estimation, and Testing
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

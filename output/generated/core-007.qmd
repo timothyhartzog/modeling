@@ -1,0 +1,15 @@
+---
+title: "Ordinary Differential Equations: Theory, Analysis, and Computation"
+subtitle: "CORE-007 | Core Mathematics — Year 1"
+description: "ODEs are the language of dynamics. This course covers existence theory, qualitative analysis, stability, and numerical methods — preparing the student for every dynamical model in the curriculum."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Ordinary Differential Equations: Theory, Analysis, and Computation
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

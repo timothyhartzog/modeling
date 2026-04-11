@@ -1,0 +1,15 @@
+---
+title: "Functional Analysis for Modelers"
+subtitle: "CORE-005 | Core Mathematics — Year 1"
+description: "The theory of infinite-dimensional vector spaces and operators. Functional analysis provides the rigorous framework for PDEs, integral equations, optimization in function spaces, and the mathematical foundations of machine learning (reproducing kernel Hilbert spaces, universal approximation)."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Functional Analysis for Modelers
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

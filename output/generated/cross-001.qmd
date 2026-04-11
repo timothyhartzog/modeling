@@ -1,0 +1,15 @@
+---
+title: "Advanced Dynamical Systems: From Chaos to Data-Driven Discovery"
+subtitle: "CROSS-001 | Cross-Cutting Methods"
+description: "Nonlinear dynamics, chaos, and modern data-driven methods for discovering and analyzing dynamical systems from data. Connects classical dynamical systems theory to machine learning and SciML."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Advanced Dynamical Systems: From Chaos to Data-Driven Discovery
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

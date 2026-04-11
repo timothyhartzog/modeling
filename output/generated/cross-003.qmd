@@ -1,0 +1,15 @@
+---
+title: "Inverse Problems: Theory, Regularization, and Bayesian Approaches"
+subtitle: "CROSS-003 | Cross-Cutting Methods"
+description: "The mathematical theory of determining causes from observed effects. Every model calibration problem is an inverse problem. This course covers the theory of ill-posedness, regularization, and modern Bayesian and computational approaches."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Inverse Problems: Theory, Regularization, and Bayesian Approaches
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

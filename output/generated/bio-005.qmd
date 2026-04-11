@@ -1,0 +1,15 @@
+---
+title: "Clinical Trial Design and Analysis"
+subtitle: "BIO-005 | Track A — Biostatistics"
+description: "The statistical science of designing and analyzing experiments on human subjects. Covers classical, adaptive, and Bayesian trial designs with regulatory context."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Clinical Trial Design and Analysis
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

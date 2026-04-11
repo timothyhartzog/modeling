@@ -1,0 +1,15 @@
+---
+title: "Evolutionary Game Theory and Collective Behavior"
+subtitle: "ABM-004 | Track C — Agent-Based Modeling"
+description: "The mathematical theory of strategic interaction, evolution of cooperation, and collective phenomena emergent from simple agent rules."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Evolutionary Game Theory and Collective Behavior
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

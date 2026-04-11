@@ -27,6 +27,12 @@ julia --project=. src/generate.jl --concurrency 8 --resume
 
 # Assemble into DOCX textbooks
 julia --project=. src/assemble_docx.jl
+
+# Export to Quarto QMD for website
+julia --project=. src/quarto_export.jl
+
+# Preview website locally (requires Quarto)
+cd output && quarto preview
 ```
 
 ## Architecture
@@ -37,6 +43,7 @@ julia --project=. src/assemble_docx.jl
 | `src/api_client.jl` | Anthropic API wrapper with exponential backoff |
 | `src/prompt_builder.jl` | Constructs per-chapter prompts from manifest JSON |
 | `src/assemble_docx.jl` | Concatenates chapters → DOCX via pandoc |
+| `src/quarto_export.jl` | Converts assembled markdown → Quarto QMD for website |
 | `system_prompt.md` | Locked system prompt for consistent generation |
 | `manifests/part1.json` | 24 textbooks, 212 chapters |
 | `manifests/part2.json` | 28 textbooks, 226 chapters |

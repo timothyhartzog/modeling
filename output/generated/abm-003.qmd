@@ -1,0 +1,15 @@
+---
+title: "Mean-Field Theory and Coarse-Graining: Connecting Micro to Macro"
+subtitle: "ABM-003 | Track C — Agent-Based Modeling"
+description: "The mathematical bridge between individual-based models and population-level equations. Covers how to derive ODE/PDE descriptions from agent rules and when such approximations are valid."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Mean-Field Theory and Coarse-Graining: Connecting Micro to Macro
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

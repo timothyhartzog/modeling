@@ -1,0 +1,15 @@
+---
+title: "Computational Statistics and Monte Carlo Methods"
+subtitle: "CORE-015 | Core Mathematics — Year 2"
+description: "The computational methods that make modern statistics possible. Monte Carlo, bootstrap, EM algorithm, and the theory behind simulation-based inference."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Computational Statistics and Monte Carlo Methods
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

@@ -1,0 +1,15 @@
+---
+title: "Causal Inference: From Theory to Practice"
+subtitle: "BIO-004 | Track A — Biostatistics"
+description: "The rigorous mathematical framework for drawing causal — not merely associational — conclusions from data. Covers both the potential outcomes framework and structural causal models."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Causal Inference: From Theory to Practice
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

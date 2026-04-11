@@ -1,0 +1,15 @@
+---
+title: "Partial Differential Equations I: Classical and Weak Solutions"
+subtitle: "CORE-009 | Core Mathematics — Year 2"
+description: "PDEs are the mathematical language of spatially extended systems: diffusion, wave propagation, fluid flow, electrostatics, population spread, and more. This course covers classical theory, weak solutions, and variational methods."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Partial Differential Equations I: Classical and Weak Solutions
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

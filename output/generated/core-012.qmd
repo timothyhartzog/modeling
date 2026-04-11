@@ -1,0 +1,15 @@
+---
+title: "Numerical Methods for Differential Equations"
+subtitle: "CORE-012 | Core Mathematics — Year 2"
+description: "Rigorous numerical methods for solving the differential equations that arise in every domain of this curriculum. Covers finite difference, finite element, and spectral methods with convergence theory."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Numerical Methods for Differential Equations
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

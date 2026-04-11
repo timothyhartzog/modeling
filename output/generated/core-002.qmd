@@ -1,0 +1,15 @@
+---
+title: "Linear Algebra and Matrix Theory for Computational Science"
+subtitle: "CORE-002 | Core Mathematics — Year 1"
+description: "Advanced linear algebra with emphasis on matrix decompositions, spectral theory, and computational aspects. Every model in the curriculum — from regression to finite elements to neural networks — is ultimately a problem in linear algebra."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Linear Algebra and Matrix Theory for Computational Science
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

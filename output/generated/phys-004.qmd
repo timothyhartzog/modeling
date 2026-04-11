@@ -1,0 +1,15 @@
+---
+title: "Biomechanics: Soft Tissue, Cardiovascular, and Respiratory Systems"
+subtitle: "PHYS-004 | Track F — Physical Systems"
+description: "Application of continuum mechanics and fluid dynamics to biological systems with emphasis on soft tissue mechanics, cardiovascular hemodynamics, and respiratory mechanics."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Biomechanics: Soft Tissue, Cardiovascular, and Respiratory Systems
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

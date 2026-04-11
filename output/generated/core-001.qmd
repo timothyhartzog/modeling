@@ -1,0 +1,15 @@
+---
+title: "Real Analysis for Modelers"
+subtitle: "CORE-001 | Core Mathematics — Year 1"
+description: "A rigorous treatment of real analysis with emphasis on the tools most essential for modeling: metric space theory, convergence, integration theory, and function spaces. Prepares the student for measure-theoretic probability and functional analysis."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Real Analysis for Modelers
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

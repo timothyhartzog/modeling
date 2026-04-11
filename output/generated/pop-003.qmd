@@ -1,0 +1,15 @@
+---
+title: "Systems Biology: Biochemical Networks and Gene Regulation"
+subtitle: "POP-003 | Track E — Population Dynamics"
+description: "Mathematical modeling of biological systems at the molecular and cellular level: reaction networks, metabolic pathways, gene regulation, and the stochastic dynamics of small-number biochemistry."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Systems Biology: Biochemical Networks and Gene Regulation
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

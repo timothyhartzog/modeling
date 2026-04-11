@@ -1,0 +1,15 @@
+---
+title: "Geostatistics: Random Fields, Kriging, and the SPDE Approach"
+subtitle: "GEO-001 | Track B — Geospatial"
+description: "The theory of spatially correlated data on continuous domains. Covers random field theory, variogram estimation, kriging, model-based geostatistics, and the modern SPDE approach linking spatial statistics to PDEs and finite elements."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Geostatistics: Random Fields, Kriging, and the SPDE Approach
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

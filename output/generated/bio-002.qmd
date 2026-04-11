@@ -1,0 +1,15 @@
+---
+title: "Survival Analysis: Theory and Advanced Methods"
+subtitle: "BIO-002 | Track A — Biostatistics"
+description: "The mathematics of time-to-event data: censoring, hazard functions, and the counting process framework that unifies nonparametric, semiparametric, and parametric approaches."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Survival Analysis: Theory and Advanced Methods
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

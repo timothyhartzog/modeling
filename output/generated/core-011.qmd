@@ -1,0 +1,15 @@
+---
+title: "Bayesian Statistical Theory and Computation"
+subtitle: "CORE-011 | Core Mathematics — Year 2"
+description: "Bayesian inference is the universal framework for learning from data under uncertainty. This course covers the full theory from prior specification through posterior computation and model comparison."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Bayesian Statistical Theory and Computation
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

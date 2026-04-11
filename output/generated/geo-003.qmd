@@ -1,0 +1,15 @@
+---
+title: "Areal Data Models and Spatial Econometrics"
+subtitle: "GEO-003 | Track B — Geospatial"
+description: "Statistical models for data aggregated over regions: census tracts, counties, countries. Covers spatial autoregressive models, spatial regression, and the disease mapping models that bridge to epidemiology."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Areal Data Models and Spatial Econometrics
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

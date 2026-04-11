@@ -1,0 +1,15 @@
+---
+title: "Optimization Theory for Modelers"
+subtitle: "CORE-016 | Core Mathematics — Year 2"
+description: "Optimization is the mathematical engine of model calibration, control, and machine learning. This course covers convex and nonconvex theory, variational methods, and optimal control."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Optimization Theory for Modelers
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

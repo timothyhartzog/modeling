@@ -8,6 +8,7 @@ Parallel batch generation of 52 graduate-level textbooks (438 chapters) for the 
 - `src/api_client.jl` — Anthropic API wrapper. Claude Sonnet 4, 8192 max tokens, exponential backoff on 429/5xx.
 - `src/prompt_builder.jl` — Constructs per-chapter prompts from manifest JSON. Each prompt includes textbook context, TOC, and detailed content specification.
 - `src/assemble_docx.jl` — Post-generation. Concatenates per-chapter .md files into single textbook markdown, converts to DOCX via pandoc.
+- `src/quarto_export.jl` — Quarto export. Reads assembled .md files, strips existing front-matter, writes Quarto-compatible .qmd files to output/generated/. Supports --stubs-only for CI.
 - `system_prompt.md` — Locked system prompt for all API calls. Julia-only code, graduate rigor, USA sources.
 - `state.json` — Progress tracker. Atomic write. Maps chapter keys ("CORE-001/ch01") to completion timestamps.
 - `manifests/part1.json` — 24 textbooks, 212 chapters (core math + flagship domain courses).
@@ -32,6 +33,12 @@ julia --project=. src/generate.jl --retry-failed --resume
 
 # Assemble DOCX
 julia --project=. src/assemble_docx.jl
+
+# Export to Quarto QMD
+julia --project=. src/quarto_export.jl
+
+# Export stubs only (for CI)
+julia --project=. src/quarto_export.jl --stubs-only
 
 # Dry run (show queue)
 julia --project=. src/generate.jl --dry-run

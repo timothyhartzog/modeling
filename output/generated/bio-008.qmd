@@ -1,0 +1,15 @@
+---
+title: "Spatial Epidemiology: Disease Mapping and Surveillance"
+subtitle: "BIO-008 | Track A — Biostatistics / Track B Overlap"
+description: "The intersection of spatial statistics and epidemiology: mapping disease risk, detecting clusters, and modeling spatio-temporal disease dynamics."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Spatial Epidemiology: Disease Mapping and Surveillance
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

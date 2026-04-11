@@ -69,7 +69,7 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
 
             elseif status == 429
                 # Rate limited — extract retry-after if available
-                retry_after = _get_retry_after(response)
+                retry_after = _get_retry_after(HTTP.headers(response))
                 delay = max(retry_after, BASE_DELAY * 2^(attempt - 1))
                 @warn "Rate limited (429). Retry $attempt/$MAX_RETRIES in $(round(delay, digits=1))s"
                 sleep(delay)
@@ -99,8 +99,8 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
     error("Failed after $MAX_RETRIES retries")
 end
 
-function _get_retry_after(response)
-    for (k, v) in HTTP.headers(response)
+function _get_retry_after(headers)
+    for (k, v) in headers
         if lowercase(k) == "retry-after"
             return parse(Float64, v)
         end

@@ -1,3 +1,6 @@
+name = "ModelingPipeline"
+uuid = "1c6ff16d-55d6-4a4b-a78c-2cf84ac6dd2e"
+
 [deps]
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"

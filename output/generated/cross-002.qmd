@@ -1,15 +1,59 @@
 ---
 title: "Optimal Transport: Theory, Computation, and Applications Across Domains"
-subtitle: "CROSS-002 | Cross-Cutting Methods"
-description: "Optimal transport provides a geometry on the space of probability distributions. This emerging field connects analysis, geometry, probability, and computation with applications in every domain of this curriculum."
-date: "2026-04-11"
+subtitle: "Cross-Cutting Methods"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Optimal Transport: Theory, Computation, and Applications Across Domains
 
-*Content not yet generated.*
+**Track**: Cross-Cutting Methods
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Optimal transport provides a geometry on the space of probability distributions. This emerging field connects analysis, geometry, probability, and computation with applications in every domain of this curriculum.
+
+## Table of Contents
+
+1. Monge and Kantorovich Formulations
+2. Brenier's Theorem and Structure of Optimal Maps
+3. Entropic Regularization and the Sinkhorn Algorithm
+4. Gradient Flows in Wasserstein Space
+5. Computational Optimal Transport
+6. Applications in Machine Learning and Statistics
+7. Applications in Natural Sciences
+8. Unbalanced Optimal Transport and Extensions
+
+---
+
+## Chapter 1: Monge and Kantorovich Formulations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Brenier's Theorem and Structure of Optimal Maps
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Entropic Regularization and the Sinkhorn Algorithm
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Gradient Flows in Wasserstein Space
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Computational Optimal Transport
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Applications in Machine Learning and Statistics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Applications in Natural Sciences
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Unbalanced Optimal Transport and Extensions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

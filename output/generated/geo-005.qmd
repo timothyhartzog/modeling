@@ -1,15 +1,59 @@
 ---
 title: "Remote Sensing and Geospatial Data Science"
-subtitle: "GEO-005 | Track B — Geospatial"
-description: "The data pipeline for geospatial modeling: satellite imagery, LiDAR, sensor networks, and the computational infrastructure for processing massive geospatial datasets."
-date: "2026-04-11"
+subtitle: "Track B — Geospatial"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Remote Sensing and Geospatial Data Science
 
-*Content not yet generated.*
+**Track**: Track B — Geospatial
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The data pipeline for geospatial modeling: satellite imagery, LiDAR, sensor networks, and the computational infrastructure for processing massive geospatial datasets.
+
+## Table of Contents
+
+1. Satellite Remote Sensing Fundamentals
+2. Image Classification and Land Cover Mapping
+3. Spectral Unmixing
+4. Change Detection
+5. LiDAR and 3D Point Cloud Processing
+6. Data Fusion and Multi-Sensor Integration
+7. Big Geospatial Data Infrastructure
+8. Applications: Environmental Monitoring and Urban Analytics
+
+---
+
+## Chapter 1: Satellite Remote Sensing Fundamentals
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Image Classification and Land Cover Mapping
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Spectral Unmixing
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Change Detection
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: LiDAR and 3D Point Cloud Processing
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Data Fusion and Multi-Sensor Integration
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Big Geospatial Data Infrastructure
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Applications: Environmental Monitoring and Urban Analytics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

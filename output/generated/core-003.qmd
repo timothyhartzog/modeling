@@ -1,15 +1,69 @@
 ---
 title: "Measure-Theoretic Probability I"
-subtitle: "CORE-003 | Core Mathematics — Year 1"
-description: "Rigorous probability theory built on measure theory. This is the mathematical foundation for all statistical inference, stochastic modeling, and uncertainty quantification in the curriculum."
-date: "2026-04-11"
+subtitle: "Core Mathematics — Year 1"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Measure-Theoretic Probability I
 
-*Content not yet generated.*
+**Track**: Core Mathematics — Year 1
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Rigorous probability theory built on measure theory. This is the mathematical foundation for all statistical inference, stochastic modeling, and uncertainty quantification in the curriculum.
+
+## Table of Contents
+
+1. Probability Spaces and σ-Algebras
+2. Random Variables and Distribution Functions
+3. Expectation via the Lebesgue Integral
+4. Independence and Product Measures
+5. Modes of Convergence
+6. Laws of Large Numbers
+7. Characteristic Functions and the Central Limit Theorem
+8. Conditional Expectation
+9. Generating Functions, Transforms, and Inequalities
+10. Kolmogorov Extension and Infinite-Dimensional Probability
+
+---
+
+## Chapter 1: Probability Spaces and σ-Algebras
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Random Variables and Distribution Functions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Expectation via the Lebesgue Integral
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Independence and Product Measures
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Modes of Convergence
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Laws of Large Numbers
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Characteristic Functions and the Central Limit Theorem
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Conditional Expectation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Generating Functions, Transforms, and Inequalities
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Kolmogorov Extension and Infinite-Dimensional Probability
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

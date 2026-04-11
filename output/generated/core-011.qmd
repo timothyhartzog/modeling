@@ -1,15 +1,69 @@
 ---
 title: "Bayesian Statistical Theory and Computation"
-subtitle: "CORE-011 | Core Mathematics — Year 2"
-description: "Bayesian inference is the universal framework for learning from data under uncertainty. This course covers the full theory from prior specification through posterior computation and model comparison."
-date: "2026-04-11"
+subtitle: "Core Mathematics — Year 2"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Bayesian Statistical Theory and Computation
 
-*Content not yet generated.*
+**Track**: Core Mathematics — Year 2
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Bayesian inference is the universal framework for learning from data under uncertainty. This course covers the full theory from prior specification through posterior computation and model comparison.
+
+## Table of Contents
+
+1. Foundations of Bayesian Inference
+2. Prior Specification
+3. Conjugate and Analytical Solutions
+4. Markov Chain Monte Carlo: Theory
+5. Hamiltonian Monte Carlo and Modern Samplers
+6. Variational Inference
+7. Hierarchical and Multilevel Models
+8. Model Comparison and Selection
+9. Bayesian Nonparametrics
+10. Approximate Bayesian Computation and Simulation-Based Inference
+
+---
+
+## Chapter 1: Foundations of Bayesian Inference
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Prior Specification
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Conjugate and Analytical Solutions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Markov Chain Monte Carlo: Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Hamiltonian Monte Carlo and Modern Samplers
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Variational Inference
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Hierarchical and Multilevel Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Model Comparison and Selection
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Bayesian Nonparametrics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Approximate Bayesian Computation and Simulation-Based Inference
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

@@ -1,15 +1,59 @@
 ---
 title: "Systems Biology: Biochemical Networks and Gene Regulation"
-subtitle: "POP-003 | Track E — Population Dynamics"
-description: "Mathematical modeling of biological systems at the molecular and cellular level: reaction networks, metabolic pathways, gene regulation, and the stochastic dynamics of small-number biochemistry."
-date: "2026-04-11"
+subtitle: "Track E — Population Dynamics"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Systems Biology: Biochemical Networks and Gene Regulation
 
-*Content not yet generated.*
+**Track**: Track E — Population Dynamics
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Mathematical modeling of biological systems at the molecular and cellular level: reaction networks, metabolic pathways, gene regulation, and the stochastic dynamics of small-number biochemistry.
+
+## Table of Contents
+
+1. Chemical Reaction Network Theory
+2. Enzyme Kinetics and Metabolic Modeling
+3. Gene Regulatory Networks: Deterministic Models
+4. Stochastic Gene Expression
+5. Signal Transduction Pathways
+6. Cell Cycle and Growth Models
+7. Parameter Identifiability and Sensitivity in Biochemical Models
+8. Multi-Scale Modeling in Biology
+
+---
+
+## Chapter 1: Chemical Reaction Network Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Enzyme Kinetics and Metabolic Modeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Gene Regulatory Networks: Deterministic Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Stochastic Gene Expression
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Signal Transduction Pathways
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Cell Cycle and Growth Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Parameter Identifiability and Sensitivity in Biochemical Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Multi-Scale Modeling in Biology
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

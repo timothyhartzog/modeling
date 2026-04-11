@@ -1,15 +1,59 @@
 ---
 title: "Stochastic Population Models: Extinction, Fluctuations, and Individual Variation"
-subtitle: "POP-002 | Track E — Population Dynamics"
-description: "Real populations are finite and stochastic. This textbook covers the mathematical theory of stochastic population dynamics, including demographic and environmental stochasticity, extinction risk, and individual-based stochastic models."
-date: "2026-04-11"
+subtitle: "Track E — Population Dynamics"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Stochastic Population Models: Extinction, Fluctuations, and Individual Variation
 
-*Content not yet generated.*
+**Track**: Track E — Population Dynamics
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Real populations are finite and stochastic. This textbook covers the mathematical theory of stochastic population dynamics, including demographic and environmental stochasticity, extinction risk, and individual-based stochastic models.
+
+## Table of Contents
+
+1. Demographic Stochasticity: Birth-Death Processes
+2. Environmental Stochasticity
+3. Diffusion Approximations for Population Models
+4. Branching Processes in Population Biology
+5. Stochastic Multi-Species Models
+6. Individual-Based Models and Gillespie Simulation
+7. Stochastic Spatial Models
+8. Statistical Inference for Stochastic Population Models
+
+---
+
+## Chapter 1: Demographic Stochasticity: Birth-Death Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Environmental Stochasticity
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Diffusion Approximations for Population Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Branching Processes in Population Biology
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Stochastic Multi-Species Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Individual-Based Models and Gillespie Simulation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Stochastic Spatial Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Statistical Inference for Stochastic Population Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

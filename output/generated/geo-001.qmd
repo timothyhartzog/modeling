@@ -1,15 +1,59 @@
 ---
 title: "Geostatistics: Random Fields, Kriging, and the SPDE Approach"
-subtitle: "GEO-001 | Track B — Geospatial"
-description: "The theory of spatially correlated data on continuous domains. Covers random field theory, variogram estimation, kriging, model-based geostatistics, and the modern SPDE approach linking spatial statistics to PDEs and finite elements."
-date: "2026-04-11"
+subtitle: "Track B — Geospatial"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Geostatistics: Random Fields, Kriging, and the SPDE Approach
 
-*Content not yet generated.*
+**Track**: Track B — Geospatial
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The theory of spatially correlated data on continuous domains. Covers random field theory, variogram estimation, kriging, model-based geostatistics, and the modern SPDE approach linking spatial statistics to PDEs and finite elements.
+
+## Table of Contents
+
+1. Random Fields: Stationarity and Covariance
+2. Covariance Models: The Matérn Family
+3. Variogram Estimation and Model Fitting
+4. Kriging: Optimal Spatial Prediction
+5. Model-Based Geostatistics
+6. The SPDE Approach to Spatial Modeling
+7. Spatial Simulation
+8. Large-Scale Spatial Data: Approximations and Modern Methods
+
+---
+
+## Chapter 1: Random Fields: Stationarity and Covariance
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Covariance Models: The Matérn Family
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Variogram Estimation and Model Fitting
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Kriging: Optimal Spatial Prediction
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Model-Based Geostatistics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: The SPDE Approach to Spatial Modeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Spatial Simulation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Large-Scale Spatial Data: Approximations and Modern Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

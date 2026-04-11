@@ -1,15 +1,59 @@
 ---
 title: "Clinical Trial Design and Analysis"
-subtitle: "BIO-005 | Track A — Biostatistics"
-description: "The statistical science of designing and analyzing experiments on human subjects. Covers classical, adaptive, and Bayesian trial designs with regulatory context."
-date: "2026-04-11"
+subtitle: "Track A — Biostatistics"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Clinical Trial Design and Analysis
 
-*Content not yet generated.*
+**Track**: Track A — Biostatistics
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The statistical science of designing and analyzing experiments on human subjects. Covers classical, adaptive, and Bayesian trial designs with regulatory context.
+
+## Table of Contents
+
+1. Fundamentals of Clinical Trial Design
+2. Sample Size and Power
+3. Group Sequential Designs
+4. Adaptive Trial Designs
+5. Bayesian Clinical Trial Designs
+6. Multiplicity and Multiple Endpoints
+7. Analysis of Specific Trial Types
+8. Estimands and the ICH E9(R1) Framework
+
+---
+
+## Chapter 1: Fundamentals of Clinical Trial Design
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Sample Size and Power
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Group Sequential Designs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Adaptive Trial Designs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Bayesian Clinical Trial Designs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Multiplicity and Multiple Endpoints
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Analysis of Specific Trial Types
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Estimands and the ICH E9(R1) Framework
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

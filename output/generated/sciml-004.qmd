@@ -1,15 +1,59 @@
 ---
 title: "Automatic Differentiation and Differentiable Programming"
-subtitle: "SCIML-004 | Track D — Scientific ML"
-description: "Automatic differentiation is the computational engine powering modern scientific machine learning. This textbook covers the theory, implementation, and application of AD to scientific computing."
-date: "2026-04-11"
+subtitle: "Track D — Scientific ML"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Automatic Differentiation and Differentiable Programming
 
-*Content not yet generated.*
+**Track**: Track D — Scientific ML
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Automatic differentiation is the computational engine powering modern scientific machine learning. This textbook covers the theory, implementation, and application of AD to scientific computing.
+
+## Table of Contents
+
+1. Principles of Automatic Differentiation
+2. Forward-Mode AD in Depth
+3. Reverse-Mode AD in Depth
+4. AD Through Differential Equation Solvers
+5. AD Through Linear Algebra
+6. Differentiable Programming Paradigm
+7. Second-Order Methods and Hessians
+8. Advanced Topics: Custom Rules, Sparsity, and Mixed Precision
+
+---
+
+## Chapter 1: Principles of Automatic Differentiation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Forward-Mode AD in Depth
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Reverse-Mode AD in Depth
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: AD Through Differential Equation Solvers
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: AD Through Linear Algebra
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Differentiable Programming Paradigm
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Second-Order Methods and Hessians
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Advanced Topics: Custom Rules, Sparsity, and Mixed Precision
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

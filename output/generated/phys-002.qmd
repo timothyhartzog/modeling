@@ -1,15 +1,69 @@
 ---
 title: "Geophysical Fluid Dynamics and Atmospheric Modeling"
-subtitle: "PHYS-002 | Track F — Physical Systems"
-description: "The dynamics of rotating, stratified fluids on planetary scales: the mathematical foundation for weather prediction, ocean modeling, and climate science."
-date: "2026-04-11"
+subtitle: "Track F — Physical Systems"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Geophysical Fluid Dynamics and Atmospheric Modeling
 
-*Content not yet generated.*
+**Track**: Track F — Physical Systems
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The dynamics of rotating, stratified fluids on planetary scales: the mathematical foundation for weather prediction, ocean modeling, and climate science.
+
+## Table of Contents
+
+1. Governing Equations on a Rotating Earth
+2. Geostrophic Balance and Thermal Wind
+3. Rossby Waves and Planetary Wave Dynamics
+4. Baroclinic Instability
+5. Quasi-Geostrophic Theory
+6. Parameterization of Sub-Grid Processes
+7. Numerical Methods for Atmospheric Models
+8. Data Assimilation for Weather Prediction
+9. Climate Modeling and Earth System Science
+10. Climate Model Emulation and SciML in Climate Science
+
+---
+
+## Chapter 1: Governing Equations on a Rotating Earth
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Geostrophic Balance and Thermal Wind
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Rossby Waves and Planetary Wave Dynamics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Baroclinic Instability
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Quasi-Geostrophic Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Parameterization of Sub-Grid Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Numerical Methods for Atmospheric Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Data Assimilation for Weather Prediction
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Climate Modeling and Earth System Science
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Climate Model Emulation and SciML in Climate Science
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

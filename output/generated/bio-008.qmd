@@ -1,15 +1,59 @@
 ---
 title: "Spatial Epidemiology: Disease Mapping and Surveillance"
-subtitle: "BIO-008 | Track A — Biostatistics / Track B Overlap"
-description: "The intersection of spatial statistics and epidemiology: mapping disease risk, detecting clusters, and modeling spatio-temporal disease dynamics."
-date: "2026-04-11"
+subtitle: "Track A — Biostatistics / Track B Overlap"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Spatial Epidemiology: Disease Mapping and Surveillance
 
-*Content not yet generated.*
+**Track**: Track A — Biostatistics / Track B Overlap
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The intersection of spatial statistics and epidemiology: mapping disease risk, detecting clusters, and modeling spatio-temporal disease dynamics.
+
+## Table of Contents
+
+1. Disease Mapping Fundamentals
+2. Conditional Autoregressive (CAR) Models
+3. Cluster Detection
+4. Spatio-Temporal Disease Models
+5. Ecological Studies and Spatial Regression
+6. Geostatistical Models for Point-Level Health Data
+7. Environmental Epidemiology and Exposure Assessment
+8. Infectious Disease Surveillance Systems
+
+---
+
+## Chapter 1: Disease Mapping Fundamentals
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Conditional Autoregressive (CAR) Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Cluster Detection
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Spatio-Temporal Disease Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Ecological Studies and Spatial Regression
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Geostatistical Models for Point-Level Health Data
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Environmental Epidemiology and Exposure Assessment
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Infectious Disease Surveillance Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

@@ -1,15 +1,59 @@
 ---
 title: "Mean-Field Theory and Coarse-Graining: Connecting Micro to Macro"
-subtitle: "ABM-003 | Track C — Agent-Based Modeling"
-description: "The mathematical bridge between individual-based models and population-level equations. Covers how to derive ODE/PDE descriptions from agent rules and when such approximations are valid."
-date: "2026-04-11"
+subtitle: "Track C — Agent-Based Modeling"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Mean-Field Theory and Coarse-Graining: Connecting Micro to Macro
 
-*Content not yet generated.*
+**Track**: Track C — Agent-Based Modeling
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The mathematical bridge between individual-based models and population-level equations. Covers how to derive ODE/PDE descriptions from agent rules and when such approximations are valid.
+
+## Table of Contents
+
+1. From Individuals to Populations: The Master Equation
+2. Mean-Field Approximation
+3. Moment Closure Techniques
+4. Diffusion Approximations: Fokker-Planck and Langevin
+5. Deriving PDEs from Agent-Based Models
+6. Kinetic Theory and Boltzmann Equations
+7. Multiscale Coupling: ABM + Continuum
+8. Validation of Coarse-Grained Models
+
+---
+
+## Chapter 1: From Individuals to Populations: The Master Equation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Mean-Field Approximation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Moment Closure Techniques
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Diffusion Approximations: Fokker-Planck and Langevin
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Deriving PDEs from Agent-Based Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Kinetic Theory and Boltzmann Equations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Multiscale Coupling: ABM + Continuum
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Validation of Coarse-Grained Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

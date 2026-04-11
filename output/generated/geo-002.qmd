@@ -1,15 +1,59 @@
 ---
 title: "Spatial Point Processes: Theory and Applications"
-subtitle: "GEO-002 | Track B — Geospatial"
-description: "The mathematical theory of random collections of points in space. Point processes model event locations: disease cases, tree positions, earthquake epicenters, crime incidents, and neural spike locations."
-date: "2026-04-11"
+subtitle: "Track B — Geospatial"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Spatial Point Processes: Theory and Applications
 
-*Content not yet generated.*
+**Track**: Track B — Geospatial
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The mathematical theory of random collections of points in space. Point processes model event locations: disease cases, tree positions, earthquake epicenters, crime incidents, and neural spike locations.
+
+## Table of Contents
+
+1. Fundamentals of Point Processes
+2. Poisson Processes on General Spaces
+3. Summary Statistics: K-Function and Beyond
+4. Cox Processes and Log-Gaussian Cox Processes
+5. Gibbs and Markov Point Processes
+6. Marked Point Processes
+7. Spatio-Temporal Point Processes
+8. Point Process Regression and Modern Methods
+
+---
+
+## Chapter 1: Fundamentals of Point Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Poisson Processes on General Spaces
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Summary Statistics: K-Function and Beyond
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Cox Processes and Log-Gaussian Cox Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Gibbs and Markov Point Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Marked Point Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Spatio-Temporal Point Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Point Process Regression and Modern Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

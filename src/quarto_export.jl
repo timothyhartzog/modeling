@@ -1,16 +1,14 @@
 #!/usr/bin/env julia
 """
-    quarto_export.jl — Convert assembled markdown to Quarto QMD for website.
+    quarto_export.jl — Export assembled markdown textbooks to Quarto QMD format.
 
-    Reads assembled .md files from output/assembled/ and writes .qmd files with
-    proper Quarto YAML front-matter to output/generated/.  For textbooks that
-    have not yet been assembled a placeholder .qmd is written so that
-    `quarto render` never fails on a missing file.
+    Reads assembled markdown from output/assembled/<ID>.md, adds Quarto YAML
+    front-matter, and writes the result to output/generated/<id-lowercase>.qmd.
 
     Usage:
-        julia --project=. src/quarto_export.jl                      # All textbooks
+        julia --project=. src/quarto_export.jl                     # All textbooks
         julia --project=. src/quarto_export.jl --textbook CORE-001  # One textbook
-        julia --project=. src/quarto_export.jl --stubs-only         # Placeholders only
+        julia --project=. src/quarto_export.jl --stubs-only         # Write stubs even without assembled MD
 """
 
 using JSON3, Dates
@@ -20,13 +18,12 @@ const MANIFESTS = [
     joinpath(PROJECT_ROOT, "manifests", "part1.json"),
     joinpath(PROJECT_ROOT, "manifests", "part2.json")
 ]
-const MD_ASSEMBLED  = joinpath(PROJECT_ROOT, "output", "assembled")
-const QMD_OUTPUT    = joinpath(PROJECT_ROOT, "output", "generated")
+const MD_ASSEMBLED = joinpath(PROJECT_ROOT, "output", "assembled")
+const QMD_OUTPUT   = joinpath(PROJECT_ROOT, "output", "generated")
 
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
-
+# ─────────────────────────────────────────────
+# CLI Args
+# ─────────────────────────────────────────────
 function parse_args()
     args = Dict{Symbol,Any}(
         :textbook   => nothing,
@@ -45,12 +42,11 @@ function parse_args()
     return args
 end
 
-# ---------------------------------------------------------------------------
+# ─────────────────────────────────────────────
 # Manifest loading
-# ---------------------------------------------------------------------------
-
+# ─────────────────────────────────────────────
 function load_textbook_metadata()
-    textbooks = Dict{String, Any}()
+    textbooks = Dict{String,Any}()
     for path in MANIFESTS
         raw = JSON3.read(read(path, String))
         for tb in raw.textbooks
@@ -59,121 +55,107 @@ function load_textbook_metadata()
                 title       = String(tb.title),
                 track       = String(tb.track),
                 description = String(tb.description),
+                chapters    = [(num=Int(ch.chapter_number), title=String(ch.title)) for ch in tb.chapters],
             )
         end
     end
     return textbooks
 end
 
-# ---------------------------------------------------------------------------
-# YAML front-matter helpers
-# ---------------------------------------------------------------------------
-
-const YAML_OPEN_DELIM = "---"
-const YAML_OPEN_DELIM_LEN = length(YAML_OPEN_DELIM) + 1   # +1 for exclusive slice start
-
-"""
-    strip_yaml_frontmatter(content) → String
-
-Remove a leading YAML front-matter block (`---` … `---`) if present.
-Returns the remaining body text, stripped of leading blank lines.
-"""
-function strip_yaml_frontmatter(content::String)
-    # Must start with '---' (optionally followed by spaces/newline)
-    if !startswith(content, YAML_OPEN_DELIM)
-        return content
-    end
-    # Find the closing '---' delimiter (must be on its own line)
-    rest = content[YAML_OPEN_DELIM_LEN:end]   # skip opening ---
-    # Consume an optional newline immediately after the opening ---
-    if startswith(rest, "\r\n")
-        rest = rest[3:end]
-    elseif startswith(rest, "\n")
-        rest = rest[2:end]
-    end
-    # Search for closing delimiter
-    closing = r"(?m)^---[ \t]*$"
-    m = match(closing, rest)
-    if isnothing(m)
-        return content          # malformed — return as-is
-    end
-    body = rest[m.offset + length(m.match):end]
-    # Strip leading blank lines
-    return lstrip(body, ['\n', '\r', ' ', '\t'])
-end
-
-"""
-    build_frontmatter(id, meta) → String
-
-Return a Quarto-compatible YAML front-matter block.
-"""
-function build_frontmatter(id::String, meta)
-    # Escape any double-quotes in fields that will be quoted
-    esc(s) = replace(String(s), "\"" => "\\\"")
-    today  = string(Dates.today())
+# ─────────────────────────────────────────────
+# Build Quarto front-matter block
+# ─────────────────────────────────────────────
+function front_matter(meta)
     return """---
-title: "$(esc(meta.title))"
-subtitle: "$(id) | $(esc(meta.track))"
-description: "$(esc(meta.description))"
-date: "$(today)"
+title: "$(meta.title)"
+subtitle: "$(meta.track)"
+date: "$(Dates.today())"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
-
 """
 end
 
-# ---------------------------------------------------------------------------
-# Per-textbook export
-# ---------------------------------------------------------------------------
+# ─────────────────────────────────────────────
+# Build a stub QMD (no assembled MD available)
+# ─────────────────────────────────────────────
+function stub_body(meta)
+    toc = join(["$(ch.num). $(ch.title)" for ch in meta.chapters], "\n")
+    sections = join([
+        "## Chapter $(ch.num): $(ch.title)\n\n*This chapter has not yet been generated. " *
+        "Run the generation pipeline to produce full content.*"
+        for ch in meta.chapters
+    ], "\n\n")
 
-function export_textbook(id::String, meta; stubs_only::Bool=false)
-    qmd_path   = joinpath(QMD_OUTPUT, "$(lowercase(id)).qmd")
-    assembled  = joinpath(MD_ASSEMBLED, "$(id).md")
-
-    if stubs_only || !isfile(assembled)
-        # Write placeholder
-        frontmatter = build_frontmatter(id, meta)
-        placeholder = frontmatter * """
+    return """
 # $(meta.title)
 
-*Content not yet generated.*
+**Track**: $(meta.track)
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+$(meta.description)
+
+## Table of Contents
+
+$(toc)
+
+---
+
+$(sections)
 """
-        write(qmd_path, placeholder)
-        label = stubs_only ? "stub" : "placeholder"
-        println("  📄 $(label): $(id) → $(basename(qmd_path))")
-        return qmd_path
+end
+
+# ─────────────────────────────────────────────
+# Export one textbook
+# ─────────────────────────────────────────────
+function export_textbook(textbook_id::String, meta; stubs_only::Bool=false)
+    qmd_id   = lowercase(textbook_id)
+    qmd_path = joinpath(QMD_OUTPUT, "$(qmd_id).qmd")
+    mkpath(QMD_OUTPUT)
+
+    md_path = joinpath(MD_ASSEMBLED, "$(textbook_id).md")
+
+    if !stubs_only && isfile(md_path)
+        # Prepend Quarto front-matter to the existing assembled markdown
+        assembled = read(md_path, String)
+        # Strip any existing YAML front-matter from the assembled file
+        body = if startswith(assembled, "---")
+            # Find the closing "---" and strip it
+            rest = assembled[4:end]
+            close_idx = findfirst("---", rest)
+            if !isnothing(close_idx)
+                rest[close_idx.stop+1:end]
+            else
+                assembled
+            end
+        else
+            assembled
+        end
+        write(qmd_path, front_matter(meta) * body)
+        println("  ✅ Exported  $textbook_id  (from assembled MD) → $qmd_path")
+    else
+        # Write a well-formed stub so Quarto render doesn't fail
+        write(qmd_path, front_matter(meta) * stub_body(meta))
+        if stubs_only
+            println("  📄 Stub      $textbook_id → $qmd_path")
+        else
+            println("  📄 Stub      $textbook_id  (no assembled MD found) → $qmd_path")
+        end
     end
 
-    # Read assembled markdown and strip any existing front-matter
-    raw_content = read(assembled, String)
-    body        = strip_yaml_frontmatter(raw_content)
-    frontmatter = build_frontmatter(id, meta)
-
-    write(qmd_path, frontmatter * body)
-    println("  ✅ Exported: $(id) → $(basename(qmd_path))")
     return qmd_path
 end
 
-# ---------------------------------------------------------------------------
+# ─────────────────────────────────────────────
 # Main
-# ---------------------------------------------------------------------------
-
+# ─────────────────────────────────────────────
 function main()
     args = parse_args()
 
     println("=" ^ 60)
     println("  QUARTO EXPORT")
     println("  $(Dates.now())")
-    if args[:stubs_only]
-        println("  Mode: stubs-only")
-    end
     println("=" ^ 60)
-
-    mkpath(QMD_OUTPUT)
 
     metadata = load_textbook_metadata()
     println("\n📚 Found $(length(metadata)) textbooks in manifests")
@@ -195,8 +177,8 @@ function main()
     end
 
     println("\n" * "=" ^ 60)
-    println("  EXPORT COMPLETE — $(exported) QMD files written")
-    println("  Output: $(QMD_OUTPUT)")
+    println("  EXPORT COMPLETE")
+    println("  📄 Exported: $exported QMD files → $QMD_OUTPUT")
     println("=" ^ 60)
 end
 

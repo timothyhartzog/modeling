@@ -1,15 +1,59 @@
 ---
 title: "Deep Learning Theory: Mathematical Foundations for Scientific Machine Learning"
-subtitle: "SCIML-002 | Track D — Scientific ML"
-description: "The mathematical theory underlying deep learning: approximation theory, optimization landscape, generalization, and architecture design. Provides the theoretical foundation for all SciML methods."
-date: "2026-04-11"
+subtitle: "Track D — Scientific ML"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Deep Learning Theory: Mathematical Foundations for Scientific Machine Learning
 
-*Content not yet generated.*
+**Track**: Track D — Scientific ML
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The mathematical theory underlying deep learning: approximation theory, optimization landscape, generalization, and architecture design. Provides the theoretical foundation for all SciML methods.
+
+## Table of Contents
+
+1. Universal Approximation Theory
+2. Neural Network Architectures as Mathematical Objects
+3. Optimization Landscape of Neural Networks
+4. Generalization Theory
+5. Automatic Differentiation: Theory and Implementation
+6. Regularization and Inductive Bias
+7. Equivariant and Geometric Deep Learning
+8. Generative Models: Mathematical Foundations
+
+---
+
+## Chapter 1: Universal Approximation Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Neural Network Architectures as Mathematical Objects
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Optimization Landscape of Neural Networks
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Generalization Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Automatic Differentiation: Theory and Implementation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Regularization and Inductive Bias
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Equivariant and Geometric Deep Learning
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Generative Models: Mathematical Foundations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

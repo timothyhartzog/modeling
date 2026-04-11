@@ -1,15 +1,69 @@
 ---
 title: "Neural Differential Equations and Universal Differential Equations"
-subtitle: "SCIML-001 | Track D — Scientific Machine Learning"
-description: "The core course of the SciML track: using neural networks inside differential equations to create hybrid mechanistic-data-driven models. Covers neural ODEs, physics-informed neural networks, and the universal differential equation framework."
-date: "2026-04-11"
+subtitle: "Track D — Scientific Machine Learning"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Neural Differential Equations and Universal Differential Equations
 
-*Content not yet generated.*
+**Track**: Track D — Scientific Machine Learning
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The core course of the SciML track: using neural networks inside differential equations to create hybrid mechanistic-data-driven models. Covers neural ODEs, physics-informed neural networks, and the universal differential equation framework.
+
+## Table of Contents
+
+1. Neural ODEs: Continuous-Depth Neural Networks
+2. Training Neural ODEs: Sensitivity Analysis
+3. Universal Differential Equations (UDEs)
+4. Physics-Informed Neural Networks (PINNs)
+5. Neural Operators: DeepONet and Fourier Neural Operator
+6. Neural SDEs and Stochastic Models
+7. Structure-Preserving Neural Networks
+8. Surrogate Modeling and Emulation
+9. Inverse Problems and System Identification with SciML
+10. Case Studies: SciML Across Domains
+
+---
+
+## Chapter 1: Neural ODEs: Continuous-Depth Neural Networks
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Training Neural ODEs: Sensitivity Analysis
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Universal Differential Equations (UDEs)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Physics-Informed Neural Networks (PINNs)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Neural Operators: DeepONet and Fourier Neural Operator
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Neural SDEs and Stochastic Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Structure-Preserving Neural Networks
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Surrogate Modeling and Emulation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Inverse Problems and System Identification with SciML
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Case Studies: SciML Across Domains
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

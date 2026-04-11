@@ -1,15 +1,59 @@
 ---
 title: "Space-Time Modeling: Covariance, Dynamics, and Dimension Reduction"
-subtitle: "GEO-004 | Track B — Geospatial"
-description: "Modeling phenomena that vary across both space and time: spatio-temporal covariance structures, dynamic models, and the computational methods required for large spatio-temporal datasets."
-date: "2026-04-11"
+subtitle: "Track B — Geospatial"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Space-Time Modeling: Covariance, Dynamics, and Dimension Reduction
 
-*Content not yet generated.*
+**Track**: Track B — Geospatial
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Modeling phenomena that vary across both space and time: spatio-temporal covariance structures, dynamic models, and the computational methods required for large spatio-temporal datasets.
+
+## Table of Contents
+
+1. Spatio-Temporal Covariance Functions
+2. Dynamic Spatio-Temporal Models
+3. Hierarchical Spatio-Temporal Models
+4. Dimension Reduction for Large Datasets
+5. Spatio-Temporal Point Processes (Expanded)
+6. Multivariate Spatio-Temporal Models
+7. Spatio-Temporal Extremes
+8. Machine Learning for Spatio-Temporal Data
+
+---
+
+## Chapter 1: Spatio-Temporal Covariance Functions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Dynamic Spatio-Temporal Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Hierarchical Spatio-Temporal Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Dimension Reduction for Large Datasets
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Spatio-Temporal Point Processes (Expanded)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Multivariate Spatio-Temporal Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Spatio-Temporal Extremes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Machine Learning for Spatio-Temporal Data
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

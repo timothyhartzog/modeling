@@ -1,15 +1,59 @@
 ---
 title: "Fluid Dynamics: From Navier-Stokes to Turbulence"
-subtitle: "PHYS-003 | Track F — Physical Systems"
-description: "The mathematical theory of fluid motion. Covers the derivation and analysis of the governing equations, exact and approximate solutions, and computational approaches to turbulence."
-date: "2026-04-11"
+subtitle: "Track F — Physical Systems"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Fluid Dynamics: From Navier-Stokes to Turbulence
 
-*Content not yet generated.*
+**Track**: Track F — Physical Systems
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The mathematical theory of fluid motion. Covers the derivation and analysis of the governing equations, exact and approximate solutions, and computational approaches to turbulence.
+
+## Table of Contents
+
+1. Kinematics of Fluid Flow
+2. Navier-Stokes Equations
+3. Exact and Asymptotic Solutions
+4. Boundary Layer Theory
+5. Vorticity Dynamics
+6. Potential Flow and Waves
+7. Turbulence
+8. Computational Fluid Dynamics
+
+---
+
+## Chapter 1: Kinematics of Fluid Flow
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Navier-Stokes Equations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Exact and Asymptotic Solutions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Boundary Layer Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Vorticity Dynamics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Potential Flow and Waves
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Turbulence
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Computational Fluid Dynamics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

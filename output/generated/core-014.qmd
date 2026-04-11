@@ -1,15 +1,59 @@
 ---
 title: "Partial Differential Equations II: Nonlinear PDEs and Modern Methods"
-subtitle: "CORE-014 | Core Mathematics — Year 2"
-description: "Nonlinear PDEs, conservation laws, reaction-diffusion systems, and the modern theory of existence and regularity. The mathematical tools for modeling shock waves, pattern formation, turbulence, and complex dynamics."
-date: "2026-04-11"
+subtitle: "Core Mathematics — Year 2"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Partial Differential Equations II: Nonlinear PDEs and Modern Methods
 
-*Content not yet generated.*
+**Track**: Core Mathematics — Year 2
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Nonlinear PDEs, conservation laws, reaction-diffusion systems, and the modern theory of existence and regularity. The mathematical tools for modeling shock waves, pattern formation, turbulence, and complex dynamics.
+
+## Table of Contents
+
+1. Scalar Conservation Laws and Shock Waves
+2. Systems of Conservation Laws
+3. Reaction-Diffusion Systems
+4. Hamilton-Jacobi Equations and Viscosity Solutions
+5. Navier-Stokes Equations
+6. Free Boundary Problems
+7. Stochastic PDEs
+8. Homogenization and Multiscale PDEs
+
+---
+
+## Chapter 1: Scalar Conservation Laws and Shock Waves
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Systems of Conservation Laws
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Reaction-Diffusion Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Hamilton-Jacobi Equations and Viscosity Solutions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Navier-Stokes Equations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Free Boundary Problems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Stochastic PDEs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Homogenization and Multiscale PDEs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

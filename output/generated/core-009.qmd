@@ -1,15 +1,69 @@
 ---
 title: "Partial Differential Equations I: Classical and Weak Solutions"
-subtitle: "CORE-009 | Core Mathematics — Year 2"
-description: "PDEs are the mathematical language of spatially extended systems: diffusion, wave propagation, fluid flow, electrostatics, population spread, and more. This course covers classical theory, weak solutions, and variational methods."
-date: "2026-04-11"
+subtitle: "Core Mathematics — Year 2"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Partial Differential Equations I: Classical and Weak Solutions
 
-*Content not yet generated.*
+**Track**: Core Mathematics — Year 2
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+PDEs are the mathematical language of spatially extended systems: diffusion, wave propagation, fluid flow, electrostatics, population spread, and more. This course covers classical theory, weak solutions, and variational methods.
+
+## Table of Contents
+
+1. Classification and Canonical Forms
+2. The Laplace and Poisson Equations
+3. The Heat Equation
+4. The Wave Equation
+5. Fourier Analysis Methods for PDEs
+6. Green's Functions and Integral Representations
+7. Weak Solutions and Sobolev Spaces
+8. Variational Methods and Calculus of Variations
+9. Introduction to Nonlinear PDEs
+10. Eigenvalue Problems for PDEs
+
+---
+
+## Chapter 1: Classification and Canonical Forms
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: The Laplace and Poisson Equations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: The Heat Equation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: The Wave Equation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Fourier Analysis Methods for PDEs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Green's Functions and Integral Representations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Weak Solutions and Sobolev Spaces
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Variational Methods and Calculus of Variations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Introduction to Nonlinear PDEs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Eigenvalue Problems for PDEs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

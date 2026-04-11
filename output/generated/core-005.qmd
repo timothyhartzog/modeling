@@ -1,15 +1,69 @@
 ---
 title: "Functional Analysis for Modelers"
-subtitle: "CORE-005 | Core Mathematics — Year 1"
-description: "The theory of infinite-dimensional vector spaces and operators. Functional analysis provides the rigorous framework for PDEs, integral equations, optimization in function spaces, and the mathematical foundations of machine learning (reproducing kernel Hilbert spaces, universal approximation)."
-date: "2026-04-11"
+subtitle: "Core Mathematics — Year 1"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Functional Analysis for Modelers
 
-*Content not yet generated.*
+**Track**: Core Mathematics — Year 1
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The theory of infinite-dimensional vector spaces and operators. Functional analysis provides the rigorous framework for PDEs, integral equations, optimization in function spaces, and the mathematical foundations of machine learning (reproducing kernel Hilbert spaces, universal approximation).
+
+## Table of Contents
+
+1. Banach Spaces
+2. Hilbert Spaces
+3. Bounded Linear Operators
+4. The Hahn-Banach Theorem and Duality
+5. Compact Operators and Spectral Theory
+6. Sobolev Spaces
+7. Variational Formulations and Weak Solutions
+8. Semigroups of Operators
+9. Distribution Theory
+10. Approximation Theory and Universal Approximation
+
+---
+
+## Chapter 1: Banach Spaces
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Hilbert Spaces
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Bounded Linear Operators
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: The Hahn-Banach Theorem and Duality
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Compact Operators and Spectral Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Sobolev Spaces
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Variational Formulations and Weak Solutions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Semigroups of Operators
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Distribution Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Approximation Theory and Universal Approximation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

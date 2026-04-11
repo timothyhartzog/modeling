@@ -1,15 +1,59 @@
 ---
 title: "Inverse Problems: Theory, Regularization, and Bayesian Approaches"
-subtitle: "CROSS-003 | Cross-Cutting Methods"
-description: "The mathematical theory of determining causes from observed effects. Every model calibration problem is an inverse problem. This course covers the theory of ill-posedness, regularization, and modern Bayesian and computational approaches."
-date: "2026-04-11"
+subtitle: "Cross-Cutting Methods"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Inverse Problems: Theory, Regularization, and Bayesian Approaches
 
-*Content not yet generated.*
+**Track**: Cross-Cutting Methods
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The mathematical theory of determining causes from observed effects. Every model calibration problem is an inverse problem. This course covers the theory of ill-posedness, regularization, and modern Bayesian and computational approaches.
+
+## Table of Contents
+
+1. Well-Posedness and Ill-Posedness
+2. Tikhonov Regularization
+3. Iterative Methods for Inverse Problems
+4. Bayesian Inverse Problems
+5. Nonlinear Inverse Problems
+6. Inverse Problems for Differential Equations
+7. Sparsity and Compressed Sensing for Inverse Problems
+8. Data Assimilation: Combining Models and Observations
+
+---
+
+## Chapter 1: Well-Posedness and Ill-Posedness
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Tikhonov Regularization
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Iterative Methods for Inverse Problems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Bayesian Inverse Problems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Nonlinear Inverse Problems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Inverse Problems for Differential Equations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Sparsity and Compressed Sensing for Inverse Problems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Data Assimilation: Combining Models and Observations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

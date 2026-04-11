@@ -1,15 +1,59 @@
 ---
 title: "Mathematical Statistics: Inference, Estimation, and Testing"
-subtitle: "CORE-008 | Core Mathematics — Year 1"
-description: "The rigorous theory of statistical inference. Provides the mathematical foundations for every data-facing component of the curriculum: parameter estimation, hypothesis testing, model selection, and the asymptotic theory that justifies practical methods."
-date: "2026-04-11"
+subtitle: "Core Mathematics — Year 1"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Mathematical Statistics: Inference, Estimation, and Testing
 
-*Content not yet generated.*
+**Track**: Core Mathematics — Year 1
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The rigorous theory of statistical inference. Provides the mathematical foundations for every data-facing component of the curriculum: parameter estimation, hypothesis testing, model selection, and the asymptotic theory that justifies practical methods.
+
+## Table of Contents
+
+1. Statistical Models and Sufficiency
+2. Point Estimation Theory
+3. Hypothesis Testing
+4. Confidence Regions and Interval Estimation
+5. Asymptotic Theory
+6. Decision Theory
+7. Nonparametric and Robust Methods
+8. Information-Theoretic Model Selection
+
+---
+
+## Chapter 1: Statistical Models and Sufficiency
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Point Estimation Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Hypothesis Testing
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Confidence Regions and Interval Estimation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Asymptotic Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Decision Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Nonparametric and Robust Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Information-Theoretic Model Selection
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

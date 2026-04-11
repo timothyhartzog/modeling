@@ -1,15 +1,59 @@
 ---
 title: "Deterministic Population Models: Structured Populations and Bifurcations"
-subtitle: "POP-001 | Track E — Population Dynamics"
-description: "The classical ODE and PDE models of population dynamics, from Malthus through modern structured population theory."
-date: "2026-04-11"
+subtitle: "Track E — Population Dynamics"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Deterministic Population Models: Structured Populations and Bifurcations
 
-*Content not yet generated.*
+**Track**: Track E — Population Dynamics
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The classical ODE and PDE models of population dynamics, from Malthus through modern structured population theory.
+
+## Table of Contents
+
+1. Single-Species Models
+2. Interacting Species: Competition and Predation
+3. Bifurcation Analysis in Population Models
+4. Age-Structured Populations: The McKendrick-von Foerster Equation
+5. Stage-Structured and Size-Structured Models
+6. Metapopulation Theory
+7. Spatial Population Dynamics
+8. Harvesting, Conservation, and Optimal Management
+
+---
+
+## Chapter 1: Single-Species Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Interacting Species: Competition and Predation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Bifurcation Analysis in Population Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Age-Structured Populations: The McKendrick-von Foerster Equation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Stage-Structured and Size-Structured Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Metapopulation Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Spatial Population Dynamics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Harvesting, Conservation, and Optimal Management
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

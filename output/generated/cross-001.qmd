@@ -1,15 +1,59 @@
 ---
 title: "Advanced Dynamical Systems: From Chaos to Data-Driven Discovery"
-subtitle: "CROSS-001 | Cross-Cutting Methods"
-description: "Nonlinear dynamics, chaos, and modern data-driven methods for discovering and analyzing dynamical systems from data. Connects classical dynamical systems theory to machine learning and SciML."
-date: "2026-04-11"
+subtitle: "Cross-Cutting Methods"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Advanced Dynamical Systems: From Chaos to Data-Driven Discovery
 
-*Content not yet generated.*
+**Track**: Cross-Cutting Methods
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Nonlinear dynamics, chaos, and modern data-driven methods for discovering and analyzing dynamical systems from data. Connects classical dynamical systems theory to machine learning and SciML.
+
+## Table of Contents
+
+1. Invariant Manifolds and Global Dynamics
+2. Chaos and Strange Attractors
+3. Ergodic Theory for Dynamical Systems
+4. Koopman Operator Theory
+5. Dynamic Mode Decomposition (DMD)
+6. Sparse Identification of Nonlinear Dynamics (SINDy)
+7. Data-Driven Reduced-Order Models
+8. Control of Dynamical Systems
+
+---
+
+## Chapter 1: Invariant Manifolds and Global Dynamics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Chaos and Strange Attractors
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Ergodic Theory for Dynamical Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Koopman Operator Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Dynamic Mode Decomposition (DMD)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Sparse Identification of Nonlinear Dynamics (SINDy)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Data-Driven Reduced-Order Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Control of Dynamical Systems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

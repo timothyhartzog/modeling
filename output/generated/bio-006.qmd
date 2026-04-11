@@ -1,15 +1,59 @@
 ---
 title: "High-Dimensional Statistics: Inference in the p > n Regime"
-subtitle: "BIO-006 | Track A — Biostatistics"
-description: "When the number of variables exceeds the number of observations — genomics, imaging, electronic health records — classical statistics breaks down. This course covers the theory and methods for valid inference in high dimensions."
-date: "2026-04-11"
+subtitle: "Track A — Biostatistics"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # High-Dimensional Statistics: Inference in the p > n Regime
 
-*Content not yet generated.*
+**Track**: Track A — Biostatistics
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+When the number of variables exceeds the number of observations — genomics, imaging, electronic health records — classical statistics breaks down. This course covers the theory and methods for valid inference in high dimensions.
+
+## Table of Contents
+
+1. The High-Dimensional Challenge
+2. LASSO: Theory and Oracle Inequalities
+3. Beyond LASSO: Structured Sparsity
+4. Post-Selection Inference
+5. Multiple Testing and False Discovery Rate
+6. Random Matrix Theory for Statistics
+7. Sparse PCA and Dimension Reduction
+8. High-Dimensional Bayesian Methods
+
+---
+
+## Chapter 1: The High-Dimensional Challenge
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: LASSO: Theory and Oracle Inequalities
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Beyond LASSO: Structured Sparsity
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Post-Selection Inference
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Multiple Testing and False Discovery Rate
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Random Matrix Theory for Statistics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Sparse PCA and Dimension Reduction
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: High-Dimensional Bayesian Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

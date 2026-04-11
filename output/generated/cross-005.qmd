@@ -1,15 +1,59 @@
 ---
 title: "Multiscale and Multiphysics Methods"
-subtitle: "CROSS-005 | Cross-Cutting Methods"
-description: "Real-world systems span multiple scales in space and time. This textbook covers the mathematical and computational methods for coupling models across scales and physics."
-date: "2026-04-11"
+subtitle: "Cross-Cutting Methods"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Multiscale and Multiphysics Methods
 
-*Content not yet generated.*
+**Track**: Cross-Cutting Methods
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+Real-world systems span multiple scales in space and time. This textbook covers the mathematical and computational methods for coupling models across scales and physics.
+
+## Table of Contents
+
+1. Scale Separation and Dimensional Analysis
+2. Homogenization Theory
+3. Averaging and Multiple Scales
+4. Heterogeneous Multiscale Method (HMM)
+5. Equation-Free Methods
+6. Domain Decomposition and Concurrent Coupling
+7. Multiphysics Coupling
+8. Machine Learning for Multiscale Modeling
+
+---
+
+## Chapter 1: Scale Separation and Dimensional Analysis
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Homogenization Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Averaging and Multiple Scales
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Heterogeneous Multiscale Method (HMM)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Equation-Free Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Domain Decomposition and Concurrent Coupling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Multiphysics Coupling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Machine Learning for Multiscale Modeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

@@ -1,15 +1,59 @@
 ---
 title: "Computational Statistics and Monte Carlo Methods"
-subtitle: "CORE-015 | Core Mathematics — Year 2"
-description: "The computational methods that make modern statistics possible. Monte Carlo, bootstrap, EM algorithm, and the theory behind simulation-based inference."
-date: "2026-04-11"
+subtitle: "Core Mathematics — Year 2"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Computational Statistics and Monte Carlo Methods
 
-*Content not yet generated.*
+**Track**: Core Mathematics — Year 2
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The computational methods that make modern statistics possible. Monte Carlo, bootstrap, EM algorithm, and the theory behind simulation-based inference.
+
+## Table of Contents
+
+1. Random Number Generation and Simulation
+2. Monte Carlo Integration
+3. Bootstrap Methods
+4. Permutation Tests and Exact Methods
+5. The EM Algorithm and Extensions
+6. Sequential Monte Carlo (Particle Filters)
+7. Cross-Validation and Predictive Assessment
+8. Optimization Algorithms for Statistics
+
+---
+
+## Chapter 1: Random Number Generation and Simulation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Monte Carlo Integration
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Bootstrap Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Permutation Tests and Exact Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: The EM Algorithm and Extensions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Sequential Monte Carlo (Particle Filters)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Cross-Validation and Predictive Assessment
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Optimization Algorithms for Statistics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

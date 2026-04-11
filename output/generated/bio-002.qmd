@@ -1,15 +1,59 @@
 ---
 title: "Survival Analysis: Theory and Advanced Methods"
-subtitle: "BIO-002 | Track A — Biostatistics"
-description: "The mathematics of time-to-event data: censoring, hazard functions, and the counting process framework that unifies nonparametric, semiparametric, and parametric approaches."
-date: "2026-04-11"
+subtitle: "Track A — Biostatistics"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Survival Analysis: Theory and Advanced Methods
 
-*Content not yet generated.*
+**Track**: Track A — Biostatistics
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The mathematics of time-to-event data: censoring, hazard functions, and the counting process framework that unifies nonparametric, semiparametric, and parametric approaches.
+
+## Table of Contents
+
+1. Survival Functions, Hazards, and Censoring
+2. Nonparametric Estimation
+3. Cox Proportional Hazards Model
+4. Counting Process Formulation
+5. Accelerated Failure Time Models
+6. Competing Risks
+7. Frailty Models and Correlated Survival
+8. Joint Models for Longitudinal and Survival Data
+
+---
+
+## Chapter 1: Survival Functions, Hazards, and Censoring
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Nonparametric Estimation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Cox Proportional Hazards Model
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Counting Process Formulation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Accelerated Failure Time Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Competing Risks
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Frailty Models and Correlated Survival
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Joint Models for Longitudinal and Survival Data
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

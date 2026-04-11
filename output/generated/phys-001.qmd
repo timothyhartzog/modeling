@@ -1,15 +1,69 @@
 ---
 title: "Continuum Mechanics: From Fundamentals to Biological Tissue"
-subtitle: "PHYS-001 | Track F — Physical Systems"
-description: "The mathematical theory of continuous media: solids, fluids, and biological tissues. Provides the unified framework for biomechanics, fluid dynamics, and any model involving deformable bodies."
-date: "2026-04-11"
+subtitle: "Track F — Physical Systems"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Continuum Mechanics: From Fundamentals to Biological Tissue
 
-*Content not yet generated.*
+**Track**: Track F — Physical Systems
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The mathematical theory of continuous media: solids, fluids, and biological tissues. Provides the unified framework for biomechanics, fluid dynamics, and any model involving deformable bodies.
+
+## Table of Contents
+
+1. Kinematics of Deformation
+2. Stress and Balance Laws
+3. Constitutive Theory: Principles and Constraints
+4. Linear Elasticity
+5. Hyperelasticity
+6. Viscoelasticity
+7. Biological Tissue Mechanics
+8. Growth and Remodeling
+9. Poroelasticity and Mixture Theory
+10. Computational Continuum Mechanics
+
+---
+
+## Chapter 1: Kinematics of Deformation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Stress and Balance Laws
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Constitutive Theory: Principles and Constraints
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Linear Elasticity
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Hyperelasticity
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Viscoelasticity
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Biological Tissue Mechanics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Growth and Remodeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Poroelasticity and Mixture Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Computational Continuum Mechanics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

@@ -1,15 +1,69 @@
 ---
 title: "Causal Inference: From Theory to Practice"
-subtitle: "BIO-004 | Track A — Biostatistics"
-description: "The rigorous mathematical framework for drawing causal — not merely associational — conclusions from data. Covers both the potential outcomes framework and structural causal models."
-date: "2026-04-11"
+subtitle: "Track A — Biostatistics"
+date: "2025-01-01"
 toc: true
-toc-depth: 3
+toc-depth: 2
 number-sections: true
 ---
 
 # Causal Inference: From Theory to Practice
 
-*Content not yet generated.*
+**Track**: Track A — Biostatistics
 
-Run the generation pipeline and then `src/quarto_export.jl` to populate this page.
+The rigorous mathematical framework for drawing causal — not merely associational — conclusions from data. Covers both the potential outcomes framework and structural causal models.
+
+## Table of Contents
+
+1. The Fundamental Problem of Causal Inference
+2. Structural Causal Models and DAGs
+3. Identifiability and the Backdoor Criterion
+4. Propensity Score Methods
+5. Instrumental Variables
+6. Difference-in-Differences and Synthetic Controls
+7. Regression Discontinuity and Other Quasi-Experimental Designs
+8. Mediation Analysis and Path-Specific Effects
+9. Sensitivity Analysis for Unmeasured Confounding
+10. Causal Inference with Time-Varying Treatments
+
+---
+
+## Chapter 1: The Fundamental Problem of Causal Inference
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Structural Causal Models and DAGs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Identifiability and the Backdoor Criterion
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Propensity Score Methods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Instrumental Variables
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Difference-in-Differences and Synthetic Controls
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Regression Discontinuity and Other Quasi-Experimental Designs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Mediation Analysis and Path-Specific Effects
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 9: Sensitivity Analysis for Unmeasured Confounding
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 10: Causal Inference with Time-Varying Treatments
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

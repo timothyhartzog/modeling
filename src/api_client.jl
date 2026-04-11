@@ -1,9 +1,16 @@
+if !isdefined(Main, :CircuitBreaker)
+    include("circuit_breaker.jl")
+end
+
 """
     api_client.jl — Anthropic API wrapper with exponential backoff and retry logic.
 """
+
 module APIClient
 
 using HTTP, JSON3, Dates, Logging
+
+import ..CircuitBreaker: CircuitBreakerState, check_and_update!
 
 export generate_chapter, GenerationResult
 
@@ -12,6 +19,9 @@ const MODEL = "claude-sonnet-4-20250514"
 const MAX_TOKENS = 8192
 const MAX_RETRIES = 5
 const BASE_DELAY = 2.0  # seconds
+
+# Shared circuit breaker: opens after 3 consecutive 429s, resets after 60 s.
+const _circuit_breaker = CircuitBreakerState(:closed, 0, 3, 60.0, nothing)
 
 """
     GenerationResult
@@ -79,12 +89,31 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
     ))
 
     for attempt in 1:MAX_RETRIES
+        # Pre-flight circuit breaker check: if open, apply timeout → :half_open
+        # transition before deciding whether to allow the attempt.
+        cb = _circuit_breaker
+        if cb.state == :open
+            if cb.last_trip_time !== nothing && time() - cb.last_trip_time > cb.reset_timeout
+                cb.state = :half_open
+                cb.failure_count = 0
+                @info "Circuit breaker HALF_OPEN: Testing recovery..."
+            else
+                delay = BASE_DELAY * 2^(attempt - 1)
+                @warn "Circuit breaker OPEN. Waiting $(round(delay, digits=1))s (attempt $attempt/$MAX_RETRIES)"
+                sleep(delay)
+                continue
+            end
+        end
+
         try
             response = HTTP.post(API_URL, headers, body;
                                  connect_timeout=30, readtimeout=300,
                                  retry=false, status_exception=false)
 
             status = response.status
+
+            # Update circuit breaker with the observed status
+            check_and_update!(_circuit_breaker, status)
 
             if status == 200
                 result = JSON3.read(String(response.body))

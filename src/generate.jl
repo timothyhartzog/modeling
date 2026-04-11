@@ -14,8 +14,12 @@
         julia --project=. src/generate.jl --textbook CORE-001 --force       # Regenerate all chapters, ignoring state
 """
 
-include("api_client.jl")
-include("prompt_builder.jl")
+if !isdefined(Main, :APIClient)
+    include("api_client.jl")
+end
+if !isdefined(Main, :PromptBuilder)
+    include("prompt_builder.jl")
+end
 
 using .APIClient
 using .PromptBuilder
@@ -64,9 +68,9 @@ mutable struct GenerationState
     last_updated::String
 end
 
-function load_state()::GenerationState
-    if isfile(STATE_PATH)
-        raw = JSON3.read(read(STATE_PATH, String))
+function load_state(path::String=STATE_PATH)::GenerationState
+    if isfile(path)
+        raw = JSON3.read(read(path, String))
         version = haskey(raw, :schema_version) ? String(raw.schema_version) : "1.0"
 
         if version == "1.0"
@@ -90,7 +94,7 @@ function load_state()::GenerationState
     end
 end
 
-function save_state(state::GenerationState)
+function save_state(state::GenerationState, path::String=STATE_PATH)
     state.last_updated = string(Dates.now())
     json = JSON3.write(Dict(
         "schema_version" => STATE_SCHEMA_VERSION,
@@ -101,17 +105,17 @@ function save_state(state::GenerationState)
         "last_updated" => state.last_updated
     ))
     # Atomic write: write to temp, then rename
-    tmp = STATE_PATH * ".tmp"
+    tmp = path * ".tmp"
     write(tmp, json)
-    mv(tmp, STATE_PATH; force=true)
+    mv(tmp, path; force=true)
 end
 
 # ─────────────────────────────────────────────
 # File I/O
 # ─────────────────────────────────────────────
-function save_chapter(key::String, content::String)
+function save_chapter(key::String, content::String, output_dir::String=OUTPUT_DIR)
     parts = split(key, "/")
-    textbook_dir = joinpath(OUTPUT_DIR, parts[1])
+    textbook_dir = joinpath(output_dir, parts[1])
     mkpath(textbook_dir)
     filepath = joinpath(textbook_dir, "$(parts[2]).md")
     write(filepath, content)
@@ -121,7 +125,7 @@ end
 # ─────────────────────────────────────────────
 # Parse CLI Args
 # ─────────────────────────────────────────────
-function parse_args()
+function parse_args(args_vec::Vector{String}=ARGS)
     args = Dict{Symbol,Any}(
         :concurrency => 5,
         :calibrate => false,
@@ -134,10 +138,10 @@ function parse_args()
     )
 
     i = 1
-    while i <= length(ARGS)
-        arg = ARGS[i]
-        if arg == "--concurrency" && i < length(ARGS)
-            requested = parse(Int, ARGS[i+1])
+    while i <= length(args_vec)
+        arg = args_vec[i]
+        if arg == "--concurrency" && i < length(args_vec)
+            requested = parse(Int, args_vec[i+1])
             if requested > HARD_MAX_CONCURRENCY
                 @error "--concurrency $requested exceeds hard limit of $HARD_MAX_CONCURRENCY. Clamping to $HARD_MAX_CONCURRENCY."
                 requested = HARD_MAX_CONCURRENCY
@@ -158,11 +162,11 @@ function parse_args()
         elseif arg == "--retry-failed"
             args[:retry_failed] = true
             i += 1
-        elseif arg == "--textbook" && i < length(ARGS)
-            args[:textbook] = ARGS[i+1]
+        elseif arg == "--textbook" && i < length(args_vec)
+            args[:textbook] = args_vec[i+1]
             i += 2
-        elseif arg == "--chapter" && i < length(ARGS)
-            args[:chapters] = split(ARGS[i+1], ",")
+        elseif arg == "--chapter" && i < length(args_vec)
+            args[:chapters] = split(args_vec[i+1], ",")
             i += 2
         elseif arg == "--force"
             args[:force] = true
@@ -437,4 +441,6 @@ function main()
     close(log_io)
 end
 
-main()
+if abspath(PROGRAM_FILE) == @__FILE__
+    main()
+end

@@ -5,7 +5,7 @@ module PromptBuilder
 
 using JSON3
 
-export load_manifests, build_chapter_prompt, WorkItem, load_system_prompt, validate_manifest
+export load_manifests, build_chapter_prompt, WorkItem, load_system_prompt, validate_manifest, work_item_key
 
 """
     WorkItem — A single chapter generation task.

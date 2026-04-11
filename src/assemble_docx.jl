@@ -56,9 +56,9 @@ function parse_args()
     return args
 end
 
-function load_textbook_metadata()
+function load_textbook_metadata(manifests::Vector{String}=MANIFESTS)
     textbooks = Dict{String, Any}()
-    for path in MANIFESTS
+    for path in manifests
         raw = JSON3.read(read(path, String))
         for tb in raw.textbooks
             id = String(tb.id)
@@ -73,8 +73,10 @@ function load_textbook_metadata()
     return textbooks
 end
 
-function assemble_textbook(textbook_id::String, meta)
-    chapter_dir = joinpath(MD_INPUT, textbook_id)
+function assemble_textbook(textbook_id::String, meta,
+                           md_input::String=MD_INPUT,
+                           md_assembled::String=MD_ASSEMBLED)
+    chapter_dir = joinpath(md_input, textbook_id)
 
     if !isdir(chapter_dir)
         @warn "No chapters found for $textbook_id at $chapter_dir — skipping"
@@ -131,8 +133,8 @@ function assemble_textbook(textbook_id::String, meta)
     end
 
     # Write assembled markdown
-    mkpath(MD_ASSEMBLED)
-    md_path = joinpath(MD_ASSEMBLED, "$(textbook_id).md")
+    mkpath(md_assembled)
+    md_path = joinpath(md_assembled, "$(textbook_id).md")
     write(md_path, join(parts))
 
     println("  📄 Assembled $textbook_id: $found/$(length(meta.chapters)) chapters → $md_path")
@@ -336,4 +338,6 @@ function main()
     println("=" ^ 60)
 end
 
-main()
+if abspath(PROGRAM_FILE) == @__FILE__
+    main()
+end

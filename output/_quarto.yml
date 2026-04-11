@@ -22,130 +22,130 @@ website:
     contents:
       - section: "📖 Core Foundations"
         contents:
-          - text: "CORE-001: Mathematical Foundations"
+          - text: "CORE-001: Real Analysis for Modelers"
             href: generated/core-001.qmd
-          - text: "CORE-002: Linear Algebra"
+          - text: "CORE-002: Linear Algebra and Matrix Theory for Computational Science"
             href: generated/core-002.qmd
-          - text: "CORE-003: Differential Equations"
+          - text: "CORE-003: Measure-Theoretic Probability I"
             href: generated/core-003.qmd
-          - text: "CORE-004: Complex Analysis"
+          - text: "CORE-004: Scientific Computing I: Foundations of Numerical Methods"
             href: generated/core-004.qmd
-          - text: "CORE-005: Probability & Statistics"
+          - text: "CORE-005: Functional Analysis for Modelers"
             href: generated/core-005.qmd
-          - text: "CORE-006: Real Analysis"
+          - text: "CORE-006: Probability Theory II: Martingales, Brownian Motion, and Stochastic Calculus Foundations"
             href: generated/core-006.qmd
-          - text: "CORE-007: Abstract Algebra"
+          - text: "CORE-007: Ordinary Differential Equations: Theory, Analysis, and Computation"
             href: generated/core-007.qmd
-          - text: "CORE-008: Topology"
+          - text: "CORE-008: Mathematical Statistics: Inference, Estimation, and Testing"
             href: generated/core-008.qmd
-          - text: "CORE-009: Functional Analysis"
+          - text: "CORE-009: Partial Differential Equations I: Classical and Weak Solutions"
             href: generated/core-009.qmd
-          - text: "CORE-010: Numerical Analysis"
+          - text: "CORE-010: Stochastic Processes for Modeling"
             href: generated/core-010.qmd
-          - text: "CORE-011: Optimization Theory"
+          - text: "CORE-011: Bayesian Statistical Theory and Computation"
             href: generated/core-011.qmd
-          - text: "CORE-012: Information Theory"
+          - text: "CORE-012: Numerical Methods for Differential Equations"
             href: generated/core-012.qmd
-          - text: "CORE-013: Dynamical Systems"
+          - text: "CORE-013: Differential Geometry and Tensor Analysis for Physical Modeling"
             href: generated/core-013.qmd
-          - text: "CORE-014: Chaos & Complexity"
+          - text: "CORE-014: Partial Differential Equations II: Nonlinear PDEs and Modern Methods"
             href: generated/core-014.qmd
-          - text: "CORE-015: Category Theory"
+          - text: "CORE-015: Computational Statistics and Monte Carlo Methods"
             href: generated/core-015.qmd
-          - text: "CORE-016: Advanced Logic"
+          - text: "CORE-016: Optimization Theory for Modelers"
             href: generated/core-016.qmd
 
       - section: "🧬 Biology & Life Sciences"
         contents:
-          - text: "BIO-001: Molecular Biology"
+          - text: "BIO-001: Generalized Linear Models and Extensions"
             href: generated/bio-001.qmd
-          - text: "BIO-002: Cell Biology"
+          - text: "BIO-002: Survival Analysis: Theory and Advanced Methods"
             href: generated/bio-002.qmd
-          - text: "BIO-003: Genetics & Genomics"
+          - text: "BIO-003: Longitudinal Data Analysis: Mixed Models, GEE, and Missing Data"
             href: generated/bio-003.qmd
-          - text: "BIO-004: Evolutionary Biology"
+          - text: "BIO-004: Causal Inference: From Theory to Practice"
             href: generated/bio-004.qmd
-          - text: "BIO-005: Ecology & Ecosystems"
+          - text: "BIO-005: Clinical Trial Design and Analysis"
             href: generated/bio-005.qmd
-          - text: "BIO-006: Systems Biology"
+          - text: "BIO-006: High-Dimensional Statistics: Inference in the p > n Regime"
             href: generated/bio-006.qmd
-          - text: "BIO-007: Computational Biology"
+          - text: "BIO-007: Compartmental Epidemic Models: From SIR to Spatial Stochastic Dynamics"
             href: generated/bio-007.qmd
-          - text: "BIO-008: Neurobiology"
+          - text: "BIO-008: Spatial Epidemiology: Disease Mapping and Surveillance"
             href: generated/bio-008.qmd
 
       - section: "🌍 Geospatial & Environmental"
         contents:
-          - text: "GEO-001: GIS Fundamentals"
+          - text: "GEO-001: Geostatistics: Random Fields, Kriging, and the SPDE Approach"
             href: generated/geo-001.qmd
-          - text: "GEO-002: Climate Modeling"
+          - text: "GEO-002: Spatial Point Processes: Theory and Applications"
             href: generated/geo-002.qmd
-          - text: "GEO-003: Remote Sensing"
+          - text: "GEO-003: Areal Data Models and Spatial Econometrics"
             href: generated/geo-003.qmd
-          - text: "GEO-004: Spatial Statistics"
+          - text: "GEO-004: Space-Time Modeling: Covariance, Dynamics, and Dimension Reduction"
             href: generated/geo-004.qmd
-          - text: "GEO-005: Earth Systems"
+          - text: "GEO-005: Remote Sensing and Geospatial Data Science"
             href: generated/geo-005.qmd
 
       - section: "🤖 Machine Learning & AI"
         contents:
-          - text: "SCIML-001: Physics-Informed Neural Networks"
+          - text: "SCIML-001: Neural Differential Equations and Universal Differential Equations"
             href: generated/sciml-001.qmd
-          - text: "SCIML-002: Surrogate Modeling"
+          - text: "SCIML-002: Deep Learning Theory: Mathematical Foundations for Scientific Machine Learning"
             href: generated/sciml-002.qmd
-          - text: "SCIML-003: Operator Learning"
+          - text: "SCIML-003: Probabilistic Machine Learning: Gaussian Processes, Bayesian Neural Networks, and Beyond"
             href: generated/sciml-003.qmd
-          - text: "SCIML-004: Data-Driven Discovery"
+          - text: "SCIML-004: Automatic Differentiation and Differentiable Programming"
             href: generated/sciml-004.qmd
-          - text: "SCIML-005: Scientific Machine Learning"
+          - text: "SCIML-005: Inverse Problems and Data Assimilation with Machine Learning"
             href: generated/sciml-005.qmd
 
       - section: "⚛️ Physics"
         contents:
-          - text: "PHYS-001: Classical Mechanics"
+          - text: "PHYS-001: Continuum Mechanics: From Fundamentals to Biological Tissue"
             href: generated/phys-001.qmd
-          - text: "PHYS-002: Thermodynamics"
+          - text: "PHYS-002: Geophysical Fluid Dynamics and Atmospheric Modeling"
             href: generated/phys-002.qmd
-          - text: "PHYS-003: Electromagnetism"
+          - text: "PHYS-003: Fluid Dynamics: From Navier-Stokes to Turbulence"
             href: generated/phys-003.qmd
-          - text: "PHYS-004: Quantum Mechanics"
+          - text: "PHYS-004: Biomechanics: Soft Tissue, Cardiovascular, and Respiratory Systems"
             href: generated/phys-004.qmd
 
       - section: "📊 Population & Dynamics"
         contents:
-          - text: "POP-001: Mathematical Demography"
+          - text: "POP-001: Deterministic Population Models: Structured Populations and Bifurcations"
             href: generated/pop-001.qmd
-          - text: "POP-002: Population Ecology"
+          - text: "POP-002: Stochastic Population Models: Extinction, Fluctuations, and Individual Variation"
             href: generated/pop-002.qmd
-          - text: "POP-003: Epidemic Modeling"
+          - text: "POP-003: Systems Biology: Biochemical Networks and Gene Regulation"
             href: generated/pop-003.qmd
-          - text: "POP-004: Stochastic Population Models"
+          - text: "POP-004: Demography and Human Population Modeling"
             href: generated/pop-004.qmd
 
       - section: "🔀 Advanced Integration"
         contents:
-          - text: "ABM-001: Agent-Based Modeling"
+          - text: "ABM-001: Foundations of Agent-Based Modeling: Design, Implementation, and Validation"
             href: generated/abm-001.qmd
-          - text: "ABM-002: Emergent Behavior"
+          - text: "ABM-002: Network Science: Structure, Dynamics, and Inference"
             href: generated/abm-002.qmd
-          - text: "ABM-003: Multi-Agent Systems"
+          - text: "ABM-003: Mean-Field Theory and Coarse-Graining: Connecting Micro to Macro"
             href: generated/abm-003.qmd
-          - text: "ABM-004: Computational Simulation"
+          - text: "ABM-004: Evolutionary Game Theory and Collective Behavior"
             href: generated/abm-004.qmd
-          - text: "CROSS-001: Interdisciplinary Methods"
+          - text: "CROSS-001: Advanced Dynamical Systems: From Chaos to Data-Driven Discovery"
             href: generated/cross-001.qmd
-          - text: "CROSS-002: Complex Systems"
+          - text: "CROSS-002: Optimal Transport: Theory, Computation, and Applications Across Domains"
             href: generated/cross-002.qmd
-          - text: "CROSS-003: Network Analysis"
+          - text: "CROSS-003: Inverse Problems: Theory, Regularization, and Bayesian Approaches"
             href: generated/cross-003.qmd
-          - text: "CROSS-004: Multiscale Modeling"
+          - text: "CROSS-004: Information Geometry: The Geometry of Statistical Models"
             href: generated/cross-004.qmd
-          - text: "CROSS-005: Systems Integration"
+          - text: "CROSS-005: Multiscale and Multiphysics Methods"
             href: generated/cross-005.qmd
 
       - section: "📈 Uncertainty & Quantification"
         contents:
-          - text: "UQ-001: Bayesian Methods & Sensitivity Analysis"
+          - text: "UQ-001: Uncertainty Quantification: Theory and Practice"
             href: generated/uq-001.qmd
 
 format:

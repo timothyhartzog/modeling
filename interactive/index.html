@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modeling Mastery — Interactive Demos</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      min-height: 100vh;
+      padding: 3rem 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: #94a3b8;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+    a.card {
+      display: block;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    a.card:hover {
+      border-color: #60a5fa;
+      transform: translateY(-2px);
+    }
+    .card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 0.4rem;
+    }
+    .card-desc { font-size: 0.875rem; color: #94a3b8; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h1>Universal Modeling Mastery</h1>
+  <p class="subtitle">Interactive Educational Demos — 52 Graduate-Level Textbooks</p>
+  <div class="grid">
+    <a class="card" href="pages/concept-map.html">
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">Concept Map Navigator</div>
+      <div class="card-desc">D3.js force-directed knowledge graph across 55+ concepts and 8 subject tracks.</div>
+    </a>
+    <a class="card" href="pages/phase-portrait.html">
+      <div class="card-icon">🌀</div>
+      <div class="card-title">Phase Portrait Explorer</div>
+      <div class="card-desc">ODE phase portraits with click-to-place initial conditions and RK4 integration.</div>
+    </a>
+    <a class="card" href="pages/gradient-descent.html">
+      <div class="card-icon">📉</div>
+      <div class="card-title">Gradient Descent Visualizer</div>
+      <div class="card-desc">Compare 4 optimizers across 4 test functions with animated contour plots.</div>
+    </a>
+    <a class="card" href="pages/distribution.html">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Distribution Playground</div>
+      <div class="card-desc">Explore 6 probability distributions with real-time PDF, CDF, and histograms.</div>
+    </a>
+    <a class="card" href="pages/quiz.html">
+      <div class="card-icon">🧠</div>
+      <div class="card-title">Quiz Engine</div>
+      <div class="card-desc">Spaced-repetition quizzes with Bloom's taxonomy tiers and track filtering.</div>
+    </a>
+    <a class="card" href="pages/proof-explorer.html">
+      <div class="card-icon">📐</div>
+      <div class="card-title">Proof Explorer</div>
+      <div class="card-desc">Collapsible proofs with intuition/formal toggle and embedded exercises.</div>
+    </a>
+  </div>
+</body>
+</html>

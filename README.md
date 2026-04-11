@@ -35,6 +35,30 @@ julia --project=. src/quarto_export.jl
 cd output && quarto preview
 ```
 
+## v2 Deployment (Full Pipeline)
+
+```bash
+# Full pipeline: activate v2 prompt → generate → validate → build interactive site
+./deploy.sh
+
+# Or step by step:
+./deploy.sh --validate     # Check existing chapters against 16 v2 checks
+./deploy.sh --generate     # Activate v2 prompt, calibrate, then batch generate
+./deploy.sh --graph        # Build concept-graph.json from chapters
+./deploy.sh --site         # Build Quarto site + install React component deps
+./deploy.sh --status       # Dashboard of progress
+./deploy.sh --deploy       # Publish to GitHub Pages
+
+# Interactive demos (standalone dev server — opens at localhost:5173)
+cd interactive
+npm install
+npm run dev
+
+# Interactive Quarto preview (after ./deploy.sh --site)
+cd output/quarto
+quarto preview             # Opens at localhost:4200
+```
+
 ## Architecture
 
 | File | Purpose |
@@ -44,11 +68,18 @@ cd output && quarto preview
 | `src/prompt_builder.jl` | Constructs per-chapter prompts from manifest JSON |
 | `src/assemble_docx.jl` | Concatenates chapters → DOCX via pandoc |
 | `src/validate.jl` | Post-generation quality checker — 6 per-chapter checks |
+| `src/validate_v2.jl` | Enhanced quality checker — 16 per-chapter checks with fix report |
 | `src/stats.jl` | Read-only progress dashboard — overall, by-track, by-textbook |
-| `src/quarto_export.jl` | Converts assembled markdown → Quarto QMD for website |
-| `system_prompt.md` | Locked system prompt for consistent generation |
+| `src/quarto_export.jl` | Converts assembled markdown → Quarto QMD stubs for website |
+| `src/quarto_interactive_export.jl` | Converts chapters → interactive Quarto QMD (v2) |
+| `src/build_concept_graph.jl` | Parses chapters → concept-graph.json for navigator |
+| `src/build_quarto_config.jl` | Regenerates output/_quarto.yml from manifests |
+| `system_prompt.md` | Active system prompt for generation |
+| `system_prompt_v2.md` | Enhanced v2 prompt (Bloom's, Pitfalls, Comp. Lab) |
 | `manifests/part1.json` | 24 textbooks, 212 chapters |
 | `manifests/part2.json` | 28 textbooks, 226 chapters |
+| `interactive/` | React educational demos (Vite + D3 + Recharts) |
+| `deploy.sh` | Full deployment orchestrator |
 | `state.json` | Resume state — tracks completed/failed chapters |
 | `CLAUDE.md` | Claude Code state continuity |
 

@@ -7,6 +7,11 @@ output/assembled/
 output/docx/
 output/pdf/
 output/html/
+output/_site/
+
+# Node.js (interactive demos)
+interactive/node_modules/
+interactive/package-lock.json
 
 # State (local to each machine)
 state.json

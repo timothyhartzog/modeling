@@ -229,8 +229,8 @@ setup_react_components() {
     "recharts": "^2.10.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.0",
-    "vite": "^5.0.0"
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^6.4.2"
   }
 }
 PACKAGE_EOF
@@ -250,6 +250,7 @@ export default defineConfig({
     outDir: '../output/_site/interactive',
     rollupOptions: {
       input: {
+        'index': './index.html',
         'concept-map': './pages/concept-map.html',
         'phase-portrait': './pages/phase-portrait.html',
         'gradient-descent': './pages/gradient-descent.html',

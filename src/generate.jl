@@ -16,7 +16,7 @@ include("prompt_builder.jl")
 
 using .APIClient
 using .PromptBuilder
-using JSON3, Dates, Logging
+using JSON3, Dates, Logging, Printf
 
 # ─────────────────────────────────────────────
 # Configuration
@@ -31,6 +31,12 @@ const STATE_PATH = joinpath(PROJECT_ROOT, "state.json")
 const OUTPUT_DIR = joinpath(PROJECT_ROOT, "output", "markdown")
 const LOG_PATH = joinpath(PROJECT_ROOT, "logs", "generation.log")
 
+# Claude Sonnet 4 pricing (USD per million tokens)
+const PRICE_INPUT_PER_MTOK        = 3.00
+const PRICE_OUTPUT_PER_MTOK       = 15.00
+const PRICE_CACHE_READ_PER_MTOK   = 0.30
+const PRICE_CACHE_CREATE_PER_MTOK = 3.75
+
 # Calibration chapters: one pure math, one SciML/code-heavy, one applied/clinical
 const CALIBRATION_KEYS = [
     "CORE-001/ch01",  # Real Analysis — completeness
@@ -44,6 +50,7 @@ const CALIBRATION_KEYS = [
 mutable struct GenerationState
     completed::Dict{String,String}  # key → ISO timestamp
     failed::Dict{String,String}     # key → error message
+    truncated::Dict{String,Int}     # key → output_tokens (hit max_tokens limit)
     started_at::String
     last_updated::String
 end
@@ -54,12 +61,13 @@ function load_state()::GenerationState
         return GenerationState(
             Dict{String,String}(String(k) => String(v) for (k,v) in pairs(raw.completed)),
             haskey(raw, :failed) ? Dict{String,String}(String(k) => String(v) for (k,v) in pairs(raw.failed)) : Dict{String,String}(),
+            haskey(raw, :truncated) ? Dict{String,Int}(String(k) => Int(v) for (k,v) in pairs(raw.truncated)) : Dict{String,Int}(),
             String(raw.started_at),
             String(raw.last_updated)
         )
     else
         now_str = string(Dates.now())
-        return GenerationState(Dict{String,String}(), Dict{String,String}(), now_str, now_str)
+        return GenerationState(Dict{String,String}(), Dict{String,String}(), Dict{String,Int}(), now_str, now_str)
     end
 end
 
@@ -68,6 +76,7 @@ function save_state(state::GenerationState)
     json = JSON3.write(Dict(
         "completed" => state.completed,
         "failed" => state.failed,
+        "truncated" => state.truncated,
         "started_at" => state.started_at,
         "last_updated" => state.last_updated
     ))
@@ -136,25 +145,39 @@ end
 # Worker: Generate one chapter
 # ─────────────────────────────────────────────
 function generate_one(item::WorkItem, system_prompt::String, state::GenerationState,
-                      state_lock::ReentrantLock)
+                      state_lock::ReentrantLock,
+                      tok_input::Threads.Atomic{Int}, tok_output::Threads.Atomic{Int},
+                      tok_cache_read::Threads.Atomic{Int}, tok_cache_create::Threads.Atomic{Int})
     key = PromptBuilder.work_item_key(item)
     t_start = time()
 
     try
         prompt = build_chapter_prompt(item)
-        content = generate_chapter(system_prompt, prompt)
+        result = generate_chapter(system_prompt, prompt)
 
-        filepath = save_chapter(key, content)
+        filepath = save_chapter(key, result.content)
+
+        # Accumulate token counts (atomic — safe under asyncmap)
+        Threads.atomic_add!(tok_input, result.input_tokens)
+        Threads.atomic_add!(tok_output, result.output_tokens)
+        Threads.atomic_add!(tok_cache_read, result.cache_read_tokens)
+        Threads.atomic_add!(tok_cache_create, result.cache_creation_tokens)
 
         lock(state_lock) do
             state.completed[key] = string(Dates.now())
             delete!(state.failed, key)
+            if result.stop_reason == "max_tokens"
+                state.truncated[key] = result.output_tokens
+            else
+                delete!(state.truncated, key)
+            end
             save_state(state)
         end
 
         elapsed = round(time() - t_start, digits=1)
-        word_count = length(split(content))
-        @info "✓ $(key) — $(word_count) words in $(elapsed)s → $(filepath)"
+        word_count = length(split(result.content))
+        trunc_flag = result.stop_reason == "max_tokens" ? " ⚠️  TRUNCATED" : ""
+        @info "✓ $(key) — $(word_count) words in $(elapsed)s → $(filepath)$(trunc_flag)"
         return true
 
     catch e
@@ -254,10 +277,15 @@ function main()
     t_total = time()
     success_count = Threads.Atomic{Int}(0)
     fail_count = Threads.Atomic{Int}(0)
+    tok_input        = Threads.Atomic{Int}(0)
+    tok_output       = Threads.Atomic{Int}(0)
+    tok_cache_read   = Threads.Atomic{Int}(0)
+    tok_cache_create = Threads.Atomic{Int}(0)
 
     # Use asyncmap for concurrent I/O-bound tasks
     asyncmap(work_queue; ntasks=concurrency) do item
-        result = generate_one(item, system_prompt, state, state_lock)
+        result = generate_one(item, system_prompt, state, state_lock,
+                              tok_input, tok_output, tok_cache_read, tok_cache_create)
         if result
             Threads.atomic_add!(success_count, 1)
         else
@@ -287,6 +315,39 @@ function main()
 
     if fail_count[] > 0
         println("\n⚠️  $(fail_count[]) chapters failed. Re-run with --retry-failed to retry them.")
+    end
+
+    # ─── Token usage & cost summary ───────────────────────────────────────────
+    n_input   = tok_input[]
+    n_output  = tok_output[]
+    n_cr      = tok_cache_read[]
+    n_cc      = tok_cache_create[]
+
+    # Prices are per million tokens; divide raw counts accordingly
+    estimated_cost = (n_input * PRICE_INPUT_PER_MTOK + n_output * PRICE_OUTPUT_PER_MTOK +
+                      n_cr * PRICE_CACHE_READ_PER_MTOK + n_cc * PRICE_CACHE_CREATE_PER_MTOK) / 1_000_000
+
+    truncated_count = length(state.truncated)
+
+    format_with_commas(n) = replace(string(n), r"(?<=\d)(?=(\d{3})+$)" => ",")
+
+    println("\n" * "═" ^ 45)
+    println("  TOKEN USAGE SUMMARY")
+    println("═" ^ 45)
+    println("  Input tokens (uncached):     $(lpad(format_with_commas(n_input), 12))")
+    println("  Input tokens (cache reads):  $(lpad(format_with_commas(n_cr), 12))")
+    println("  Output tokens:               $(lpad(format_with_commas(n_output), 12))")
+    println("  Cache creation tokens:       $(lpad(format_with_commas(n_cc), 12))")
+    println("─" ^ 45)
+    @printf("  Estimated cost:              %12s\n", "~\$$(round(estimated_cost, digits=2))")
+    if truncated_count > 0
+        println("  Chapters truncated:          $(lpad(string(truncated_count), 12))  ← WARN: hit max_tokens limit")
+    else
+        println("  Chapters truncated:          $(lpad("0", 12))")
+    end
+    println("═" ^ 45)
+    if truncated_count > 0
+        println("\n⚠️  Truncated chapters saved in state.json under \"truncated\" key.")
     end
 
     close(log_io)

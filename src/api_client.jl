@@ -5,13 +5,35 @@ module APIClient
 
 using HTTP, JSON3, Dates, Logging
 
-export generate_chapter
+export generate_chapter, GenerationResult
 
 const API_URL = "https://api.anthropic.com/v1/messages"
 const MODEL = "claude-sonnet-4-20250514"
 const MAX_TOKENS = 8192
 const MAX_RETRIES = 5
 const BASE_DELAY = 2.0  # seconds
+
+"""
+    GenerationResult
+
+Holds the generated content along with token usage metadata from the API response.
+
+Fields:
+- `content`              — Generated markdown text.
+- `input_tokens`         — Uncached input tokens billed.
+- `output_tokens`        — Output tokens generated.
+- `cache_read_tokens`    — Input tokens served from the prompt cache.
+- `cache_creation_tokens`— Input tokens written into the prompt cache.
+- `stop_reason`          — Why generation stopped (`"end_turn"` or `"max_tokens"`).
+"""
+struct GenerationResult
+    content::String
+    input_tokens::Int
+    output_tokens::Int
+    cache_read_tokens::Int
+    cache_creation_tokens::Int
+    stop_reason::String
+end
 
 """
     get_api_key() → String
@@ -26,9 +48,10 @@ end
 
 """
     generate_chapter(system_prompt::String, chapter_prompt::String; 
-                     api_key::String=get_api_key()) → String
+                     api_key::String=get_api_key()) → GenerationResult
 
-Call the Anthropic API to generate a single chapter. Returns the generated markdown text.
+Call the Anthropic API to generate a single chapter. Returns a `GenerationResult`
+containing the generated markdown text and token usage metadata.
 Retries with exponential backoff on rate limits and transient errors.
 """
 function generate_chapter(system_prompt::String, chapter_prompt::String;
@@ -65,7 +88,22 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
                         push!(text_parts, block.text)
                     end
                 end
-                return join(text_parts, "\n")
+                content = join(text_parts, "\n")
+
+                # Extract token usage
+                usage = get(result, :usage, nothing)
+                input_tokens          = usage !== nothing ? Int(get(usage, :input_tokens, 0)) : 0
+                output_tokens         = usage !== nothing ? Int(get(usage, :output_tokens, 0)) : 0
+                cache_read_tokens     = usage !== nothing ? Int(get(usage, :cache_read_input_tokens, 0)) : 0
+                cache_creation_tokens = usage !== nothing ? Int(get(usage, :cache_creation_input_tokens, 0)) : 0
+
+                stop_reason = String(get(result, :stop_reason, "unknown"))
+                if stop_reason == "max_tokens"
+                    @warn "Chapter truncated at max_tokens ($MAX_TOKENS). Content may be incomplete."
+                end
+
+                return GenerationResult(content, input_tokens, output_tokens,
+                                        cache_read_tokens, cache_creation_tokens, stop_reason)
 
             elseif status == 429
                 # Rate limited — extract retry-after if available

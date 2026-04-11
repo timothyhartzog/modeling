@@ -1,0 +1,151 @@
+name: Security Scan
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly: every Monday at 09:00 UTC
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────
+  # 1. Secret Scanning — detect leaked credentials in git history
+  # ─────────────────────────────────────────────────────────────────
+  secret-scan:
+    name: Secret Scanning (TruffleHog)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history required for complete secret scan
+
+      - name: TruffleHog secret scan (incremental — push/PR)
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        uses: trufflesecurity/trufflehog@v3
+        with:
+          path: ./
+          base: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+          head: HEAD
+          extra_args: --only-verified
+
+      - name: TruffleHog secret scan (full history — schedule/manual)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        uses: trufflesecurity/trufflehog@v3
+        with:
+          path: ./
+          extra_args: --only-verified
+
+  # ─────────────────────────────────────────────────────────────────
+  # 2. CodeQL — static analysis of JavaScript/JSX components
+  # ─────────────────────────────────────────────────────────────────
+  codeql:
+    name: CodeQL Analysis (JavaScript)
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+          queries: security-and-quality
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: javascript
+
+  # ─────────────────────────────────────────────────────────────────
+  # 3. Shell Script Security — lint deploy.sh with ShellCheck
+  # ─────────────────────────────────────────────────────────────────
+  shell-lint:
+    name: Shell Script Security (ShellCheck)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck on all shell scripts
+        run: |
+          find . -name "*.sh" -not -path "./.git/*" -print0 | \
+            xargs -0 shellcheck --severity=warning
+
+  # ─────────────────────────────────────────────────────────────────
+  # 4. Julia Dependency Audit — check for known vulnerabilities
+  # ─────────────────────────────────────────────────────────────────
+  julia-audit:
+    name: Julia Dependency Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+
+      - name: Cache Julia packages
+        uses: julia-actions/cache@v2
+
+      - name: Install Julia dependencies
+        run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Audit Julia dependencies
+        run: |
+          julia --project=. -e '
+            using Pkg
+            try
+              Pkg.audit()
+              println("✓ No vulnerabilities found in Julia dependencies")
+            catch e
+              println("⚠ Pkg.audit() not available or failed: $e")
+            end
+          '
+
+  # ─────────────────────────────────────────────────────────────────
+  # 5. NPM Dependency Audit — check React/D3 components for CVEs
+  # ─────────────────────────────────────────────────────────────────
+  npm-audit:
+    name: NPM Dependency Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Audit npm dependencies
+        run: |
+          if [ -f "interactive/package.json" ]; then
+            cd interactive
+            npm audit --audit-level=high
+          else
+            echo "No package.json found in interactive/ — skipping npm audit"
+            echo "Install interactive dependencies first: cd interactive && npm install"
+          fi

@@ -72,7 +72,6 @@ Return the first `n` binary strings in length-lexicographic order.
 """
 function enumerate_binary_strings(n::Int)::Vector{String}
     result = String[]
-    k = 0
     len = 0
     while length(result) < n
         for i in 0:(2^len - 1)

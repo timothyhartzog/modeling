@@ -240,8 +240,12 @@ fi
 # ─── 5. Quick smoke test ──────────────────────────────────────────────────
 step "Running Week 1 Julia starter exercises"
 
-julia --project=. content/LOGIC/exercises/week1_starter.jl 2>&1
-ok "Starter exercises passed"
+if julia --project=. content/LOGIC/exercises/week1_starter.jl; then
+    ok "Starter exercises passed"
+else
+    err "Week 1 starter exercises failed. Check the output above for details."
+    exit 1
+fi
 
 # ─── 6. Print next steps ───────────────────────────────────────────────────
 step "Week 1 Action Plan"

@@ -65,6 +65,22 @@ julia --project=. src/assemble_docx.jl
 - **Physical Systems (4 textbooks)**: Continuum Mechanics, Fluid Dynamics, Biomechanics, Atmospheric/Climate
 - **Cross-Cutting (5 textbooks)**: UQ, Inverse Problems, Dynamical Systems, Optimal Transport, Information Geometry, Multiscale Methods
 
+## DOCX Reference Template
+
+All 52 textbooks are styled using `templates/reference.docx`. This file is committed to the repository and defines heading styles, body font, code block formatting, page margins, and header/footer layout.
+
+To regenerate or customise the template:
+
+```bash
+# Generate a fresh base template from pandoc defaults
+pandoc --print-default-data-file reference.docx > templates/reference.docx
+
+# Then open templates/reference.docx in Microsoft Word (or LibreOffice),
+# modify the paragraph/character styles as needed, save, and commit.
+```
+
+If `templates/reference.docx` is absent at assembly time, `assemble_docx.jl` falls back to pandoc's built-in defaults with a warning.
+
 ## Requirements
 
 - Julia 1.10+

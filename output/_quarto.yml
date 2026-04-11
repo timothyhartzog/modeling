@@ -148,6 +148,13 @@ website:
           - text: "UQ-001: Bayesian Methods & Sensitivity Analysis"
             href: generated/uq-001.qmd
 
+execute:
+  enabled: false
+  echo: true
+  eval: false
+  warning: false
+  error: false
+
 format:
   html:
     theme: cosmo

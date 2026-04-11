@@ -49,12 +49,7 @@ function check_and_update!(cb::CircuitBreakerState, status::Int)::Bool
         end
     end
 
-    if cb.state == :open && cb.last_trip_time !== nothing &&
-            time() - cb.last_trip_time > cb.reset_timeout
-        cb.state = :half_open
-        cb.failure_count = 0
-        @info "Circuit breaker HALF_OPEN: Testing recovery..."
-    end
+    _apply_timeout_transition!(cb)
 
     return cb.state != :open
 end
@@ -70,13 +65,19 @@ Call this *before* issuing a request; call `check_and_update!` *after* receiving
 the response status.
 """
 function should_allow!(cb::CircuitBreakerState)::Bool
+    _apply_timeout_transition!(cb)
+    return cb.state != :open
+end
+
+# ── Private helpers ──────────────────────────────────────────────────────────
+
+function _apply_timeout_transition!(cb::CircuitBreakerState)
     if cb.state == :open && cb.last_trip_time !== nothing &&
             time() - cb.last_trip_time > cb.reset_timeout
         cb.state = :half_open
         cb.failure_count = 0
         @info "Circuit breaker HALF_OPEN: Testing recovery..."
     end
-    return cb.state != :open
 end
 
 end  # module

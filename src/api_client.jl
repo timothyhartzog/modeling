@@ -88,15 +88,17 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
         ]
     ))
 
-    for attempt in 1:MAX_RETRIES
-        # Pre-flight: apply timeout → :half_open transition if needed; skip if open.
+    attempt = 0
+    while attempt < MAX_RETRIES
+        # Pre-flight: apply timeout → :half_open transition if needed; wait if open.
+        # Circuit-open waits do NOT consume HTTP retry attempts.
         if !should_allow!(_circuit_breaker)
-            delay = BASE_DELAY * 2^(attempt - 1)
-            @warn "Circuit breaker OPEN. Waiting $(round(delay, digits=1))s (attempt $attempt/$MAX_RETRIES)"
-            sleep(delay)
+            @warn "Circuit breaker OPEN. Waiting $(_circuit_breaker.reset_timeout)s for recovery..."
+            sleep(_circuit_breaker.reset_timeout)
             continue
         end
 
+        attempt += 1
         try
             response = HTTP.post(API_URL, headers, body;
                                  connect_timeout=30, readtimeout=300,

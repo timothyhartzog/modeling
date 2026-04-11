@@ -98,6 +98,52 @@ julia --project=. src/stats.jl --json > progress.json
 - Ctrl+C is safe: state is written after each chapter completion
 - Failed chapters logged in state.json with error messages
 
+## v2 Enhancements (April 2026)
+
+### Enhanced System Prompt (system_prompt_v2.md)
+- Motivation sections, Prerequisites boxes, Pitfalls & Misconceptions callouts
+- Bloom's taxonomy exercises (Apply/Analyze/Create tiers)
+- Computational Laboratory sections (30+ line integrated Julia examples)
+- Code quality standards: docstrings, type annotations, explanatory comments
+- Activate: `cp system_prompt_v2.md system_prompt.md` or use `./deploy.sh`
+
+### Enhanced Validation (src/validate_v2.jl)
+- 16 checks per chapter (up from 6): code parsability via Meta.parse(), cross-reference
+  integrity, exercise tier distribution, pitfalls presence, computational lab detection,
+  filler phrase detection, non-Julia code detection, worked example counts
+- `--fix-report report.md` generates actionable fix list
+
+### Interactive Educational Demos (interactive/)
+- `concept-map.jsx` — D3.js force-directed knowledge graph, 55+ nodes, 8 tracks
+- `phase-portrait-explorer.jsx` — ODE phase portraits with click-to-place ICs, RK4
+- `gradient-descent-visualizer.jsx` — 4 algorithms × 4 test functions, contour plots
+- `distribution-playground.jsx` — 6 distributions, real-time PDF/CDF/histogram
+- `quiz-engine.jsx` — Spaced repetition, Bloom's tiers, track filtering
+- `proof-explorer.jsx` — Collapsible proofs, intuition/formal toggle, exercises
+
+### Concept Graph (src/build_concept_graph.jl)
+- Parses all chapters → extracts definitions, theorems, algorithms, cross-refs
+- Outputs concept-graph.json consumed by the React concept map navigator
+
+### Quarto Interactive Export (src/quarto_interactive_export.jl)
+- Converts static .md → executable .qmd with `{julia}` computation cells
+- Adds callout blocks, tabset panels for exercises, setup cells
+
+### Modeling Challenge Labs (labs/)
+- 5 multi-textbook capstone labs: Clinical Trial Pipeline, Equation Discovery (UDE+SINDy),
+  Spatial Disease Spread, Blood Flow Simulation, Bayesian Model Selection
+
+### Deployment Script (deploy.sh)
+```bash
+./deploy.sh              # Full pipeline: generate → validate → build site
+./deploy.sh --validate   # Run v2 validation only
+./deploy.sh --generate   # Activate v2 prompt and regenerate
+./deploy.sh --site       # Build Quarto site + React components
+./deploy.sh --graph      # Rebuild concept graph
+./deploy.sh --status     # Show project dashboard
+./deploy.sh --deploy     # Publish to GitHub Pages
+```
+
 ## Output Structure
 ```
 output/
@@ -115,7 +161,15 @@ output/
 ├── pdf/               # Final PDF textbooks (--format pdf)
 │   ├── CORE-001.pdf
 │   └── ...
-└── html/              # Final HTML textbooks (--format html)
-    ├── CORE-001.html
-    └── ...
+├── html/              # Final HTML textbooks (--format html)
+│   ├── CORE-001.html
+│   └── ...
+├── quarto/            # Interactive Quarto QMD site
+│   ├── _quarto.yml
+│   └── CORE-001/
+│       └── ch01.qmd
+├── concept-graph.json # Knowledge graph for navigator
+└── fix-report.md      # Validation failures
+interactive/           # React educational components
+labs/                  # Capstone challenge labs
 ```

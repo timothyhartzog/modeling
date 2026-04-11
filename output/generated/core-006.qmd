@@ -1,0 +1,15 @@
+---
+title: "Probability Theory II: Martingales, Brownian Motion, and Stochastic Calculus Foundations"
+subtitle: "CORE-006 | Core Mathematics — Year 1"
+description: "Advanced probability covering martingale theory, Brownian motion, and the foundations of stochastic calculus. Essential for stochastic modeling in every domain track."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Probability Theory II: Martingales, Brownian Motion, and Stochastic Calculus Foundations
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

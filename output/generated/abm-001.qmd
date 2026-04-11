@@ -1,0 +1,15 @@
+---
+title: "Foundations of Agent-Based Modeling: Design, Implementation, and Validation"
+subtitle: "ABM-001 | Track C — Agent-Based Modeling"
+description: "Agent-based models simulate complex systems from the bottom up. This textbook covers the design principles, computational frameworks, and validation methodology for building rigorous ABMs."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Foundations of Agent-Based Modeling: Design, Implementation, and Validation
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

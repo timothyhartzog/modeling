@@ -1,0 +1,15 @@
+---
+title: "Inverse Problems and Data Assimilation with Machine Learning"
+subtitle: "SCIML-005 | Track D — Scientific ML"
+description: "The fusion of classical inverse problem theory with modern machine learning: neural network surrogates for inverse problems, amortized inference, and simulation-based inference."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Inverse Problems and Data Assimilation with Machine Learning
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

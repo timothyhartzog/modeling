@@ -11,6 +11,7 @@ Parallel batch generation of 52 graduate-level textbooks (438 chapters) for the 
 - `src/validate.jl` — Post-generation quality checker. Reads every generated .md and runs 6 per-chapter checks; prints structured report; exports failures to JSON for re-queuing.
 - `src/stats.jl` — Read-only progress dashboard. Shows overall/by-track/by-textbook completion, failed chapters, and recent completions.
 - `src/build_quarto_config.jl` — Regenerates `output/_quarto.yml` from the manifests. Run this whenever a manifest is updated to keep sidebar titles in sync.
+- `src/quarto_export.jl` — Quarto export. Reads assembled .md files, strips existing front-matter, writes Quarto-compatible .qmd files to output/generated/. Supports --stubs-only for CI.
 - `system_prompt.md` — Locked system prompt for all API calls. Julia-only code, graduate rigor, USA sources.
 - `state.json` — Progress tracker. Atomic write. Maps chapter keys ("CORE-001/ch01") to completion timestamps.
 - `manifests/part1.json` — 24 textbooks, 212 chapters (core math + flagship domain courses).
@@ -56,6 +57,12 @@ julia --project=. src/assemble_docx.jl --format all
 
 # Regenerate _quarto.yml from manifests (run after any manifest change)
 julia --project=. src/build_quarto_config.jl
+
+# Export to Quarto QMD
+julia --project=. src/quarto_export.jl
+
+# Export stubs only (for CI)
+julia --project=. src/quarto_export.jl --stubs-only
 
 # Validate all chapters
 julia --project=. src/validate.jl

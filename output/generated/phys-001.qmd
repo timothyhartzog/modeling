@@ -1,0 +1,15 @@
+---
+title: "Continuum Mechanics: From Fundamentals to Biological Tissue"
+subtitle: "PHYS-001 | Track F — Physical Systems"
+description: "The mathematical theory of continuous media: solids, fluids, and biological tissues. Provides the unified framework for biomechanics, fluid dynamics, and any model involving deformable bodies."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Continuum Mechanics: From Fundamentals to Biological Tissue
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

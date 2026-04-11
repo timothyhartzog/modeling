@@ -1,0 +1,15 @@
+---
+title: "High-Dimensional Statistics: Inference in the p > n Regime"
+subtitle: "BIO-006 | Track A — Biostatistics"
+description: "When the number of variables exceeds the number of observations — genomics, imaging, electronic health records — classical statistics breaks down. This course covers the theory and methods for valid inference in high dimensions."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# High-Dimensional Statistics: Inference in the p > n Regime
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

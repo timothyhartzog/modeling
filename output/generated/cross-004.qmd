@@ -1,0 +1,15 @@
+---
+title: "Information Geometry: The Geometry of Statistical Models"
+subtitle: "CROSS-004 | Cross-Cutting Methods"
+description: "Statistical models form a manifold. The Fisher information metric gives this manifold a Riemannian structure. Information geometry unifies statistical inference, machine learning optimization, and thermodynamics through differential geometry."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Information Geometry: The Geometry of Statistical Models
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

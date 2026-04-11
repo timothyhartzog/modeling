@@ -1,0 +1,15 @@
+---
+title: "Deep Learning Theory: Mathematical Foundations for Scientific Machine Learning"
+subtitle: "SCIML-002 | Track D — Scientific ML"
+description: "The mathematical theory underlying deep learning: approximation theory, optimization landscape, generalization, and architecture design. Provides the theoretical foundation for all SciML methods."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Deep Learning Theory: Mathematical Foundations for Scientific Machine Learning
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

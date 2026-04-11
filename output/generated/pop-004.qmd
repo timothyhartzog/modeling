@@ -1,0 +1,15 @@
+---
+title: "Demography and Human Population Modeling"
+subtitle: "POP-004 | Track E — Population Dynamics"
+description: "The mathematical demography of human populations: life tables, stable population theory, demographic transition, migration, and stochastic population forecasting."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Demography and Human Population Modeling
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

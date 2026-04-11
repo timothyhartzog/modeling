@@ -1,0 +1,15 @@
+---
+title: "Remote Sensing and Geospatial Data Science"
+subtitle: "GEO-005 | Track B — Geospatial"
+description: "The data pipeline for geospatial modeling: satellite imagery, LiDAR, sensor networks, and the computational infrastructure for processing massive geospatial datasets."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Remote Sensing and Geospatial Data Science
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

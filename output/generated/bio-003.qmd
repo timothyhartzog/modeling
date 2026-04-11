@@ -1,0 +1,15 @@
+---
+title: "Longitudinal Data Analysis: Mixed Models, GEE, and Missing Data"
+subtitle: "BIO-003 | Track A — Biostatistics"
+description: "Repeated measures and correlated data arise in virtually every clinical study. This textbook covers the two major frameworks — subject-specific (mixed models) and population-averaged (GEE) — along with the critical problem of missing data."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Longitudinal Data Analysis: Mixed Models, GEE, and Missing Data
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

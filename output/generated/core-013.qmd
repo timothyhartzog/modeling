@@ -1,0 +1,15 @@
+---
+title: "Differential Geometry and Tensor Analysis for Physical Modeling"
+subtitle: "CORE-013 | Core Mathematics — Year 2"
+description: "The geometric language of modern physics, continuum mechanics, and geometric methods in statistics and machine learning. Manifolds, tensors, and differential forms provide the coordinate-free framework for models on curved or constrained domains."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Differential Geometry and Tensor Analysis for Physical Modeling
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

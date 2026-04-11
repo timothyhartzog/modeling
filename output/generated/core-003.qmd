@@ -1,0 +1,15 @@
+---
+title: "Measure-Theoretic Probability I"
+subtitle: "CORE-003 | Core Mathematics — Year 1"
+description: "Rigorous probability theory built on measure theory. This is the mathematical foundation for all statistical inference, stochastic modeling, and uncertainty quantification in the curriculum."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Measure-Theoretic Probability I
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

@@ -1,0 +1,15 @@
+---
+title: "Partial Differential Equations II: Nonlinear PDEs and Modern Methods"
+subtitle: "CORE-014 | Core Mathematics — Year 2"
+description: "Nonlinear PDEs, conservation laws, reaction-diffusion systems, and the modern theory of existence and regularity. The mathematical tools for modeling shock waves, pattern formation, turbulence, and complex dynamics."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Partial Differential Equations II: Nonlinear PDEs and Modern Methods
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

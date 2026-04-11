@@ -1,0 +1,15 @@
+---
+title: "Compartmental Epidemic Models: From SIR to Spatial Stochastic Dynamics"
+subtitle: "BIO-007 | Track A — Biostatistics / Track E Overlap"
+description: "The mathematical theory of infectious disease transmission. Covers deterministic and stochastic compartmental models, R₀ theory, spatial spread, network epidemiology, and parameter estimation from surveillance data."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Compartmental Epidemic Models: From SIR to Spatial Stochastic Dynamics
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

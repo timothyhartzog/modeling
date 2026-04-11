@@ -1,0 +1,15 @@
+---
+title: "Geophysical Fluid Dynamics and Atmospheric Modeling"
+subtitle: "PHYS-002 | Track F — Physical Systems"
+description: "The dynamics of rotating, stratified fluids on planetary scales: the mathematical foundation for weather prediction, ocean modeling, and climate science."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Geophysical Fluid Dynamics and Atmospheric Modeling
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

@@ -1,0 +1,15 @@
+---
+title: "Optimal Transport: Theory, Computation, and Applications Across Domains"
+subtitle: "CROSS-002 | Cross-Cutting Methods"
+description: "Optimal transport provides a geometry on the space of probability distributions. This emerging field connects analysis, geometry, probability, and computation with applications in every domain of this curriculum."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Optimal Transport: Theory, Computation, and Applications Across Domains
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

@@ -1,0 +1,15 @@
+---
+title: "Space-Time Modeling: Covariance, Dynamics, and Dimension Reduction"
+subtitle: "GEO-004 | Track B — Geospatial"
+description: "Modeling phenomena that vary across both space and time: spatio-temporal covariance structures, dynamic models, and the computational methods required for large spatio-temporal datasets."
+date: "2026-04-11"
+toc: true
+toc-depth: 3
+number-sections: true
+---
+
+# Space-Time Modeling: Covariance, Dynamics, and Dimension Reduction
+
+*Content not yet generated.*
+
+Run the generation pipeline and then `src/quarto_export.jl` to populate this page.

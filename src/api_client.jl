@@ -68,11 +68,11 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
                 # Log token usage including cache hits/misses
                 if haskey(result, :usage)
                     u = result.usage
-                    cache_write = get(u, :cache_creation_input_tokens, 0)
-                    cache_read  = get(u, :cache_read_input_tokens, 0)
-                    input_tokens  = get(u, :input_tokens, 0)
-                    output_tokens = get(u, :output_tokens, 0)
-                    @debug "Token usage" input_tokens output_tokens cache_write cache_read
+                    input_tokens                 = get(u, :input_tokens, 0)
+                    output_tokens                = get(u, :output_tokens, 0)
+                    cache_creation_input_tokens  = get(u, :cache_creation_input_tokens, 0)
+                    cache_read_input_tokens      = get(u, :cache_read_input_tokens, 0)
+                    @debug "Token usage" input_tokens output_tokens cache_creation_input_tokens cache_read_input_tokens
                 end
                 # Extract text from content blocks
                 text_parts = String[]

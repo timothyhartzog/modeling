@@ -1,0 +1,19 @@
+# CODEOWNERS - Automatic code review assignments
+
+# Default: Timothy reviews all changes
+* @timothyhartzog
+
+# Workflows - require review
+.github/workflows/ @timothyhartzog
+
+# Core configuration
+_quarto.yml @timothyhartzog
+.gitignore @timothyhartzog
+
+# Documentation
+*.md @timothyhartzog
+SECURITY.md @timothyhartzog
+
+# Generated output - requires review for changes
+output/_quarto.yml @timothyhartzog
+output/index.qmd @timothyhartzog

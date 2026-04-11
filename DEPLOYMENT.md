@@ -13,8 +13,7 @@ This repository is configured for automatic GitHub Pages deployment:
 
 1. Go to **Settings** → **Pages**
 2. Under "Build and deployment":
-   - **Source**: Select "Deploy from a branch"
-   - **Branch**: Select `gh-pages` / `/root`
+   - **Source**: Select **"GitHub Actions"** (not "Deploy from a branch")
    - Click **Save**
 
 ### Enable GitHub Actions

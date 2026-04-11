@@ -6,11 +6,12 @@
     "output_format": "DOCX",
     "target_length_per_chapter": "3,000–8,000 words",
     "target_length_per_textbook": "15,000–40,000+ words",
-    "style": "Graduate-level textbook with rigorous mathematical exposition, worked examples, proofs where appropriate, and computational implementation notes in Julia/Python",
+    "style": "Graduate-level textbook with rigorous mathematical exposition, worked examples, proofs where appropriate, and computational implementation in Julia",
+    "programming_language": "Julia (primary and exclusive for all code examples, implementations, and computational exercises)",
+    "julia_packages_preferred": ["DifferentialEquations.jl", "Turing.jl", "Agents.jl", "Flux.jl", "Lux.jl", "GeoStats.jl", "Ferrite.jl", "Optimization.jl", "Makie.jl", "Distributions.jl", "DataFrames.jl", "StatsModels.jl", "GLM.jl", "Survival.jl", "Graphs.jl", "SparseArrays", "LinearAlgebra", "ForwardDiff.jl", "Zygote.jl", "DiffEqFlux.jl", "NeuralPDE.jl", "ModelingToolkit.jl", "Catalyst.jl", "LightGraphs.jl", "GeoJSON.jl", "Rasters.jl", "PointProcesses.jl"],
     "citations": "Include references to primary literature (journal articles, foundational texts) with author-year format",
     "mathematical_notation": "Use standard LaTeX-style notation descriptions; define all symbols on first use",
-    "code_examples": "Julia as primary language; Python where ecosystem is stronger; include runnable code blocks",
-    "exercises": "Include 5–10 exercises per chapter ranging from computational to proof-based",
+    "exercises": "Include 5–10 exercises per chapter ranging from computational (Julia) to proof-based",
     "usa_sources_only": true,
     "exclude_authors": ["Bart D. Ehrman"]
   },
@@ -210,7 +211,7 @@
         {
           "chapter_number": 1,
           "title": "Floating-Point Arithmetic and Error Analysis",
-          "content_outline": "IEEE 754 standard. Machine epsilon, rounding modes, overflow/underflow. Catastrophic cancellation. Forward and backward error analysis. Conditioning of a problem vs. stability of an algorithm. Condition numbers revisited. Examples of numerical disasters: the Patriot missile failure, the Vancouver Stock Exchange. Julia/Python floating-point behavior."
+          "content_outline": "IEEE 754 standard. Machine epsilon, rounding modes, overflow/underflow. Catastrophic cancellation. Forward and backward error analysis. Conditioning of a problem vs. stability of an algorithm. Condition numbers revisited. Examples of numerical disasters: the Patriot missile failure, the Vancouver Stock Exchange. Julia floating-point behavior."
         },
         {
           "chapter_number": 2,
@@ -255,7 +256,7 @@
         {
           "chapter_number": 10,
           "title": "Software Engineering for Scientific Computing",
-          "content_outline": "Version control with Git for computational research. Reproducibility: random seeds, environment management (Julia Project.toml, Python requirements.txt). Testing scientific code: unit tests, convergence tests, method of manufactured solutions. Profiling and optimization: identifying bottlenecks, memory allocation, type stability in Julia. Parallelism: multithreading, distributed computing, GPU computing basics. Documentation and literate programming (Quarto, Pluto notebooks)."
+          "content_outline": "Version control with Git for computational research. Reproducibility: random seeds, environment management (Julia Project.toml and Manifest.toml). Testing scientific code: unit tests, convergence tests, method of manufactured solutions. Profiling and optimization: identifying bottlenecks, memory allocation, type stability in Julia. Parallelism: multithreading, distributed computing, GPU computing basics. Documentation and literate programming (Quarto, Pluto notebooks)."
         }
       ]
     },

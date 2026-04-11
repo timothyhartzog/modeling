@@ -1,0 +1,59 @@
+---
+title: "Optimization Theory for Modelers"
+subtitle: "Core Mathematics — Year 2"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Optimization Theory for Modelers
+
+**Track**: Core Mathematics — Year 2
+
+Optimization is the mathematical engine of model calibration, control, and machine learning. This course covers convex and nonconvex theory, variational methods, and optimal control.
+
+## Table of Contents
+
+1. Convex Sets and Convex Functions
+2. Optimality Conditions
+3. Convex Optimization Algorithms
+4. Nonconvex Optimization
+5. Calculus of Variations
+6. Optimal Control Theory
+7. Optimization on Manifolds
+8. Bilevel Optimization and Learning to Optimize
+
+---
+
+## Chapter 1: Convex Sets and Convex Functions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Optimality Conditions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Convex Optimization Algorithms
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Nonconvex Optimization
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Calculus of Variations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Optimal Control Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Optimization on Manifolds
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Bilevel Optimization and Learning to Optimize
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

@@ -1,0 +1,59 @@
+---
+title: "Compartmental Epidemic Models: From SIR to Spatial Stochastic Dynamics"
+subtitle: "Track A — Biostatistics / Track E Overlap"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Compartmental Epidemic Models: From SIR to Spatial Stochastic Dynamics
+
+**Track**: Track A — Biostatistics / Track E Overlap
+
+The mathematical theory of infectious disease transmission. Covers deterministic and stochastic compartmental models, R₀ theory, spatial spread, network epidemiology, and parameter estimation from surveillance data.
+
+## Table of Contents
+
+1. The SIR Model and Its Variants
+2. The Basic Reproduction Number R₀
+3. Endemic Equilibria and Stability
+4. Stochastic Epidemic Models
+5. Age-Structured and Multi-Group Models
+6. Spatial Epidemic Models
+7. Parameter Estimation and Model Fitting
+8. Optimal Control of Epidemics
+
+---
+
+## Chapter 1: The SIR Model and Its Variants
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: The Basic Reproduction Number R₀
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Endemic Equilibria and Stability
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Stochastic Epidemic Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Age-Structured and Multi-Group Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Spatial Epidemic Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Parameter Estimation and Model Fitting
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Optimal Control of Epidemics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

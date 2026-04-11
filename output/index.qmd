@@ -1,6 +1,7 @@
 ---
 title: "Master Course of Study in Universal Modeling Mastery"
 subtitle: "52 Graduate-Level Textbooks Spanning All Disciplines"
+engine: markdown
 ---
 
 ## Welcome to Modeling Mastery

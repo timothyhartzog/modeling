@@ -1,0 +1,59 @@
+---
+title: "Network Science: Structure, Dynamics, and Inference"
+subtitle: "Track C — Agent-Based Modeling"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Network Science: Structure, Dynamics, and Inference
+
+**Track**: Track C — Agent-Based Modeling
+
+The mathematical theory of networks: random graphs, small-world and scale-free structures, community detection, dynamics on and of networks, and network inference from data.
+
+## Table of Contents
+
+1. Graph Theory Fundamentals
+2. Random Graph Models
+3. Small-World and Scale-Free Networks
+4. Community Detection
+5. Centrality and Network Structure
+6. Dynamics on Networks: Epidemics and Diffusion
+7. Temporal and Multilayer Networks
+8. Network Inference and Reconstruction
+
+---
+
+## Chapter 1: Graph Theory Fundamentals
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Random Graph Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Small-World and Scale-Free Networks
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Community Detection
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Centrality and Network Structure
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Dynamics on Networks: Epidemics and Diffusion
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Temporal and Multilayer Networks
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Network Inference and Reconstruction
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

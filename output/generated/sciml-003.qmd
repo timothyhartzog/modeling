@@ -1,0 +1,59 @@
+---
+title: "Probabilistic Machine Learning: Gaussian Processes, Bayesian Neural Networks, and Beyond"
+subtitle: "Track D — Scientific ML"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Probabilistic Machine Learning: Gaussian Processes, Bayesian Neural Networks, and Beyond
+
+**Track**: Track D — Scientific ML
+
+Machine learning methods that quantify uncertainty. Essential for scientific applications where knowing what we don't know is as important as prediction.
+
+## Table of Contents
+
+1. Gaussian Processes: Theory
+2. Gaussian Processes: Computation and Scalability
+3. GP Classification and Non-Gaussian Likelihoods
+4. Deep Gaussian Processes
+5. Bayesian Neural Networks
+6. Uncertainty Quantification in Deep Learning
+7. Normalizing Flows and Density Estimation
+8. Active Learning and Bayesian Optimization
+
+---
+
+## Chapter 1: Gaussian Processes: Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Gaussian Processes: Computation and Scalability
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: GP Classification and Non-Gaussian Likelihoods
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Deep Gaussian Processes
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Bayesian Neural Networks
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Uncertainty Quantification in Deep Learning
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Normalizing Flows and Density Estimation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Active Learning and Bayesian Optimization
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

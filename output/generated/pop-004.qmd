@@ -1,0 +1,59 @@
+---
+title: "Demography and Human Population Modeling"
+subtitle: "Track E — Population Dynamics"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Demography and Human Population Modeling
+
+**Track**: Track E — Population Dynamics
+
+The mathematical demography of human populations: life tables, stable population theory, demographic transition, migration, and stochastic population forecasting.
+
+## Table of Contents
+
+1. Life Tables and Mortality Analysis
+2. Fertility Analysis
+3. Stable Population Theory
+4. Population Projection: Cohort-Component Method
+5. Migration Modeling
+6. Demographic Transition Theory
+7. Small Area and Subnational Demography
+8. Microsimulation for Population Analysis
+
+---
+
+## Chapter 1: Life Tables and Mortality Analysis
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Fertility Analysis
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Stable Population Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Population Projection: Cohort-Component Method
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Migration Modeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Demographic Transition Theory
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Small Area and Subnational Demography
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Microsimulation for Population Analysis
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

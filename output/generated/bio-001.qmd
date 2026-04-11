@@ -1,0 +1,59 @@
+---
+title: "Generalized Linear Models and Extensions"
+subtitle: "Track A — Biostatistics"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Generalized Linear Models and Extensions
+
+**Track**: Track A — Biostatistics
+
+The workhorse models of applied biostatistics: regression models for non-normal response data with rigorous theory of estimation, inference, and model checking.
+
+## Table of Contents
+
+1. Exponential Dispersion Family and Link Functions
+2. Maximum Likelihood Estimation for GLMs
+3. Logistic Regression
+4. Poisson Regression and Count Data Models
+5. Quasi-Likelihood and Generalized Estimating Equations
+6. Penalized Regression: Ridge, LASSO, Elastic Net
+7. Generalized Additive Models
+8. Diagnostics, Residuals, and Model Checking
+
+---
+
+## Chapter 1: Exponential Dispersion Family and Link Functions
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Maximum Likelihood Estimation for GLMs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Logistic Regression
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Poisson Regression and Count Data Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Quasi-Likelihood and Generalized Estimating Equations
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Penalized Regression: Ridge, LASSO, Elastic Net
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Generalized Additive Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Diagnostics, Residuals, and Model Checking
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

@@ -1,0 +1,59 @@
+---
+title: "Information Geometry: The Geometry of Statistical Models"
+subtitle: "Cross-Cutting Methods"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Information Geometry: The Geometry of Statistical Models
+
+**Track**: Cross-Cutting Methods
+
+Statistical models form a manifold. The Fisher information metric gives this manifold a Riemannian structure. Information geometry unifies statistical inference, machine learning optimization, and thermodynamics through differential geometry.
+
+## Table of Contents
+
+1. Statistical Manifolds and the Fisher Metric
+2. Exponential and Mixture Families
+3. α-Connections and Duality
+4. Divergences and Information Measures
+5. Natural Gradient Descent
+6. Information Geometry of Machine Learning
+7. Information Geometry and Thermodynamics
+8. Applications: Neuroscience, Quantum Information, and Beyond
+
+---
+
+## Chapter 1: Statistical Manifolds and the Fisher Metric
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Exponential and Mixture Families
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: α-Connections and Duality
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Divergences and Information Measures
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Natural Gradient Descent
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Information Geometry of Machine Learning
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Information Geometry and Thermodynamics
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Applications: Neuroscience, Quantum Information, and Beyond
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

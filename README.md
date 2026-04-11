@@ -10,7 +10,7 @@ cd ~/Documents/github
 git clone https://github.com/timothyhartzog/modeling.git
 cd modeling
 
-# Install Julia dependencies
+# Install Julia dependencies (uses pinned versions from Manifest.toml — do not run Pkg.update())
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
 
 # Set API key
@@ -27,6 +27,12 @@ julia --project=. src/generate.jl --concurrency 8 --resume
 
 # Assemble into DOCX textbooks
 julia --project=. src/assemble_docx.jl
+
+# Export to Quarto QMD for website
+julia --project=. src/quarto_export.jl
+
+# Preview website locally (requires Quarto)
+cd output && quarto preview
 ```
 
 ## Architecture
@@ -37,6 +43,9 @@ julia --project=. src/assemble_docx.jl
 | `src/api_client.jl` | Anthropic API wrapper with exponential backoff |
 | `src/prompt_builder.jl` | Constructs per-chapter prompts from manifest JSON |
 | `src/assemble_docx.jl` | Concatenates chapters → DOCX via pandoc |
+| `src/validate.jl` | Post-generation quality checker — 6 per-chapter checks |
+| `src/stats.jl` | Read-only progress dashboard — overall, by-track, by-textbook |
+| `src/quarto_export.jl` | Converts assembled markdown → Quarto QMD for website |
 | `system_prompt.md` | Locked system prompt for consistent generation |
 | `manifests/part1.json` | 24 textbooks, 212 chapters |
 | `manifests/part2.json` | 28 textbooks, 226 chapters |
@@ -45,14 +54,50 @@ julia --project=. src/assemble_docx.jl
 
 ## CLI Options
 
+### generate.jl
 ```
---concurrency N     Parallel API calls (default: 5, recommended: 8)
+--concurrency N     Parallel API calls (default: 5, recommended: 8, max: 50)
 --calibrate         Generate 3 test chapters only
 --resume            Skip already-completed chapters
 --retry-failed      Re-run only previously failed chapters
 --textbook ID       Generate one textbook (e.g., CORE-001)
+--chapter KEY       Regenerate specific chapter(s) by key (e.g., CORE-001/ch03); comma-separated for multiple
+--force             Bypass completed-chapter filter for any mode (always regenerate)
 --dry-run           Show work queue without generating
 ```
+
+### validate.jl
+```
+--textbook ID            Validate one textbook only
+--export-failures FILE   Write failed chapter keys to JSON for re-queuing
+```
+
+Exits with code 1 when any chapter fails a critical check (suitable for CI).
+
+## Progress Dashboard
+
+```bash
+# Full status report (overall + by-track + failures + recent)
+julia --project=. src/stats.jl
+
+# Per-textbook chapter-level breakdown
+julia --project=. src/stats.jl --by-textbook
+
+# Machine-readable JSON output
+julia --project=. src/stats.jl --json > progress.json
+```
+
+### Concurrency Guidelines
+
+| Tier | Recommended | Notes |
+|------|-------------|-------|
+| Standard Sonnet | `--concurrency 8` | Safe default for most accounts |
+| High-throughput | `--concurrency 20` | Maximum recommended; monitor for 429s |
+| Hard cap | `--concurrency 50` | Automatically clamped; values above this are rejected |
+
+Values above 50 are clamped with an error message. Values above 20 produce a warning.
+The pipeline handles 429 rate-limit responses with exponential backoff, so lower concurrency
+is often more efficient overall — fewer retries mean faster net throughput.
 
 ## Curriculum Coverage
 
@@ -64,6 +109,36 @@ julia --project=. src/assemble_docx.jl
 - **Population Dynamics (4 textbooks)**: Deterministic, Stochastic, Systems Biology, Demography
 - **Physical Systems (4 textbooks)**: Continuum Mechanics, Fluid Dynamics, Biomechanics, Atmospheric/Climate
 - **Cross-Cutting (5 textbooks)**: UQ, Inverse Problems, Dynamical Systems, Optimal Transport, Information Geometry, Multiscale Methods
+
+## DOCX Reference Template
+
+All 52 textbooks are styled using `templates/reference.docx`. This file is committed to the repository and defines heading styles, body font, code block formatting, page margins, and header/footer layout.
+
+To regenerate or customise the template:
+
+```bash
+# Generate a fresh base template from pandoc defaults
+pandoc --print-default-data-file reference.docx > templates/reference.docx
+
+# Then open templates/reference.docx in Microsoft Word (or LibreOffice),
+# modify the paragraph/character styles as needed, save, and commit.
+```
+
+If `templates/reference.docx` is absent at assembly time, `assemble_docx.jl` falls back to pandoc's built-in defaults with a warning.
+
+## Dependency Management
+
+`Manifest.toml` is committed to this repository to pin exact package versions for reproducibility. Always use `Pkg.instantiate()` to install dependencies — **do not** run `Pkg.update()` as that will upgrade packages to newer versions and may break compatibility.
+
+```bash
+# Correct: installs exact pinned versions
+julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+# Incorrect: upgrades to latest compatible versions (breaks reproducibility)
+# julia --project=. -e 'using Pkg; Pkg.update()'
+```
+
+If you intentionally want to upgrade a dependency, run `Pkg.update("PackageName")`, review the diff in `Manifest.toml`, test thoroughly, and commit the updated lockfile.
 
 ## Requirements
 

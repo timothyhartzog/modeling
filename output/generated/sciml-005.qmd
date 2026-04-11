@@ -1,0 +1,59 @@
+---
+title: "Inverse Problems and Data Assimilation with Machine Learning"
+subtitle: "Track D — Scientific ML"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Inverse Problems and Data Assimilation with Machine Learning
+
+**Track**: Track D — Scientific ML
+
+The fusion of classical inverse problem theory with modern machine learning: neural network surrogates for inverse problems, amortized inference, and simulation-based inference.
+
+## Table of Contents
+
+1. Neural Network Surrogates for Forward Models
+2. Gradient-Based Inversion with Differentiable Simulators
+3. Amortized Inference: Learning to Invert
+4. Simulation-Based Inference (SBI)
+5. Physics-Informed Inverse Problems
+6. Learned Regularization and Priors
+7. Neural Data Assimilation
+8. Case Studies in SciML Inverse Problems
+
+---
+
+## Chapter 1: Neural Network Surrogates for Forward Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Gradient-Based Inversion with Differentiable Simulators
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Amortized Inference: Learning to Invert
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Simulation-Based Inference (SBI)
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Physics-Informed Inverse Problems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Learned Regularization and Priors
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Neural Data Assimilation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Case Studies in SciML Inverse Problems
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

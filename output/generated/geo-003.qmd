@@ -1,0 +1,59 @@
+---
+title: "Areal Data Models and Spatial Econometrics"
+subtitle: "Track B — Geospatial"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Areal Data Models and Spatial Econometrics
+
+**Track**: Track B — Geospatial
+
+Statistical models for data aggregated over regions: census tracts, counties, countries. Covers spatial autoregressive models, spatial regression, and the disease mapping models that bridge to epidemiology.
+
+## Table of Contents
+
+1. Spatial Weights and Neighborhood Structures
+2. Spatial Autocorrelation Measures
+3. Simultaneous Autoregressive (SAR) Models
+4. Conditional Autoregressive (CAR) Models
+5. Spatially Varying Coefficient Models
+6. Multivariate Areal Models
+7. Change of Support and Data Fusion
+8. Space-Time Areal Models
+
+---
+
+## Chapter 1: Spatial Weights and Neighborhood Structures
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Spatial Autocorrelation Measures
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Simultaneous Autoregressive (SAR) Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Conditional Autoregressive (CAR) Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Spatially Varying Coefficient Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: Multivariate Areal Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Change of Support and Data Fusion
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Space-Time Areal Models
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

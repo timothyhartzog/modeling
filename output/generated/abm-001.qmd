@@ -1,0 +1,59 @@
+---
+title: "Foundations of Agent-Based Modeling: Design, Implementation, and Validation"
+subtitle: "Track C — Agent-Based Modeling"
+date: "2025-01-01"
+toc: true
+toc-depth: 2
+number-sections: true
+---
+
+# Foundations of Agent-Based Modeling: Design, Implementation, and Validation
+
+**Track**: Track C — Agent-Based Modeling
+
+Agent-based models simulate complex systems from the bottom up. This textbook covers the design principles, computational frameworks, and validation methodology for building rigorous ABMs.
+
+## Table of Contents
+
+1. Philosophy of Bottom-Up Modeling
+2. Agent Design: State, Rules, and Behavior
+3. Environment and Spatial Structure
+4. Scheduling and Time Advancement
+5. Interaction Topologies and Communication
+6. The ODD Protocol and Model Documentation
+7. Verification, Validation, and Sensitivity Analysis
+8. Parameter Calibration for ABMs
+
+---
+
+## Chapter 1: Philosophy of Bottom-Up Modeling
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 2: Agent Design: State, Rules, and Behavior
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 3: Environment and Spatial Structure
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 4: Scheduling and Time Advancement
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 5: Interaction Topologies and Communication
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 6: The ODD Protocol and Model Documentation
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 7: Verification, Validation, and Sensitivity Analysis
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*
+
+## Chapter 8: Parameter Calibration for ABMs
+
+*This chapter has not yet been generated. Run the generation pipeline to produce full content.*

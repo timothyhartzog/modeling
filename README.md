@@ -51,6 +51,8 @@ julia --project=. src/assemble_docx.jl
 --resume            Skip already-completed chapters
 --retry-failed      Re-run only previously failed chapters
 --textbook ID       Generate one textbook (e.g., CORE-001)
+--chapter KEY       Regenerate specific chapter(s) by key (e.g., CORE-001/ch03); comma-separated for multiple
+--force             Bypass completed-chapter filter for any mode (always regenerate)
 --dry-run           Show work queue without generating
 ```
 

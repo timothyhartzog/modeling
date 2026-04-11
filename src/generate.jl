@@ -3,12 +3,15 @@
     generate.jl — Main orchestrator for parallel textbook chapter generation.
 
     Usage:
-        julia --project=. src/generate.jl                        # Full run, concurrency=5
-        julia --project=. src/generate.jl --concurrency 10       # Full run, concurrency=10
-        julia --project=. src/generate.jl --calibrate            # Generate 3 test chapters only
-        julia --project=. src/generate.jl --resume               # Resume from last state
-        julia --project=. src/generate.jl --textbook CORE-001    # Generate one textbook only
-        julia --project=. src/generate.jl --dry-run              # Show work queue, don't generate
+        julia --project=. src/generate.jl                                   # Full run, concurrency=5
+        julia --project=. src/generate.jl --concurrency 10                  # Full run, concurrency=10
+        julia --project=. src/generate.jl --calibrate                       # Generate 3 test chapters only
+        julia --project=. src/generate.jl --resume                          # Resume from last state
+        julia --project=. src/generate.jl --textbook CORE-001               # Generate one textbook only
+        julia --project=. src/generate.jl --dry-run                         # Show work queue, don't generate
+        julia --project=. src/generate.jl --chapter CORE-001/ch03           # Regenerate a single chapter
+        julia --project=. src/generate.jl --chapter CORE-001/ch03,BIO-002/ch07  # Multiple specific chapters
+        julia --project=. src/generate.jl --textbook CORE-001 --force       # Regenerate all chapters, ignoring state
 """
 
 include("api_client.jl")
@@ -100,6 +103,8 @@ function parse_args()
         :dry_run => false,
         :textbook => nothing,
         :retry_failed => false,
+        :chapters => nothing,
+        :force => false,
     )
 
     i = 1
@@ -123,6 +128,12 @@ function parse_args()
         elseif arg == "--textbook" && i < length(ARGS)
             args[:textbook] = ARGS[i+1]
             i += 2
+        elseif arg == "--chapter" && i < length(ARGS)
+            args[:chapters] = split(ARGS[i+1], ",")
+            i += 2
+        elseif arg == "--force"
+            args[:force] = true
+            i += 1
         else
             @warn "Unknown argument: $arg"
             i += 1
@@ -203,7 +214,32 @@ function main()
     println("   State: $(length(state.completed)) completed, $(length(state.failed)) failed")
 
     # Build work queue
-    work_queue = if args[:calibrate]
+    work_queue = if !isnothing(args[:chapters])
+        target_keys = Set(args[:chapters])
+        all_keys = Set(PromptBuilder.work_item_key(item) for item in all_items)
+        invalid_keys = setdiff(target_keys, all_keys)
+        if !isempty(invalid_keys)
+            println("\n❌ ERROR: The following chapter keys were not found in any manifest:")
+            for k in sort(collect(invalid_keys))
+                println("   $k")
+            end
+            println("   Keys must be in the format TEXTBOOK-ID/chNN (e.g. CORE-001/ch03)")
+            close(log_io)
+            exit(1)
+        end
+        # Always regenerate targeted chapters — strip from completed/failed first
+        lock(state_lock) do
+            for key in target_keys
+                delete!(state.completed, key)
+                delete!(state.failed, key)
+            end
+        end
+        println("\n🎯 Chapter mode — targeting $(length(target_keys)) chapter(s): $(join(sort(collect(target_keys)), ", "))")
+        if args[:force]
+            println("   ℹ️  --force has no additional effect in --chapter mode (chapters are always regenerated)")
+        end
+        filter(item -> PromptBuilder.work_item_key(item) in target_keys, all_items)
+    elseif args[:calibrate]
         println("\n🔬 CALIBRATION MODE — generating 3 test chapters")
         filter(item -> PromptBuilder.work_item_key(item) in CALIBRATION_KEYS, all_items)
     elseif !isnothing(args[:textbook])
@@ -214,13 +250,17 @@ function main()
         all_items
     end
 
-    # Filter completed (unless retry-failed)
-    if args[:resume] || !args[:retry_failed]
-        work_queue = filter(item -> !(PromptBuilder.work_item_key(item) in keys(state.completed)), work_queue)
-    end
-    if args[:retry_failed]
-        # Only retry previously failed items
-        work_queue = filter(item -> PromptBuilder.work_item_key(item) in keys(state.failed), work_queue)
+    # Filter completed (unless retry-failed, --chapter, or --force)
+    if !args[:force] && isnothing(args[:chapters])
+        if args[:resume] || !args[:retry_failed]
+            work_queue = filter(item -> !(PromptBuilder.work_item_key(item) in keys(state.completed)), work_queue)
+        end
+        if args[:retry_failed]
+            # Only retry previously failed items
+            work_queue = filter(item -> PromptBuilder.work_item_key(item) in keys(state.failed), work_queue)
+        end
+    elseif args[:force] && isnothing(args[:chapters])
+        println("   ⚡ --force: bypassing completed-chapter filter")
     end
 
     println("   Work queue: $(length(work_queue)) chapters to generate")

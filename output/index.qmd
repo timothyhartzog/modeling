@@ -1,0 +1,51 @@
+---
+title: "Master Course of Study in Universal Modeling Mastery"
+subtitle: "52 Graduate-Level Textbooks Spanning All Disciplines"
+---
+
+## Welcome to Modeling Mastery
+
+This is a **complete master's-level curriculum** spanning 52 textbooks with 438 chapters, covering:
+
+- **Rigorous mathematical foundations** (linear algebra, differential equations, dynamical systems)
+- **Life sciences** (molecular biology, genetics, systems biology, neurobiology)
+- **Environmental modeling** (GIS, climate, remote sensing, spatial analysis)
+- **Computational intelligence** (physics-informed neural networks, scientific machine learning)
+- **Physical systems** (classical mechanics, thermodynamics, quantum mechanics)
+- **Complex systems** (agent-based modeling, population dynamics, uncertainty quantification)
+
+All textbooks feature:
+✅ Graduate-level rigor with formal definitions, theorems, and proofs
+✅ **Julia** as the exclusive programming language
+✅ Worked examples and end-of-chapter exercises
+✅ USA-based sources for medical and clinical topics
+✅ Cross-disciplinary integration and applications
+
+---
+
+## Course Navigation
+
+Browse courses using the **sidebar** on the left, organized by discipline:
+
+- **📖 Core Foundations** — Mathematics, linear algebra, differential equations, topology
+- **🧬 Biology & Life Sciences** — Molecular biology, genetics, ecology, systems biology
+- **🌍 Geospatial & Environmental** — GIS, climate modeling, remote sensing
+- **🤖 Machine Learning & AI** — Physics-informed neural networks, surrogate modeling
+- **⚛️ Physics** — Classical mechanics, thermodynamics, quantum mechanics
+- **📊 Population & Dynamics** — Demography, epidemic modeling, stochastic systems
+- **🔀 Advanced Integration** — Agent-based modeling, complex systems, networks
+- **📈 Uncertainty & Quantification** — Bayesian methods, sensitivity analysis
+
+---
+
+## Features
+
+- **52 Textbooks** — 438 chapters total
+- **Full-Text Search** — Find topics across all chapters
+- **Graduate-Level Content** — 3,000–8,000 words per chapter, 5–10 exercises
+- **Julia Programming** — All code examples in Julia
+- **Responsive Design** — Works on desktop, tablet, and mobile
+
+---
+
+**Use the sidebar navigation to get started!**

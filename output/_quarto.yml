@@ -1,0 +1,160 @@
+project:
+  type: website
+  output-dir: _site
+  execute-dir: project
+
+website:
+  title: "Master Course of Study in Universal Modeling Mastery"
+  description: "52 graduate-level textbooks covering universal modeling across disciplines"
+
+  navbar:
+    title: "📚 Modeling Mastery"
+    search: true
+    pinned: true
+    right:
+      - icon: github
+        href: https://github.com/timothyhartzog/modeling
+      - icon: search
+
+  sidebar:
+    style: "floating"
+    collapse-level: 1
+    contents:
+      - section: "📖 Core Foundations"
+        contents:
+          - text: "CORE-001: Mathematical Foundations"
+            href: generated/core-001.qmd
+          - text: "CORE-002: Linear Algebra"
+            href: generated/core-002.qmd
+          - text: "CORE-003: Differential Equations"
+            href: generated/core-003.qmd
+          - text: "CORE-004: Complex Analysis"
+            href: generated/core-004.qmd
+          - text: "CORE-005: Probability & Statistics"
+            href: generated/core-005.qmd
+          - text: "CORE-006: Real Analysis"
+            href: generated/core-006.qmd
+          - text: "CORE-007: Abstract Algebra"
+            href: generated/core-007.qmd
+          - text: "CORE-008: Topology"
+            href: generated/core-008.qmd
+          - text: "CORE-009: Functional Analysis"
+            href: generated/core-009.qmd
+          - text: "CORE-010: Numerical Analysis"
+            href: generated/core-010.qmd
+          - text: "CORE-011: Optimization Theory"
+            href: generated/core-011.qmd
+          - text: "CORE-012: Information Theory"
+            href: generated/core-012.qmd
+          - text: "CORE-013: Dynamical Systems"
+            href: generated/core-013.qmd
+          - text: "CORE-014: Chaos & Complexity"
+            href: generated/core-014.qmd
+          - text: "CORE-015: Category Theory"
+            href: generated/core-015.qmd
+          - text: "CORE-016: Advanced Logic"
+            href: generated/core-016.qmd
+
+      - section: "🧬 Biology & Life Sciences"
+        contents:
+          - text: "BIO-001: Molecular Biology"
+            href: generated/bio-001.qmd
+          - text: "BIO-002: Cell Biology"
+            href: generated/bio-002.qmd
+          - text: "BIO-003: Genetics & Genomics"
+            href: generated/bio-003.qmd
+          - text: "BIO-004: Evolutionary Biology"
+            href: generated/bio-004.qmd
+          - text: "BIO-005: Ecology & Ecosystems"
+            href: generated/bio-005.qmd
+          - text: "BIO-006: Systems Biology"
+            href: generated/bio-006.qmd
+          - text: "BIO-007: Computational Biology"
+            href: generated/bio-007.qmd
+          - text: "BIO-008: Neurobiology"
+            href: generated/bio-008.qmd
+
+      - section: "🌍 Geospatial & Environmental"
+        contents:
+          - text: "GEO-001: GIS Fundamentals"
+            href: generated/geo-001.qmd
+          - text: "GEO-002: Climate Modeling"
+            href: generated/geo-002.qmd
+          - text: "GEO-003: Remote Sensing"
+            href: generated/geo-003.qmd
+          - text: "GEO-004: Spatial Statistics"
+            href: generated/geo-004.qmd
+          - text: "GEO-005: Earth Systems"
+            href: generated/geo-005.qmd
+
+      - section: "🤖 Machine Learning & AI"
+        contents:
+          - text: "SCIML-001: Physics-Informed Neural Networks"
+            href: generated/sciml-001.qmd
+          - text: "SCIML-002: Surrogate Modeling"
+            href: generated/sciml-002.qmd
+          - text: "SCIML-003: Operator Learning"
+            href: generated/sciml-003.qmd
+          - text: "SCIML-004: Data-Driven Discovery"
+            href: generated/sciml-004.qmd
+          - text: "SCIML-005: Scientific Machine Learning"
+            href: generated/sciml-005.qmd
+
+      - section: "⚛️ Physics"
+        contents:
+          - text: "PHYS-001: Classical Mechanics"
+            href: generated/phys-001.qmd
+          - text: "PHYS-002: Thermodynamics"
+            href: generated/phys-002.qmd
+          - text: "PHYS-003: Electromagnetism"
+            href: generated/phys-003.qmd
+          - text: "PHYS-004: Quantum Mechanics"
+            href: generated/phys-004.qmd
+
+      - section: "📊 Population & Dynamics"
+        contents:
+          - text: "POP-001: Mathematical Demography"
+            href: generated/pop-001.qmd
+          - text: "POP-002: Population Ecology"
+            href: generated/pop-002.qmd
+          - text: "POP-003: Epidemic Modeling"
+            href: generated/pop-003.qmd
+          - text: "POP-004: Stochastic Population Models"
+            href: generated/pop-004.qmd
+
+      - section: "🔀 Advanced Integration"
+        contents:
+          - text: "ABM-001: Agent-Based Modeling"
+            href: generated/abm-001.qmd
+          - text: "ABM-002: Emergent Behavior"
+            href: generated/abm-002.qmd
+          - text: "ABM-003: Multi-Agent Systems"
+            href: generated/abm-003.qmd
+          - text: "ABM-004: Computational Simulation"
+            href: generated/abm-004.qmd
+          - text: "CROSS-001: Interdisciplinary Methods"
+            href: generated/cross-001.qmd
+          - text: "CROSS-002: Complex Systems"
+            href: generated/cross-002.qmd
+          - text: "CROSS-003: Network Analysis"
+            href: generated/cross-003.qmd
+          - text: "CROSS-004: Multiscale Modeling"
+            href: generated/cross-004.qmd
+          - text: "CROSS-005: Systems Integration"
+            href: generated/cross-005.qmd
+
+      - section: "📈 Uncertainty & Quantification"
+        contents:
+          - text: "UQ-001: Bayesian Methods & Sensitivity Analysis"
+            href: generated/uq-001.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    code-fold: false
+    code-line-numbers: true
+    smooth-scroll: true
+    highlight-style: github

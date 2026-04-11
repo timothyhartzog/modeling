@@ -10,7 +10,7 @@ module APIClient
 
 using HTTP, JSON3, Dates, Logging
 
-import ..CircuitBreaker: CircuitBreakerState, check_and_update!
+import ..CircuitBreaker: CircuitBreakerState, check_and_update!, should_allow!
 
 export generate_chapter, GenerationResult
 
@@ -89,20 +89,12 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
     ))
 
     for attempt in 1:MAX_RETRIES
-        # Pre-flight circuit breaker check: if open, apply timeout → :half_open
-        # transition before deciding whether to allow the attempt.
-        cb = _circuit_breaker
-        if cb.state == :open
-            if cb.last_trip_time !== nothing && time() - cb.last_trip_time > cb.reset_timeout
-                cb.state = :half_open
-                cb.failure_count = 0
-                @info "Circuit breaker HALF_OPEN: Testing recovery..."
-            else
-                delay = BASE_DELAY * 2^(attempt - 1)
-                @warn "Circuit breaker OPEN. Waiting $(round(delay, digits=1))s (attempt $attempt/$MAX_RETRIES)"
-                sleep(delay)
-                continue
-            end
+        # Pre-flight: apply timeout → :half_open transition if needed; skip if open.
+        if !should_allow!(_circuit_breaker)
+            delay = BASE_DELAY * 2^(attempt - 1)
+            @warn "Circuit breaker OPEN. Waiting $(round(delay, digits=1))s (attempt $attempt/$MAX_RETRIES)"
+            sleep(delay)
+            continue
         end
 
         try

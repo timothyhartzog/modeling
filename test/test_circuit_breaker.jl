@@ -7,7 +7,7 @@ using Test
 if !isdefined(Main, :CircuitBreaker)
     include(joinpath(@__DIR__, "..", "src", "circuit_breaker.jl"))
 end
-using .CircuitBreaker
+using .CircuitBreaker: CircuitBreakerState, check_and_update!, should_allow!
 
 @testset "CircuitBreaker" begin
 
@@ -129,6 +129,36 @@ using .CircuitBreaker
         cb = make_cb()
         @test check_and_update!(cb, 200) isa Bool
         @test check_and_update!(cb, 429) isa Bool
+    end
+
+    @testset "should_allow! — closed circuit permits requests" begin
+        cb = make_cb()
+        @test should_allow!(cb) == true
+    end
+
+    @testset "should_allow! — open circuit blocks requests" begin
+        cb = make_cb(threshold=1)
+        check_and_update!(cb, 429)
+        @test cb.state == :open
+        @test should_allow!(cb) == false
+    end
+
+    @testset "should_allow! — transitions :open → :half_open after timeout" begin
+        cb = make_cb(threshold=1, timeout=0.05)
+        check_and_update!(cb, 429)
+        @test cb.state == :open
+        sleep(0.1)
+        result = should_allow!(cb)
+        @test cb.state == :half_open
+        @test result == true
+    end
+
+    @testset "should_allow! — :half_open permits requests" begin
+        cb = make_cb(threshold=1, timeout=0.05)
+        check_and_update!(cb, 429)
+        sleep(0.1)
+        should_allow!(cb)  # → :half_open
+        @test should_allow!(cb) == true
     end
 
 end

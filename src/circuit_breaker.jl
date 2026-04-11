@@ -8,7 +8,7 @@ States:
 """
 module CircuitBreaker
 
-export CircuitBreakerState, check_and_update!
+export CircuitBreakerState, check_and_update!, should_allow!
 
 mutable struct CircuitBreakerState
     state::Symbol  # :closed, :open, :half_open
@@ -56,6 +56,26 @@ function check_and_update!(cb::CircuitBreakerState, status::Int)::Bool
         @info "Circuit breaker HALF_OPEN: Testing recovery..."
     end
 
+    return cb.state != :open
+end
+
+"""
+    should_allow!(cb::CircuitBreakerState) → Bool
+
+Pre-flight check: applies the `:open` → `:half_open` timeout transition if
+`reset_timeout` has elapsed, then returns `true` if the request should proceed
+or `false` if the circuit is still open.
+
+Call this *before* issuing a request; call `check_and_update!` *after* receiving
+the response status.
+"""
+function should_allow!(cb::CircuitBreakerState)::Bool
+    if cb.state == :open && cb.last_trip_time !== nothing &&
+            time() - cb.last_trip_time > cb.reset_timeout
+        cb.state = :half_open
+        cb.failure_count = 0
+        @info "Circuit breaker HALF_OPEN: Testing recovery..."
+    end
     return cb.state != :open
 end
 

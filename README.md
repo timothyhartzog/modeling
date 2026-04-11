@@ -46,13 +46,25 @@ julia --project=. src/assemble_docx.jl
 ## CLI Options
 
 ```
---concurrency N     Parallel API calls (default: 5, recommended: 8)
+--concurrency N     Parallel API calls (default: 5, recommended: 8, max: 50)
 --calibrate         Generate 3 test chapters only
 --resume            Skip already-completed chapters
 --retry-failed      Re-run only previously failed chapters
 --textbook ID       Generate one textbook (e.g., CORE-001)
 --dry-run           Show work queue without generating
 ```
+
+### Concurrency Guidelines
+
+| Tier | Recommended | Notes |
+|------|-------------|-------|
+| Standard Sonnet | `--concurrency 8` | Safe default for most accounts |
+| High-throughput | `--concurrency 20` | Maximum recommended; monitor for 429s |
+| Hard cap | `--concurrency 50` | Automatically clamped; values above this are rejected |
+
+Values above 50 are clamped with an error message. Values above 20 produce a warning.
+The pipeline handles 429 rate-limit responses with exponential backoff, so lower concurrency
+is often more efficient overall — fewer retries mean faster net throughput.
 
 ## Curriculum Coverage
 

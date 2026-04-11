@@ -31,6 +31,10 @@ const STATE_PATH = joinpath(PROJECT_ROOT, "state.json")
 const OUTPUT_DIR = joinpath(PROJECT_ROOT, "output", "markdown")
 const LOG_PATH = joinpath(PROJECT_ROOT, "logs", "generation.log")
 
+# Concurrency limits
+const MAX_RECOMMENDED_CONCURRENCY = 20
+const HARD_MAX_CONCURRENCY = 50
+
 # Calibration chapters: one pure math, one SciML/code-heavy, one applied/clinical
 const CALIBRATION_KEYS = [
     "CORE-001/ch01",  # Real Analysis — completeness
@@ -106,7 +110,14 @@ function parse_args()
     while i <= length(ARGS)
         arg = ARGS[i]
         if arg == "--concurrency" && i < length(ARGS)
-            args[:concurrency] = parse(Int, ARGS[i+1])
+            requested = parse(Int, ARGS[i+1])
+            if requested > HARD_MAX_CONCURRENCY
+                @error "--concurrency $requested exceeds hard limit of $HARD_MAX_CONCURRENCY. Clamping to $HARD_MAX_CONCURRENCY."
+                requested = HARD_MAX_CONCURRENCY
+            elseif requested > MAX_RECOMMENDED_CONCURRENCY
+                @warn "--concurrency $requested is above the recommended maximum of $MAX_RECOMMENDED_CONCURRENCY. This may trigger rate limits."
+            end
+            args[:concurrency] = requested
             i += 2
         elseif arg == "--calibrate"
             args[:calibrate] = true
@@ -238,6 +249,10 @@ function main()
             key = PromptBuilder.work_item_key(item)
             println("   $(key): $(item.chapter_title)")
         end
+        concurrency = args[:concurrency]
+        max_concurrent = concurrency
+        limit_status = concurrency <= MAX_RECOMMENDED_CONCURRENCY ? "✓" : "⚠️ above recommended"
+        println("\n⚡ Concurrency: $concurrency | Est. ~$max_concurrent req/min | Anthropic Sonnet limit: ~50 req/min $limit_status")
         close(log_io)
         return
     end

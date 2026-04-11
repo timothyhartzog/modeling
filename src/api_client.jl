@@ -5,7 +5,50 @@ module APIClient
 
 using HTTP, JSON3, Dates, Logging
 
-export generate_chapter, GenerationResult
+export generate_chapter, GenerationResult, TransientError, PermanentError
+
+abstract type APIException <: Exception end
+
+"""Transient API error that should be retried with exponential backoff."""
+struct TransientError <: APIException
+    message::String
+    status::Int
+    retry_after::Float64
+end
+
+"""Permanent API error that should not be retried (e.g. auth failure, bad request)."""
+struct PermanentError <: APIException
+    message::String
+    status::Int
+end
+
+Base.showerror(io::IO, e::TransientError) =
+    print(io, "TransientError ($(e.status)): $(e.message)")
+Base.showerror(io::IO, e::PermanentError) =
+    print(io, "PermanentError ($(e.status)): $(e.message)")
+
+"""
+    is_transient_error(status, error) → Bool
+
+Return `true` for HTTP status codes and exception types that are safe to retry.
+"""
+function is_transient_error(status::Int, error::Exception)::Bool
+    status in (429, 502, 503, 504, 522) && return true  # Service issues
+    error isa HTTP.ConnectError && return true           # Network connection
+    error isa HTTP.RequestError && return true           # Request-level network error
+    error isa Base.IOError && return true               # I/O
+    return false
+end
+
+"""
+    is_permanent_error(status) → Bool
+
+Return `true` for HTTP status codes that indicate a non-retryable failure.
+"""
+function is_permanent_error(status::Int)::Bool
+    status in (400, 401, 403, 404, 422) && return true
+    return false
+end
 
 const API_URL = "https://api.anthropic.com/v1/messages"
 const MODEL = "claude-sonnet-4-20250514"
@@ -121,6 +164,11 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
                 return GenerationResult(content, input_tokens, output_tokens,
                                         cache_read_tokens, cache_creation_tokens, stop_reason)
 
+            elseif is_permanent_error(status)
+                body_str = String(response.body)
+                @error "Permanent API error ($status): $body_str"
+                throw(PermanentError(body_str, status))
+
             elseif status == 429
                 # Rate limited — extract retry-after if available
                 retry_after = _get_retry_after(HTTP.headers(response))
@@ -129,18 +177,19 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
                 sleep(delay)
 
             elseif status == 529 || status >= 500
-                # Overloaded or server error
+                # Overloaded or server error — transient, apply backoff
                 delay = BASE_DELAY * 2^(attempt - 1)
                 @warn "Server error ($status). Retry $attempt/$MAX_RETRIES in $(round(delay, digits=1))s"
                 sleep(delay)
 
             else
                 body_str = String(response.body)
-                error("API returned status $status: $body_str")
+                error("API returned unexpected status $status: $body_str")
             end
-
         catch e
-            if e isa HTTP.IOError || e isa Base.IOError
+            # PermanentError must propagate immediately — never retry auth/validation failures.
+            e isa PermanentError && rethrow(e)
+            if is_transient_error(0, e)
                 delay = BASE_DELAY * 2^(attempt - 1)
                 @warn "Network error: $e. Retry $attempt/$MAX_RETRIES in $(round(delay, digits=1))s"
                 sleep(delay)

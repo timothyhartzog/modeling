@@ -3,7 +3,7 @@
     Note: No real HTTP calls are made; ANTHROPIC_API_KEY is not required.
 """
 
-using Test
+using Test, HTTP
 
 include(joinpath(@__DIR__, "..", "src", "api_client.jl"))
 using .APIClient
@@ -42,6 +42,50 @@ using .APIClient
 
         # Empty headers returns 0.0
         @test APIClient._get_retry_after(Pair{String,String}[]) == 0.0
+    end
+
+    @testset "is_permanent_error" begin
+        for s in (400, 401, 403, 404, 422)
+            @test APIClient.is_permanent_error(s) == true
+        end
+        for s in (200, 429, 500, 502, 503, 504, 529)
+            @test APIClient.is_permanent_error(s) == false
+        end
+    end
+
+    @testset "is_transient_error" begin
+        sentinel = ErrorException("other")
+        for s in (429, 502, 503, 504, 522)
+            @test APIClient.is_transient_error(s, sentinel) == true
+        end
+        # non-transient status, non-IO exception → false
+        @test APIClient.is_transient_error(200, sentinel) == false
+        @test APIClient.is_transient_error(401, sentinel) == false
+        # Base.IOError is transient regardless of status
+        @test APIClient.is_transient_error(0, Base.IOError("disk", 0)) == true
+        # HTTP.ConnectError and HTTP.RequestError are transient
+        @test APIClient.is_transient_error(0, HTTP.ConnectError("example.com", Base.IOError("refused", 0))) == true
+        req = HTTP.Request("GET", "/")
+        @test APIClient.is_transient_error(0, HTTP.RequestError(req, Base.IOError("reset", 0))) == true
+    end
+
+    @testset "PermanentError and TransientError are subtypes of APIException" begin
+        @test APIClient.PermanentError <: APIClient.APIException
+        @test APIClient.TransientError <: APIClient.APIException
+        @test APIClient.APIException <: Exception
+    end
+
+    @testset "PermanentError fields" begin
+        e = APIClient.PermanentError("bad request", 400)
+        @test e.message == "bad request"
+        @test e.status == 400
+    end
+
+    @testset "TransientError fields" begin
+        e = APIClient.TransientError("rate limited", 429, 5.0)
+        @test e.message == "rate limited"
+        @test e.status == 429
+        @test e.retry_after == 5.0
     end
 
     @testset "exponential backoff delay formula" begin

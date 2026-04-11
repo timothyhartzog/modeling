@@ -32,6 +32,15 @@ julia --project=. src/generate.jl --textbook CORE-001
 # Retry failures
 julia --project=. src/generate.jl --retry-failed --resume
 
+# Regenerate a single chapter (always re-runs regardless of state)
+julia --project=. src/generate.jl --chapter CORE-001/ch03
+
+# Regenerate multiple specific chapters (comma-separated)
+julia --project=. src/generate.jl --chapter CORE-001/ch03,BIO-002/ch07
+
+# Force regenerate all chapters in a textbook (ignore completed state)
+julia --project=. src/generate.jl --textbook CORE-001 --force
+
 # Assemble DOCX
 julia --project=. src/assemble_docx.jl
 

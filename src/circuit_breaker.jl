@@ -76,7 +76,7 @@ function _apply_timeout_transition!(cb::CircuitBreakerState)
             time() - cb.last_trip_time > cb.reset_timeout
         cb.state = :half_open
         cb.failure_count = 0
-        @info "Circuit breaker HALF_OPEN: Testing recovery..."
+        @info "Circuit breaker HALF-OPEN: Testing recovery..."
     end
 end
 

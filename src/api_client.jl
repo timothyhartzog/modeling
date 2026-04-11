@@ -93,7 +93,7 @@ function generate_chapter(system_prompt::String, chapter_prompt::String;
         # Pre-flight: apply timeout → :half_open transition if needed; wait if open.
         # Circuit-open waits do NOT consume HTTP retry attempts.
         if !should_allow!(_circuit_breaker)
-            @warn "Circuit breaker OPEN. Waiting $(_circuit_breaker.reset_timeout)s for recovery..."
+            @warn "Circuit breaker OPEN. Waiting $(_circuit_breaker.reset_timeout) seconds for recovery..."
             sleep(_circuit_breaker.reset_timeout)
             continue
         end

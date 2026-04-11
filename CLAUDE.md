@@ -9,6 +9,7 @@ Parallel batch generation of 52 graduate-level textbooks (438 chapters) for the 
 - `src/prompt_builder.jl` — Constructs per-chapter prompts from manifest JSON. Each prompt includes textbook context, TOC, and detailed content specification.
 - `src/assemble_docx.jl` — Post-generation. Concatenates per-chapter .md files into single textbook markdown, converts to DOCX via pandoc.
 - `src/validate.jl` — Post-generation quality checker. Reads every generated .md and runs 6 per-chapter checks; prints structured report; exports failures to JSON for re-queuing.
+- `src/stats.jl` — Read-only progress dashboard. Shows overall/by-track/by-textbook completion, failed chapters, and recent completions.
 - `system_prompt.md` — Locked system prompt for all API calls. Julia-only code, graduate rigor, USA sources.
 - `state.json` — Progress tracker. Atomic write. Maps chapter keys ("CORE-001/ch01") to completion timestamps.
 - `manifests/part1.json` — 24 textbooks, 212 chapters (core math + flagship domain courses).
@@ -45,6 +46,15 @@ julia --project=. src/validate.jl --export-failures failures.json
 
 # Dry run (show queue)
 julia --project=. src/generate.jl --dry-run
+
+# Progress dashboard
+julia --project=. src/stats.jl
+
+# Per-textbook breakdown
+julia --project=. src/stats.jl --by-textbook
+
+# JSON output
+julia --project=. src/stats.jl --json > progress.json
 ```
 
 ## Content Standards

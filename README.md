@@ -38,6 +38,7 @@ julia --project=. src/assemble_docx.jl
 | `src/prompt_builder.jl` | Constructs per-chapter prompts from manifest JSON |
 | `src/assemble_docx.jl` | Concatenates chapters → DOCX via pandoc |
 | `src/validate.jl` | Post-generation quality checker — 6 per-chapter checks |
+| `src/stats.jl` | Read-only progress dashboard — overall, by-track, by-textbook |
 | `system_prompt.md` | Locked system prompt for consistent generation |
 | `manifests/part1.json` | 24 textbooks, 212 chapters |
 | `manifests/part2.json` | 28 textbooks, 226 chapters |
@@ -63,6 +64,19 @@ julia --project=. src/assemble_docx.jl
 ```
 
 Exits with code 1 when any chapter fails a critical check (suitable for CI).
+
+## Progress Dashboard
+
+```bash
+# Full status report (overall + by-track + failures + recent)
+julia --project=. src/stats.jl
+
+# Per-textbook chapter-level breakdown
+julia --project=. src/stats.jl --by-textbook
+
+# Machine-readable JSON output
+julia --project=. src/stats.jl --json > progress.json
+```
 
 ## Curriculum Coverage
 

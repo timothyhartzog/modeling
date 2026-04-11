@@ -4,6 +4,8 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  // base matches the GitHub Pages subpath: https://timothyhartzog.github.io/modeling/interactive/
+  // Change to '/' if hosting at domain root or a different subpath.
   base: '/modeling/interactive/',
   build: {
     outDir: resolve(__dirname, '../output/_site/interactive'),

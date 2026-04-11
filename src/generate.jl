@@ -171,7 +171,8 @@ end
 function generate_one(item::WorkItem, system_prompt::String, state::GenerationState,
                       state_lock::ReentrantLock,
                       tok_input::Threads.Atomic{Int}, tok_output::Threads.Atomic{Int},
-                      tok_cache_read::Threads.Atomic{Int}, tok_cache_create::Threads.Atomic{Int})
+                      tok_cache_read::Threads.Atomic{Int}, tok_cache_create::Threads.Atomic{Int};
+                      calibrate::Bool=false)
     key = PromptBuilder.work_item_key(item)
     t_start = time()
 
@@ -202,6 +203,9 @@ function generate_one(item::WorkItem, system_prompt::String, state::GenerationSt
         word_count = length(split(result.content))
         trunc_flag = result.stop_reason == "max_tokens" ? " ⚠️  TRUNCATED" : ""
         @info "✓ $(key) — $(word_count) words in $(elapsed)s → $(filepath)$(trunc_flag)"
+        if calibrate
+            println("   ✓ $(key) — $(word_count) words in $(elapsed)s")
+        end
         return true
 
     catch e
@@ -214,6 +218,9 @@ function generate_one(item::WorkItem, system_prompt::String, state::GenerationSt
         end
 
         @error "✗ $(key) — FAILED in $(elapsed)s: $(err_msg)"
+        if calibrate
+            println("   ✗ $(key) — FAILED in $(elapsed)s: $(err_msg)")
+        end
         return false
     end
 end
@@ -319,17 +326,20 @@ function main()
     # Use asyncmap for concurrent I/O-bound tasks
     asyncmap(work_queue; ntasks=concurrency) do item
         result = generate_one(item, system_prompt, state, state_lock,
-                              tok_input, tok_output, tok_cache_read, tok_cache_create)
+                              tok_input, tok_output, tok_cache_read, tok_cache_create;
+                              calibrate=args[:calibrate])
         if result
             Threads.atomic_add!(success_count, 1)
         else
             Threads.atomic_add!(fail_count, 1)
         end
 
-        # Progress report every 10 chapters
+        # Progress report at 25%, 50%, 75%, and 100% milestones (scales to any queue size)
         done = success_count[] + fail_count[]
         total = length(work_queue)
-        if done % 10 == 0
+        prev_pct = floor(Int, 100 * (done - 1) / total / 25)
+        curr_pct = floor(Int, 100 * done / total / 25)
+        if curr_pct > prev_pct || done == total
             pct = round(100 * done / total, digits=1)
             elapsed = round((time() - t_total) / 60, digits=1)
             rate = round(done / (time() - t_total) * 60, digits=1)

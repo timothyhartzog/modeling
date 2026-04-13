@@ -24,7 +24,7 @@ jobs:
           version: '1.11'
 
       - name: Cache Julia packages
-        uses: julia-actions/cache@v2
+        uses: julia-actions/cache@v3
 
       - name: Install Julia dependencies
         run: julia --project=. -e 'using Pkg; Pkg.instantiate()'

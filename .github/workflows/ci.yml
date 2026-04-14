@@ -197,6 +197,10 @@ jobs:
       - name: Generate QMD files
         run: julia --project=. src/quarto_export.jl --stubs-only
 
+      - name: Build glossary and indices
+        run: julia --project=. src/build_glossary.jl --output-dir output/
+        continue-on-error: true
+
       - name: Download concept graph
         uses: actions/download-artifact@v4
         with:
@@ -226,6 +230,10 @@ jobs:
           cp output/concept-graph.json output/_site/ 2>/dev/null || true
           # Copy question bank for the quiz engine
           cp output/question-bank.json output/_site/ 2>/dev/null || true
+          # Copy glossary and indices
+          cp output/glossary.json output/_site/ 2>/dev/null || true
+          cp output/theorem-index.json output/_site/ 2>/dev/null || true
+          cp output/notation-index.json output/_site/ 2>/dev/null || true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

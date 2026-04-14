@@ -24,10 +24,14 @@ website:
             href: interactive/gradient-descent.html
           - text: "Distributions"
             href: interactive/distribution.html
+          - text: "Epidemic Simulator"
+            href: interactive/epidemic.html
           - text: "Quiz Engine"
             href: interactive/quiz.html
           - text: "Proof Explorer"
             href: interactive/proof-explorer.html
+          - text: "Progress Dashboard"
+            href: interactive/progress.html
       - text: "Labs"
         href: https://github.com/timothyhartzog/modeling/tree/main/labs
     right:

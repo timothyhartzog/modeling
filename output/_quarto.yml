@@ -11,6 +11,25 @@ website:
     title: "📚 Modeling Mastery"
     search: true
     pinned: true
+    left:
+      - text: "Textbooks"
+        href: index.qmd
+      - text: "Interactive Tools"
+        menu:
+          - text: "Concept Map"
+            href: interactive/concept-map.html
+          - text: "Phase Portraits"
+            href: interactive/phase-portrait.html
+          - text: "Gradient Descent"
+            href: interactive/gradient-descent.html
+          - text: "Distributions"
+            href: interactive/distribution.html
+          - text: "Quiz Engine"
+            href: interactive/quiz.html
+          - text: "Proof Explorer"
+            href: interactive/proof-explorer.html
+      - text: "Labs"
+        href: https://github.com/timothyhartzog/modeling/tree/main/labs
     right:
       - icon: github
         href: https://github.com/timothyhartzog/modeling
@@ -54,6 +73,8 @@ website:
             href: generated/core-015.qmd
           - text: "CORE-016: Optimization Theory for Modelers"
             href: generated/core-016.qmd
+          - text: "CORE-017: Numerical Linear Algebra"
+            href: generated/core-017.qmd
 
       - section: "🧬 Biology & Life Sciences"
         contents:
@@ -142,6 +163,8 @@ website:
             href: generated/cross-004.qmd
           - text: "CROSS-005: Multiscale and Multiphysics Methods"
             href: generated/cross-005.qmd
+          - text: "CROSS-006: Model Selection, Validation, and Scientific Judgment"
+            href: generated/cross-006.qmd
 
       - section: "📈 Uncertainty & Quantification"
         contents:

@@ -1,52 +1,85 @@
 ---
-title: "Master Course of Study in Universal Modeling Mastery"
-subtitle: "52 Graduate-Level Textbooks Spanning All Disciplines"
-engine: markdown
+title: "Universal Modeling Mastery"
+subtitle: "54 Graduate-Level Textbooks · 459 Chapters · Interactive Learning"
 ---
 
-## Welcome to Modeling Mastery
+## Welcome
 
-This is a **complete master's-level curriculum** spanning 52 textbooks with 438 chapters, covering:
+This is a self-contained graduate curriculum in mathematical modeling, spanning pure mathematics, applied statistics, computational science, and domain-specific modeling across biostatistics, geospatial science, agent-based modeling, scientific machine learning, population dynamics, physical systems, and cross-cutting methods.
 
-- **Rigorous mathematical foundations** (linear algebra, differential equations, dynamical systems)
-- **Life sciences** (molecular biology, genetics, systems biology, neurobiology)
-- **Environmental modeling** (GIS, climate, remote sensing, spatial analysis)
-- **Computational intelligence** (physics-informed neural networks, scientific machine learning)
-- **Physical systems** (classical mechanics, thermodynamics, quantum mechanics)
-- **Complex systems** (agent-based modeling, population dynamics, uncertainty quantification)
-
-All textbooks feature:
-✅ Graduate-level rigor with formal definitions, theorems, and proofs
-✅ **Julia** as the exclusive programming language
-✅ Worked examples and end-of-chapter exercises
-✅ USA-based sources for medical and clinical topics
-✅ Cross-disciplinary integration and applications
+Every chapter includes rigorous theory (definitions, theorems, proofs), worked examples, Julia implementations, and exercises at three Bloom's taxonomy levels (Apply, Analyze, Create).
 
 ---
 
-## Course Navigation
+## Interactive Learning Tools
 
-Browse courses using the **sidebar** on the left, organized by discipline:
+::: {.callout-tip appearance="simple" icon=false}
 
-- **📖 Core Foundations** — Mathematics, linear algebra, differential equations, topology
-- **🧬 Biology & Life Sciences** — Molecular biology, genetics, ecology, systems biology
-- **🌍 Geospatial & Environmental** — GIS, climate modeling, remote sensing
-- **🤖 Machine Learning & AI** — Physics-informed neural networks, surrogate modeling
-- **⚛️ Physics** — Classical mechanics, thermodynamics, quantum mechanics
-- **📊 Population & Dynamics** — Demography, epidemic modeling, stochastic systems
-- **🔀 Advanced Integration** — Agent-based modeling, complex systems, networks
-- **📈 Uncertainty & Quantification** — Bayesian methods, sensitivity analysis
+### Concept Map Navigator
+Explore the dependency graph of 55+ major concepts across all 8 tracks. See what prerequisites each topic requires and what it enables.
+
+[**Launch Concept Map**](interactive/concept-map.html){.btn .btn-primary}
+
+### Phase Portrait Explorer
+Place initial conditions on 2D dynamical systems (Lotka-Volterra, Van der Pol, SIR, Damped Pendulum) and watch trajectories evolve.
+
+[**Launch Phase Portraits**](interactive/phase-portrait.html){.btn .btn-primary}
+
+### Gradient Descent Visualizer
+Compare 4 optimization algorithms on classic test functions with real-time contour plots.
+
+[**Launch Optimizer**](interactive/gradient-descent.html){.btn .btn-primary}
+
+### Distribution Playground
+Adjust parameters of 6 probability distributions and see PDF, CDF, and histogram views update in real time.
+
+[**Launch Distributions**](interactive/distribution.html){.btn .btn-primary}
+
+### Self-Assessment Quiz Engine
+Test your knowledge with spaced-repetition quizzes across all tracks and Bloom's taxonomy levels.
+
+[**Launch Quiz Engine**](interactive/quiz.html){.btn .btn-primary}
+
+### Proof Explorer
+Step through proofs with collapsible steps, intuition vs formal mode toggle, and exercises.
+
+[**Launch Proof Explorer**](interactive/proof-explorer.html){.btn .btn-primary}
+:::
 
 ---
 
-## Features
+## Curriculum (54 textbooks, 459 chapters)
 
-- **52 Textbooks** — 438 chapters total
-- **Full-Text Search** — Find topics across all chapters
-- **Graduate-Level Content** — 3,000–8,000 words per chapter, 5–10 exercises
-- **Julia Programming** — All code examples in Julia
-- **Responsive Design** — Works on desktop, tablet, and mobile
+### Core Mathematics (17 textbooks)
+
+CORE-001 through CORE-016 covering real analysis, linear algebra, measure theory, scientific computing, functional analysis, probability, ODEs, statistics, PDEs, stochastic processes, Bayesian theory, numerical methods for DEs, differential geometry, nonlinear PDEs, computational statistics, and optimization.
+
+**New:** CORE-017 — Numerical Linear Algebra (11 chapters): floating-point arithmetic, LU/Cholesky/QR, SVD, eigenvalue algorithms, Krylov methods, sparse computation, randomized NLA, matrix functions, structured matrices, HPC.
+
+### Applied Tracks (26 textbooks)
+
+BIO-001 through BIO-008 (Biostatistics) · GEO-001 through GEO-005 (Geospatial) · ABM-001 through ABM-004 (Agent-Based) · SCIML-001 through SCIML-005 (Scientific ML) · POP-001 through POP-004 (Population Dynamics) · PHYS-001 through PHYS-004 (Physical Systems)
+
+### Cross-Cutting Methods (7 textbooks)
+
+UQ-001 (Uncertainty Quantification) · CROSS-001 through CROSS-005 (Dynamical Systems, Optimal Transport, Inverse Problems, Information Geometry, Multiscale Methods)
+
+**New:** CROSS-006 — Model Selection, Validation, and Scientific Judgment (10 chapters): bias-variance, AIC/BIC, cross-validation, Bayes factors, WAIC/PSIS-LOO, posterior predictive checks, sensitivity analysis, model averaging, ODE model selection, philosophy of model choice.
 
 ---
 
-**Use the sidebar navigation to get started!**
+## Challenge Labs
+
+Five integrative capstone projects spanning multiple textbooks:
+
+1. **Clinical Trial Analysis Pipeline** — BIO-001, BIO-002, BIO-004, CORE-011
+2. **Discover Governing Equations from Noisy Data** — SCIML-002, UQ-001, CROSS-003, SCIML-004
+3. **Spatial Disease Spread Prediction** — BIO-008, GEO-002, ABM-001, BIO-007
+4. **Blood Flow in a Stenosed Artery** — PHYS-001, PHYS-003, PHYS-004, CORE-009
+5. **Bayesian Model Selection for Population Dynamics** — CORE-011, POP-001, POP-002, CROSS-006
+
+Labs available as [Pluto.jl notebooks](https://github.com/timothyhartzog/modeling/tree/main/labs).
+
+---
+
+**Source:** [github.com/timothyhartzog/modeling](https://github.com/timothyhartzog/modeling) · **Language:** Julia (exclusive) · **Validation:** 16 automated checks per chapter

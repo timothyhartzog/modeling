@@ -88,6 +88,23 @@ const NODES = [
   { id: "dynamical-systems", label: "Dynamical Systems", track: "XCUT", textbook: "XCUT-003", chapter: 1, tier: 2 },
   { id: "optimal-transport", label: "Optimal Transport", track: "XCUT", textbook: "XCUT-004", chapter: 1, tier: 3 },
   { id: "info-geometry", label: "Information Geometry", track: "XCUT", textbook: "XCUT-005", chapter: 1, tier: 3 },
+
+  // CORE-017 — Numerical Linear Algebra (new)
+  { id: "nla-floating-point", label: "Floating-Point Arithmetic", track: "CORE", textbook: "CORE-017", chapter: 1, tier: 1 },
+  { id: "nla-direct-solvers", label: "Direct Solvers (LU/QR)", track: "CORE", textbook: "CORE-017", chapter: 2, tier: 2 },
+  { id: "nla-svd-computation", label: "SVD Computation", track: "CORE", textbook: "CORE-017", chapter: 4, tier: 2 },
+  { id: "nla-krylov", label: "Krylov Methods (CG/GMRES)", track: "CORE", textbook: "CORE-017", chapter: 6, tier: 2 },
+  { id: "nla-sparse", label: "Sparse Matrix Computation", track: "CORE", textbook: "CORE-017", chapter: 7, tier: 2 },
+  { id: "nla-randomized", label: "Randomized NLA", track: "CORE", textbook: "CORE-017", chapter: 8, tier: 3 },
+  { id: "nla-matrix-exp", label: "Matrix Exponential", track: "CORE", textbook: "CORE-017", chapter: 9, tier: 3 },
+
+  // CROSS-006 — Model Selection (new)
+  { id: "model-selection", label: "Model Selection", track: "XCUT", textbook: "CROSS-006", chapter: 1, tier: 2 },
+  { id: "info-criteria", label: "AIC / BIC / DIC", track: "XCUT", textbook: "CROSS-006", chapter: 2, tier: 2 },
+  { id: "cross-validation", label: "Cross-Validation Theory", track: "XCUT", textbook: "CROSS-006", chapter: 3, tier: 2 },
+  { id: "bayes-factors", label: "Bayes Factors", track: "XCUT", textbook: "CROSS-006", chapter: 4, tier: 3 },
+  { id: "waic-loo", label: "WAIC / PSIS-LOO", track: "XCUT", textbook: "CROSS-006", chapter: 5, tier: 3 },
+  { id: "model-averaging", label: "Model Averaging", track: "XCUT", textbook: "CROSS-006", chapter: 8, tier: 3 },
 ];
 
 const EDGES = [
@@ -171,6 +188,31 @@ const EDGES = [
   { source: "optimization", target: "optimal-transport", type: "depends" },
   { source: "differential-geometry", target: "info-geometry", type: "depends" },
   { source: "probability-theory", target: "info-geometry", type: "depends" },
+
+  // CORE-017 Numerical Linear Algebra edges
+  { source: "linear-algebra", target: "nla-floating-point", type: "depends" },
+  { source: "nla-floating-point", target: "nla-direct-solvers", type: "depends" },
+  { source: "nla-direct-solvers", target: "nla-svd-computation", type: "depends" },
+  { source: "svd", target: "nla-svd-computation", type: "generalizes" },
+  { source: "nla-direct-solvers", target: "nla-krylov", type: "depends" },
+  { source: "nla-krylov", target: "nla-sparse", type: "depends" },
+  { source: "nla-svd-computation", target: "nla-randomized", type: "depends" },
+  { source: "odes", target: "nla-matrix-exp", type: "depends" },
+  { source: "nla-direct-solvers", target: "nla-matrix-exp", type: "depends" },
+  { source: "nla-krylov", target: "inverse-problems", type: "depends" },
+  { source: "nla-sparse", target: "neural-odes", type: "depends" },
+
+  // CROSS-006 Model Selection edges
+  { source: "probability-theory", target: "model-selection", type: "depends" },
+  { source: "bayesian-theory", target: "model-selection", type: "depends" },
+  { source: "model-selection", target: "info-criteria", type: "depends" },
+  { source: "model-selection", target: "cross-validation", type: "depends" },
+  { source: "bayesian-theory", target: "bayes-factors", type: "depends" },
+  { source: "model-selection", target: "bayes-factors", type: "depends" },
+  { source: "mcmc", target: "waic-loo", type: "depends" },
+  { source: "bayes-factors", target: "waic-loo", type: "depends" },
+  { source: "model-selection", target: "model-averaging", type: "depends" },
+  { source: "cross-validation", target: "model-averaging", type: "depends" },
 ];
 
 // ═══════════════════════════════════════════════════════════════════

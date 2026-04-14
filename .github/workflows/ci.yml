@@ -1,0 +1,237 @@
+name: Validate, Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ──────────────────────────────────────────────
+  # Job 1: Validate generated chapters
+  # ──────────────────────────────────────────────
+  validate:
+    name: Chapter Validation (16 checks)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+
+      - name: Cache Julia packages
+        uses: julia-actions/cache@v2
+
+      - name: Install dependencies
+        run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Run v2 validation pipeline
+        run: |
+          julia --project=. src/validate_v2.jl \
+            --fix-report output/fix-report.md \
+            --export-failures output/validation-failures.json
+        continue-on-error: true
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: |
+            output/fix-report.md
+            output/validation-failures.json
+
+      - name: Run unit tests
+        run: julia --project=. test/runtests.jl
+
+  # ──────────────────────────────────────────────
+  # Job 2: Build concept graph
+  # ──────────────────────────────────────────────
+  concept-graph:
+    name: Build Concept Graph
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+
+      - name: Cache Julia packages
+        uses: julia-actions/cache@v2
+
+      - name: Install dependencies
+        run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Build concept graph
+        run: julia --project=. src/build_concept_graph.jl --output output/concept-graph.json
+        continue-on-error: true
+
+      - name: Upload concept graph
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: concept-graph
+          path: output/concept-graph.json
+
+  # ──────────────────────────────────────────────
+  # Job 3: Build React interactive components
+  # ──────────────────────────────────────────────
+  react-build:
+    name: Build Interactive Demos
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: interactive/package-lock.json
+
+      - name: Install npm dependencies
+        working-directory: interactive
+        run: npm ci || npm install
+
+      - name: Build React components
+        working-directory: interactive
+        run: npm run build
+        continue-on-error: true
+
+      - name: Upload built assets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: interactive-build
+          path: output/_site/interactive/
+
+  # ──────────────────────────────────────────────
+  # Job 4: Build question bank from chapters
+  # ──────────────────────────────────────────────
+  question-bank:
+    name: Generate Question Bank
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+
+      - name: Cache Julia packages
+        uses: julia-actions/cache@v2
+
+      - name: Install dependencies
+        run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Generate question bank
+        run: julia --project=. src/generate_question_bank.jl --output output/question-bank.json
+        continue-on-error: true
+
+      - name: Upload question bank
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: question-bank
+          path: output/question-bank.json
+
+  # ──────────────────────────────────────────────
+  # Job 5: Build and deploy Quarto site
+  # ──────────────────────────────────────────────
+  deploy:
+    name: Build & Deploy Site
+    needs: [validate, concept-graph, react-build, question-bank]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.11'
+
+      - name: Cache Julia packages
+        uses: julia-actions/cache@v2
+
+      - name: Install dependencies
+        run: |
+          julia --project=. -e 'using Pkg; Pkg.instantiate()'
+          sudo apt-get install -y pandoc
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Generate QMD files
+        run: julia --project=. src/quarto_export.jl --stubs-only
+
+      - name: Download concept graph
+        uses: actions/download-artifact@v4
+        with:
+          name: concept-graph
+          path: output/
+
+      - name: Download question bank
+        uses: actions/download-artifact@v4
+        with:
+          name: question-bank
+          path: output/
+
+      - name: Download interactive build
+        uses: actions/download-artifact@v4
+        with:
+          name: interactive-build
+          path: output/_site/interactive/
+        continue-on-error: true
+
+      - name: Render Quarto project
+        working-directory: ./output
+        run: quarto render
+
+      - name: Copy assets to site
+        run: |
+          # Copy concept graph for the navigator
+          cp output/concept-graph.json output/_site/ 2>/dev/null || true
+          # Copy question bank for the quiz engine
+          cp output/question-bank.json output/_site/ 2>/dev/null || true
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./output/_site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
